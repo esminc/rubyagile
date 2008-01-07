@@ -1,0 +1,9 @@
+
+#openid_url {
+    background-color: #ffffff;
+    background-image: url("/images/openid-logo-input.gif");
+    background-repeat: no-repeat;
+    font-size: 16px;
+    height: 22px;
+    padding: 0 0 0 24px;
+}
