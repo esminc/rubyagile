@@ -6,12 +6,14 @@ class SessionsController < ApplicationController
 
   protected
   def open_id_authentication
-    authenticate_with_open_id do |status, open_id_url|
+    authenticate_with_open_id(params[:openid_url],:optional => ["nickname", "email", "fullname"]) do |status, open_id_url, registration|
       if status.successful?
         if @current_user = User.find_by_open_id_url(open_id_url)
           successful_login
         else
-          redirect_to new_user_url(:open_id_url => open_id_url)
+          logger.info(registration.inspect)
+          flash[:notice] = "Create new user account."
+          redirect_to new_user_url(:open_id_url => open_id_url, :login => registration["nickname"], :email => registration["email"], :fullname => registration["fullname"])
           return
         end
       else

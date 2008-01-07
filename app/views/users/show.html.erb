@@ -1,38 +1,24 @@
 <p>
-  <b>Login:</b>
-  <%=h @user.login %>
-</p>
-
-<p>
-  <b>Nickname:</b>
-  <%=h @user.nickname %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
-
 <p>
   <b>Open id url:</b>
   <%=h @user.open_id_url %>
 </p>
-
 <p>
-  <b>Amazon associate:</b>
-  <%=h @user.amazon_associate_id %>
+  <b>Login:</b>  <%=h @user.login %>
 </p>
-
 <p>
-  <b>Aboutme url:</b>
-  <%=h @user.aboutme_url %>
+  <b>Email:</b>  <%=h @user.email %>
 </p>
-
 <p>
-  <b>Admin:</b>
-  <%=h @user.admin %>
+  <b>Full Name</b> <%=h @user.fullname %>
 </p>
+<p>
+  <b>Amazon associate:</b>  <%=h @user.amazon_associate_id %>
+</p>
+<% if @user.admin? -%>
+<p>
+  <b>Admin User</b>
+</p>
+<% end -%>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>

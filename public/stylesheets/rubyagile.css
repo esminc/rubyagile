@@ -7,3 +7,9 @@
     height: 22px;
     padding: 0 0 0 24px;
 }
+
+.notice {
+    border: 1px solid #4AB848;
+    background: #8Bf097;
+    padding: 3px;
+}

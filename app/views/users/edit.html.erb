@@ -4,38 +4,24 @@
 
 <% form_for(@user) do |f| %>
   <p>
-    <b>Login</b><br />
-    <%= f.text_field :login %>
+    <b>Open id url</b> <%=h @user.open_id_url %>
   </p>
 
   <p>
-    <b>Nickname</b><br />
-    <%= f.text_field :nickname %>
+    <b>Login</b> <%= f.text_field :login %>
   </p>
 
   <p>
-    <b>Email</b><br />
-    <%= f.text_field :email %>
+    <b>Email</b> <%= f.text_field :email %>
   </p>
 
   <p>
-    <b>Open id url</b><br />
-    <%= f.text_field :open_id_url %>
+    <b>Full Name</b> <%= f.text_field :fullname %>
   </p>
 
-  <p>
-    <b>Amazon associate</b><br />
-    <%= f.text_field :amazon_associate_id %>
-  </p>
 
   <p>
-    <b>Aboutme url</b><br />
-    <%= f.text_field :aboutme_url %>
-  </p>
-
-  <p>
-    <b>Admin</b><br />
-    <%= f.check_box :admin %>
+    <b>Amazon associate</b> <%= f.text_field :amazon_associate_id %>
   </p>
 
   <p>
@@ -43,5 +29,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Show', @user %>
