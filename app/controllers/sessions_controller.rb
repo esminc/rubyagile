@@ -1,7 +1,16 @@
 class SessionsController < ApplicationController
 
+  # render new.html.erb
+  def new; end
+
   def create
     open_id_authentication
+  end
+
+  def destroy
+    reset_session
+    flash[:notice] = "You have been logged out."
+    redirect_to(root_path)
   end
 
   protected
