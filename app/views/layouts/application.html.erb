@@ -7,6 +7,14 @@
 
 </head>
 <body>
+<% if flash[:error] -%>
+<div class="erorr"><%= @flash[:error] %></div>
+<% end -%>
+<% if flash[:notice] -%>
+<div class="notice"><%= @flash[:notice] %></div>
+<% end -%>
+<div id="contents">
 <%= yield %>
+</div>
 </body>
 </html>

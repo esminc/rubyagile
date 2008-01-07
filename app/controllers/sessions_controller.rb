@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
 
   protected
   def open_id_authentication
-    authenticate_with_open_id do |result, identity_url|
-      if result.successful?
-        if @current_user = User.find_by_open_id_url(identity_url)
+    authenticate_with_open_id do |status, open_id_url|
+      if status.successful?
+        if @current_user = User.find_by_open_id_url(open_id_url)
           successful_login
         else
-          # TODO create new user
+          redirect_to new_user_url(:open_id_url => open_id_url)
+          return
         end
       else
         failed_login result.message

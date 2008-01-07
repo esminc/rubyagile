@@ -1,2 +1,7 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+<p>
+<% if session[:user_id] -%>
+<%= User.find_by_id(session[:user_id]).login %>
+<% end -%>
+</p>

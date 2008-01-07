@@ -24,7 +24,12 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    @user = User.new
+    if params[:open_id_url]
+      @user = User.new(:open_id_url => params[:open_id_url])
+    else
+      @user = User.new
+    end
+
 
     respond_to do |format|
       format.html # new.html.erb
