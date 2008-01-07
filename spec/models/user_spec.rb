@@ -1,11 +1,28 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe User do
-  before(:each) do
-    @user = User.new
+  def valid_user
+    { :login => "s-kakutani", :nickname => "kakutani",
+      :email => "s-kakutani@esm.co.jp",
+      :open_id_url => "http://kakutani.com"}
   end
 
-  it "should be valid" do
-    @user.should be_valid
+  describe "when valid" do
+    before(:each) do
+      @user = User.new(valid_user)
+    end
+
+    it { @user.should be_valid }
+    it { @user.should_not be_admin}
+
   end
+
+  describe "when admin user" do
+    before do
+      @user = User.new(valid_user.merge(:admin => "true"))
+    end
+
+    it { @user.should be_admin}
+  end
+
 end
