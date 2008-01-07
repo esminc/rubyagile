@@ -1,5 +1,5 @@
 begin
-  require 'openid'  
+  require 'openid'
 rescue LoadError
   begin
     gem 'ruby-openid'
