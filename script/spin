@@ -1,4 +1,6 @@
- #!/bin/sh
- # GEM_HOME=
- # RUBYLIB=
- $(dirname $0)/process/spawner -p 8000 -i 3
+#!/bin/sh
+# GEM_HOME=
+# RUBYLIB=
+# GEM_PATH=/var/lib/gems/1.8
+# PATH=$GEM_PATH/bin:$PATH
+$(dirname $0)/process/spawner -p 8000 -i 3
