@@ -1,0 +1,4 @@
+ #!/bin/sh
+ # GEM_HOME=
+ # RUBYLIB=
+ $(dirname $0)/process/spawner -p 8000 -i 3
