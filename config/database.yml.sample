@@ -33,10 +33,11 @@ test:
   password:
   socket: /opt/local/var/run/mysql5/mysqld.sock
 
+# debian
 production:
   adapter: mysql
   encoding: utf8
-  database: rubyagile_production
-  username: root
-  password: 
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  database: rubyagile
+  username: rubyagile
+  password: rubyagile
+  socket: /var/run/mysqld/mysqld.sock
