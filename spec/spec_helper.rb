@@ -37,3 +37,8 @@ Spec::Runner.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 end
+
+# FIXME 適切な潰し方を調べる
+class ApplicationController
+  def basic_authenticate; true end
+end

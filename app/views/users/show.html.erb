@@ -15,7 +15,7 @@
 <p>
   <b>Amazon associate:</b>  <%=h @user.amazon_associate_id %>
 </p>
-<% if @user.admin? -%>
+<% if @user.member? -%>
 <p>
   <b>Admin User</b>
 </p>

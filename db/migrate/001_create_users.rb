@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :open_id_url
       t.string :fullname
       t.string :amazon_associate_id
-      t.boolean :admin
+      t.boolean :member
 
       t.timestamps
     end
