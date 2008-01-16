@@ -1,19 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  login: MyString
-  nickname: MyString
-  email: MyString
-  open_id_url: MyString
-  amazon_associate_id: MyString
-  aboutme_url: MyString
-  admin: false
-
-two:
-  login: MyString
-  nickname: MyString
-  email: MyString
-  open_id_url: MyString
-  amazon_associate_id: MyString
-  aboutme_url: MyString
-  admin: false
+valid:
+  login: kakutani
+  email: s-kaktuani@esm.co.jp
+  open_id_url: http://kakutani.com/
+  amazon_associate_id: kakutani-22
+  member: true
