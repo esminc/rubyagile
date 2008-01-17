@@ -1,8 +1,29 @@
-<h2><%=h @article.title %></h2>
-Posted by <%=h @article.user.login %> on <%=h @article.created_at %>
-<hr />
-<div class="body">
+<div class="article">
+  <h2 class="title"><%= link_to h(@article.title), article_path(@article) %></h2>
+  <p class="meta">Posted by <%=h @article.user.login %> on <%=h @article.created_at %></p>
+  <div class="body">
 <%= parse(@article.body) %>
+  </div>
+  <div class="footer">
+    <h4 class="meta">posted in: </h4>
+    <p><a class="selected" href="/projects">projects</a></p>
+
+    <h4 class="meta">tags: </h4>
+    <p><a href="/tags/dc" rel="tag">dc</a>, <a href="/tags/evilchelu" rel="tag">evilchelu</a>, <a href="/tags/mephisto" rel="tag">mephisto</a>, <a href="/tags/skittlish" rel="tag">skittlish</a>, <a href="/tags/theme" rel="tag">theme</a></p>
+
+    <h4 class="meta">comments are closed</h4>
+
+  </div>
+
+  <div class="comments">
+    <a href="/2006/8/15/skittlish#comments">0 comments</a>
+  </div>
+</div>
+
+<div id="commentform">
+  <h3 class="content">
+    comments are closed
+  </h3>
 </div>
 
 
