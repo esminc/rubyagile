@@ -2,10 +2,17 @@
 
 <table>
   <tr>
+	<th>ID</th>
+	<th>Title</th>
+	<th></th>
+	<th></th>
+	<th></th>
   </tr>
 
 <% for article in @articles %>
   <tr>
+	<td><%=h article.id %></td>
+	<td><%=h article.title %></td>
     <td><%= link_to 'Show', article %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
     <td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>

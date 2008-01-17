@@ -33,8 +33,14 @@ class SessionsController < ApplicationController
 
   private
   def successful_login
+    logger.info("!CURRENT! '#{session.object_id}'")
+    tmp_return_to = session[:return_to]
+    reset_session
     session[:user_id] = @current_user.id
-    redirect_to(root_url)
+    session[:return_to] = tmp_return_to
+    flash[:notice] = "You Loged in."
+    logger.info("!RENEWED! '#{session.object_id}'")
+    redirect_back_or_default(root_url)
   end
 
   def failed_login(message)

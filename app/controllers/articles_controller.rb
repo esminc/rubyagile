@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :login_required, :except => [:show, :index]
+
   # GET /articles
   # GET /articles.xml
   def index
@@ -41,6 +43,7 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save

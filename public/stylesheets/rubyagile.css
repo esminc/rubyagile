@@ -13,3 +13,9 @@
     background: #8Bf097;
     padding: 3px;
 }
+
+.warn {
+    border: 1px solid #cfba13;
+    background: #ffe517;
+    padding: 3px;
+}

@@ -3,6 +3,7 @@
 <%= error_messages_for :article %>
 
 <% form_for(@article) do |f| %>
+  <%= render :partial => 'form', :locals => {:form => f} %>
   <p>
     <%= f.submit "Update" %>
   </p>

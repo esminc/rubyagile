@@ -1,3 +1,10 @@
+<h2><%=h @article.title %></h2>
+Posted by <%=h @article.user.login %> on <%=h @article.created_at %>
+<hr />
+<div class="body">
+<%= parse(@article.body) %>
+</div>
+
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
