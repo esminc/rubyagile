@@ -7,29 +7,18 @@
 <!--[if IE]>
 <%= stylesheet_link_tag "base_ie" %>
 <![endif]-->
-<%= javascript_include_tag "app" %>
 <%= javascript_include_tag :defaults %>
-
-
-
 <title>Ruby x Agile</title>
-
 </head>
+
 <body class="che fluid red">
-<script type="text/javascript">loadPreferences()</script>
-
-<div id="wrapper">
-
-<div id="header" class="clearfix">
-<% if logged_in? -%>
-<%= current_user.login %> <%= link_to('Log out', {:controller => 'sessions', :action => 'destroy'}) %>
-<% else -%>
-<%= link_to('Log in', {:controller => 'sessions', :action => 'new'}) %>
-<% end -%>
+  <div id="wrapper">
+    <div id="header" class="clearfix">
 
 <div id="title" class="clearfix">
   <h1 style="color:#fff;font-weight:bold;">Ruby x Agile</h1>
 </div>
+
 <h2>Sections</h2>
 <ul id="menu">
   <li><a class="selected" href="/">home</a></li>
@@ -42,381 +31,30 @@
 
   <div id="innerwrapper">
 
-<hr />
-<% if flash[:warn] -%>
-<div class="warn"><%= flash[:warn] %></div>
-<% elsif flash[:notice] -%>
-<div class="notice"><%= flash[:notice] %></div>
-<% end -%>
+  <%= render :partial => "shared/flash", :locals => { :flash => flash } %>
 
-<%= yield %>
-
+  <%= yield %>
 
   </div>
 </div>
 
 <div id="sidebar">
 
-<div class="boxy tall">
-<h3>About</h3>
-<p>I'm Cristi Balan, a freelance web developer currently living in Bucharest, Romania.</p>
-
-<p>I like CSS, semantic markup, unobtrusive javascript, Ruby on Rails and good coding practices.</p>
-
-<p>Currently, I am available for freelance work. You can reach me at <a href="mailto:evil@che.lu">evil@che.lu</a>.</p>
-
-<p id="subscribe"><a class="feed" href="http://feeds.feedburner.com/evilchelu">subscribe to my feed</a></p>
-
-<div id="search">
-  <h3>Search</h3>
-  <form method="get" action="/search">
-    <fieldset>
-      <input class="text" type="text" id="q" value="" name="q"/>
-    </fieldset>
-  </form>
-</div>
-</div>
-
-
-<div class="boxy tall minor">
-  <h3>Recent</h3>
-
-<dl>
-<dt>Articles <a class="feed" href="http://feeds.feedburner.com/evilchelu"><span>feed</span></a></dt>
-<dd>
-  <ul>
-
-    <li><a href="/2007/11/27/ann-giston-piston-lookalike-for-git">ANN: giston - piston lookalike for git</a> <em>(November 27th)</em></li>
-
-
-    <li><a href="/2007/8/15/this-mephisto-was-impaled-by-vlad-1-0">This mephisto was impaled by vlad 1.0</a> <em>(August 15th)</em></li>
-
-    <li><a href="/2007/8/14/using-git-to-track-changes-to-mephisto">Using git to track changes to mephisto</a> <em>(August 14th)</em></li>
-
-    <li><a href="/2007/8/14/leaving-svk-for-git">Leaving svk for git</a> <em>(August 14th)</em></li>
-
-    <li><a href="/2007/5/13/i-can-has-new-servar">I can has new servar!</a> <em>(May 13th)</em></li>
-
-
-    <li><a href="/2007/4/6/skittlish-0-4-release-and-sightseeing">skittlish 0.4 release and sightseeing</a> <em>(April 7th)</em></li>
-
-    <li><a href="/2007/4/5/css-naked-half-day">CSS Naked (Half) Day</a> <em>(April 5th)</em></li>
-
-    <li><a href="/2006/9/29/skittlish-on-a-svn">Skittlish on a svn</a> <em>(September 29th)</em></li>
-
-    <li><a href="/2006/9/25/no-more-ie6-background-flicker">No more IE6 background flicker</a> <em>(September 25th)</em></li>
-
-
-    <li><a href="/2006/9/13/a-new-bamboo-beginning">A New Bamboo beginning</a> <em>(September 13th)</em></li>
-
-  </ul>
-</dd>
-
-<dt>Comments <a class="feed" href="http://feeds.feedburner.com/evilchelu_comments"><span>feed</span></a></dt>
-<dd>
-  <ul>
-
-    <li><a href="http://brighter.net">Jacqui Maher</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-697">ANN: giston - piston lookalike for git</a></li>
-
-
-    <li><a href="http://august.lilleaas.net">August Lilleaas</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-642">ANN: giston - piston lookalike for git</a></li>
-
-    <li><a href="http://evil.che.lu">Cristi Balan</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-593">ANN: giston - piston lookalike for git</a></li>
-
-    <li><a href="http://www.midlandswebdesign.com">Nick Poulden</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-592">ANN: giston - piston lookalike for git</a></li>
-
-
-    <li><span>lawrence</span> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-590">ANN: giston - piston lookalike for git</a></li>
-
-    <li><a href="http://spinach.andascarygoat.com">Andrei</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-582">ANN: giston - piston lookalike for git</a></li>
-
-    <li><a href="http://primetheory.org">Norbert Crombach</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-569">ANN: giston - piston lookalike for git</a></li>
-
-
-    <li><a href="http://peepcode.com">topfunky</a> on <a href="/2007/11/27/ann-giston-piston-lookalike-for-git#comment-566">ANN: giston - piston lookalike for git</a></li>
-
-    <li><a href="http://evil.che.lu">Cristi Balan</a> on <a href="/2007/8/14/using-git-to-track-changes-to-mephisto#comment-411">Using git to track changes to mephisto</a></li>
-
-    <li><a href="http://www.adaruby.com/">Hendy Irawan</a> on <a href="/2007/8/14/using-git-to-track-changes-to-mephisto#comment-404">Using git to track changes to mephisto</a></li>
-
-
-  </ul>
-</dd>
-</dl>
-</div>
-
-<div class="boxy short">
-  <h3>Archives</h3>
-
-  <ul>
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2007/11">November 2007</a> (1)</li>
-
-
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2007/8">August 2007</a> (3)</li>
-
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2007/5">May 2007</a> (1)</li>
-
-
-
-
-    <li><a href="/archives/2007/4">April 2007</a> (2)</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2006/9">September 2006</a> (5)</li>
-
-
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2006/6">June 2006</a> (2)</li>
-
-
-
-
-
-
-
-
-
-
-    <li><a href="/archives/2006/3">March 2006</a> (2)</li>
-
-
-  </ul>
-</div>
-
-<div class="boxy short">
-  <h3>Classification</h3>
-
-<dl>
-<dt>Categories</dt>
-<dd>
-  <ul>
-
-
-
-
-
-
-
-    <li><a href="/development">Development</a> (11)</li>
-
-
-
-
-
-    <li><a href="/standards">Standards</a> (1)</li>
-
-
-
-
-
-
-    <li><a href="/happenings">Happenings</a> (5)</li>
-
-
-
-
-
-    <li><a href="/sightings">Sightings</a> (1)</li>
-
-
-
-  </ul>
-</dd>
-<!--
-<dt>Tags</dt>
-<dd>
-  <ul>
-
-    <li><a href="/tags/adobe" rel="tag">adobe</a></li>
-
-    <li><a href="/tags/capistrano" rel="tag">capistrano</a></li>
-
-    <li><a href="/tags/concourse" rel="tag">concourse</a></li>
-
-    <li><a href="/tags/css" rel="tag">css</a></li>
-
-    <li><a href="/tags/css naked day" rel="tag">css naked day</a></li>
-
-    <li><a href="/tags/dan popa" rel="tag">dan popa</a></li>
-
-    <li><a href="/tags/dc" rel="tag">dc</a></li>
-
-    <li><a href="/tags/design" rel="tag">design</a></li>
-
-    <li><a href="/tags/engine yard" rel="tag">engine yard</a></li>
-
-    <li><a href="/tags/evilchelu" rel="tag">evilchelu</a></li>
-
-    <li><a href="/tags/freelance" rel="tag">freelance</a></li>
-
-    <li><a href="/tags/fullmoon" rel="tag">fullmoon</a></li>
-
-    <li><a href="/tags/giston" rel="tag">giston</a></li>
-
-    <li><a href="/tags/git" rel="tag">git</a></li>
-
-    <li><a href="/tags/interakt" rel="tag">interakt</a></li>
-
-    <li><a href="/tags/internet explorer" rel="tag">internet explorer</a></li>
-
-    <li><a href="/tags/jamie" rel="tag">jamie</a></li>
-
-    <li><a href="/tags/javascript" rel="tag">javascript</a></li>
-
-    <li><a href="/tags/meeting planner" rel="tag">meeting planner</a></li>
-
-    <li><a href="/tags/mephisto" rel="tag">mephisto</a></li>
-
-    <li><a href="/tags/mini" rel="tag">mini</a></li>
-
-    <li><a href="/tags/myfeedz" rel="tag">myfeedz</a></li>
-
-    <li><a href="/tags/naked" rel="tag">naked</a></li>
-
-    <li><a href="/tags/new bamboo" rel="tag">new bamboo</a></li>
-
-    <li><a href="/tags/piston" rel="tag">piston</a></li>
-
-    <li><a href="/tags/private beta" rel="tag">private beta</a></li>
-
-    <li><a href="/tags/rails day 2006" rel="tag">rails day 2006</a></li>
-
-    <li><a href="/tags/romania" rel="tag">romania</a></li>
-
-    <li><a href="/tags/ruby" rel="tag">ruby</a></li>
-
-    <li><a href="/tags/scm" rel="tag">scm</a></li>
-
-    <li><a href="/tags/server" rel="tag">server</a></li>
-
-    <li><a href="/tags/skittlish" rel="tag">skittlish</a></li>
-
-    <li><a href="/tags/social newspaper" rel="tag">social newspaper</a></li>
-
-    <li><a href="/tags/svk" rel="tag">svk</a></li>
-
-    <li><a href="/tags/svn" rel="tag">svn</a></li>
-
-    <li><a href="/tags/technomancy" rel="tag">technomancy</a></li>
-
-    <li><a href="/tags/theme" rel="tag">theme</a></li>
-
-    <li><a href="/tags/trac" rel="tag">trac</a></li>
-
-    <li><a href="/tags/vlad" rel="tag">vlad</a></li>
-
-    <li><a href="/tags/wordpress" rel="tag">wordpress</a></li>
-
-    <li><a href="/tags/xhtml" rel="tag">xhtml</a></li>
-
-  </ul>
-</dd>
--->
-
-</dl>
-</div>
-
-<div class="boxy tall">
-<h3>People</h3>
-<dl>
-  <dt>Local peeps</dt>
-  <dd><a href="http://tase.ro/">Adrian Tanase</a></dd>
-  <dd><a href="http://www.toth.ro/">Gabi Toth</a></dd>
-  <dd><a href="http://mordax.ro/">Marius Zaharia</a></dd>
-
-  <dt>World wide posse</dt>
-  <dd><a href="http://iamrice.org/">Damien Tanner</a></dd>
-  <dd><a href="http://www.fearoffish.co.uk/">Jamie van Dyke</a></dd>
-  <dd><a href="http://technomancy.us/">Phil Hagelberg</a></dd>
-  <dd><a href="http://blog.caboo.se/">caboo.se</a></dd>
-
-  </dl>
-</div>
+  <%= render :partial => "shared/sidebar" %>
 
 </div>
-</div>
-
-<div id="options">
-  <h2>Options:</h2>
-  <h3>Size</h3>
-  <ul id="option_size">
-
-    <li id="option_size_fixed"   class="fixed" ><a><span>fixed </span></a></li>
-    <li id="option_size_fluid"   class="fluid" ><a><span>fluid </span></a></li>
-  </ul>
-  <h3>Colors</h3>
-  <ul id="option_color">
-    <li id="option_color_orange" class="orange"><a><span>orange</span></a></li>
-    <li id="option_color_blue"   class="blue"  ><a><span>blue  </span></a></li>
-
-    <li id="option_color_green"  class="green" ><a><span>green </span></a></li>
-    <li id="option_color_pink"   class="pink"  ><a><span>pink  </span></a></li>
-    <li id="option_color_cyan"   class="cyan"  ><a><span>cyan  </span></a></li>
-    <li id="option_color_red"    class="red"   ><a><span>red   </span></a></li>
-    <li id="option_color_violet" class="violet"><a><span>violet</span></a></li>
-  </ul>
-
 </div>
 
 <div id="footer">
 <p>Copyright &copy; 2006, Cristi Balan. Valid <a href="http://validator.w3.org/check/referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>.</p>
-<p>Using <a href="http://evil.che.lu/projects/skittlish">skittlish</a> on <a href="http://publishwithimpunity.com/">mephisto</a>.</p>
-
+<p>Using <a href="http://evil.che.lu/projects/skittlish">skittlish</a>.</p>
+<p>
+<% if logged_in? -%>
+<%= current_user.login %> <%= link_to('Log out', {:controller => 'sessions', :action => 'destroy'}) %>
+<% else -%>
+<%= link_to('Log in', {:controller => 'sessions', :action => 'new'}) %>
+<% end -%>
+</p>
 </div>
 
 <!-- TODO: Google Analytics -->
