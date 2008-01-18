@@ -23,7 +23,7 @@ Spec::Runner.configure do |config|
   # do so right here. Just uncomment the next line and replace the fixture
   # names with your fixtures.
   #
-  # config.global_fixtures = :table_a, :table_b
+  config.global_fixtures = :users
   #
   # If you declare global fixtures, be aware that they will be declared
   # for all of your examples, even those that don't use them.
@@ -41,4 +41,12 @@ end
 # FIXME 適切な潰し方を調べる
 class ApplicationController
   def basic_authenticate; true end
+end
+
+module Spec
+  module Rails
+    module Example
+      FunctionalExampleGroup.send(:include, AuthenticatedTestHelper)
+    end
+  end
 end
