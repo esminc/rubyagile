@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reference: 
+  body: MyString
+  reference: 
+  name: MyString
+  commenter_url: MyString
+  ip_address: MyString
+
+two:
+  reference: 
+  body: MyString
+  reference: 
+  name: MyString
+  commenter_url: MyString
+  ip_address: MyString
