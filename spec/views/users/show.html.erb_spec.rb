@@ -9,7 +9,7 @@ describe "/users/show.html.erb" do
     @user.stub!(:fullname).and_return("MyString")
     @user.stub!(:email).and_return("MyString")
     @user.stub!(:open_id_url).and_return("MyString")
-    @user.stub!(:amazon_associate_id).and_return("MyString")
+    @user.stub!(:amazon_associate).and_return("MyString")
     @user.stub!(:member?).and_return(false)
 
     assigns[:user] = @user
@@ -22,4 +22,3 @@ describe "/users/show.html.erb" do
     response.should have_text(/MyString/)
   end
 end
-

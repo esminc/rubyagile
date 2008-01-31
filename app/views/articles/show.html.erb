@@ -1,15 +1,13 @@
-<div class="article">
-  <h2 class="title"><%= link_to h(@article.title), article_path(@article) %></h2>
-  <p class="meta">Posted by <%=h @article.user.login %> on <%=h @article.created_at %></p>
-  <div class="body">
-<%= parse(@article.body) %>
-  </div>
-  <div class="footer">
-    <h4 class="meta">posted in: </h4>
-
-  </div>
-
+<%= render :partial => 'article', :locals => { :article => @article } %>
+<div class="comments">
+<ol>
+<% for comment in @article.comments %>
+  <li class="comment">
+	<div class="meta">
+	  <span class="author"><%=h comment.author %></span> on <%=h comment.created_at %>
+	</div>
+	<div class="body"><%= parse(comment.body) %></div>
+  </li>
+<% end %>
+</ol>
 </div>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>

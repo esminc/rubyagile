@@ -4,6 +4,8 @@ describe "/articles/index.html.erb" do
   include ArticlesHelper
 
   before(:each) do
+    HikiDoc.stub!(:to_html).and_return("parsed by hikidoc")
+
     article_98 = mock_model(Article, :null_object => true)
     article_99 = mock_model(Article, :null_object => true)
 

@@ -22,6 +22,7 @@ describe User do
     end
 
     it { @user.should be_member}
+
   end
 
 end

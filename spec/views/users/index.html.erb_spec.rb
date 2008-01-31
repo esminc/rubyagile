@@ -9,7 +9,7 @@ describe "/users/index.html.erb" do
     user_98.should_receive(:nickname).and_return("MyString")
     user_98.should_receive(:email).and_return("MyString")
     user_98.should_receive(:open_id_url).and_return("MyString")
-    user_98.should_receive(:amazon_associate_id).and_return("MyString")
+    user_98.should_receive(:amazon_associate).and_return("MyString")
     user_98.should_receive(:aboutme_url).and_return("MyString")
     user_98.should_receive(:admin).and_return(false)
     user_99 = mock_model(User)
@@ -17,7 +17,7 @@ describe "/users/index.html.erb" do
     user_99.should_receive(:nickname).and_return("MyString")
     user_99.should_receive(:email).and_return("MyString")
     user_99.should_receive(:open_id_url).and_return("MyString")
-    user_99.should_receive(:amazon_associate_id).and_return("MyString")
+    user_99.should_receive(:amazon_associate).and_return("MyString")
     user_99.should_receive(:aboutme_url).and_return("MyString")
     user_99.should_receive(:admin).and_return(false)
 
@@ -33,4 +33,3 @@ describe "/users/index.html.erb" do
     response.should have_tag("tr>td", "false", 2)
   end
 end
-

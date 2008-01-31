@@ -9,7 +9,7 @@ describe "/users/edit.html.erb" do
     @user.stub!(:fullname).and_return("MyString")
     @user.stub!(:email).and_return("MyString")
     @user.stub!(:open_id_url).and_return("MyString")
-    @user.stub!(:amazon_associate_id).and_return("MyString")
+    @user.stub!(:amazon_associate).and_return("MyString")
     @user.stub!(:member?).and_return(false)
     assigns[:user] = @user
   end
@@ -24,5 +24,3 @@ describe "/users/edit.html.erb" do
     end
   end
 end
-
-
