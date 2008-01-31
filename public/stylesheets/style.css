@@ -11,9 +11,9 @@
 
 body {
 	background-color: #eeeeee;
-	font-family: arial, verdana, tahoma;
-	font-size: 12px;
-	line-height: 180%;
+	font-family: 'ヒラギノ丸ゴ Pro W4','Hiragino Maru Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	font-size: 16px;
+	line-height: 1.8;
 	color: #3d3d3d;
 }
 
@@ -30,32 +30,34 @@ body {
 	padding: 5px;
 	border: 1px solid #cccccc;
 	background-color: #ffffff;
-	text-align: center;
+	text-align: left;
 	line-height: 50px;
 }
 
 .content {
-	margin: 0 230px 10px 0 ;
-	padding: 5px;
+	float: left;
+	width: 70%;
+	margin: 0 0 10px 0 ;
+	padding: 0 5px;
 	border: 1px solid #cccccc;
 	background-color: #ffffff;
 }
 
 .right {
-	margin: 0 0 10px 0;
-	float: right;
-	width: 210px;
+	float: left;
+	width: 24%;
+	margin-left: 2px;
 	padding: 5px;
 	border: 1px solid #cccccc;
 	background-color: #ffffff;
 }
 
 .footer {
+	clear: both;
 	margin: 0 0 10px 0;
 	padding: 5px;
 	border: 1px solid #cccccc;
 	background-color: #ffffff;
-	clear: both;
 	text-align: center;
 }
 
@@ -70,14 +72,14 @@ h1 {
 
 h2 {
 	margin: 0 0 15px 0;
-	font-size: 15px;
+	font-size: x-large;
 	font-weight: bold;
 }
 
 h3 {
 	font-size: 15px;
 	font-weight: bold;
-}	
+}
 
 a, a:active, a:visited {
 	color: #2d2d2d;
