@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* You can use this website template anywhere you want, for anything you want. All I ask is that you link back to Blank CSS (www.blankcss.com) in some way. Thank you very much and enjoy! */
+
+/******** Body Elements ********/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	background-color: #eeeeee;
+	font-family: arial, verdana, tahoma;
+	font-size: 12px;
+	line-height: 180%;
+	color: #3d3d3d;
+}
+
+/******** Layout Elements ********/
+
+.wrapper {
+	width: 98%;
+	margin: 0 auto;
+}
+
+.header {
+	height: 50px;
+	margin: 10px 0 10px 0;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+	text-align: center;
+	line-height: 50px;
+}
+
+.content {
+	margin: 0 230px 10px 0 ;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+}
+
+.right {
+	margin: 0 0 10px 0;
+	float: right;
+	width: 210px;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+}
+
+.footer {
+	margin: 0 0 10px 0;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	background-color: #ffffff;
+	clear: both;
+	text-align: center;
+}
+
+/******** Document Styles ********/
+
+h1 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #aa0000;
+	text-transform: uppercase;
+}
+
+h2 {
+	margin: 0 0 15px 0;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 15px;
+	font-weight: bold;
+}	
+
+a, a:active, a:visited {
+	color: #2d2d2d;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #aa0000;
+	text-decoration: underline;
+}
+
+.header a, .header a:active, .header a:visited {
+	color: #aa0000;
+}
+
+.header a:hover {
+	color: #2d2d2d;
+	text-decoration: underline;
+}
+
+p {
+	margin: 0 0 15px 0;
+}
+
+.footer p {
+	margin: 0;
+	font-size: 11px;
+	line-height: 13px;
+}
+
+
+/******** List Styles Styles ********/
+
+ul li {
+	margin: 0 0 0 3px;
+	list-style: none;
+}
+
+ul ul li {
+	margin: 3px 0 3px 30px;
+	list-style: circle;
+}
+
+ul ul {
+	margin: 0 0 15px 0;
+}
