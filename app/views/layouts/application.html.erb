@@ -15,8 +15,8 @@
 	  <div class="lead">Rubyでアジャイルなシステム開発を実現する永和システムマネジメントのWebサイト</div>
 	</div><!-- end .hearder -->
 
+	  <%= render :partial => "shared/flash", :locals => { :flash => flash } %>
 	  <div id="content">
-		<%= render :partial => "shared/flash", :locals => { :flash => flash } %>
 
 		<%= yield %>
 

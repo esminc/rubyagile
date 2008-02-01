@@ -3,10 +3,6 @@ class SessionsController < ApplicationController
   # render new.html.erb
   def new; end
 
-  def index
-    render(:action => "new")
-  end
-
   def create
     open_id_authentication
   end
@@ -28,7 +24,7 @@ class SessionsController < ApplicationController
             failed_login "You can't Sign in."
           end
         else
-          failed_login result.message
+          failed_login status.message
         end
       end
     rescue OpenIdAuthentication::InvalidOpenId => e
