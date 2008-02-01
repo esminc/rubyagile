@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
   # render new.html.erb
   def new; end
 
+  def index
+    render(:action => "new")
+  end
+
   def create
     open_id_authentication
   end

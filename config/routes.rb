@@ -10,10 +10,12 @@ ActionController::Routing::Routes.draw do |map|
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
+  map.login '/login', :controller => "sessions", :action => "new"
+  map.logout '/logout', :controller => "sessions", :action => "destroy"
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
-  map.resources :users
+  map.resources :sessions
   map.resources :articles
 
   # Sample resource route with options:
