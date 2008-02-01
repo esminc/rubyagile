@@ -20,10 +20,7 @@ class SessionsController < ApplicationController
         if @current_user = User.find_by_open_id_url(open_id_url)
           successful_login
         else
-          logger.info(registration.inspect)
-          flash[:notice] = "Create new user account."
-          redirect_to new_user_url(:open_id_url => open_id_url, :login => registration["nickname"], :email => registration["email"], :fullname => registration["fullname"])
-          return
+          failed_login "You can't log in."
         end
       else
         failed_login result.message

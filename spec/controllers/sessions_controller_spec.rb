@@ -1,16 +1,18 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe SessionsController do
-
-  #Delete these examples and add some real ones
-  it "should use SessionsController" do
-    controller.should be_an_instance_of(SessionsController)
+  describe "GET 'new'" do
+    before do
+      get 'new'
+    end
+    it { response.should render_template("sessions/new")}
   end
 
-
   describe "GET 'create'" do
+    before do
+      controller.should_receive(:open_id_authentication)
+    end
     it "should be successful" do
-      pending("it's spike time.")
       get 'create'
       response.should be_success
     end
