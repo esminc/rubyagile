@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset "utf-8"; /* -*- coding: utf-8 -*- */
 /* You can use this website template anywhere you want, for anything you want. All I ask is that you link back to Blank CSS (www.blankcss.com) in some way. Thank you very much and enjoy! */
 
 /******** Body Elements ********/
@@ -10,53 +10,51 @@
 }
 
 body {
-	background-color: #eeeeee;
+	background-color: #ffffff;
 	font-family: 'ヒラギノ丸ゴ Pro W4','Hiragino Maru Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 	font-size: 16px;
 	line-height: 1.8;
-	color: #3d3d3d;
+	color: #222222;
 }
 
 /******** Layout Elements ********/
 
-.wrapper {
-	width: 98%;
+#wrapper {
+	width: 90%;
 	margin: 0 auto;
 }
 
-.header {
+#header {
 	height: 50px;
-	margin: 10px 0 10px 0;
-	padding: 5px;
-	border: 1px solid #cccccc;
+	margin: 0 0 10px 0;
+	padding: 20px 0;
 	background-color: #ffffff;
 	text-align: left;
-	line-height: 50px;
 }
 
-.content {
+#content {
 	float: left;
 	width: 70%;
 	margin: 0 0 10px 0 ;
 	padding: 0 5px;
-	border: 1px solid #cccccc;
 	background-color: #ffffff;
 }
 
-.right {
+#sidebar {
 	float: left;
 	width: 24%;
 	margin-left: 2px;
 	padding: 5px;
-	border: 1px solid #cccccc;
 	background-color: #ffffff;
+	font-size: 80%;
+	line-height: 1.2;
 }
 
-.footer {
+#footer {
 	clear: both;
-	margin: 0 0 10px 0;
-	padding: 5px;
-	border: 1px solid #cccccc;
+	margin: 50px 0 10px 0;
+	border-top: 1px dotted #222;
+	padding: 10px 5px 5px 5px;
 	background-color: #ffffff;
 	text-align: center;
 }
@@ -64,47 +62,59 @@ body {
 /******** Document Styles ********/
 
 h1 {
-	font-size: 18px;
+	line-height: 1;
+	font-size: 24px;
 	font-weight: bold;
-	color: #aa0000;
-	text-transform: uppercase;
+	color: #000;
 }
 
 h2 {
 	margin: 0 0 15px 0;
-	font-size: x-large;
+	font-size: 22px;
 	font-weight: bold;
+	color: #a00;
 }
 
 h3 {
-	font-size: 15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 16px;
 	font-weight: bold;
 }
 
 a, a:active, a:visited {
-	color: #2d2d2d;
+	color: #a00;
 	text-decoration: none;
+	border-bottom: 1px dotted #a00;
 }
 
 a:hover {
-	color: #aa0000;
-	text-decoration: underline;
+	color: #a00;
+	border-bottom: 1px solid #a00;
 }
 
-.header a, .header a:active, .header a:visited {
-	color: #aa0000;
+#header a, #header a:active, #header a:visited {
+	color: #000;
+	border: 0;
 }
 
-.header a:hover {
-	color: #2d2d2d;
-	text-decoration: underline;
+#header a:hover {
+	border: 0;
 }
 
 p {
 	margin: 0 0 15px 0;
 }
 
-.footer p {
+#footer p {
 	margin: 0;
 	font-size: 11px;
 	line-height: 13px;
@@ -125,4 +135,55 @@ ul ul li {
 
 ul ul {
 	margin: 0 0 15px 0;
+}
+
+/* header */
+div#header div.lead {
+	font-size: 90%;
+	color: #000;
+}
+
+
+/* article */
+div.article div.meta {
+	margin: 0;
+	padding: 0;
+	color: #999;
+	font-size: 70%;
+}
+
+div.article span.author {
+	font-size: 16px;
+}
+
+span.author a, span.author a:active, span.author a:visited {
+	color: #000;
+	border: 0;
+}
+
+span.author a:hover {
+	border-bottom: 1px solid #000;
+}
+
+div.article h2.title {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: xx-large;
+	line-height: 1;
+}
+
+div.article span.posted_on {
+	font-size: 14px;
+	color: #222;
+	font-style: bold;
+}
+
+div.article div.body {
+	padding-top: 20px;
+}
+
+/* sidebar */
+div#sidebar h3 {
+	font-size: 120%;
 }
