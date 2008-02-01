@@ -187,3 +187,39 @@ div.article div.body {
 div#sidebar h3 {
 	font-size: 120%;
 }
+
+/* openid */
+input#openid_url {
+	background-color: #fff;
+	background-image: url(/images/openid-logo-input.gif);
+	background-repeat: no-repeat;
+	font-size: 16px;
+	line-height: 1.5;
+	padding: 0 0 0 26px;
+}
+
+/* flash */
+div.flash {
+	margin: 5px 0 1em 0;
+	padding: 5px 1em;
+	width: 100%;
+}
+
+div.error {
+	background: #f99;
+	border: 2px solid #f00;
+	color: #b00;
+
+}
+
+div.notice {
+	background: #9d9;
+	border: 2px solid #090;
+	color: #030;
+}
+
+div.warn {
+	background: #ff9;
+	border: 2px solid #fd0;
+	color: #000;
+}
