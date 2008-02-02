@@ -291,3 +291,7 @@ input.title {
 	font-size: 16px;
 	line-height: 1.5;
 }
+
+div.hidden_dummy_field {
+	display: none;
+}

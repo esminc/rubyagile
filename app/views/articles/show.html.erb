@@ -1,6 +1,7 @@
 <%= render :partial => 'article', :locals => { :article => @article } %>
 <div class="comments">
 <h3><a name="comments" class="anchor">コメント</a></h3>
+<%= link_to 'コメントする', "#comment_form" %>
 <ol>
 <% for comment in @article.comments %>
   <li class="comment">
@@ -15,8 +16,14 @@
 <div class="comment_form">
   <% form_for(:comment, @comment, :url => {:action => "comment", :id => @article.id}) do |f| -%>
   <p><a name="comment_form" class="anchor">お名前:</a><br /><%= f.text_field :author, :size => 40 %></p>
+  <div class="hidden_dummy_field">
+	<p>
+	<div style="font-size:80%;">(メールアドレスはスパム除けのダミーフィルドです。このフォームには何も入力しないでください。このフォームに入力するとスパムと見なされます。)</div>
+	Email:<br /><%= f.text_field :email, :size => 40 %>
+	</p>
+  </div>
   <p>コメント:<br /><%= f.text_area :body, :rows => 3 %></p>
-  <%= f.submit "コメントする" %>
+  <%= f.submit "投稿" %>
 <% end -%>
 </div><!-- end .comment-form -->
 

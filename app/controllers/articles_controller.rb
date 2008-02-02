@@ -64,4 +64,15 @@ class ArticlesController < ApplicationController
       format.html { redirect_to(articles_url) }
     end
   end
+
+  def comment
+    @article = Article.find(params[:id])
+    params_for_comment = params[:comment].
+      merge(:article_id => params[:id],
+        :ip_address => request.remote_ip)
+    comment = Comment.parse_params(params_for_comment)
+    # TODO handle if comment.spam?
+    comment.save
+    render :action => 'show', :id => @article.id
+  end
 end

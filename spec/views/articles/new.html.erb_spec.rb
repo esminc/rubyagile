@@ -4,6 +4,7 @@ describe "/articles/new.html.erb" do
   include ArticlesHelper
 
   before(:each) do
+    login_as(:valid)
     @article = mock_model(Article)
     @article.stub!(:new_record?).and_return(true)
     @article.stub!(:title).and_return("an article title")

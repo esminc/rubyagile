@@ -26,10 +26,10 @@ describe ArticlesController do
       response.should render_template('index')
     end
 
-#    it "should find all articles" do
-#      Article.should_receive(:find).with(:all).and_return([@article])
-#      do_get
-#    end
+    it "should find all articles" do
+      Article.should_receive(:find).with(:all, :order => "created_at DESC").and_return([@article])
+      do_get
+    end
 
     it "should assign the found articles for the view" do
       do_get
@@ -255,6 +255,26 @@ describe ArticlesController do
     it "should redirect to the articles list" do
       do_delete
       response.should redirect_to(articles_url)
+    end
+  end
+
+  describe "handling POST /articles/comment/1" do
+    def do_comment(params)
+      post :comment, :comment => params
+    end
+
+    describe "with valid comment" do
+      before do
+        @article = mock_model(Article, :to_parm => "1")
+        @comment = mock_model(Comment)
+        @comment.should_receive(:save).and_return(true)
+        Article.stub!(:find).and_return(@article)
+        Comment.should_receive(:parse_params).and_return(@comment)
+        do_comment({:author => 'alice', :body => 'some body'})
+      end
+
+      it { response.should render_template('show')}
+
     end
   end
 end
