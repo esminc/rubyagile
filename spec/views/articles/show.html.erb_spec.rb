@@ -5,8 +5,9 @@ describe "/articles/show.html.erb" do
 
   before(:each) do
     @article = mock_model(Article, :null_object => true)
-    @article.stub!(:body).and_return("my article")
     assigns[:article] = @article
+    template.should_receive(:link_to_comments).and_return("link to comments")
+    template.should_receive(:parse).and_return("parsed body")
   end
 
   it "should render attributes" do

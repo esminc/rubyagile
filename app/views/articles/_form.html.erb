@@ -1,7 +1,11 @@
   <p>
-    <b>Title</b> <%= form.text_field :title %>
+	<b>投稿者</b>: <%=h current_user.login %>
   </p>
   <p>
-    <b>Body</b><br />
-    <%= form.text_area :body %>
+    <b>記事のタイトル</b><br />
+	<%= form.text_field :title, :size => 55 ,:class => "title"%>
+  </p>
+  <p>
+    <b>記事の本文</b>(Hiki記法のような記法が使えます)<br />
+    <%= form.text_area :body, :size => "80x20" %>
   </p>

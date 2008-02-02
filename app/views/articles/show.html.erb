@@ -1,5 +1,6 @@
 <%= render :partial => 'article', :locals => { :article => @article } %>
 <div class="comments">
+<h3><a name="comments" class="anchor">コメント</a></h3>
 <ol>
 <% for comment in @article.comments %>
   <li class="comment">
@@ -10,4 +11,15 @@
   </li>
 <% end %>
 </ol>
-</div>
+</div><!-- end .comments -->
+<div class="comment_form">
+  <% form_for(:comment, @comment, :url => {:action => "comment", :id => @article.id}) do |f| -%>
+  <p><a name="comment_form" class="anchor">お名前:</a><br /><%= f.text_field :author, :size => 40 %></p>
+  <p>コメント:<br /><%= f.text_area :body, :rows => 3 %></p>
+  <%= f.submit "コメントする" %>
+<% end -%>
+</div><!-- end .comment-form -->
+
+<% content_for :sidebar do -%>
+  <%= render :partial => "sidebar" %>
+<% end -%>

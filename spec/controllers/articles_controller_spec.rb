@@ -26,43 +26,14 @@ describe ArticlesController do
       response.should render_template('index')
     end
 
-    it "should find all articles" do
-      Article.should_receive(:find).with(:all).and_return([@article])
-      do_get
-    end
+#    it "should find all articles" do
+#      Article.should_receive(:find).with(:all).and_return([@article])
+#      do_get
+#    end
 
     it "should assign the found articles for the view" do
       do_get
       assigns[:articles].should == [@article]
-    end
-  end
-
-  describe "handling GET /articles.xml" do
-
-    before(:each) do
-      @article = mock_model(Article, :to_xml => "XML")
-      Article.stub!(:find).and_return(@article)
-    end
-
-    def do_get
-      @request.env["HTTP_ACCEPT"] = "application/xml"
-      get :index
-    end
-
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should find all articles" do
-      Article.should_receive(:find).with(:all).and_return([@article])
-      do_get
-    end
-
-    it "should render the found articles as xml" do
-      @article.should_receive(:to_xml).and_return("XML")
-      do_get
-      response.body.should == "XML"
     end
   end
 
@@ -95,35 +66,6 @@ describe ArticlesController do
     it "should assign the found article for the view" do
       do_get
       assigns[:article].should equal(@article)
-    end
-  end
-
-  describe "handling GET /articles/1.xml" do
-
-    before(:each) do
-      @article = mock_model(Article, :to_xml => "XML")
-      Article.stub!(:find).and_return(@article)
-    end
-
-    def do_get
-      @request.env["HTTP_ACCEPT"] = "application/xml"
-      get :show, :id => "1"
-    end
-
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should find the article requested" do
-      Article.should_receive(:find).with("1").and_return(@article)
-      do_get
-    end
-
-    it "should render the found article as xml" do
-      @article.should_receive(:to_xml).and_return("XML")
-      do_get
-      response.body.should == "XML"
     end
   end
 

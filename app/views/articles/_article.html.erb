@@ -1,6 +1,7 @@
 <div class="article">
   <h2 class="title"><%= link_to h(article.title), article_path(article) %></h2>
   <div class="meta">Posted by <span class="author"><%= link_to( h(article.user.login), {:controller => "users", :action => "show", :id => article.user.login}) %></span> on <span class="posted_on"><%=h article.created_at %></span></div>
+  <div class="meta"><%= link_to_comments(article) %></div>
   <div class="body">
 <%= parse(article.body) %>
   </div>
