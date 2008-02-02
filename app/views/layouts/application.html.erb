@@ -5,14 +5,17 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <%= stylesheet_link_tag "style.css" %>
   <%= javascript_include_tag :defaults %>
-  <title>Ruby x Agile: Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメント</title>
+  <% site_name = "Ruby x Agile" -%>
+  <% site_version = "(pre-α)" -%>
+  <% site_lead = "Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト" %>
+  <title><%= site_name%><%= site_version %>: <%=h site_lead %></title>
 </head>
 
 <body>
   <div id="wrapper">
     <div id="header">
-	  <h1><%= link_to 'Ruby x Agile', '/' %></h1>
-	  <div class="lead">Rubyでアジャイルなシステム開発を実現する永和システムマネジメントのWebサイト</div>
+	  <h1><%= link_to site_name, '/' %>&nbsp;<span class="site_version"><%= site_version %></span></h1>
+	  <div class="lead"><%=h site_lead %></div>
 	</div><!-- end .hearder -->
 
 	  <%= render :partial => "shared/flash", :locals => { :flash => flash } %>
