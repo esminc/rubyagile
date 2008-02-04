@@ -102,7 +102,7 @@ a, a:active, a:visited {
 
 a:hover {
 	color: #a00;
-	border-bottom: 1px solid #a00;
+	border-bottom: 1px dashed #a00;
 }
 
 a.anchor,a.anchor:active, a.anchor:visited, a.anchor:hover {
