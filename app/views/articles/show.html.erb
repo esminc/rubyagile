@@ -1,4 +1,6 @@
-<%= render :partial => 'article', :locals => { :article => @article } %>
+<% div_for @article, :class => 'article' do |a| -%>
+<%= render :partial => 'article', :locals => { :article => a } %>
+<% end -%>
 <div class="comments">
 <h3><a name="comments" class="anchor">コメント</a></h3>
 <%= link_to 'コメントする', "#comment_form" %>

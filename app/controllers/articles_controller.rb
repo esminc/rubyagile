@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :login_required, :except => [:show, :index]
+  before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
     @articles = Article.find(:all, :order => "created_at DESC")
@@ -33,12 +33,16 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     @article.user = current_user
 
-    respond_to do |format|
-      if @article.save
-        flash[:notice] = 'Article was successfully created.'
-        format.html { redirect_to(@article) }
-      else
-        format.html { render :action => "new" }
+    unless params[:preview].blank?
+      render :action => 'preview'
+    else
+      respond_to do |format|
+        if @article.save
+          flash[:notice] = 'Article was successfully created.'
+          format.html { redirect_to(@article) }
+        else
+          format.html { render :action => "new" }
+        end
       end
     end
   end
@@ -46,12 +50,16 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    respond_to do |format|
-      if @article.update_attributes(params[:article])
-        flash[:notice] = 'Article was successfully updated.'
-        format.html { redirect_to(@article) }
-      else
-        format.html { render :action => "edit" }
+    unless params[:preview].blank?
+      render :action => 'preview'
+    else
+      respond_to do |format|
+        if @article.update_attributes(params[:article])
+          flash[:notice] = 'Article was successfully updated.'
+          format.html { redirect_to(@article) }
+        else
+          format.html { render :action => "edit" }
+        end
       end
     end
   end
@@ -74,5 +82,12 @@ class ArticlesController < ApplicationController
     # TODO handle if comment.spam?
     comment.save
     render :action => 'show', :id => @article.id
+  end
+
+  def feed
+    respond_to do |format|
+      format.xml
+      format.rss
+    end
   end
 end

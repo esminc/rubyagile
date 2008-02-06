@@ -2,12 +2,12 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Article do
   fixtures :users
-  
-  before(:each) do
-    @article = Article.new(:user => users(:valid))
-  end
 
-  it "should be valid" do
-    @article.should be_valid
+  describe "必要な項目が揃っている場合" do
+    before(:each) do
+      @article = Article.new(:user => users(:valid), :title => 't', :body => 'b')
+    end
+
+    it { @article.should be_valid }
   end
 end

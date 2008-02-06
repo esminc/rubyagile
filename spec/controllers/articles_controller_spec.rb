@@ -178,6 +178,19 @@ describe ArticlesController do
       end
 
     end
+
+    describe "with preview" do
+      def do_post
+        @article.should_not_receive(:save)
+        post :create, :article => {}, :preview => 'Preview'
+      end
+
+      it "should render 'preview'" do
+        do_post
+        response.should render_template('preview')
+      end
+    end
+
   end
 
   describe "handling PUT /articles/1" do
@@ -229,6 +242,19 @@ describe ArticlesController do
       end
 
     end
+
+    describe "with preview" do
+      def do_put
+        @article.should_not_receive(:update_attributes)
+        put :update, :article => {}, :preview => 'Preview'
+      end
+
+      it "should render 'preview'" do
+        do_put
+        response.should render_template('preview')
+      end
+    end
+
   end
 
   describe "handling DELETE /articles/1" do
@@ -273,8 +299,8 @@ describe ArticlesController do
         do_comment({:author => 'alice', :body => 'some body'})
       end
 
-      it { response.should render_template('show')}
-
+      it { response.should render_template('show') }
     end
   end
+
 end

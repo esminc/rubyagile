@@ -5,6 +5,7 @@
 <% form_for(@article) do |f| %>
   <%= render :partial => "form", :locals => {:form => f} %>
   <p>
-  <%= f.submit "投稿" %>
+  <%= f.submit "プレビュー", :name => "preview" %>
+  <%= f.submit "投稿"  %>
   </p>
 <% end %>

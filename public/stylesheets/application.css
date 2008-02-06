@@ -89,7 +89,7 @@ h4 {
 	font-weight: bold;
 }
 
-h5 {
+h5,h6 {
 	font-size: 16px;
 	font-weight: bold;
 }
@@ -102,7 +102,7 @@ a, a:active, a:visited {
 
 a:hover {
 	color: #a00;
-	border-bottom: 1px dashed #a00;
+	border-bottom: 2px solid #a00;
 }
 
 a.anchor,a.anchor:active, a.anchor:visited, a.anchor:hover {
@@ -124,8 +124,12 @@ p {
 	margin: 0 0 15px 0;
 }
 
+#footer {
+  text-align: right;
+}
+
 #footer p {
-	margin: 0;
+	margin: 0 0 15px 0;
 	font-size: 11px;
 	line-height: 13px;
 }
@@ -133,19 +137,37 @@ p {
 
 /******** List Styles Styles ********/
 
-ul li {
-	margin: 0 0 0 3px;
-	list-style: none;
+ul {
+	margin: 0 0 0 2em;
+	list-style-position: outside;
+	list-style: disc;
 }
 
+/*
 ul ul li {
 	margin: 3px 0 3px 30px;
-	list-style: circle;
+	list-style: disc;
 }
-
+*/
+/*
 ul ul {
 	margin: 0 0 15px 0;
 }
+*/
+ol {
+	margin: 0 0 0 2em;
+	list-style-position: outside;
+	list-style: decimal;
+}
+
+/*ol ol li {
+	margin: 3px 0 3px 30px;
+}
+
+ol ol {
+	margin: 0 0 15px 0;
+}
+*/
 
 /* header */
 div#header div.lead {
@@ -198,16 +220,44 @@ div.article span.posted_on {
 	font-style: bold;
 }
 
+div.article div.meta a {
+	color: #333;
+	border-style: none;
+}
+
 div.article div.body {
 	padding-top: 20px;
 }
 
-div.body blockquote {
+div.article div.body hr {
+    margin: 5px;
+	border: 1px solid #999;
+}
+
+div.article div.body pre {
+    margin: 0 40px 15px 0;
+	padding: 0.5em 0.5em 0.5em 1em;
+	background: #000;
+	color: #0f0;
+	font-size: 90%;
+	overflow: auto;
+}
+
+div.article div.body blockquote {
 	background: transparent url(/images/blockquote.gif) no-repeat scroll 0 2px;
 	color: #333;
-	font-size: 14px;
+	font-size: 90%;
 	margin: 0 40px 15px 0;
 	padding-left: 24px;
+}
+
+div.article div.body table {
+	margin-bottom: 15px;
+}
+
+div.article div.body table,div.article div.body table tr, div.article div.body table th, div.article div.body table td {
+	border: 1px solid #ccc;
+
 }
 
 /* sidebar */
@@ -268,9 +318,9 @@ div.notice {
 }
 
 div.warn {
-	background: #ff9;
+	background: #fdfdd3;
 	border: 2px solid #fd0;
-	color: #000;
+	color: #444;
 }
 
 div.comments {
@@ -300,4 +350,9 @@ div.hidden_dummy_field {
 span.site_version {
 	color: #bbb;
 	font-size: 70%;
+	letter-spacing: -1px;
+}
+
+a.image {
+	border: none;
 }

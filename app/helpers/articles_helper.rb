@@ -11,4 +11,8 @@ module ArticlesHelper
       link_to("Not Yet Commented", article_path(article, :anchor => "comment_form"))
     end
   end
+
+  def posted_on(time)
+    time.to_date.to_s(:db)
+  end
 end
