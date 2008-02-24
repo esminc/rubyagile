@@ -1,8 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-valid:
-  login: kakutani
-  email: s-kaktuani@esm.co.jp
-  open_id_url: http://kakutani.com/
-  amazon_associate: kakutani-22
+alice:
+  login: alice
+  email: alice@example.com
+  open_id_url: http://localhost:3333/user/alice
+  amazon_associate: xyzzy-22
   member: true
