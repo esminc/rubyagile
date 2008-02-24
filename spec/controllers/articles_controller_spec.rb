@@ -245,6 +245,8 @@ describe ArticlesController do
 
     describe "with preview" do
       def do_put
+        @article.stub!(:title=)
+        @article.stub!(:body=)
         @article.should_not_receive(:update_attributes)
         put :update, :article => {}, :preview => 'Preview'
       end
@@ -299,7 +301,7 @@ describe ArticlesController do
         do_comment({:author => 'alice', :body => 'some body'})
       end
 
-      it { response.should render_template('show') }
+      it { response.should redirect_to(:controller => 'articles', :action => 'show', :id => @article.id) }
     end
   end
 

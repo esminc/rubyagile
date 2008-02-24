@@ -178,7 +178,7 @@ div#header div.lead {
 
 /* article */
 div.article {
-	margin-bottom: 30px;
+	margin-bottom: 60px;
 }
 
 div.article div.meta {
@@ -337,6 +337,7 @@ div.warn {
 }
 
 div.comments {
+	font-size: 90%;
 	margin-top: 30px;
 }
 

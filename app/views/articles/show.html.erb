@@ -9,7 +9,7 @@
 <% for comment in @article.comments %>
   <li class="comment">
 	<div class="meta">
-	  <span class="author"><%=h comment.author %></span> on <%=h comment.created_at %>
+	  <span class="author"><%=h comment.author %></span> on <%=h comment.created_at.to_s(:db) %>
 	</div>
 	<div class="body"><%= parse(comment.body) %></div>
   </li>

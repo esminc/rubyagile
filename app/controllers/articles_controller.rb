@@ -51,6 +51,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     unless params[:preview].blank?
+      @article.title = params[:article][:title]
+      @article.body = params[:article][:body]
       render :action => 'preview'
     else
       respond_to do |format|
@@ -81,7 +83,7 @@ class ArticlesController < ApplicationController
     comment = Comment.parse_params(params_for_comment)
     # TODO handle if comment.spam?
     comment.save
-    render :action => 'show', :id => @article.id
+    redirect_to :action => 'show', :id => @article.id
   end
 
   def feed
