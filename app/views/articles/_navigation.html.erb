@@ -1,0 +1,10 @@
+<div class="navigation">
+<% if @article.prev_article -%>
+  <%= link_to "←ひとつ前の記事(#{h @article.prev_article.title})", :action => 'show', :id => @article.prev_article.id %>&nbsp;|&nbsp;
+<% end -%>
+<%= link_to '最新記事の一覧', articles_url %>
+<% if @article.next_article -%>
+&nbsp;|&nbsp;
+ <%= link_to "ひとつ次の記事(#{h @article.next_article.title})→", :action => 'show', :id => @article.next_article.id %>
+<% end -%>
+</div>

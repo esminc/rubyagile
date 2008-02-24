@@ -1,3 +1,6 @@
+/.DS_Store
+**/**/.DS_Store
+*/.DS_Store
 /.howm-keys
 /config/database.yml
 /log/*.log

@@ -4,4 +4,4 @@
   <div class="body">
 <%= parse(article.body) %>
   </div>
-  <div class="meta"><%= link_to 'この記事へのリンク用URL', article_path(article) %></div>
+  <div class="meta"><%= link_to "この記事へのリンク用URL: #{article_url(article)}", article_path(article) %></div>

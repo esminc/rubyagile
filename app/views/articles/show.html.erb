@@ -1,3 +1,4 @@
+<%= render :partial => 'navigation' %>
 <% div_for(@article, :class => 'article') do |a| -%>
 <%= render :partial => 'article', :locals => { :article => a } %>
 <% end -%>
@@ -28,7 +29,7 @@
   <%= f.submit "投稿" %>
 <% end -%>
 </div><!-- end .comment-form -->
-
+<%= render :partial => 'navigation' %>
 <% content_for :sidebar do -%>
   <%= render :partial => "sidebar" %>
 <% end -%>
