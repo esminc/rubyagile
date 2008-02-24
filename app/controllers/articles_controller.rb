@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
-    @articles = Article.find(:all, :order => "created_at DESC")
+    @articles = Article.find(:all, :order => "created_at DESC") # TODO duplicated
 
     respond_to do |format|
       format.html
@@ -85,9 +85,11 @@ class ArticlesController < ApplicationController
   end
 
   def feed
+    @articles = Article.find(:all, :order => "created_at DESC")
+    self.class.layout nil
     respond_to do |format|
       format.xml
-      format.rss
+      format.rdf
     end
   end
 end

@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signin '/signin', :controller => "sessions", :action => "new"
   map.signout '/signout', :controller => "sessions", :action => "destroy"
 
-  map.feed '/feed.:type', :controller => 'articles', :action => 'feed'
+  map.connect '/articles/feed.:format', :controller => 'articles', :action => 'feed'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
