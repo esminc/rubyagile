@@ -300,6 +300,10 @@ a.image_link img {
 	border: none;
 }
 
+span.hatena-star-star-container a {
+	border: none;
+}
+
 /* openid */
 input#openid_url {
 	background-color: #fff;
