@@ -5,7 +5,7 @@ describe Article do
 
   describe "必要な項目が揃っている場合" do
     before(:each) do
-      @article = Article.new(:user => users(:valid), :title => 't', :body => 'b')
+      @article = Article.new(:user => users(:alice), :title => 't', :body => 'b')
     end
 
     it { @article.should be_valid }

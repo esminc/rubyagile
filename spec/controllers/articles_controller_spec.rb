@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe ArticlesController do
   before(:each) do
-    login_as(:valid)
+    login_as(:alice)
   end
 
   describe "handling GET /articles" do

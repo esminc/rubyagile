@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "/articles/preview" do
   before(:each) do
-    login_as(:valid)
+    login_as(:alice)
     article = mock_model(Article, :title => "t", :body => "b", :login => "l")
     assigns[:article] = article
     render 'articles/preview'
