@@ -1,0 +1,70 @@
+kakutani:
+  id: 1
+  login: kakutani
+  email: s-kaktuani@esm.co.jp
+  open_id_url: http://kakutani.com/
+  amazon_associate: kakutani-22
+  member: true
+fkino:
+  id: 2
+  login: fkino
+  email: h-kinoshita@esm.co.jp
+  open_id_url: http://fkino.net/
+  amazon_associate: fkino-22
+  member: true
+emeitch:
+  id: 3
+  login:  emeitch
+  email:  h-morita@esm.co.jp
+  open_id_url:  http://emeitch.com/
+  amazon_associate:  emeitch-22
+  member: true
+yattom:
+  id: 4
+  login: yattom
+  email: t-yasui@esm.co.jp
+  open_id_url: http://yattom.jp/
+  amazon_associate: yattom-22
+  member: true
+thata:
+  id: 5
+  login: thata
+  email: t-hatakeyama@esm.co.jp
+  open_id_url: http://chikuwaprog.com/
+  amazon_associate: chikuwadiary-22
+  member: true
+nawoto:
+  id: 6
+  login: nawoto
+  email: n-nishimura@esm.co.jp
+  open_id_url: http://nawo.to
+  amazon_associate: nawoto-22
+  member: true
+hidenba:
+  id: 7
+  login: hidenba
+  email: h-kajita@esm.co.jp
+  open_id_url: http://hidenba.com
+  amazon_associate: hidenba-22
+  member: true
+ursm:
+  id: 8
+  login: ursm
+  email: k-urashima@esm.co.jp
+  open_id_url: http://ursm.jp/
+  amazon_associate: ursm-22
+  member: true
+ken1:
+  id: 9
+  login: ken1
+  email: ken-takahashi@esm.co.jp
+  open_id_url: http://shu-cream.net
+  amazon_associate: shucreamnet-22
+  member: true
+dot:
+  id: 10
+  login: dot
+  email: s-kondo@esm.co.jp
+  open_id_url: http://dot.knapsack.in/
+  amazon_associate: prebyte05-22
+  member: true
