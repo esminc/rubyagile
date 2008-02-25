@@ -1,6 +1,6 @@
 <%= render :partial => 'navigation' %>
-<% div_for(@article, :class => 'article') do |a| -%>
-<%= render :partial => 'article', :locals => { :article => a } %>
+<% div_for(@article, :class => 'article') do -%>
+<%= render(:partial => 'article') %>
 <% end -%>
 <div class="comments">
 <h3><a name="comments" class="anchor">コメント</a></h3>
