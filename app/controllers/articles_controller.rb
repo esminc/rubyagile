@@ -88,10 +88,9 @@ class ArticlesController < ApplicationController
 
   def feed
     @articles = Article.find(:all, :order => "created_at DESC")
-    self.class.layout nil
     respond_to do |format|
-      format.xml
-      format.rdf
+      format.xml { render :layout => nil }
+      format.rdf { render :layout => nil }
     end
   end
 end
