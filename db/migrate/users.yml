@@ -37,14 +37,14 @@ nawoto:
   id: 6
   login: nawoto
   email: n-nishimura@esm.co.jp
-  open_id_url: http://nawo.to
+  open_id_url: http://nawo.to/
   amazon_associate: nawoto-22
   member: true
 hidenba:
   id: 7
   login: hidenba
   email: h-kajita@esm.co.jp
-  open_id_url: http://hidenba.com
+  open_id_url: http://hidenba.com/
   amazon_associate: hidenba-22
   member: true
 ursm:
@@ -58,7 +58,7 @@ ken1:
   id: 9
   login: ken1
   email: ken-takahashi@esm.co.jp
-  open_id_url: http://shu-cream.net
+  open_id_url: http://shu-cream.net/
   amazon_associate: shucreamnet-22
   member: true
 dot:
