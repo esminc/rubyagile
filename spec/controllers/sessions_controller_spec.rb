@@ -17,4 +17,15 @@ describe SessionsController do
       response.should be_success
     end
   end
+
+  describe "DELETE 'destroy'" do
+    before do
+      controller.should_receive(:reset_session)
+      delete :destroy
+    end
+
+    it { flash[:notice].should == 'You have been sign out.'}
+    it { response.should redirect_to("")}
+  end
+
 end

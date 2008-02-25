@@ -13,6 +13,10 @@ class Article < ActiveRecord::Base
     (@next_article == self ? nil : @next_article)
   end
 
+  def comment_count
+    comments.size
+  end
+
   private
   def load_neighbors
     ids = (Article.find_by_sql [<<-SQL, {:id => id}]).first

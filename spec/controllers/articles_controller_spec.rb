@@ -6,140 +6,66 @@ describe ArticlesController do
   end
 
   describe "handling GET /articles" do
-
     before(:each) do
       @article = mock_model(Article, :null_object => true)
-      Article.stub!(:find).and_return([@article])
-    end
-
-    def do_get
+      Article.should_receive(:find).with(:all, :order => "created_at DESC").
+        and_return([@article])
       get :index
     end
-
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should render index template" do
-      do_get
-      response.should render_template('index')
-    end
-
-    it "should find all articles" do
-      Article.should_receive(:find).with(:all, :order => "created_at DESC").and_return([@article])
-      do_get
-    end
-
+    it { response.should be_success }
+    it { response.should render_template('index') }
     it "should assign the found articles for the view" do
-      do_get
       assigns[:articles].should == [@article]
     end
   end
 
   describe "handling GET /articles/1" do
-
     before(:each) do
       @article = mock_model(Article)
       Article.stub!(:find).and_return(@article)
-    end
-
-    def do_get
+      Article.should_receive(:find).with("1").and_return(@article)
       get :show, :id => "1"
     end
 
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should render show template" do
-      do_get
-      response.should render_template('show')
-    end
-
-    it "should find the article requested" do
-      Article.should_receive(:find).with("1").and_return(@article)
-      do_get
-    end
-
+    it { response.should be_success }
+    it { response.should render_template('show') }
     it "should assign the found article for the view" do
-      do_get
       assigns[:article].should equal(@article)
     end
   end
 
   describe "handling GET /articles/new" do
-
     before(:each) do
       @article = mock_model(Article)
       Article.stub!(:new).and_return(@article)
-    end
-
-    def do_get
+      Article.should_receive(:new).and_return(@article)
       get :new
     end
 
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should render new template" do
-      do_get
-      response.should render_template('new')
-    end
-
-    it "should create an new article" do
-      Article.should_receive(:new).and_return(@article)
-      do_get
-    end
-
-    it "should not save the new article" do
-      @article.should_not_receive(:save)
-      do_get
-    end
+    it { response.should be_success }
+    it { response.should render_template('new') }
+    it { @article.should_not_receive(:save) }
 
     it "should assign the new article for the view" do
-      do_get
       assigns[:article].should equal(@article)
     end
   end
 
   describe "handling GET /articles/1/edit" do
-
     before(:each) do
       @article = mock_model(Article)
-      Article.stub!(:find).and_return(@article)
-    end
-
-    def do_get
+      Article.should_receive(:find).and_return(@article)
       get :edit, :id => "1"
     end
 
-    it "should be successful" do
-      do_get
-      response.should be_success
-    end
-
-    it "should render edit template" do
-      do_get
-      response.should render_template('edit')
-    end
-
-    it "should find the article requested" do
-      Article.should_receive(:find).and_return(@article)
-      do_get
-    end
-
+    it { response.should be_success }
+    it { response.should render_template('edit') }
     it "should assign the found Article for the view" do
-      do_get
       assigns[:article].should equal(@article)
     end
   end
 
   describe "handling POST /articles" do
-
     before(:each) do
       @article = mock_model(Article, :to_param => "1")
       @article.should_receive(:user=).with(any_args)
@@ -147,143 +73,81 @@ describe ArticlesController do
     end
 
     describe "with successful save" do
-
-      def do_post
+      before do
+        Article.should_receive(:new).with(any_args).and_return(@article)
         @article.should_receive(:save).and_return(true)
         post :create, :article => {}
       end
 
-      it "should create a new article" do
-        Article.should_receive(:new).with(any_args).and_return(@article)
-        do_post
-      end
-
-      it "should redirect to the new article" do
-        do_post
-        response.should redirect_to(article_url("1"))
-      end
-
+      it { response.should redirect_to(article_url("1")) }
     end
 
     describe "with failed save" do
-
-      def do_post
+      before do
         @article.should_receive(:save).and_return(false)
         post :create, :article => {}
       end
 
-      it "should re-render 'new'" do
-        do_post
-        response.should render_template('new')
-      end
-
+      it { response.should render_template('new') }
     end
 
     describe "with preview" do
-      def do_post
+      before do
         @article.should_not_receive(:save)
         post :create, :article => {}, :preview => 'Preview'
       end
-
-      it "should render 'preview'" do
-        do_post
-        response.should render_template('preview')
-      end
+      it { response.should render_template('preview') }
     end
 
   end
 
   describe "handling PUT /articles/1" do
-
     before(:each) do
       @article = mock_model(Article, :to_param => "1")
       Article.stub!(:find).and_return(@article)
     end
 
     describe "with successful update" do
-
-      def do_put
+      before do
+        Article.should_receive(:find).with("1").and_return(@article)
         @article.should_receive(:update_attributes).and_return(true)
         put :update, :id => "1"
       end
 
-      it "should find the article requested" do
-        Article.should_receive(:find).with("1").and_return(@article)
-        do_put
-      end
-
-      it "should update the found article" do
-        do_put
-        assigns(:article).should equal(@article)
-      end
-
-      it "should assign the found article for the view" do
-        do_put
-        assigns(:article).should equal(@article)
-      end
-
-      it "should redirect to the article" do
-        do_put
-        response.should redirect_to(article_url("1"))
-      end
-
+      it { assigns(:article).should equal(@article) }
+      it { response.should redirect_to(article_url("1")) }
     end
 
     describe "with failed update" do
-
-      def do_put
+      before do
         @article.should_receive(:update_attributes).and_return(false)
         put :update, :id => "1"
       end
 
-      it "should re-render 'edit'" do
-        do_put
-        response.should render_template('edit')
-      end
-
+      it { response.should render_template('edit') }
     end
 
     describe "with preview" do
-      def do_put
+      before do
         @article.stub!(:title=)
         @article.stub!(:body=)
         @article.should_not_receive(:update_attributes)
         put :update, :article => {}, :preview => 'Preview'
       end
 
-      it "should render 'preview'" do
-        do_put
-        response.should render_template('preview')
-      end
+      it { response.should render_template('preview') }
     end
-
   end
 
   describe "handling DELETE /articles/1" do
-
     before(:each) do
       @article = mock_model(Article, :destroy => true)
-      Article.stub!(:find).and_return(@article)
-    end
-
-    def do_delete
+      Article.should_receive(:find).with("1").and_return(@article)
+      @article.should_receive(:destroy)
       delete :destroy, :id => "1"
     end
 
-    it "should find the article requested" do
-      Article.should_receive(:find).with("1").and_return(@article)
-      do_delete
-    end
-
-    it "should call destroy on the found article" do
-      @article.should_receive(:destroy)
-      do_delete
-    end
-
-    it "should redirect to the articles list" do
-      do_delete
-      response.should redirect_to(articles_url)
-    end
+    it { response.should redirect_to(articles_url) }
   end
 
   describe "handling POST /articles/comment/1" do
@@ -305,4 +169,13 @@ describe ArticlesController do
     end
   end
 
+  describe "handling Atomfeed" do
+    before do
+      @article = mock_model(Article, :to_param => "1")
+      Article.stub!(:find).and_return(@article)
+      get "feed", :type => 'xml'
+    end
+
+    it { response.should render_template("feed") }
+  end
 end
