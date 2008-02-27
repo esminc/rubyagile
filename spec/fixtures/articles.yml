@@ -1,4 +1,5 @@
 hikidoc_sample:
+  id: 1
   title: "Hikidocのパースのテスト"
   body: "!パラグラフ\r\n\
     \r\n\
@@ -237,6 +238,14 @@ hikidoc_sample:
     \r\n\
     *複数行記述例\r\n\
     \r\n {{pre(\r\n  パラメータ１\r\n  パラメータ２\r\n  パラメータ３\r\n )}}\r\n"
-  user: valid
+  user: alice
   created_at: 2008-01-22 20:07:54 +09:00
   updated_at: 2008-01-22 20:07:54 +09:00
+  published: true
+draft:
+  title: "草稿"
+  body: "まだ公開されていませんよ"
+  user: alice
+  created_at: 2008-01-22 20:07:54 +09:00
+  updated_at: 2008-01-22 20:07:54 +09:00
+  published: false

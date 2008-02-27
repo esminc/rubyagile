@@ -2,8 +2,9 @@ class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
-    @articles = Article.find(:all, :order => "created_at DESC") # TODO duplicated
-
+    @articles = Article.find(:all,
+      :conditions => ["published is true"],
+      :order => "created_at DESC") # TODO duplicated
     respond_to do |format|
       format.html
     end

@@ -6,17 +6,17 @@ describe ArticlesController do
   end
 
   describe "handling GET /articles" do
+    fixtures :articles
     before(:each) do
-      @article = mock_model(Article, :null_object => true)
-      Article.should_receive(:find).with(:all, :order => "created_at DESC").
-        and_return([@article])
       get :index
     end
     it { response.should be_success }
     it { response.should render_template('index') }
     it "should assign the found articles for the view" do
-      assigns[:articles].should == [@article]
+      assigns[:articles].should have(1).entries
     end
+
+    it { assigns[:articles].first.published.should be_true }
   end
 
   describe "handling GET /articles/1" do
