@@ -3,6 +3,10 @@ class Article < ActiveRecord::Base
   has_many :comments
   validates_presence_of :title, :body
 
+  def self.find_all_written_by(user)
+    Article.find_all_by_user_id(user.id, :order => "created_at DESC")
+  end
+
   def prev_article
     load_neighbors unless @prev_article
     (@prev_article == self ? nil : @prev_article)
@@ -17,12 +21,16 @@ class Article < ActiveRecord::Base
     comments.size
   end
 
+  def author_name
+    user.login
+  end
+
   private
   def load_neighbors
     ids = (Article.find_by_sql [<<-SQL, {:id => id}]).first
 SELECT next.id as next_id, prev.id as prev_id FROM
- (select min(id) as id from articles where :id < id) next,
- (select max(id) as id from articles where id < :id) prev
+ (select min(id) as id from articles where :id < id and published is true) next,
+ (select max(id) as id from articles where id < :id and published is true) prev
     SQL
     @prev_article = Article.find_by_id(ids.prev_id)
     @next_article = Article.find_by_id(ids.next_id)

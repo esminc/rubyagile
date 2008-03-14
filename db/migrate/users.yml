@@ -68,3 +68,17 @@ dot:
   open_id_url: http://dot.knapsack.in/
   amazon_associate: prebyte05-22
   member: true
+koic:
+  id: 11
+  login: koic
+  email: k-ito@esm.co.jp
+  open_id_url: http://www.hatena.ne.jp/koic/
+  amazon_associate: daybyday08-22
+  member: true
+moro:
+  id: 12
+  login: moro
+  email: k-morohashi@esm.co.jp
+  open_id_url: http://www.hatena.ne.jp/moro/
+  amazon_associate: morodiary05-22
+  member: true

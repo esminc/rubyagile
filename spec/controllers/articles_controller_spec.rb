@@ -37,8 +37,8 @@ describe ArticlesController do
   describe "handling GET /articles/new" do
     before(:each) do
       @article = mock_model(Article)
-      Article.stub!(:new).and_return(@article)
       Article.should_receive(:new).and_return(@article)
+      @article.should_receive(:user=).with(users(:alice))
       get :new
     end
 
@@ -68,19 +68,31 @@ describe ArticlesController do
   describe "handling POST /articles" do
     before(:each) do
       @article = mock_model(Article, :to_param => "1")
-      @article.should_receive(:user=).with(any_args)
       Article.stub!(:new).and_return(@article)
     end
 
-    describe "with successful save" do
+    describe "with successful save w/o published" do
       before do
         Article.should_receive(:new).with(any_args).and_return(@article)
         @article.should_receive(:save).and_return(true)
-        post :create, :article => {}
+        post :create, :article => {:published => 0}
+      end
+
+      it { response.should redirect_to(article_url("1")) }
+
+      it { @article.should_not_receive(:published=) }
+    end
+
+    describe "with successful save w/o direct_post" do
+      before do
+        Article.should_receive(:new).with(any_args).and_return(@article)
+        @article.should_receive(:save).and_return(true)
+        post :create, :article => {:published => 1}
       end
 
       it { response.should redirect_to(article_url("1")) }
     end
+
 
     describe "with failed save" do
       before do

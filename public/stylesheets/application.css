@@ -386,3 +386,15 @@ div#content div.navigation {
 	text-align: right;
 	font-size: 70%;
 }
+
+table.dashboard {
+	border: 1px solid #000;
+}
+
+table.dashboard th {
+	background: #ccc;
+}
+
+table.dashbaord td {
+	padding: 3px 10px;
+}

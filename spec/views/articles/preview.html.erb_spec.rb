@@ -3,7 +3,10 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/articles/preview" do
   before(:each) do
     login_as(:alice)
-    article = mock_model(Article, :title => "t", :body => "b", :login => "l")
+    article = mock_model(Article,
+      :title => "t", :body => "b", :login => "l",
+      :author_name => 'an', :user_id => 1)
+    article.should_receive(:published).and_return(0)
     assigns[:article] = article
     render 'articles/preview'
   end

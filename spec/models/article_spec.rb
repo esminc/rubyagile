@@ -1,10 +1,9 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Article do
-  fixtures :users
 
   def valid_article
-    Article.new(:user => users(:alice), :title => 't', :body => 'b')
+    Article.new(:user => users(:alice), :title => 't', :body => 'b', :published => 1)
   end
 
   describe "デフォルト値について" do
@@ -85,6 +84,27 @@ describe Article do
         @newest.next_article.should be_nil
       end
     end
+  end
+
+end
+
+describe Article, "#published?" do
+  before do
+    @article = Article.new
+  end
+
+  describe "when checked" do
+    before do
+      @article.published = 1
+    end
+    it { @article.should be_published }
+  end
+
+  describe "when non-checked" do
+    before do
+      @article.published = 0
+    end
+    it { @article.should_not be_published }
   end
 
 end

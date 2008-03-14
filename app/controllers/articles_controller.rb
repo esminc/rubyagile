@@ -12,7 +12,6 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-
     respond_to do |format|
       format.html
     end
@@ -20,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-
+    @article.user = current_user
     respond_to do |format|
       format.html
     end
@@ -32,8 +31,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
-    @article.user = current_user
-
     unless params[:preview].blank?
       render :action => 'preview'
     else

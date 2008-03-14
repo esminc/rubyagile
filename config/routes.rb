@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.signin '/signin', :controller => "sessions", :action => "new"
   map.signout '/signout', :controller => "sessions", :action => "destroy"
+  map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
 
   map.connect '/articles/feed.:format', :controller => 'articles', :action => 'feed'
 
