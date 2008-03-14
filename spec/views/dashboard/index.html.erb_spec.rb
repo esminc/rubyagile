@@ -7,7 +7,7 @@ describe "/dashboard/index" do
     @article = mock_model(Article, :title => 'a_title', :published? => true)
     @articles = assigns[:articles] = [@article]
     render 'dashboard/index'
-    template.stub!(:render_status_for).with(:anything).and_return("公開")
+    template.stub!(:render_status_for).with(anything).and_return("公開")
   end
 
   it { response.should have_tag('div.articles') }

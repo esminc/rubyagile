@@ -21,6 +21,7 @@ describe Article do
     end
 
     it { @article.should be_valid }
+    it { @article.author_name.should == users(:alice).login }
   end
 
   describe "コメントがある場合" do
@@ -107,4 +108,11 @@ describe Article, "#published?" do
     it { @article.should_not be_published }
   end
 
+end
+
+describe Article, ".find_all_by_user_id" do
+  it "作成日時の降順であること" do
+    Article.should_receive(:find_all_by_user_id).with(users(:alice).id, {:order => "created_at DESC" })
+    Article.find_all_written_by(users(:alice))
+  end
 end

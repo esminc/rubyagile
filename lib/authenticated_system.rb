@@ -14,12 +14,6 @@ module AuthenticatedSystem
          :false
      end
 
-    # Store the given user in the session.
-    def current_user=(new_user)
-      session[:user] = (new_user.nil? || new_user.is_a?(Symbol)) ? nil : new_user.id
-      @current_user = new_user
-    end
-
     # Check if the user is authorized.
     #
     # Override this method in your controllers if you want to restrict access

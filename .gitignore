@@ -10,3 +10,4 @@
 /vendor/plugins/rspec_on_rails_matchers
 /vendor/plugins/yaml_waml
 /vendor/rails
+/coverage
