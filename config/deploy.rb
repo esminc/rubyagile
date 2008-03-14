@@ -11,6 +11,7 @@ set :deploy_to, "/home/#{application}/railsapp"
 # set :scm, :subversion
 
 set :use_sudo, false
+set :runner, "rubyagile"
 ssh_options[:username] = application
 
 set :production_server, "agile.esm.co.jp"
