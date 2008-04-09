@@ -7,7 +7,9 @@
 /vendor/plugins/hikidoc
 /vendor/plugins/rspec
 /vendor/plugins/rspec_on_rails
+/vendor/plugins/rspec-rails
 /vendor/plugins/rspec_on_rails_matchers
 /vendor/plugins/yaml_waml
 /vendor/rails
 /coverage
+/.generators

@@ -8,7 +8,8 @@ describe "/articles/show.html.erb" do
     assigns[:article] = @article
     template.stub!(:posted_on)
     template.stub!(:link_to_comments)
-    template.stub!(:parse)
+#    template.stub!(:parse)
+    template.should_receive(:parse).with(@article)
   end
 
   it "should render attributes" do

@@ -23,10 +23,15 @@ Spec::Runner.configure do |config|
   # do so right here. Just uncomment the next line and replace the fixture
   # names with your fixtures.
   #
+  # config.global_fixtures = :table_a, :table_b
   config.global_fixtures = :users
   #
   # If you declare global fixtures, be aware that they will be declared
   # for all of your examples, even those that don't use them.
+  #
+  # You can also declare which fixtures to use (for example fixtures for test/fixtures):
+  #
+  # config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
   #
   # == Mock Framework
   #
@@ -36,12 +41,21 @@ Spec::Runner.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  #
+  # == Notes
+  #
+  # For more information take a look at Spec::Example::Configuration and Spec::Runner
 end
+
+#Spec::Rails::Example::ControllerExampleGroup.send(:include, AuthenticatedTestHelper)
+#Spec::Rails::Example::ViewExampleGroup.send(:include, AuthenticatedTestHelper)
 
 module Spec
   module Rails
     module Example
-      FunctionalExampleGroup.send(:include, AuthenticatedTestHelper)
+      [ControllerExampleGroup, ViewExampleGroup].each do |klass|
+        klass.send(:include, AuthenticatedTestHelper)
+      end
     end
   end
 end

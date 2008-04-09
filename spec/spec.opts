@@ -1,6 +1,4 @@
--X
---format
-progress
---loadby
-mtime
+--drb
+--format progress
+--loadby mtime
 --reverse
