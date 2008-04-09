@@ -1,6 +1,8 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe ArticlesHelper do
+  it { ArticlesHelper.ancestors.should be_include(HikidocHelper) }
+
   describe "utility for date and time" do
     before do
       @time = Time.parse("2008-02-01 13:45:26")
@@ -25,5 +27,6 @@ describe ArticlesHelper do
       end
       it { link_to_comments(@article).should have_tag('a', '2 Comments')}
     end
+
   end
 end

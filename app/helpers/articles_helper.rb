@@ -1,7 +1,5 @@
 module ArticlesHelper
-  def parse(text)
-    HikiDoc.to_html(text, :level =>3)
-  end
+  include HikidocHelper
 
   def link_to_comments(article)
     if 0 < article.comment_count
