@@ -5,6 +5,6 @@
 <% form_for(:page, :url => { :action => 'update', :page_name => @page.name }, :html => { :method => :put }) do |f| %>
   <%= render :partial => "form", :locals => {:form => f} %>
   <p>
-  <%= f.submit "草稿" %>
+  <%= f.submit "確定" %>
   </p>
 <% end %>
