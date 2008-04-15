@@ -1,0 +1,7 @@
+<% div_for(@page) do  -%>
+  <%= render :partial => "page", :locals => {:page => @page} %>
+<% end -%>
+
+<% content_for :sidebar do -%>
+  <%= render :partial => "sidebar" %>
+<% end -%>

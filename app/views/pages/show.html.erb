@@ -1,0 +1,6 @@
+<% div_for(@page, :class => 'page') do -%>
+<%= render(:partial => 'page') %>
+<% end -%>
+<% content_for :sidebar do -%>
+  <%= render :partial => "sidebar" %>
+<% end -%>

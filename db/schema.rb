@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -40,10 +40,28 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :null => false
-    t.string  "server_url", :null => false
-    t.string  "salt",       :null => false
+    t.integer "timestamp",                  :null => false
+    t.string  "server_url", :default => "", :null => false
+    t.string  "salt",       :default => "", :null => false
   end
+
+  create_table "paes", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["name"], :name => "index_pages_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login"

@@ -16,9 +16,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/articles/feed.:format', :controller => 'articles', :action => 'feed'
 
+  map.connect 'pages/:page_name/:action', :controller => 'pages'
+  map.connect 'pages', :controller => 'pages', :page_name => 'FrontPage', :action => 'show'
+
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
   map.resources :articles
+  map.resources :pages
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
