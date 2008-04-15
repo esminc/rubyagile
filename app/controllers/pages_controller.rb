@@ -9,21 +9,29 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by_name(params[:page_name])
-    if @page
-      respond_to do |format|
-        format.html
-      end
-    else
-#      format.html { redirect_to("/pages/#{params[:page_name]}/edit") }
-      redirect_to("/pages/#{params[:page_name]}/new")
+    respond_to do |format|
+      format.html
     end
   end
 
   def new
     @page = Page.new
+    @page.name = params[:page_name]
     @page.user = current_user
     respond_to do |format|
       format.html
+    end
+  end
+
+  def create
+    @page = Page.new(params[:page])
+    respond_to do |format|
+      if @page.save
+        flash[:notice] = 'Page was successfully created.'
+        format.html { redirect_to("/pages/#{params[:page][:name]}") }
+      else
+        format.html { render :action => "new" }
+      end
     end
   end
 

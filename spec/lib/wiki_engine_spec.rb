@@ -36,4 +36,47 @@ paragraph.
     }
   end
 
+  describe "WikiNameのリンクを含むHTML" do
+    before(:each) do
+    end
+
+    it "WikiName" do
+    end
+  end
+
+  def replace(text)
+    wiki_engine = WikiEngine.new
+    wiki_engine.replace_by_unresolved_wikiname(text)
+  end
+
+  describe "存在していないページのWikiNameの場合" do
+    before(:each) do
+      @actual = replace(<<-EOS)
+<a href="WikiName">WikiName</a>
+      EOS
+    end
+
+    it "WikiNameに?を付けた未解決のWikiNameに変換する" do
+      @actual.should == <<-EXPECTED
+WikiName<a href="WikiName/new">?</a>
+      EXPECTED
+    end
+  end
+
+  describe "存在していないページのWikiNameが複数存在する場合" do
+    before(:each) do
+      @actual = replace(<<-EOS)
+<a href="WikiName1">WikiName1</a>
+<a href="WikiName2">WikiName2</a>
+      EOS
+    end
+
+    it "存在しないWikiNameすべてに?を付けて未解決のWikiNameに変換する" do
+      @actual.should == <<-EXPECTED
+WikiName1<a href="WikiName1/new">?</a>
+WikiName2<a href="WikiName2/new">?</a>
+      EXPECTED
+    end
+  end
+
 end

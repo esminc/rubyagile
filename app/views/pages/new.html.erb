@@ -1,0 +1,10 @@
+<h2>ページの作成</h2>
+
+<%= error_messages_for :page %>
+
+<% form_for(:page, :url => { :action => 'create', :page_name => @page.name }, :html => { :method => :post }) do |f| %>
+  <%= render :partial => "form", :locals => {:form => f} %>
+  <p>
+  <%= f.submit "確定"  %>
+  </p>
+<% end %>
