@@ -5,15 +5,6 @@ describe PagesController do
     login_as(:alice)
   end
 
-  describe "handling GET /pages" do
-    fixtures :pages
-    before(:each) do
-      get :index
-    end
-    it { response.should be_success }
-    it { response.should render_template('index') }
-  end
-
   describe "handling GET /pages/FrontPage" do
     before(:each) do
       @page = mock_model(Page)

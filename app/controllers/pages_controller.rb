@@ -9,8 +9,13 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by_name(params[:page_name])
-    respond_to do |format|
-      format.html
+    if @page
+      respond_to do |format|
+        format.html
+      end
+    else
+#      format.html { redirect_to("/pages/#{params[:page_name]}/edit") }
+      redirect_to("/pages/#{params[:page_name]}/new")
     end
   end
 
@@ -37,5 +42,15 @@ class PagesController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+
+  private
+  def find_or_create(page_name)
+    unless page = Page.find_by_name(page_name)
+      page = Page.new
+      page.name = page_name
+      page.user = current_user
+    end
+    page
   end
 end
