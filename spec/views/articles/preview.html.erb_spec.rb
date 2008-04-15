@@ -8,6 +8,7 @@ describe "/articles/preview" do
       :author_name => 'an', :user_id => 1)
     article.should_receive(:published).and_return(0)
     assigns[:article] = article
+    template.should_receive(:parse_article).with(article)
     render 'articles/preview'
   end
 

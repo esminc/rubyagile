@@ -1,7 +1,10 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe HikidocHelper do
-  include HikidocHelper
+describe WikiEngine do
+  def parse(text)
+    wiki_engine = WikiEngine.new
+    wiki_engine.render_text(text)
+  end
 
   describe "normal text" do
     before do

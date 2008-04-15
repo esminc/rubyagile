@@ -1,5 +1,9 @@
-module HikidocHelper
-  def parse(text)
+class WikiEngine
+  def initialize(options={})
+    @amazon_associate = options[:amazon_associate]
+  end
+
+  def render_text(text)
     hikified = HikiDoc.to_html(text, :level =>3)
     replace_plugin(hikified)
   end

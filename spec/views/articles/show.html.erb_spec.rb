@@ -6,10 +6,9 @@ describe "/articles/show.html.erb" do
   before(:each) do
     @article = mock_model(Article, :null_object => true)
     assigns[:article] = @article
-    template.stub!(:posted_on)
-    template.stub!(:link_to_comments)
-#    template.stub!(:parse)
-    template.should_receive(:parse).with(@article)
+
+    template.stub_render(:partial => 'navigation')
+    template.expect_render(:partial => 'article')
   end
 
   it "should render attributes" do

@@ -1,5 +1,8 @@
 module ArticlesHelper
-  include HikidocHelper
+  def parse_article(article)
+    wiki_engine = WikiEngine.new(:amazon_associate => article.user.amazon_associate)
+    wiki_engine.render_text(article.body)
+  end
 
   def link_to_comments(article)
     if 0 < article.comment_count
@@ -12,4 +15,5 @@ module ArticlesHelper
   def posted_on(time)
     time.to_date.to_s(:db)
   end
+
 end

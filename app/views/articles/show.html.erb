@@ -1,6 +1,6 @@
 <%= render :partial => 'navigation' %>
 <% div_for(@article, :class => 'article') do -%>
-<%= render(:partial => 'article') %>
+<%= render :partial => 'article' %>
 <% end -%>
 <div class="comments">
 <h3><a name="comments" class="anchor">コメント</a></h3>
@@ -11,7 +11,7 @@
 	<div class="meta">
 	  <span class="author"><%=h comment.author %></span> on <%=h comment.created_at.to_s(:db) %>
 	</div>
-	<div class="body"><%= parse(comment.body) %></div>
+	<div class="body"><%=h comment.body %></div>
   </li>
 <% end %>
 </ol>

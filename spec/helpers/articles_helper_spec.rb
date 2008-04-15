@@ -2,7 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe ArticlesHelper do
   include ArticlesHelper
-  it { ArticlesHelper.ancestors.should be_include(HikidocHelper) }
 
   describe "utility for date and time" do
     before do
