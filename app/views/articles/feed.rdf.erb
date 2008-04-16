@@ -20,7 +20,7 @@
   <item rdf:about="<%= article_url(article) %>">
 　　<title><%=h article.title %></title>
 　　<link><%= article_url(article) %></link>
-　　<description><%=h parse(article.body) %></description>
+　　<description><%=h parse_article(article) %></description>
 　　<dc:date><%=h article.updated_at.to_s(:db) %></dc:date>
 　</item>
   <% end -%>
