@@ -15,13 +15,13 @@ class WikiEngine
     }.uniq
     wikinames.each { |wikiname|
       html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
-        %Q|<a href="pages/#{wikiname}">#{wikiname}</a>|)
+        %Q|<a href="/pages/#{wikiname}">#{wikiname}</a>|)
     }
     page_names = Page.find(:all).map { |page| page.name }
     wikinames -= page_names
     wikinames.each { |wikiname|
-      html.gsub!(/<a href="pages\/#{wikiname}">#{wikiname}<\/a>/,
-        %Q|#{wikiname}<a href="pages/#{wikiname}/new">?</a>|)
+      html.gsub!(/<a href="\/pages\/#{wikiname}">#{wikiname}<\/a>/,
+        %Q|#{wikiname}<a href="/pages/#{wikiname}/new">?</a>|)
     }
     html
   end
