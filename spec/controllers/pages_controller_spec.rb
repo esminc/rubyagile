@@ -90,4 +90,14 @@ describe PagesController do
     end
   end
 =end
+
+  describe "handling Atomfeed" do
+    before do
+      @page = mock_model(Page, :to_param => "1")
+      Page.stub!(:find).and_return(@page)
+      get "feed", :type => 'xml'
+    end
+
+    it { response.should render_template("feed") }
+  end
 end

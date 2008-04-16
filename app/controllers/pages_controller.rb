@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :login_required, :except => [:show, :index]
+  before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
     respond_to do |format|
@@ -49,6 +49,14 @@ class PagesController < ApplicationController
       else
         format.html { render :action => "edit" }
       end
+    end
+  end
+
+  def feed
+    @pages = Page.find(:all, :order => "updated_at DESC")
+    respond_to do |format|
+      format.xml { render :layout => nil }
+      format.rdf { render :layout => nil }
     end
   end
 

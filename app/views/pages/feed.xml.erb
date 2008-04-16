@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+<title>Ruby x Agile</title>
+<subtitle>Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト</subtitle>
+<link href="<%= root_url(:only_path => false) %>"/>
+<link rel="self" href="<%= url_for(:controller => 'pages', :action => 'feed.xml', :only_path => false) %>" type="application/atom+xml" />
+<author>
+  <name>永和システムマネジメント</name>
+</author>
+<updated><%= @pages.first.updated_at.to_s(:db) %></updated>
+<id><%= url_for(:controller => 'pages', :action => 'feed.xml', :only_path => false) %></id>
+<% @pages.each do |page| -%>
+  <entry>
+	<id><%= page_url(page) %></id>
+	<author><name><%=h page.user.login %></name></author>
+	<published><%=h page.created_at.to_s(:db) %></published>
+	<updated><%=h page.updated_at.to_s(:db) %></updated>
+	<link href="<%= page_path(page) %>" rel="alternate" type="text/html" />
+	<title><%=h(page.name) %></title>
+	<content type="html">
+	  <%= parse_page(page) %>
+	</content>
+  </entry>
+<% end -%>
+</feed>

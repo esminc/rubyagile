@@ -21,7 +21,7 @@
 <div class="sblock">
 <h3>フィード</h3>
 <p>
-<%= link_to(image_tag("feed-icon-28x28.png", {:size=>"28x28", :alt=> "Feed"}), url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false), :class => 'image_link') %>
-<%= link_to 'Atom', url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %>
+<%= link_to(image_tag("feed-icon-28x28.png", {:size=>"28x28", :alt=> "Feed"}), url_for(:controller => 'articles', :action => 'feed', :format => 'xml', :only_path => false), :class => 'image_link') %>
+<%= link_to 'Atom', url_for(:controller => 'articles', :action => 'feed', :format => 'xml', :only_path => false) %>
 </p>
 </div>
