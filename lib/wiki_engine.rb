@@ -8,21 +8,11 @@ class WikiEngine
     replace_plugin(hikified)
   end
 
-  def replace_by_unresolved_wikiname(html)
+  def replace_text(html)
     # TODO http://で始まる文字列は外す処理を入れること
-    wikinames = html.grep(/<a href="(.+)">(.+)<\/a>/o) { |item|
-      $1 if $1 == $2
-    }.uniq
-    wikinames.each { |wikiname|
-      html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
-        %Q|<a href="/pages/#{wikiname}">#{wikiname}</a>|)
-    }
-    page_names = Page.find(:all).map { |page| page.name }
-    wikinames -= page_names
-    wikinames.each { |wikiname|
-      html.gsub!(/<a href="\/pages\/#{wikiname}">#{wikiname}<\/a>/,
-        %Q|#{wikiname}<a href="/pages/#{wikiname}/new">?</a>|)
-    }
+    wikinames = find_wikiname_in(html)
+    add_prefix_path(html, wikinames)
+    replace_by_unresolved_wikiname(html, wikinames)
     html
   end
 
@@ -32,6 +22,32 @@ class WikiEngine
     hikified_html.gsub!(PLUGIN_REGEXP) do |body|
       CGI.unescapeHTML($1)[1...-1]
     end
-    replace_by_unresolved_wikiname(hikified_html)
+    replace_text(hikified_html)
+  end
+
+  def find_wikiname_in(page)
+    page.grep(/<a href="(.+)">(.+)<\/a>/o) { |item|
+      $1 if $1 == $2
+    }.uniq
+  end
+
+  def add_prefix_path(html, wikinames)
+    wikinames.each { |wikiname|
+      html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
+        %Q|<a href="/pages/#{wikiname}">#{wikiname}</a>|)
+    }
+  end
+
+  def replace_by_unresolved_wikiname(html, wikinames)
+    unresolved_wikinames = unresolved_wikinames(wikinames)
+    unresolved_wikinames.each { |wikiname|
+      html.gsub!(/<a href="\/pages\/#{wikiname}">#{wikiname}<\/a>/,
+        %Q|#{wikiname}<a href="/pages/#{wikiname}/new">?</a>|)
+    }
+  end
+
+  def unresolved_wikinames(wikinames)
+    existing_page_names = Page.find(:all).map { |page| page.name }
+    wikinames -= existing_page_names
   end
 end

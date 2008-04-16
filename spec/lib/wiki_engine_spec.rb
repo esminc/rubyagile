@@ -46,7 +46,7 @@ paragraph.
 
   def replace(text)
     wiki_engine = WikiEngine.new
-    wiki_engine.replace_by_unresolved_wikiname(text)
+    wiki_engine.replace_text(text)
   end
 
   describe "存在していないページのWikiNameの場合" do
