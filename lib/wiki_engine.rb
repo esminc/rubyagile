@@ -13,11 +13,15 @@ class WikiEngine
     wikinames = html.grep(/<a href="(.+)">(.+)<\/a>/o) { |item|
       $1 if $1 == $2
     }.uniq
+    wikinames.each { |wikiname|
+      html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
+        %Q|<a href="pages/#{wikiname}">#{wikiname}</a>|)
+    }
     pages = Page.find(:all).map { |page| page.name }
     wikinames -= pages
     wikinames.each { |wikiname|
-      html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
-        %Q|#{wikiname}<a href="#{wikiname}/new">?</a>|)
+      html.gsub!(/<a href="pages\/#{wikiname}">#{wikiname}<\/a>/,
+        %Q|#{wikiname}<a href="pages/#{wikiname}/new">?</a>|)
     }
     html
   end
