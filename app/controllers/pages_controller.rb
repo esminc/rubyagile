@@ -25,12 +25,16 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(params[:page])
-    respond_to do |format|
-      if @page.save
-        flash[:notice] = 'Page was successfully created.'
-        format.html { redirect_to("/pages/#{params[:page][:name]}") }
-      else
-        format.html { render :action => "new" }
+    unless params[:preview].blank?
+      render :action => 'preview'
+    else
+      respond_to do |format|
+        if @page.save
+          flash[:notice] = 'Page was successfully created.'
+          format.html { redirect_to("/pages/#{params[:page][:name]}") }
+        else
+          format.html { render :action => "new" }
+        end
       end
     end
   end
@@ -42,12 +46,19 @@ class PagesController < ApplicationController
   def update
     @page = Page.find_by_name(params[:page_name])
     @page.user = current_user
-    respond_to do |format|
-      if @page.update_attributes(params[:page])
-        flash[:notice] = 'Page was successfully updated.'
-        format.html { redirect_to("/pages/#{params[:page][:name]}") }
-      else
-        format.html { render :action => "edit" }
+
+    unless params[:preview].blank?
+      @page.name = params[:page][:name]
+      @page.content = params[:page][:content]
+      render :action => 'preview'
+    else
+      respond_to do |format|
+        if @page.update_attributes(params[:page])
+          flash[:notice] = 'Page was successfully updated.'
+          format.html { redirect_to("/pages/#{params[:page][:name]}") }
+        else
+          format.html { render :action => "edit" }
+        end
       end
     end
   end

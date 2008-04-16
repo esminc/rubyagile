@@ -59,6 +59,13 @@ describe PagesController do
       Page.stub!(:new).and_return(@page)
     end
 
+    describe "with preview" do
+      before do
+        @page.should_not_receive(:save)
+        post :create, :page => {}, :preview => 'Preview'
+      end
+      it { response.should render_template('preview') }
+    end
   end
 
 # PEND このテストが上手く行かない原因を調べること
@@ -87,6 +94,28 @@ describe PagesController do
       end
 
       it { response.should render_template('edit') }
+    end
+
+    describe "with preview" do
+      before do
+        @page.stub!(:name=)
+        @page.stub!(:content=)
+        @page.should_not_receive(:update_attributes)
+        put :update, :page => {}, :preview => 'Preview'
+      end
+
+      it { response.should render_template('preview') }
+    end
+
+    describe "with preview" do
+      before do
+        @page.stub!(:page=)
+        @page.stub!(:content=)
+        @page.should_not_receive(:update_attributes)
+        put :update, :page => {}, :preview => 'Preview'
+      end
+
+      it { response.should render_template('preview') }
     end
   end
 =end
