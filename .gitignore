@@ -13,3 +13,4 @@
 /vendor/rails
 /coverage
 /.generators
+/db/schema.rb
