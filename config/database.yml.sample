@@ -21,6 +21,11 @@ development:
   username: root
   password:
   socket: /opt/local/var/run/mysql5/mysqld.sock
+  estraier:
+    port: 1978
+    user: admin
+    password: admin
+    node: full_text_search_devel # Node name => #{node}_modelname
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.

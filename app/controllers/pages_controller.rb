@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :login_required, :except => [:show, :index, :feed]
+  before_filter :login_required, :except => [:show, :index, :feed, :search]
 
   def index
     respond_to do |format|
@@ -69,6 +69,11 @@ class PagesController < ApplicationController
       format.xml { render :layout => nil }
       format.rdf { render :layout => nil }
     end
+  end
+
+  def search
+    @q = params[:q]
+    @pages = @q.blank? ? Page.find(:all) : Page.find_fulltext(@q)
   end
 
   private

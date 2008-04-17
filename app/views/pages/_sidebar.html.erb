@@ -23,3 +23,11 @@
 <%= link_to 'Atom', url_for(:controller => 'pages', :action => 'feed', :format => 'xml', :only_path => false) %>
 </p>
 </div>
+
+<div class="sblock">
+<p>
+<%= form_tag({ :action => 'search' }, { :method => 'GET' }) %>
+検索 <%= text_field_tag :q, @q %>
+</end>
+</p>
+</div>
