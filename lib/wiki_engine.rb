@@ -26,22 +26,23 @@ class WikiEngine
   end
 
   def find_wikiname_in(page)
-    page.grep(/<a href="(.+)">(.+)<\/a>/o) { |item|
+    page.grep(%r|<a href="([^http://].+)">(.+)</a>|o) { |item|
       $1 if $1 == $2
     }.uniq
   end
 
+  PREFIX_PATH = "/pages"
   def add_prefix_path(html, wikinames)
     wikinames.each { |wikiname|
-      html.gsub!(/<a href="#{wikiname}">#{wikiname}<\/a>/,
-        %Q|<a href="/pages/#{wikiname}">#{wikiname}</a>|)
+      html.gsub!(%r|<a href="#{wikiname}">#{wikiname}</a>|,
+        %Q|<a href="#{PREFIX_PATH}/#{wikiname}">#{wikiname}</a>|)
     }
   end
 
   def replace_by_unresolved_wikiname(html, wikinames)
     unresolved_wikinames = unresolved_wikinames(wikinames)
     unresolved_wikinames.each { |wikiname|
-      html.gsub!(/<a href="\/pages\/#{wikiname}">#{wikiname}<\/a>/,
+      html.gsub!(%r|<a href="/pages/#{wikiname}">#{wikiname}</a>|,
         %Q|#{wikiname}<a href="/pages/#{wikiname}/new">?</a>|)
     }
   end

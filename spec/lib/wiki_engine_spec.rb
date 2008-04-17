@@ -79,4 +79,18 @@ WikiName2<a href="/pages/WikiName2/new">?</a>
     end
   end
 
+  describe "http://から始る外部リンク" do
+    before(:each) do
+      @actual = replace(<<-EOS)
+<a href="http://example.com">http://example.com</a>
+      EOS
+    end
+
+    it "そのままの文字列である" do
+      @actual.should == <<-EXPECTED
+<a href="http://example.com">http://example.com</a>
+      EXPECTED
+    end
+  end
+
 end
