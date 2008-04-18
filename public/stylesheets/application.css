@@ -259,6 +259,18 @@ div.article div.body table,div.article div.body table tr, div.article div.body t
 
 }
 
+/* search */
+div.search-phrase {
+	font-size: 130%;
+	background-color: #FCFCFC;
+	font-weight: bold;
+}
+
+div.hit-num {
+	font-size: 110%;
+	text-align: right;
+}
+
 /* sidebar */
 div#sidebar h3 {
 	margin-bottom: 10px;

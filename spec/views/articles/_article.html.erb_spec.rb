@@ -15,7 +15,7 @@ describe "/articles/_article.html.erb" do
     end
 
     it "should render list of articles" do
-      render :partial => "articles/article", :locals => { :article => @article}
+      render :partial => "shared/article", :locals => { :article => @article}
     end
   end
 end

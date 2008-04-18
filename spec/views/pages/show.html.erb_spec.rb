@@ -8,7 +8,7 @@ describe "/pages/show.html.erb" do
     assigns[:page] = @page
 
     template.stub_render(:partial => 'navigation')
-    template.expect_render(:partial => 'page')
+    template.expect_render(:partial => 'shared/page')
   end
 
   it "should render attributes" do

@@ -8,7 +8,7 @@ describe "/articles/show.html.erb" do
     assigns[:article] = @article
 
     template.stub_render(:partial => 'navigation')
-    template.expect_render(:partial => 'article')
+    template.expect_render(:partial => 'shared/article')
   end
 
   it "should render attributes" do

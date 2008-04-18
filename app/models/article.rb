@@ -3,6 +3,9 @@ class Article < ActiveRecord::Base
   has_many :comments
   validates_presence_of :title, :body
 
+  acts_as_searchable :searchable_fields => [:title, :body]
+
+
   def self.find_all_written_by(user)
     Article.find_all_by_user_id(user.id, :order => "created_at DESC")
   end

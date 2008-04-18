@@ -1,10 +1,10 @@
 
 <% for article in @articles %>
   <% div_for(article) do  -%>
-    <%= render :partial => "article", :locals => {:article => article} %>
+    <%= render :partial => "shared/article", :locals => {:article => article} %>
   <% end -%>
 <% end -%>
 
 <% content_for :sidebar do -%>
-  <%= render :partial => "sidebar" %>
+  <%= render :partial => "shared/sidebar" %>
 <% end -%>

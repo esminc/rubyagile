@@ -71,11 +71,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def search
-    @q = params[:q]
-    @pages = @q.blank? ? Page.find(:all) : Page.find_fulltext(@q)
-  end
-
   private
   def find_or_create(page_name)
     unless page = Page.find_by_name(page_name)

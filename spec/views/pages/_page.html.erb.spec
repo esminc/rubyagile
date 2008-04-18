@@ -15,7 +15,7 @@ describe "/pages/_page.html.erb" do
     end
 
     it "should render list of pages" do
-      render :partial => "pages/page", :locals => { :page => @page}
+      render :partial => "shared/page", :locals => { :page => @page }
     end
   end
 end
