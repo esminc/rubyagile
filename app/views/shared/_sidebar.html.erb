@@ -27,7 +27,8 @@
 <div class="sblock">
 <p>
 <%= form_tag({ :controller => 'search' }, { :method => 'GET' }) %>
-検索 <%= text_field_tag :q, @q %>
+検索 <%= text_field_tag :q, @q, :accesskey => 's' %>
+<kbd>s</kbd>
 </end>
 </p>
 </div>
