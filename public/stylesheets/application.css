@@ -109,12 +109,6 @@ a.anchor,a.anchor:active, a.anchor:visited, a.anchor:hover {
 	border:none;
 }
 
-kbd {
-	padding:.1em .3em;
-	border: 1px outset gray;
-	margin: 0 .3em;
-}
-
 #header a, #header a:active, #header a:visited {
 	color: #000;
 	border: 0;
