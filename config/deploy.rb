@@ -21,18 +21,16 @@ role :db,  production_server, :primary => true
 
 set :rake, "/var/lib/gems/1.8/bin/rake"
 
-#default_environment["PATH"] = "/var/lib/gems/1.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
-
-#task :after_update_code do
-#  shared_db_yml = "#{shared_path}/config/database.yml"
-#  dest_db_yml = "#{current_release}/config/database.yml"
-#  run "! test -e #{dest_db_yml} && cp #{shared_db_yml} #{dest_db_yml}"
-#end
-
 namespace :deploy do
   task :after_update_code do
     src_db_yml = "#{shared_path}/config/database.yml"
     dest_db_yml = "#{release_path}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
+  end
+
+  desc "resart for our retrospectiva"
+  task :restart, :roles => :app, :except => { :no_release => true } do |t|
+    stop
+    start
   end
 end
