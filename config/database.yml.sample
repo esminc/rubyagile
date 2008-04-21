@@ -46,3 +46,8 @@ production:
   username: rubyagile
   password: rubyagile
   socket: /var/run/mysqld/mysqld.sock
+  estraier:
+    port: 1978
+    user: rubyagile
+    password: dpclipse
+    node: full_text_search_production # Node name => #{node}_modelname
