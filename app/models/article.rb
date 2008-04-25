@@ -1,7 +1,9 @@
 class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-  validates_presence_of :title, :body
+  has_many :images, :dependent => :destroy
+
+  validates_presence_of :title, :body, :if => Proc.new { |a| a.published }
 
   acts_as_searchable :searchable_fields => [:title, :body]
 

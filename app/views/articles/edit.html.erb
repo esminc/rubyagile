@@ -2,10 +2,23 @@
 
 <%= error_messages_for :article %>
 
-<% form_for(@article) do |f| %>
+<% form_for(@article, :html => { :multipart => true }) do |f| %>
   <%= render :partial => "form", :locals => {:form => f} %>
   <p>
   <%= f.submit "プレビュー", :name => "preview" %>
   <%= f.submit "草稿" %>
   </p>
 <% end %>
+<div class="upload-image">
+  <h3>画像の追加</h3>
+  <ul>
+    <% @article.images.each do |image| %>
+       <%# スキーマ名、サーバ名を直書きで逃げている。 %>
+       <li><%= "http://ruby.agile.esm.co.jp#{image.filepath}" %></li>
+    <% end %>
+  </ul>
+  <% form_for(:article, :url => { :action => 'update', :id => @article.id }, :html => { :method => :put, :multipart => true }) do |f| %>
+  <%# form_for(article_path(@article), :html => { :multipart => true }) do |f| %>
+    <%= render :partial => 'upload_image', :locals => { :image_f => f } %>
+  <% end %>
+</div>

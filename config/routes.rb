@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
+  map.resources :images
   map.resources :articles
   map.resources :pages
 

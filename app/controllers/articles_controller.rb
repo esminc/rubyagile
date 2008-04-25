@@ -31,36 +31,45 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
-    unless params[:preview].blank?
-      render :action => 'preview'
-    else
-      respond_to do |format|
-        if @article.save
-          flash[:notice] = 'Article was successfully created.'
-          format.html { redirect_to(@article) }
-        else
-          format.html { render :action => "new" }
+
+    unless params[:article].blank?
+      unless params[:preview].blank?
+        render :action => 'preview'
+      else
+        respond_to do |format|
+          if @article.save
+            flash[:notice] = 'Article was successfully updated.'
+            format.html { redirect_to(@article) }
+          else
+            format.html { render :action => "new" }
+          end
         end
       end
+    else
+      redirect_to_edit_after_create_image
     end
   end
 
   def update
     @article = Article.find(params[:id])
 
-    unless params[:preview].blank?
-      @article.title = params[:article][:title]
-      @article.body = params[:article][:body]
-      render :action => 'preview'
-    else
-      respond_to do |format|
-        if @article.update_attributes(params[:article])
-          flash[:notice] = 'Article was successfully updated.'
-          format.html { redirect_to(@article) }
-        else
-          format.html { render :action => "edit" }
+    unless params[:article].blank?
+      unless params[:preview].blank?
+        @article.title = params[:article][:title]
+        @article.body = params[:article][:body]
+        render :action => 'preview'
+      else
+        respond_to do |format|
+          if @article.update_attributes(params[:article])
+            flash[:notice] = 'Article was successfully updated.'
+            format.html { redirect_to(@article) }
+          else
+            format.html { render :action => "edit" }
+          end
         end
       end
+    else
+      redirect_to_edit_after_create_image
     end
   end
 
@@ -90,5 +99,14 @@ class ArticlesController < ApplicationController
       format.xml { render :layout => nil }
       format.rdf { render :layout => nil }
     end
+  end
+
+  private
+  def redirect_to_edit_after_create_image
+    image = Image.new(params[:image]) 
+    @article.images << image
+    @article.user = current_user
+    @article.save!
+    redirect_to(:action => 'edit', :id => @article.id)
   end
 end

@@ -97,7 +97,7 @@ describe ArticlesController do
     describe "with failed save" do
       before do
         @article.should_receive(:save).and_return(false)
-        post :create, :article => {}
+        post :create, :article => { :title => 'example', :body => 'hello' }
       end
 
       it { response.should render_template('new') }
@@ -106,7 +106,7 @@ describe ArticlesController do
     describe "with preview" do
       before do
         @article.should_not_receive(:save)
-        post :create, :article => {}, :preview => 'Preview'
+        post :create, :article => { :title => 'example', :body => 'hello' }, :preview => 'Preview'
       end
       it { response.should render_template('preview') }
     end
@@ -123,7 +123,7 @@ describe ArticlesController do
       before do
         Article.should_receive(:find).with("1").and_return(@article)
         @article.should_receive(:update_attributes).and_return(true)
-        put :update, :id => "1"
+        put :update, :id => "1", :article => { :title => 'example', :body => 'hello' }
       end
 
       it { assigns(:article).should equal(@article) }
@@ -133,7 +133,7 @@ describe ArticlesController do
     describe "with failed update" do
       before do
         @article.should_receive(:update_attributes).and_return(false)
-        put :update, :id => "1"
+        put :update, :id => "1", :article => { :title => 'example', :body => 'hello' }
       end
 
       it { response.should render_template('edit') }
@@ -144,7 +144,7 @@ describe ArticlesController do
         @article.stub!(:title=)
         @article.stub!(:body=)
         @article.should_not_receive(:update_attributes)
-        put :update, :article => {}, :preview => 'Preview'
+        put :update, :article => { :title => 'example', :body => 'hello.' }, :preview => 'Preview'
       end
 
       it { response.should render_template('preview') }

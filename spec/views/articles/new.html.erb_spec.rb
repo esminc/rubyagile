@@ -12,6 +12,7 @@ describe "/articles/new.html.erb" do
     @article.stub!(:title).and_return("an article title")
     @article.stub!(:body).and_return("an article body")
     @article.stub!(:published).and_return(0)
+    @article.stub!(:images).and_return([])
     assigns[:article] = @article
   end
 

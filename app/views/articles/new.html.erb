@@ -9,3 +9,15 @@
   <%= f.submit "草稿"  %>
   </p>
 <% end %>
+<div class="upload-image">
+  <h3>画像の追加</h3>
+  <ul>
+    <% @article.images.each do |image| %>
+       <%# スキーマ名、サーバ名を直書きで逃げている。 %>
+       <li><%= "http://ruby.agile.esm.co.jp#{image.filepath}" %></li>
+    <% end %>
+  </ul>
+  <% form_for(:article, @article, :url => { :action => 'create' }, :html => { :multipart => true }) do |f| %>
+    <%= render :partial => 'upload_image', :locals => { :image_f => f } %>
+  <% end %>
+</div>
