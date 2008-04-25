@@ -14,7 +14,8 @@ class EstraierAdmin
 
   # requires host 
   def initialize(config={})
-    @config = DEFAULT_CONFIG.merge(config)
+    @config = DEFAULT_CONFIG.dup
+    config.each { |k, v| @config[k.to_sym] = v }
   end
 
   def create_node(name, label = nil)

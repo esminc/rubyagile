@@ -76,6 +76,9 @@ module ActiveRecord #:nodoc:
     # See ActiveRecord::Acts::Searchable::ClassMethods#acts_as_searchable for per-model configuration options
     #
     module Searchable
+      MULTIBYTE_SPACE = [0x3000].pack("U")
+      PRESERVED_QUERY_WORDS_RE = /(AND|OR|ANDNOT)/
+
       def self.included(base) #:nodoc:
         base.extend ClassMethods        
       end
@@ -201,32 +204,6 @@ module ActiveRecord #:nodoc:
           find_by_ids_scope(ids, options)
         end
 
-        # private
-        def find_by_ids_scope(ids, options={})
-          return [] if ids.blank?
-          with_scope(:find=>{:conditions=>["#{table_name}.id IN (?)", ids]}) do
-            return find(:all, options)
-          end
-          ids = matched_ids(query, fulltext_option)
-          find_by_ids_scope(ids, options)
-        end
-
-        # private
-        def find_by_ids_scope(ids, options={})
-          return [] if ids.blank?
-          with_scope(:find=>{:conditions=>["#{table_name}.id IN (?)", ids]}) do
-            return find(:all, options)
-          end
-        end
-
-        def tokenize_query(query)
-          query
-        end
-
-        def tokenize_query(query)
-          query
-        end
-
         def matched_ids(query = "", options = {})
           matches = raw_matches(query, options)
           return matches.map{|doc| Integer(doc.attr("db_id")) }
@@ -258,7 +235,7 @@ module ActiveRecord #:nodoc:
           options.assert_valid_keys(VALID_FULLTEXT_OPTIONS)
 
           cond = new_estraier_condition
-          cond.set_phrase query
+          cond.set_phrase tokenize_query(query)
           [options[:attributes]].flatten.reject { |a| a.blank? }.each do |attr|
             cond.add_attr attr
           end
@@ -300,6 +277,15 @@ module ActiveRecord #:nodoc:
           cond
         end
 
+        def tokenize_query(query)
+          tokens = query.scan(/'([^']*)'|"([^"]*)"|([^\s#{MULTIBYTE_SPACE}]*)/).flatten.reject(&:blank?)
+          tokens.map do |token|
+            token.gsub!(PRESERVED_QUERY_WORDS_RE, $1.downcase) if token =~ PRESERVED_QUERY_WORDS_RE 
+            token.gsub!(/\A['"]|['"]\z/, '') # strip quatos
+            token
+          end.join(" AND ")
+        end
+
         protected
         
         def connect_estraier #:nodoc:
@@ -311,6 +297,15 @@ module ActiveRecord #:nodoc:
         def estraier_config #:nodoc:
           configurations[RAILS_ENV]['estraier'] or {}
         end
+
+        private
+        def find_by_ids_scope(ids, options={})
+          return [] if ids.blank?
+          with_scope(:find=>{:conditions=>["#{table_name}.id IN (?)", ids]}) do
+            return find(:all, options)
+          end
+        end
+
       end
       
       module ActMethods

@@ -31,6 +31,20 @@ describe Story, "extended by acts_as_searchable_enhance" do
     Story.attributes_to_store["mdate"].should  == "updated_at"
   end
 
+  describe "tokenize_query" do
+    it "tokenize_query('ruby vim').should == 'ruby AND vim'" do
+      Story.tokenize_query('ruby vim').should == 'ruby AND vim'
+    end
+
+    it "tokenize_query('\"ruby on rails\" vim').should == 'ruby on rails AND vim'" do
+      Story.tokenize_query('"ruby on rails" vim').should == 'ruby on rails AND vim'
+    end
+
+    it "tokenize_query('\"ruby on rails\"　vim').should == 'ruby on rails AND vim'" do
+      Story.tokenize_query('"ruby on rails"　vim').should == 'ruby on rails AND vim'
+    end
+  end
+
   describe "separate node by model classname" do
     before(:all) do
       OtherKlass = Class.new(ActiveRecord::Base)
