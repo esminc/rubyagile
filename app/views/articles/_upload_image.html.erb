@@ -1,0 +1,5 @@
+    <% fields_for :image do |image_f| %>
+      <%= image_f.file_field :uploaded_data %>
+      <%= image_f.submit "この画像をアップロードする"  %>
+    <% end %>
+
