@@ -10,12 +10,13 @@
 <updated><%= @pages.first.updated_at.to_s(:db) %></updated>
 <id><%= url_for(:controller => 'pages', :action => 'feed.xml', :only_path => false) %></id>
 <% @pages.each do |page| -%>
+  <%- url_for_page = url_for(:controller => 'pages', :action => 'show', :page_name => page.name, :only_path => false) -%>
   <entry>
-	<id><%= page_url(page) %></id>
+	<id><%= url_for_page %></id>
 	<author><name><%=h page.user.login %></name></author>
 	<published><%=h page.created_at.to_s(:db) %></published>
 	<updated><%=h page.updated_at.to_s(:db) %></updated>
-	<link href="<%= page_path(page) %>" rel="alternate" type="text/html" />
+	<link href="<%= url_for_page %>" rel="alternate" type="text/html" />
 	<title><%=h(page.name) %></title>
 	<content type="html">
 	  <%= parse_page(page) %>

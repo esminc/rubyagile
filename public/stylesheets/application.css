@@ -9,7 +9,7 @@
 }
 
 body {
-	background-color: #ffffff;
+	background-color: #efefef;
 	font-family: 'ヒラギノ丸ゴ Pro W4','Hiragino Maru Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 	font-size: 16px;
 	line-height: 1.8;
@@ -19,31 +19,52 @@ body {
 /******** Layout Elements ********/
 
 #wrapper {
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0 2px;
 	width: 90%;
 	margin: 0 auto;
+	padding: 10px 0;
+	background-color: #fff;
+}
+
+#gnavi {
+	background: #efefef url(/images/gnavi_bg.png) repeat-x;
+	text-align: right;
+	padding: 0px 0.5em;
 }
 
 #header {
-	margin: 0 0 10px 0;
-	padding: 20px 0;
+	margin: 0 0 2px 0;
+	padding: 20px 10px 0 10px;
 	background-color: #ffffff;
 	text-align: left;
 }
 
-#content {
+#container {
 	float: left;
-	width: 70%;
-	margin: 0 0 10px 0 ;
-	padding: 0 5px;
+	width: 100%;
+	padding: 0;
+	margin-right: -240px;
+	background-color: #fff;
+}
+
+#container>* {
+	margin-right: 240px;
+}
+
+#content {
+	margin-right: 240px;
+	margin-bottom: 10px;
+	padding: 1em;
 	background-color: #ffffff;
 }
 
 #sidebar {
-	float: left;
-	width: 24%;
-	margin-left: 2px;
-	padding: 5px;
-	background-color: #ffffff;
+	float: right;
+	width: 230px;
+	padding: 10px 5px;
+	background-color: #fff;
 	font-size: 80%;
 	line-height: 1.5;
 }
@@ -167,9 +188,24 @@ ol ol {
 }
 */
 
+div#gnavi span.menu {
+}
+
+div#gnavi span.menu a, div#gnavi span.menu a:active, div#gnavi span.menu a:visited {
+	color: #000;
+	text-decoration: none;
+	border: none;
+	font-weight: bold;
+}
+
 /* header */
-div#header div.lead {
-	font-size: 90%;
+
+div#header h2.lead {
+	border: none;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: normal;
 	color: #000;
 }
 
@@ -328,7 +364,6 @@ input#openid_url {
 div.flash {
 	margin: 5px 0 1em 0;
 	padding: 5px 1em;
-	width: 100%;
 }
 
 div.error {
@@ -393,6 +428,7 @@ div.preview div.article {
 }
 
 div#content div.navigation {
+	margin-top: 1em;
 	text-align: right;
 	font-size: 70%;
 }
@@ -407,4 +443,144 @@ table.dashboard th {
 
 table.dashbaord td {
 	padding: 3px 10px;
+}
+
+div.signin {
+	font-size: 70%;
+	text-align: left;
+}
+
+/* from scaffold.css */
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.contact_form label {
+	color: #333;
+	display: block;
+	font-size: 90%;
+	font-weight: bold;
+	margin: 1em 0px 0px 0px;
+}
+
+.contact_form form input,.contact_form form textarea {
+
+}
+
+.contact_form div.notice {
+	background: transparent;
+	border: none;
+	color: #000;
+	font-size: 80%;
+	margin: 0px;
+	padding: 0px;
+}
+
+input#contact_submit {
+	font-size: 150%;
+}
+
+.contact_form input.email, .contact_form div.email {
+	width:18em;
+	font-weight:bold;
+	font-size:120%;
+	padding: 2px 0.5em;
+}
+
+div.confirm {
+	border: 1px #ccc solid;
+	padding: 2px 0.5em;
+}
+
+div.about_personal_info {
+	margin-top: 15px;
+	margin-bottom: 0px;
+	font-size: 78%;
+}
+
+div.about_personal_info h3 {
+	font-size: 120%;
+	margin-bottom: 5px;
+}
+
+div.about_personal_info p {
+	margin: 0;
+	padding: 0;
+}
+
+div.page h2 {
+	text-align: right;
+	font-size: 100%;
+	margin-top: 10em;
+	margin-bottom: 0;
+}
+
+div.page h3 {
+	font-size: 24px;
+	font-weight: bold;
+	border-bottom: 2px solid #999;
+	margin-bottom: 10px;
+}
+
+div.page h4 {
+	margin-bottom: 5px;
+	padding-left: 5px;
+	border-left: 10px solid #999;
+}
+
+div.page div.meta {
+	font-size: 80%;
+	text-align: right;
+	color: #999;
+	margin-bottom: 20px;
+}
+
+div.page div.meta span.author {
+	color: #000;
+	font-weight: bold;
+}
+
+div.page ul {
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+ul li {
+	margin-left: 1em;
+}
+
+div.page p {
+	margin-left: 1em;
 }

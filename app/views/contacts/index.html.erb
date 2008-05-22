@@ -1,0 +1,25 @@
+<h2>お問い合わせ・ご相談</h2>
+  <%= error_messages_for :contact %>
+  <div class="contact_form">
+	<div class="notice">
+	  <%= link_to '永和システムマネジメント', '/pages/EiwaSystemManagement' %>の、Rubyを利用したアジャイルなシステム開発についてのお問い合わせ・ご相談は下記の入力フォームより承ります。ご連絡先メールアドレスとご相談内容を入力のうえ「送信確認画面へ」のボタンをクリックしてください。
+	</div>
+	<% form_for(@contact, :url => {:action => :confirm}) do |f| -%>
+
+	<%= f.label(:email) %><%= f.text_field :email, :class => "email" %>
+	<div class="notice">メールアドレスに誤りがある場合にはご連絡が取れないことがございます。<br />いま一度メールアドレスをご確認いただきますようお願いいたします。</div>
+
+	<%= f.label(:message) %>
+	<%= f.text_area :message, :size => "50x20" -%>
+
+	<label for="contact_submit">
+	  <%= f.submit "送信確認画面へ" -%>
+	</label>
+	<% end -%>
+  </div>
+
+<div class="about_personal_info">
+<h3>(個人情報の取り扱いについて)</h3>
+<p>登録していただいた情報は、お問い合わせへのご回答の目的にのみ利用いたします。
+登録していただいた情報は、株式会社永和システムマネジメント内部で処理しいたします。外部委託することはありません。</p>
+</div>

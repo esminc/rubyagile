@@ -14,34 +14,52 @@
 	Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
   </script>
   <% site_name = "Ruby x Agile" -%>
-  <% site_version = "(pre-α)" -%>
-  <% site_lead = "Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト" %>
+  <% site_version = "version:β" -%>
+  <% site_lead = "Rubyとアジャイルでふつうのシステム開発を実現する永和システムマネジメントのWebサイト" %>
   <title><%= site_name%><%= site_version %>: <%=h site_lead %></title>
 </head>
 
 <body>
   <div id="wrapper">
     <div id="header">
-	  <h1><%= link_to site_name, '/' %>&nbsp;<span class="site_version"><%= site_version %></span></h1>
-	  <div class="lead"><%=h site_lead %></div>
+	  <div class="title">
+		<h1><%= link_to site_name, '/' %>&nbsp;<span class="site_version"><%= site_version %></span></h1>
+		<h2 class="lead"><%=h site_lead %></h2>
+	  </div>
 	</div><!-- end .hearder -->
+	<div id="gnavi">
+	  <span class="menu">
+<%= link_to '新着記事', :controller => 'articles' %>
+&nbsp;
+&nbsp;
+<%= link_to 'ふつうのシステム開発', front_page_url %>
+&nbsp;
+&nbsp;
+<%= link_to '活動実績', :controller => 'pages', :page_name => 'OurWorks', :action => 'show' %>
+&nbsp;
+&nbsp;
+	  <%= link_to 'お問い合わせ・ご相談', :controller => 'contacts' %>
+	  </span>
+	</div>
 
-	  <%= render :partial => "shared/flash", :locals => { :flash => flash } %>
+	<div id="container">
 	  <div id="content">
-
+		<%= render :partial => "shared/flash", :locals => { :flash => flash } %>
 		<%= yield %>
 
 	  </div><!-- end .content -->
+	  </div><!-- end .container -->
 	<div id="sidebar">
 	  <%= (sidebar = yield :sidebar) ? sidebar : render(:partial => 'shared/sidebar') %>
 	</div>
-  </div><!-- end .sidebar -->
 
   <div id="footer">
 	<p>このサイトでは<a href="http://www.blankcss.com" target="_blank">BlankCSS.com</a>の提供するCSSを利用しています。</p>
 	<p>このサイトに掲載されている文章のライセンスは<br />
 <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">「Creative Commons Attribution 2.1 Japan License」</a>です。<br /><a class="image" rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/2.1/jp/88x31.png" /></a></p>
-
+	<% unless logged_in? -%>
+	<div class="signin"><%= link_to 'サインイン', signin_path %></div>
+	<% end -%>
   </div><!-- end .footer -->
 </div><!-- end .wrapper -->
 <script type="text/javascript">

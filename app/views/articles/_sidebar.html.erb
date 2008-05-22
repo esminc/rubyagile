@@ -1,4 +1,4 @@
-<% if session[:user_id] -%>
+<% if logged_in? -%>
 <div class="member sblock">
 <h3><%= current_user.login %> としてサインイン中</h3>
 <ul>

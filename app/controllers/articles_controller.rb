@@ -103,7 +103,7 @@ class ArticlesController < ApplicationController
 
   private
   def redirect_to_edit_after_create_image
-    image = Image.new(params[:image]) 
+    image = Image.new(params[:image])
     @article.images << image
     @article.user = current_user
     @article.save!
