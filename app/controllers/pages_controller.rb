@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :authentication
   before_filter :login_required, :except => [:show, :index, :feed, :search]
 
   def index

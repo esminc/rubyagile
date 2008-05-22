@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
 
   GetText.locale = "ja"
   init_gettext 'rubyagile'
+
+  private
+  def authentication
+    authenticate_or_request_with_http_basic do |user, pass|
+      user == 'oblove' && pass == 'oblove'
+    end
+  end
+
 end
