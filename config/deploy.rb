@@ -22,10 +22,18 @@ role :db,  production_server, :primary => true
 set :rake, "/var/lib/gems/1.8/bin/rake"
 
 namespace :deploy do
+  desc "make .mo file"
+  task :makemo do
+    rake = fetch(:rake, "rake")
+    rails_env = fetch(:rails_env, "production")
+    run "cd #{latest_release}; #{rake} RAILS_ENV=#{rails_env} gettext:make:mo"
+  end
+
   task :after_update_code do
     src_db_yml = "#{shared_path}/config/database.yml"
-    dest_db_yml = "#{release_path}/config/database.yml"
+    dest_db_yml = "#{latest_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
+    makemo
   end
 
   desc "resart for our retrospectiva"
