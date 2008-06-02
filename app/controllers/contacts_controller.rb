@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_filter :authentication
+#  before_filter :authentication
 
   verify :method => :post, :only => :confirm, :redirect_to => { :action => "index"}
   def index
