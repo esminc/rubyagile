@@ -4,7 +4,6 @@
 /.howm-keys
 /config/database.yml
 /log/*.log
-/vendor/plugins/hikidoc
 /vendor/plugins/rspec
 /vendor/plugins/rspec_on_rails
 /vendor/plugins/rspec-rails
