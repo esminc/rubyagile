@@ -16,7 +16,7 @@ require 'gettext/rails_compat'
 module GetText
   # GetText::Rails supports Ruby on Rails.
   # You add only 2 lines in your controller, all of the controller/view/models are
-  # targeted the textdomain. 
+  # targeted the textdomain.
   #
   # See <Ruby-GetText-Package HOWTO for Ruby on Rails (http://www.yotabanana.com/hiki/ruby-gettext-howto-rails.html>.
   module Rails
@@ -34,8 +34,8 @@ module GetText
     # call-seq:
     # bindtextdomain(domainname, options = {})
     #
-    # Bind a textdomain(#{path}/#{locale}/LC_MESSAGES/#{domainname}.mo) to your program. 
-    # Notes the textdomain scope becomes all of the controllers/views/models in your app. 
+    # Bind a textdomain(#{path}/#{locale}/LC_MESSAGES/#{domainname}.mo) to your program.
+    # Notes the textdomain scope becomes all of the controllers/views/models in your app.
     # This is different from normal GetText.bindtextomain.
     #
     # Usually, you don't call this directly in your rails application.
@@ -45,13 +45,13 @@ module GetText
     #
     # * domainname: the textdomain name.
     # * options: options as a Hash.
-    #   * :locale - the locale value such as "ja-JP". When the value is nil, 
-    #     locale is searched the order by this value > "lang" value of QUERY_STRING > 
-    #     params["lang"] > "lang" value of Cookie > HTTP_ACCEPT_LANGUAGE value 
-    #     > Default locale(en). 
+    #   * :locale - the locale value such as "ja-JP". When the value is nil,
+    #     locale is searched the order by this value > "lang" value of QUERY_STRING >
+    #     params["lang"] > "lang" value of Cookie > HTTP_ACCEPT_LANGUAGE value
+    #     > Default locale(en).
     #   * :path - the path to the mo-files. Default is "RAIL_ROOT/locale".
     #   * :charset - the charset. Generally UTF-8 is recommanded.
-    #     And the charset is set order by "the argument of bindtextdomain" 
+    #     And the charset is set order by "the argument of bindtextdomain"
     #     > HTTP_ACCEPT_CHARSET > Default charset(UTF-8).
     #
     #
@@ -89,10 +89,10 @@ module ActionController #:nodoc:
 
     @@gettext_domainnames = []
     @@gettext_content_type = nil
-    
+
     prepend_before_filter :init_gettext
     after_filter :init_content_type
-     
+
     def init_gettext_main(cgi) #:nodoc:
       cgi.params["lang"] = [params["lang"]] if params["lang"]
       set_cgi(cgi)
@@ -150,7 +150,7 @@ module ActionController #:nodoc:
     @@before_init_gettext = []
     def self.before_init_gettext(*methods, &block)
       @@before_init_gettext += methods
-      @@before_init_gettext << block if block_given? 
+      @@before_init_gettext << block if block_given?
     end
 
     # Append a block which is called after initializing gettext on the each WWW request.
@@ -169,9 +169,9 @@ module ActionController #:nodoc:
     @@after_init_gettext = []
     def self.after_init_gettext(*methods, &block)
       @@after_init_gettext += methods
-      @@after_init_gettext << block if block_given? 
+      @@after_init_gettext << block if block_given?
     end
-    
+
     # Bind a 'textdomain' to all of the controllers/views/models. Call this instead of GetText.bindtextdomain.
     # * textdomain: the textdomain
     # * options: options as a Hash.
@@ -179,18 +179,18 @@ module ActionController #:nodoc:
     #   * :content_type - the content type. Default is "text/html"
     #   * :locale_path - the path to locale directory. Default is {RAILS_ROOT}/locale or {plugin root directory}/locale.
     #
-    # locale is searched the order by params["lang"] > "lang" value of QUERY_STRING > 
-    # "lang" value of Cookie > HTTP_ACCEPT_LANGUAGE value > Default locale(en). 
+    # locale is searched the order by params["lang"] > "lang" value of QUERY_STRING >
+    # "lang" value of Cookie > HTTP_ACCEPT_LANGUAGE value > Default locale(en).
     # And the charset is set order by "the argument of bindtextdomain" > HTTP_ACCEPT_CHARSET > Default charset(UTF-8).
     #
-    # Note: Don't use content_type argument(not in options). 
+    # Note: Don't use content_type argument(not in options).
     # They are remained for backward compatibility.
     #
     # If you want to separate the textdomain each controllers, you need to call this function in the each controllers.
     #
     # app/controller/blog_controller.rb:
     #  require 'gettext/rails'
-    #  
+    #
     #  class BlogController < ApplicationController
     #    init_gettext "blog"
     #      :
@@ -217,12 +217,12 @@ module ActionController #:nodoc:
       end
 
       unless @@gettext_domainnames.find{|i| i[0] == domainname}
-	@@gettext_domainnames << [domainname, locale_path] 
+	@@gettext_domainnames << [domainname, locale_path]
       end
 
       bindtextdomain(domainname, {:path => locale_path})
       if defined? ActiveRecord::Base
-	textdomain_to(ActiveRecord::Base, domainname) 
+	textdomain_to(ActiveRecord::Base, domainname)
 	textdomain_to(ActiveRecord::Validations, domainname)
       end
       textdomain_to(ActionView::Base, domainname) if defined? ActionView::Base
@@ -231,9 +231,9 @@ module ActionController #:nodoc:
       textdomain_to(ActionView::Helpers, domainname) if defined? ActionView::Helpers
     end
 
-    # Gets the textdomain name and path of this controller which is set 
+    # Gets the textdomain name and path of this controller which is set
     # with init_gettext. *(Since 1.8)*
-    # 
+    #
     # * Returns: [[textdomainname1, path1], [textdomainname2, path2], ...]
     def self.textdomains
       @@gettext_domainnames
@@ -243,12 +243,12 @@ module ActionController #:nodoc:
   class TestRequest < AbstractRequest  #:nodoc:
     class GetTextMockCGI < CGI #:nodoc:
       attr_accessor :stdinput, :stdoutput, :env_table
-      
+
       def initialize(env, input=nil)
         self.env_table = env
         self.stdinput = StringIO.new(input || "")
         self.stdoutput = StringIO.new
-        
+
         super()
       end
     end
@@ -278,17 +278,17 @@ module ActionView #:nodoc:
       locale = GetText.locale
       [locale.to_general, locale.to_s, locale.language, Locale.default.language].uniq.each do |v|
 	localized_path = "#{template_path}_#{v}"
-	return render_file_without_locale(localized_path, use_full_path, local_assigns) if file_exists? localized_path
+	return render_file_without_locale(localized_path, use_full_path, local_assigns) if file_exist? localized_path
       end
       render_file_without_locale(template_path, use_full_path, local_assigns)
     end
-    
+
   end
 
   module Helpers  #:nodoc:
     class FormBuilder
       include GetText
-      
+
       def label_with_gettext(method, text = nil, options = {})
         text ||= s_("#{@object.class}|#{method.to_s.humanize}")
         @template.label(@object_name, method, text, options.merge(:object => @object))
@@ -303,9 +303,9 @@ module ActionView #:nodoc:
 
 	bindtextdomain("rails")
 
-	@error_message_title = Nn_("%{num} error prohibited this %{record} from being saved", 
+	@error_message_title = Nn_("%{num} error prohibited this %{record} from being saved",
 				   "%{num} errors prohibited this %{record} from being saved")
-	@error_message_explanation = Nn_("There was a problem with the following field:", 
+	@error_message_explanation = Nn_("There was a problem with the following field:",
 					 "There were problems with the following fields:")
 
 	module_function
@@ -324,7 +324,7 @@ module ActionView #:nodoc:
 	  end
 	  @error_message_title = [single_msg, plural_msg]
 	end
-	
+
 	# call-seq:
 	# set_error_message_explanation(msg)
 	#
@@ -341,14 +341,14 @@ module ActionView #:nodoc:
 	  @error_message_explanation = [single_msg, plural_msg]
 	end
 
-        # 
+        #
 	def error_messages_for(instance, objects, object_names, count, options)
           record = ActiveRecord::Base.human_attribute_table_name_for_error(options[:object_name] || object_names[0].to_s)
 
           html = {}
           [:id, :class].each do |key|
             if options.include?(key)
-              value = options[key] 
+              value = options[key]
               html[key] = value unless value.blank?
             else
               html[key] = 'errorExplanation'
@@ -367,7 +367,7 @@ module ActionView #:nodoc:
           end
 
           error_messages = objects.map {|object| object.errors.full_messages.map {|msg| instance.content_tag(:li, msg) } }
-            
+
           instance.content_tag(:div,
                             instance.content_tag(options[:header_tag] || :h2, header_message) <<
                             instance.content_tag(:p, message_explanation) <<
@@ -385,13 +385,13 @@ module ActionView #:nodoc:
 
       # error_messages_for overrides original method with localization.
       # And also it extends to be able to replace the title/explanation of the header of the error dialog. (Since 1.90)
-      # If you want to override these messages in the whole application, 
+      # If you want to override these messages in the whole application,
       #    use ActionView::Helpers::ActiveRecordHelper::L10n.set_error_message_(title|explanation) instead.
       # * :message_title - the title of message. Use Nn_() to path the strings for singular/plural.
-      #                       e.g. Nn_("%{num} error prohibited this %{record} from being saved", 
+      #                       e.g. Nn_("%{num} error prohibited this %{record} from being saved",
       # 			       "%{num} errors prohibited this %{record} from being saved")
       # * :message_explanation - the explanation of message
-      #                       e.g. Nn_("There was a problem with the following field:", 
+      #                       e.g. Nn_("There was a problem with the following field:",
       #                                "There were %{num} problems with the following fields:")
       def error_messages_for(*params)
         options = params.last.is_a?(Hash) ? params.pop.symbolize_keys : {}
@@ -410,9 +410,9 @@ module ActionView #:nodoc:
       include GetText
       alias distance_of_time_in_words_without_locale distance_of_time_in_words #:nodoc:
 
-      # This is FAKE constant. The messages are found by rgettext as the msgid. 
+      # This is FAKE constant. The messages are found by rgettext as the msgid.
       MESSAGESS = [N_('less than 5 seconds'), N_('less than 10 seconds'), N_('less than 20 seconds'),
-                   N_('half a minute'), N_('less than a minute'), N_('about 1 month'), 
+                   N_('half a minute'), N_('less than a minute'), N_('about 1 month'),
                    N_('about 1 year')]
       NMINUTES = [/^(\d+) minutes?$/, Nn_('1 minute', '%{num} minutes')]
       NHOURS   = [/^about (\d+) hours?$/, Nn_('about 1 hour', 'about %{num} hours')]
@@ -442,11 +442,11 @@ if defined? ActionMailer
   module ActionMailer #:nodoc:
     class Base #:nodoc:
       helper GetText::Rails
-      include GetText::Rails 
+      include GetText::Rails
       extend GetText::Rails
-      
+
       alias :create_without_gettext! :create! #:nodoc:
-      
+
       def base64(text, charset="iso-2022-jp", convert=true)
 	if convert
 	  if charset == "iso-2022-jp"
@@ -456,7 +456,7 @@ if defined? ActionMailer
 	text = TMail::Base64.folding_encode(text)
 	"=?#{charset}?B?#{text}?="
       end
-      
+
       def create!(*arg) #:nodoc:
 	create_without_gettext!(*arg)
 	if Locale.get.language == "ja"
@@ -477,7 +477,7 @@ end
 module ActionController #:nodoc: all
   module Caching
     module Fragments
-      def fragment_cache_key_with_gettext(name) 
+      def fragment_cache_key_with_gettext(name)
         ret = fragment_cache_key_without_gettext(name)
         if ret.is_a? String
           ret.gsub(/:/, ".") << "_#{normalized_locale}"
@@ -510,8 +510,8 @@ module ActionController #:nodoc: all
 end
 
 begin
-  Rails::Info.property("GetText version") do 
-    GetText::VERSION 
+  Rails::Info.property("GetText version") do
+    GetText::VERSION
   end
 rescue Exception
   $stderr.puts "GetText: #{GetText::VERSION} Rails::Info is not found." if $DEBUG
