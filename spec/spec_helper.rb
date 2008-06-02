@@ -47,9 +47,6 @@ Spec::Runner.configure do |config|
   # For more information take a look at Spec::Example::Configuration and Spec::Runner
 end
 
-#Spec::Rails::Example::ControllerExampleGroup.send(:include, AuthenticatedTestHelper)
-#Spec::Rails::Example::ViewExampleGroup.send(:include, AuthenticatedTestHelper)
-
 module Spec
   module Rails
     module Example

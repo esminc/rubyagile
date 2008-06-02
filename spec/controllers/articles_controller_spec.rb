@@ -16,7 +16,7 @@ describe ArticlesController do
       assigns[:articles].should have(1).entries
     end
 
-    it { assigns[:articles].first.published.should be_true }
+    it { assigns[:articles].first.publishing.should be_true }
   end
 
   describe "handling GET /articles/1" do
@@ -71,23 +71,23 @@ describe ArticlesController do
       Article.stub!(:new).and_return(@article)
     end
 
-    describe "with successful save w/o published" do
+    describe "with successful save w/o publishing" do
       before do
         Article.should_receive(:new).with(any_args).and_return(@article)
         @article.should_receive(:save).and_return(true)
-        post :create, :article => {:published => 0}
+        post :create, :article => {:publishing => 0}
       end
 
       it { response.should redirect_to(article_url("1")) }
 
-      it { @article.should_not_receive(:published=) }
+      it { @article.should_not_receive(:publishing=) }
     end
 
     describe "with successful save w/o direct_post" do
       before do
         Article.should_receive(:new).with(any_args).and_return(@article)
         @article.should_receive(:save).and_return(true)
-        post :create, :article => {:published => 1}
+        post :create, :article => {:publishing => 1}
       end
 
       it { response.should redirect_to(article_url("1")) }

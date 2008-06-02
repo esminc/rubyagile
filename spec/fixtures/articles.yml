@@ -239,13 +239,9 @@ hikidoc_sample:
     *複数行記述例\r\n\
     \r\n {{pre(\r\n  パラメータ１\r\n  パラメータ２\r\n  パラメータ３\r\n )}}\r\n"
   user: alice
-  created_at: 2008-01-22 20:07:54 +09:00
-  updated_at: 2008-01-22 20:07:54 +09:00
-  published: true
+  publishing: true
 draft:
   title: "草稿"
   body: "まだ公開されていませんよ"
   user: alice
-  created_at: 2008-01-22 20:07:54 +09:00
-  updated_at: 2008-01-22 20:07:54 +09:00
-  published: false
+  publishing: false

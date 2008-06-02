@@ -3,9 +3,7 @@ class Article < ActiveRecord::Base
   has_many :comments
   has_many :images, :dependent => :destroy
 
-  validates_presence_of :title, :body, :if => Proc.new { |a| a.published }
-
-  acts_as_searchable :searchable_fields => [:title, :body]
+#  acts_as_searchable :searchable_fields => [:title, :body]
 
   def self.find_all_written_by(user)
     Article.find_all_by_user_id(user.id, :order => "created_at DESC")
@@ -33,8 +31,8 @@ class Article < ActiveRecord::Base
   def load_neighbors
     ids = (Article.find_by_sql [<<-SQL, {:id => id}]).first
 SELECT next.id as next_id, prev.id as prev_id FROM
- (select min(id) as id from articles where :id < id and published is true) next,
- (select max(id) as id from articles where id < :id and published is true) prev
+ (select min(id) as id from articles where :id < id and publishing is true) next,
+ (select max(id) as id from articles where id < :id and publishing is true) prev
     SQL
     @prev_article = Article.find_by_id(ids.prev_id)
     @next_article = Article.find_by_id(ids.next_id)

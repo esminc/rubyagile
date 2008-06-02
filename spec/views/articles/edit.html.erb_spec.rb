@@ -10,7 +10,7 @@ describe "/articles/edit.html.erb" do
     @article.stub!(:user_id).and_return(1)
     @article.stub!(:title).and_return("an article title")
     @article.stub!(:body).and_return("an article body")
-    @article.stub!(:published).and_return(0)
+    @article.stub!(:publishing).and_return(0)
     @article.stub!(:images).and_return([])
     assigns[:article] = @article
   end

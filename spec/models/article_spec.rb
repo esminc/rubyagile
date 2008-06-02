@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Article do
 
   def valid_article
-    Article.new(:user => users(:alice), :title => 't', :body => 'b', :published => 1)
+    Article.new(:user => users(:alice), :title => 't', :body => 'b', :publishing => true)
   end
 
   describe "デフォルト値について" do
@@ -11,7 +12,7 @@ describe Article do
       @article = Article.new
     end
 
-    it { @article.should_not be_published }
+    it { @article.should_not be_publishing }
   end
 
 
@@ -89,23 +90,23 @@ describe Article do
 
 end
 
-describe Article, "#published?" do
+describe Article, "#publishing?" do
   before do
     @article = Article.new
   end
 
   describe "when checked" do
     before do
-      @article.published = 1
+      @article.publishing = true
     end
-    it { @article.should be_published }
+    it { @article.should be_publishing }
   end
 
   describe "when non-checked" do
     before do
-      @article.published = 0
+      @article.publishing = false
     end
-    it { @article.should_not be_published }
+    it { @article.should_not be_publishing }
   end
 
 end

@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe DashboardHelper do
   include DashboardHelper
 
   describe "#render_status_for" do
-    describe "when published" do
+    describe "when publishing" do
       before do
-        article = mock_model(Article, :published? => true)
+        article = mock_model(Article, :publishing? => true)
         @result = render_status_for(article)
       end
 
@@ -15,7 +16,7 @@ describe DashboardHelper do
 
     describe "when in draft" do
       before do
-        article = mock_model(Article, :published? => false)
+        article = mock_model(Article, :publishing? => false)
         @result = render_status_for(article)
       end
 

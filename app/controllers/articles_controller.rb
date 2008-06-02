@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.find(:all,
-      :conditions => ["published is true"],
+      :conditions => ["publishing is true"],
       :order => "created_at DESC") # TODO duplicated
     respond_to do |format|
       format.html
