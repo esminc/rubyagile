@@ -1,5 +1,6 @@
 set :application, "rubyagile"
-set :repository,  "https://projects.tky.esm.co.jp/svn/rubyagile/trunk/"
+set :repository,  "http://projects.tky.esm.co.jp/git/rubyagile"
+set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
@@ -8,7 +9,7 @@ set :deploy_to, "/home/#{application}/railsapp"
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
-# set :scm, :subversion
+set :scm, :git
 
 set :use_sudo, false
 set :runner, "rubyagile"
