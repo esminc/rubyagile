@@ -584,3 +584,12 @@ ul li {
 div.page p {
 	margin-left: 1em;
 }
+
+img.badge {
+	border:none;
+}
+
+.badge {
+	border-width:0;
+	text-decoration:none;
+}
