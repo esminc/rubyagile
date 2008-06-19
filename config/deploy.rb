@@ -34,7 +34,7 @@ namespace :deploy do
     src_db_yml = "#{shared_path}/config/database.yml"
     dest_db_yml = "#{latest_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
-    makemo
+#    makemo
   end
 
   desc "resart for our retrospectiva"
