@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   validates_presence_of :name, :content
   validates_uniqueness_of :name
 
-#  acts_as_searchable :searchable_fields => [:name, :content]
+  acts_as_searchable :searchable_fields => [:name, :content]
 
   # models/article.rb とdupっている
   def author_name

@@ -88,6 +88,49 @@ describe Article do
     end
   end
 
+  describe "全文検索インデックスを追加する場合" do
+    fixtures :articles
+    before do
+      @article = articles(:hikidoc_sample)
+      @old_record_timestamps = Article.record_timestamps
+      Article.record_timestamps = false
+    end
+
+    after do
+      Article.record_timestamps = @old_record_timestamps
+    end
+
+    it "検索対象のフィールド, title が変更された場合はconnectionのput_docが呼ばれること" do
+      Article.estraier_connection.should_receive(:put_doc)
+      @article.title = "new title"
+      @article.save
+    end
+
+    it "検索対象でないフィールド, publishing が変更された場合はconnectionのput_docが呼ばれないこと" do
+      Article.estraier_connection.should_not_receive(:put_doc)
+      @article.publishing = !@article.publishing
+      @article.save
+    end
+  end
+
+  describe "全文検索をし、検索対象に全てのArticleが含まれる場合" do
+    fixtures :articles
+    before do
+      Article.should_receive(:matched_ids).
+        with("検索語", :order=>"@mdate NUMD").
+        and_return([articles(:hikidoc_sample).id, articles(:draft).id])
+    end
+
+    it "追加の検索条件を指定しない場合には全ての文書がヒットすること" do
+      as = Article.find_fulltext("検索語")
+      as.length.should == 2
+    end
+
+    it ":publishing => trueという追加の検索条件を指定すると:hikidoc_sampleのみがヒットすること" do
+      as = Article.find_fulltext("検索語", :conditions=>["publishing = ?", true])
+      as.should == [articles(:hikidoc_sample)]
+    end
+  end
 end
 
 describe Article, "#publishing?" do
@@ -117,3 +160,4 @@ describe Article, ".find_all_by_user_id" do
     Article.find_all_written_by(users(:alice))
   end
 end
+
