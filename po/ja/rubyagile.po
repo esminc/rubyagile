@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: rubyagile 0.1.0\n"
-"POT-Creation-Date: 2008-05-16 13:49+0900\n"
-"PO-Revision-Date: 2008-05-14 14:40+0900\n"
+"POT-Creation-Date: 2008-08-18 20:53+0900\n"
+"PO-Revision-Date: 2008-08-18 21:10+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgid "Article|Updated at"
 msgstr ""
 
 #: app/models/article.rb:-
-msgid "Article|Published"
+msgid "Article|Publishing"
 msgstr ""
 
 #: app/models/comment.rb:-
@@ -108,6 +108,22 @@ msgstr ""
 msgid "format is not valid"
 msgstr "の形式が正しくありません。"
 
+#: app/models/contact.rb:10
+msgid "Contact|Bot"
+msgstr "スパム投稿対策"
+
+#: app/models/contact.rb:18
+msgid "must be checked off."
+msgstr "のチェックボックスをオフにしてください。"
+
+#: app/models/image.rb:-
+msgid "db file"
+msgstr ""
+
+#: app/models/image.rb:-
+msgid "DbFile|Data"
+msgstr ""
+
 #: app/models/image.rb:-
 msgid "image"
 msgstr ""
@@ -138,14 +154,6 @@ msgstr ""
 
 #: app/models/image.rb:-
 msgid "Image|Updated at"
-msgstr ""
-
-#: app/models/image.rb:-
-msgid "db file"
-msgstr ""
-
-#: app/models/image.rb:-
-msgid "DbFile|Data"
 msgstr ""
 
 #: app/models/page.rb:-
@@ -207,3 +215,7 @@ msgstr ""
 #: app/models/user.rb:-
 msgid "User|Updated at"
 msgstr ""
+
+#: app/views/contacts/index.html.erb:16
+msgid "Are you bot?"
+msgstr "チェックをオフにしてください(スパム投稿対策です。ご協力をお願いします)。"

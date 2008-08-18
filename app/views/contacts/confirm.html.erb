@@ -9,7 +9,7 @@
 	<div class="confirm email"><%=h @contact.email %></div>
 	<%= f.label(:message) %><%= f.hidden_field :message %>
 	<div class="confirm"><%=h @contact.message %></div>
-
+	<%= f.hidden_field :bot %>
 	<label for="contact_submit">
 	  <%= f.submit "入力フォームへ戻る", :name => "edit" -%>
 	  <%= f.submit "この内容で送信する" %>

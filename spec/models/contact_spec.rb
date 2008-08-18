@@ -7,7 +7,13 @@ describe Contact do
       :ip_address => "127.0.0.1")
   end
 
-  it "should be valid" do
-    @contact.should be_valid
+  it "should be bot" do
+    @contact.should be_bot
   end
+
+  it "should_not be valid" do
+    @contact.should_not be_valid
+    @contact.errors.on(:bot).should_not be_empty
+  end
+
 end

@@ -8,6 +8,7 @@ class ContactsController < ApplicationController
 
   def confirm
     @contact = Contact.new(params[:contact])
+    @contact.bot = params[:contact][:bot]
     respond_to do |format|
       if @contact.valid?
         format.html
@@ -19,6 +20,7 @@ class ContactsController < ApplicationController
 
   def submit
     @contact = Contact.new(params[:contact])
+    @contact.bot = params[:contact][:bot]
     unless params[:edit].blank?
       render :action => "index"
     else

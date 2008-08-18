@@ -10,7 +10,9 @@
 	<div class="notice">メールアドレスに誤りがある場合にはご連絡が取れないことがございます。<br />いま一度メールアドレスをご確認いただきますようお願いいたします。</div>
 
 	<%= f.label(:message) %>
-	<%= f.text_area :message, :size => "50x20" -%>
+	<%= f.text_area :message, :size => "50x20" -%><br />
+
+	<%= f.check_box :bot %><label style="display:inline" for="contact_bot">&nbsp;<%= _('Are you bot?') %></label>
 
 	<label for="contact_submit">
 	  <%= f.submit "送信確認画面へ" -%>
