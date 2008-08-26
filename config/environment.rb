@@ -58,4 +58,7 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
 
 #  config.gem "gettext"
+  config.gem 'genki-rexml-expansion-fix',
+    :lib => 'rexml-expansion-fix',
+    :source => 'http://gems.github.com'
 end
