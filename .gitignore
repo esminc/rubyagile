@@ -10,5 +10,4 @@
 /coverage
 /.generators
 /db/schema.rb
-/locale
 /tmp
