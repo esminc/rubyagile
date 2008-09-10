@@ -1,9 +1,5 @@
 set :application, "rubyagile"
-print "projects.tky.esm.co.jp account: "
-set :git_username do
-  Capistrano::CLI.prompt("ssh account name :")
-end
-set :repository,  "ssh://#{git_username}@projects.tky.esm.co.jp/var/cache/git/rubyagile"
+set :repository,  "ssh://rubyagile@projects.tky.esm.co.jp/var/cache/git/rubyagile"
 set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
@@ -22,7 +18,7 @@ set :runner, "rubyagile"
 ssh_options[:username] = application
 #ssh_options[:verbose] = :debug
 
-set :production_server, "agile.esm.co.jp"
+set :production_server, "ruby.agile.esm.co.jp"
 role :app, production_server
 role :web, production_server
 role :db,  production_server, :primary => true
@@ -44,7 +40,7 @@ namespace :deploy do
 #    makemo
   end
 
-  desc "resart for our retrospectiva"
+  desc "resart"
   task :restart, :roles => :app, :except => { :no_release => true } do |t|
     stop
     start
