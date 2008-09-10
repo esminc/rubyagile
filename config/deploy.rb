@@ -1,6 +1,9 @@
 set :application, "rubyagile"
 print "projects.tky.esm.co.jp account: "
-set :repository,  "ssh://#{STDIN.gets.chomp}@projects.tky.esm.co.jp/var/cache/git/rubyagile"
+set :git_username do
+  Capistrano::CLI.prompt("ssh account name :")
+end
+set :repository,  "ssh://#{git_username}@projects.tky.esm.co.jp/var/cache/git/rubyagile"
 set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
