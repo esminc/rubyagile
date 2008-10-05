@@ -3,23 +3,23 @@
 <title>Ruby x Agile</title>
 <subtitle>Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト</subtitle>
 <link href="<%= root_url %>"/>
-<link rel="self" href="<%= url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %>" type="application/atom+xml" />
+<link rel="self" href="<%= formatted_feed_articles_url(:xml) %>" type="application/atom+xml" />
 <author>
   <name>永和システムマネジメント</name>
 </author>
 <updated><%= @articles.first.updated_at.to_s(:db) %></updated>
-<id><%= url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %></id>
+<id><%= formatted_feed_articles_url(:xml) %></id>
 <% @articles.each do |article| -%>
   <entry>
-	<id><%= article_url(article) %></id>
-	<author><name><%=h article.user.login %></name></author>
-	<published><%=h article.created_at.to_s(:db) %></published>
-	<updated><%=h article.updated_at.to_s(:db) %></updated>
-	<link href="<%= article_url(article) %>" rel="alternate" type="text/html" />
-	<title><%=h(article.title) %></title>
-	<content type="html">
-	  <%= parse_article(article) %>
-	</content>
+  <id><%= article_url(article) %></id>
+  <author><name><%=h article.user.login %></name></author>
+  <published><%=h article.created_at.to_s(:db) %></published>
+  <updated><%=h article.updated_at.to_s(:db) %></updated>
+  <link href="<%= article_url(article) %>" rel="alternate" type="text/html" />
+  <title><%=h(article.title) %></title>
+  <content type="html">
+    <%= parse_article(article) %>
+  </content>
   </entry>
 <% end -%>
 </feed>

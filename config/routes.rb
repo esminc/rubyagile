@@ -14,17 +14,17 @@ ActionController::Routing::Routes.draw do |map|
   map.signout '/signout', :controller => "sessions", :action => "destroy"
   map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
 
-  map.connect '/articles/feed.:format', :controller => 'articles', :action => 'feed'
-  map.connect '/pages/feed.:format', :controller => 'pages', :action => 'feed'
-
   map.connect '/pages/:page_name/:action', :controller => 'pages'
   map.front_page '/pages', :controller => 'pages', :page_name => 'FrontPage', :action => 'show'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
   map.resources :images
-  map.resources :articles
-  map.resources :pages
+
+  map.with_options :collection => {:feed => :get} do |feed|
+    feed.resources :articles
+    feed.resources :pages
+  end
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
