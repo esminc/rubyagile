@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
 <title>Ruby x Agile</title>
 <subtitle>Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト</subtitle>
-<link href="<%= root_url(:only_path => false) %>"/>
+<link href="<%= root_url %>"/>
 <link rel="self" href="<%= url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %>" type="application/atom+xml" />
 <author>
   <name>永和システムマネジメント</name>
@@ -15,7 +15,7 @@
 	<author><name><%=h article.user.login %></name></author>
 	<published><%=h article.created_at.to_s(:db) %></published>
 	<updated><%=h article.updated_at.to_s(:db) %></updated>
-	<link href="<%= article_path(article) %>" rel="alternate" type="text/html" />
+	<link href="<%= article_url(article) %>" rel="alternate" type="text/html" />
 	<title><%=h(article.title) %></title>
 	<content type="html">
 	  <%= parse_article(article) %>
