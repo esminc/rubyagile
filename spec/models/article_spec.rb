@@ -161,3 +161,20 @@ describe Article, ".find_all_by_user_id" do
   end
 end
 
+describe Article, '.publishing' do
+  before do
+    Article.should_receive(:with_scope).with(:find => {:conditions => {:publishing => true}}).and_yield(Article)
+    Article.should_receive(:find).with(:all)
+  end
+
+  it { Article.publishing.to_a }
+end
+
+describe Article, '.newer_first' do
+  before do
+    Article.should_receive(:with_scope).with(:find => {:order => 'created_at DESC'}).and_yield(Article)
+    Article.should_receive(:find).with(:all)
+  end
+
+  it { Article.newer_first.to_a }
+end

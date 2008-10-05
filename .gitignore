@@ -2,6 +2,9 @@
 **/**/.DS_Store
 */.DS_Store
 /.howm-keys
+*.swp
+.rake_tasks
+.generators
 /config/database.yml
 /log/*.log
 /vendor/plugins/rspec_on_rails_matchers
@@ -10,4 +13,5 @@
 /coverage
 /.generators
 /db/schema.rb
+/db/*_structure.sql
 /tmp

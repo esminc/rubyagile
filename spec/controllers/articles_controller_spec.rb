@@ -183,8 +183,9 @@ describe ArticlesController do
 
   describe "handling Atomfeed" do
     before do
-      @article = mock_model(Article, :to_param => "1")
-      Article.stub!(:find).and_return(@article)
+      @articles = [mock_model(Article, :to_param => "1")]
+      Article.should_receive(:publishing).and_return(@articles)
+      @articles.should_receive(:newer_first).and_return(@articles)
       get "feed", :type => 'xml'
     end
 
