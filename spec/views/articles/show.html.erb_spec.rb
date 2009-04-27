@@ -7,8 +7,8 @@ describe "/articles/show.html.erb" do
     @article = mock_model(Article, :null_object => true)
     assigns[:article] = @article
 
-    template.stub_render(:partial => 'navigation')
-    template.expect_render(:partial => 'shared/article')
+    template.stub!(:render).with(:partial => 'navigation')
+    template.should_receive(:render).with(:partial => 'shared/article')
   end
 
   it "should render attributes" do

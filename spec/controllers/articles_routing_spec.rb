@@ -12,19 +12,19 @@ describe ArticlesController do
     end
   
     it "should map { :controller => 'articles', :action => 'show', :id => 1 } to /articles/1" do
-      route_for(:controller => "articles", :action => "show", :id => 1).should == "/articles/1"
+      route_for(:controller => "articles", :action => "show", :id => "1").should == "/articles/1"
     end
   
     it "should map { :controller => 'articles', :action => 'edit', :id => 1 } to /articles/1/edit" do
-      route_for(:controller => "articles", :action => "edit", :id => 1).should == "/articles/1/edit"
+      route_for(:controller => "articles", :action => "edit", :id => "1").should == "/articles/1/edit"
     end
   
     it "should map { :controller => 'articles', :action => 'update', :id => 1} to /articles/1" do
-      route_for(:controller => "articles", :action => "update", :id => 1).should == "/articles/1"
+      route_for(:controller => "articles", :action => "update", :id => "1").should == {:path => "/articles/1", :method => "PUT"}
     end
   
     it "should map { :controller => 'articles', :action => 'destroy', :id => 1} to /articles/1" do
-      route_for(:controller => "articles", :action => "destroy", :id => 1).should == "/articles/1"
+      route_for(:controller => "articles", :action => "destroy", :id => "1").should == {:path => "/articles/1", :method => "DELETE"}
     end
   end
 

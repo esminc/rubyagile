@@ -7,8 +7,8 @@ describe "/pages/show.html.erb" do
     @page = mock_model(Page, :null_object => true)
     assigns[:page] = @page
 
-    template.stub_render(:partial => 'navigation')
-    template.expect_render(:partial => 'shared/page')
+    template.stub!(:render).with(:partial => 'navigation')
+    template.should_receive(:render).with(:partial => 'shared/page')
   end
 
   it "should render attributes" do

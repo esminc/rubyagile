@@ -6,7 +6,7 @@ describe "/articles/index.html.erb" do
   describe "when empty" do
     before(:each) do
       assigns[:articles] = []
-      template.expect_render(:partial => 'sidebar')
+      template.should_receive(:render).with(:partial => 'sidebar')
     end
 
     it "should render list of articles" do
