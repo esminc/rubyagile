@@ -32,10 +32,10 @@ class Article < ActiveRecord::Base
 
   private
   def load_neighbors
-    ids = (Article.find_by_sql [<<-SQL, {:id => id}]).first
+    ids = (Article.find_by_sql [<<-SQL, {:id => id, :true => true}]).first
 SELECT next.id as next_id, prev.id as prev_id FROM
- (select min(id) as id from articles where :id < id and publishing is true) next,
- (select max(id) as id from articles where id < :id and publishing is true) prev
+ (select min(id) as id from articles where :id < id and publishing = :true) next,
+ (select max(id) as id from articles where id < :id and publishing = :true) prev
     SQL
     @prev_article = Article.find_by_id(ids.prev_id)
     @next_article = Article.find_by_id(ids.next_id)
