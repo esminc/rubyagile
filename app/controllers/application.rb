@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '935e963f099051ad538fff1f635764a1'
 
-  GetText.locale = "ja"
-  init_gettext 'rubyagile'
-
   private
   def authentication
     authenticate_or_request_with_http_basic do |user, pass|
