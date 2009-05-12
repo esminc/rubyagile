@@ -12,7 +12,7 @@
 	<%= f.label(:message) %>
 	<%= f.text_area :message, :size => "50x20" -%><br />
 
-	<%= f.check_box :bot %><label style="display:inline" for="contact_bot">&nbsp;<%= I18n.t('Are you bot?') %></label>
+	<%= f.check_box :bot %><label style="display:inline" for="contact_bot">&nbsp;<%= I18n.t('app.contacts.are_you_bot') %></label>
 
 	<label for="contact_submit">
 	  <%= f.submit "送信確認画面へ" -%>

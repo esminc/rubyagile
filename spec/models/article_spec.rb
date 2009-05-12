@@ -162,17 +162,23 @@ describe Article, ".find_all_by_user_id" do
 end
 
 describe Article, '.publishing' do
+  subject{ Article.publishing }
   before do
-    Article.should_receive(:with_scope).with(:find => {:conditions => {:publishing => true}}).and_yield(Article)
-    Article.should_receive(:find).with(:all)
+    [ @draft = Article.create!,
+      @pub = Article.create! ]
+    @pub.update_attribute(:publishing, true)
+    @draft.update_attribute(:publishing, false)
   end
 
-  it { Article.publishing.to_a }
+  it { should include(@pub) }
+  it { should_not include(@draft) }
 end
 
 describe Article, '.newer_first' do
   before do
-    Article.should_receive(:with_scope).with(:find => {:order => 'created_at DESC'}).and_yield(Article)
+    # FIXME named_scopeの実装をテストしていてダサい
+    Article.should_receive(:with_scope).with({:find => {:order => 'created_at DESC'},
+                                              :create => {}},:reverse_merge).and_yield(Article)
     Article.should_receive(:find).with(:all)
   end
 

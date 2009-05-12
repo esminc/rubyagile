@@ -8,7 +8,7 @@ module ArticlesHelper
     if 0 < article.comment_count
       link_to("#{article.comment_count} Comments", article_path(article, :anchor => "comments"))
     else
-      link_to(I18n.t("Not Yet Commented"), article_path(article, :anchor => "comment_form"))
+      link_to(I18n.t("app.articles.no_comments", :default => "Not Yet Commented"), article_path(article, :anchor => "comment_form"))
     end
   end
 
