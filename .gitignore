@@ -14,4 +14,5 @@
 /.generators
 /db/schema.rb
 /db/*_structure.sql
+/db/*.sqlite3
 /tmp
