@@ -1,8 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <% site_name = "Ruby x Agile" -%>
+  <% site_version = "version:β" -%>
+  <% site_lead = "Rubyとアジャイルでふつうのシステム開発を実現する永和システムマネジメントのWebサイト" %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="description" content="<%=h site_name %>" />
+  <meta name="keywords" content="Ruby,Rails,RoR,Agile,アジャイル,システム開発,永和システムマネジメント,ESM" />
   <link rel="alternate" type="application/atom+xml" title="新着記事のAtomフィード" href="<%= url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %>" />
   <link rel="alternate" type="application/atom+xml" title="/pagesのAtomフィード" href="<%= url_for(:controller => 'pages', :action => 'feed.xml', :only_path => false) %>" />
   <%= stylesheet_link_tag "application" %>
@@ -11,10 +16,7 @@
   <script type="text/javascript">
 	Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
   </script>
-  <% site_name = "Ruby x Agile" -%>
-  <% site_version = "version:β" -%>
-  <% site_lead = "Rubyとアジャイルでふつうのシステム開発を実現する永和システムマネジメントのWebサイト" %>
-  <title><%= site_name%><%= site_version %> - <%=h site_lead %></title>
+  <title><%=h site_name%> <%=h site_version %> - <%=h site_lead %></title>
 </head>
 
 <body>
