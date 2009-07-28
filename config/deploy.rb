@@ -18,7 +18,7 @@ set :runner, "rubyagile"
 ssh_options[:username] = application
 #ssh_options[:verbose] = :debug
 
-set :production_server, "agile.esm.co.jp"
+set :production_server, "ruby.agile.esm.co.jp"
 role :app, production_server
 role :web, production_server
 role :db,  production_server, :primary => true
