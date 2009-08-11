@@ -1,0 +1,26 @@
+<h1>Listing kareki_feeds</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Url</th>
+    <th>Etag</th>
+  </tr>
+
+<% @kareki_feeds.each do |kareki_feed| %>
+  <tr>
+    <td><%=h kareki_feed.title %></td>
+    <td><%=h kareki_feed.link %></td>
+    <td><%=h kareki_feed.url %></td>
+    <td><%=h kareki_feed.etag %></td>
+    <td><%= link_to 'Show', kareki_feed %></td>
+    <td><%= link_to 'Edit', edit_kareki_feed_path(kareki_feed) %></td>
+    <td><%= link_to 'Destroy', kareki_feed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New kareki_feed', new_kareki_feed_path %>

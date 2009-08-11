@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @kareki_feed.title %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%=h @kareki_feed.link %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @kareki_feed.url %>
+</p>
+
+<p>
+  <b>Etag:</b>
+  <%=h @kareki_feed.etag %>
+</p>
+
+
+<%= link_to 'Edit', edit_kareki_feed_path(@kareki_feed) %> |
+<%= link_to 'Back', kareki_feeds_path %>
