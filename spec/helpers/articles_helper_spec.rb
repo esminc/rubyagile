@@ -18,7 +18,7 @@ describe ArticlesHelper do
       before do
         @article = mock_model(Article, :comment_count => 0)
       end
-      it { link_to_comments(@article).should have_tag('a', 'Not Yet Commented') }
+      it { link_to_comments(@article).should have_tag('a', 'コメントは、ありません。') }
     end
 
     describe "with some comments" do
