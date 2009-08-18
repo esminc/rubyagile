@@ -10,6 +10,8 @@ describe KarekiFeed do
     subject { @feed }
 
     it { should be_valid }
+    it { subject.url.should == 'http://d.hatena.ne.jp/ursm/rss' }
     it { subject.title.should == 'ursmの日記' }
+    it { subject.link.should == 'http://d.hatena.ne.jp/ursm/' }
   end
 end
