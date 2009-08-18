@@ -135,59 +135,57 @@ describe Article do
       as.should == [articles(:hikidoc_sample)]
     end
   end
-end
 
-describe Article, "#publishing?" do
-  before do
-    @article = Article.new
-  end
-
-  describe "when checked" do
+  describe "#publishing?" do
     before do
-      @article.publishing = true
+      @article = Article.new
     end
-    it { @article.should be_publishing }
+
+    describe "when checked" do
+      before do
+        @article.publishing = true
+      end
+      it { @article.should be_publishing }
+    end
+
+    describe "when non-checked" do
+      before do
+        @article.publishing = false
+      end
+      it { @article.should_not be_publishing }
+    end
   end
 
-  describe "when non-checked" do
+  describe ".find_all_by_user_id" do
+    it "作成日時の降順であること" do
+      Article.should_receive(:find_all_by_user_id).with(users(:alice).id, {:order => "created_at DESC" })
+      Article.find_all_written_by(users(:alice))
+    end
+  end
+
+  describe '.publishing' do
+    subject{ Article.publishing }
     before do
-      @article.publishing = false
+      [ @draft = Article.create!,
+        @pub = Article.create! ]
+      @pub.update_attribute(:publishing, true)
+      @draft.update_attribute(:publishing, false)
     end
-    it { @article.should_not be_publishing }
+
+    it { should include(@pub) }
+    it { should_not include(@draft) }
   end
 
-end
+  describe '.newer_first' do
+    before do
+      Article.delete_all
+      @articles = [
+        valid_article(:created_at => 1.days.ago ).tap(&:save!),
+        valid_article(:created_at => 2.days.ago ).tap(&:save!),
+      ]
+    end
+    subject{ Article.newer_first }
 
-describe Article, ".find_all_by_user_id" do
-  it "作成日時の降順であること" do
-    Article.should_receive(:find_all_by_user_id).with(users(:alice).id, {:order => "created_at DESC" })
-    Article.find_all_written_by(users(:alice))
+    it { should == @articles }
   end
-end
-
-describe Article, '.publishing' do
-  subject{ Article.publishing }
-  before do
-    [ @draft = Article.create!,
-      @pub = Article.create! ]
-    @pub.update_attribute(:publishing, true)
-    @draft.update_attribute(:publishing, false)
-  end
-
-  it { should include(@pub) }
-  it { should_not include(@draft) }
-end
-
-describe Article, '.newer_first' do
-  include ArticleFactory
-  before do
-    Article.delete_all
-    @articles = [
-      valid_article(:created_at => 1.days.ago ).tap(&:save!),
-      valid_article(:created_at => 2.days.ago ).tap(&:save!),
-    ]
-  end
-  subject{ Article.newer_first }
-
-  it { should == @articles }
 end
