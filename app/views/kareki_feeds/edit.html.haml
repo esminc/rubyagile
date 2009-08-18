@@ -1,0 +1,27 @@
+%h1 Editing kareki_feed
+
+- form_for @kareki_feed do |f|
+  != f.error_messages
+
+  %p
+    != f.label :title
+    %br
+    != f.text_field :title
+  %p
+    != f.label :link
+    %br
+    != f.text_field :link
+  %p
+    != f.label :url
+    %br
+    != f.text_field :url
+  %p
+    != f.label :etag
+    %br
+    != f.text_field :etag
+  %p
+    != f.submit 'Update'
+
+!= link_to 'Show', @kareki_feed
+|
+!= link_to 'Back', kareki_feeds_path
