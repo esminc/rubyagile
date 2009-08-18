@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe Article do
-
-  def valid_article
-    Article.new(:user => users(:alice), :title => 't', :body => 'b', :publishing => true)
+module ArticleFactory
+  def valid_article(opts = {})
+    paramz = {:user => users(:alice), :title => 't', :body => 'b', :publishing => true}.merge(opts)
+    Article.new(paramz)
   end
+end
+
+describe Article do
+  include ArticleFactory
 
   describe "デフォルト値について" do
     before do
@@ -175,12 +179,15 @@ describe Article, '.publishing' do
 end
 
 describe Article, '.newer_first' do
+  include ArticleFactory
   before do
-    # FIXME named_scopeの実装をテストしていてダサい
-    Article.should_receive(:with_scope).with({:find => {:order => 'created_at DESC'},
-                                              :create => {}},:reverse_merge).and_yield(Article)
-    Article.should_receive(:find).with(:all)
+    Article.delete_all
+    @articles = [
+      valid_article(:created_at => 1.days.ago ).tap(&:save!),
+      valid_article(:created_at => 2.days.ago ).tap(&:save!),
+    ]
   end
+  subject{ Article.newer_first }
 
-  it { Article.newer_first.to_a }
+  it { should == @articles }
 end
