@@ -14,4 +14,12 @@ describe KarekiFeed do
     it { subject.title.should == 'ursmの日記' }
     it { subject.link.should == 'http://d.hatena.ne.jp/ursm/' }
   end
+
+  context "存在しないフィードが指定されたとき" do
+    before do
+      @feed = KarekiFeed.new(:url => "http://example.com/not_exist/rss")
+    end
+    subject{ @feed }
+    it{ should_not be_exist }
+  end
 end
