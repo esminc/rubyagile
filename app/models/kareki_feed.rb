@@ -8,13 +8,13 @@ class KarekiFeed < ActiveRecord::Base
     !!feed_content.present?
   end
 
-  private
   def before_save
     feed = RSS::Parser.parse(open(url).read)
     self.title = feed.channel.title
     self.link = feed.channel.link
   end
 
+  private
   def feed_content
     open(url).read
   rescue OpenURI::HTTPError
