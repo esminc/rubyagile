@@ -17,3 +17,14 @@ describe KarekiEntry do
     KarekiEntry.create!(@valid_attributes)
   end
 end
+
+describe KarekiEntry do
+  describe "#create_from_item" do
+    before do
+      @entry = KarekiEntry.create_from_item(nil)
+    end
+
+    subject { @entry }
+    it { should be_valid }
+  end
+end
