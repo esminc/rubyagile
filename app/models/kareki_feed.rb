@@ -4,6 +4,19 @@ require 'open-uri'
 class KarekiFeed < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
+  has_many :kareki_entries
+
+  class << self
+    def crawl
+#      KarekiFeed.all.each {|feed| fetch_entries(feed.url}
+    end
+  end
+
+  # XXX call for better method name :<
+  def fetch_and_save_entries
+    # self.urlからKarekiEntryをつくる
+  end
+
   def exist?
     !!feed_content.present?
   end
