@@ -33,11 +33,16 @@ describe KarekiFeed do
     end
   end
 
-  context "存在しないフィードが指定されたとき" do
-    before do
-      @feed = KarekiFeed.new(:url => "http://example.com/not_exist/rss")
+  describe "#fetch_and_save_entries" do
+    context "happy case" do
+      before do
+        dummy_feed = Object.new
+        mock(@feed = create_ursm_hatena).parse_feed_content { dummy_feed }
+        mock(@feed).create_entries_from(dummy_feed)
+      end
+      specify "call private methods" do
+        @feed.fetch_and_save_entries
+      end
     end
-    subject{ @feed }
-    it{ should_not be_exist }
   end
 end

@@ -8,13 +8,17 @@ class KarekiFeed < ActiveRecord::Base
 
   class << self
     def crawl
+# TODO write spec
 #      KarekiFeed.all.each {|feed| fetch_entries(feed.url}
     end
   end
 
   # XXX call for better method name :<
   def fetch_and_save_entries
-    # self.urlからKarekiEntryをつくる
+    feed = parse_feed_content
+    create_entries_from(feed)
+  ensure
+    # XXX handle exception someway?
   end
 
   def exist?
@@ -37,5 +41,11 @@ class KarekiFeed < ActiveRecord::Base
 
   def parse_feed_content
     RSS::Parser.parse(feed_content)
+  end
+
+  def create_entries_from(feed)
+    feed.items.each do |item|
+      KarekiEntry.create_from_item(item)
+    end
   end
 end
