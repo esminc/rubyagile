@@ -1,0 +1,18 @@
+#!script/runner
+# coding: utf-8
+
+require 'optparse'
+
+ARGV.options do |opt|
+  opt.banner += ' <FEED_URL>'
+  opt.parse!
+
+  unless ARGV.size == 1
+    $stderr.puts opt
+    exit 1
+  end
+end
+
+url = ARGV.shift
+feed = KarekiFeed.find_or_create_by_url(url)
+feed.fetch_and_save_entries
