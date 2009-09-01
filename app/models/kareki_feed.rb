@@ -22,7 +22,7 @@ class KarekiFeed < ActiveRecord::Base
   end
 
   def before_save
-    feed = RSS::Parser.parse(open(url).read)
+    feed = parse_feed_content
     self.title = feed.channel.title
     self.link = feed.channel.link
   end
@@ -34,4 +34,8 @@ class KarekiFeed < ActiveRecord::Base
     nil
   end
   memoize :feed_content
+
+  def parse_feed_content
+    RSS::Parser.parse(feed_content)
+  end
 end

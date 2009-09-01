@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<?xml-stylesheet href="http://d.hatena.ne.jp/ursm/rssxsl" type="text/xsl" media="screen"?>
+
+
+<rdf:RDF
+	xmlns="http://purl.org/rss/1.0/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xml:lang="ja">
+<channel rdf:about="http://d.hatena.ne.jp/ursm/rss">
+	<title>ursmの日記</title>
+	<link>http://d.hatena.ne.jp/ursm/</link>
+	<description>ursmの日記</description>
+	
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-08-25T00:35:41+09:00</dc:date>
+	<items>
+	<rdf:Seq>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090824/1251041815"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090824/1251044068"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090727/1248630253"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090726/1248613369"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090726/1248613370"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090720/1248112759"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/ursm/20090627/1246125143"/>
+	</rdf:Seq>
+	</items>
+</channel>
+
+
+
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090824/1251041815">
+	<title>[cucumber] Cucumber で table 要素の中身を検証する</title>
+	<link>http://d.hatena.ne.jp/ursm/20090824/1251041815</link>
+	<description> こういうアクションに対して class TablesController &#60; ApplicationController def index render :inline =&#62; &#60;&#60;-HAML, :type =&#62; :haml %table#hoge %tr %th hoge %th fuga %tr %td 1 %td 2 %tr %td 3 %td 4 HAML end end こんなフィーチャを書きました</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p>こういうアクションに対して</p>
+<pre class="syntax-highlight">
+<span class="synPreProc">class </span><span class="synType">TablesController</span> &#60; <span class="synIdentifier">ApplicationController</span>
+  <span class="synPreProc">def </span><span class="synIdentifier">index</span>
+    render <span class="synIdentifier">:inline</span> =&#62; &#60;&#60;-<span class="synSpecial">HAML</span>, <span class="synIdentifier">:type</span> =&#62; <span class="synIdentifier">:haml</span>
+<span class="synConstant">%table#hoge</span>
+<span class="synConstant">  %tr</span>
+<span class="synConstant">    %th hoge</span>
+<span class="synConstant">    %th fuga</span>
+<span class="synConstant">  %tr</span>
+<span class="synConstant">    %td 1</span>
+<span class="synConstant">    %td 2</span>
+<span class="synConstant">  %tr</span>
+<span class="synConstant">    %td 3</span>
+<span class="synConstant">    %td 4</span>
+<span class="synConstant">    </span><span class="synSpecial">HAML</span>
+  <span class="synPreProc">end</span>
+<span class="synPreProc">end</span>
+</pre>
+
+			<p>こんなフィーチャを書きました。</p>
+<pre class="syntax-highlight">
+フィーチャ: テーブルを見たい
+  シナリオ: ページを表示するといい感じのテーブルが出てくる
+    前提 &#34;テーブルのサンプル&#34;ページを表示している
+    ならば 以下のテーブルが表示されていること
+      | hoge | fuga |
+      | 1    | 2    |
+      | 3    | 4    |
+</pre>
+
+			<p>テーブルの中身を検証する step はこう書けます。</p>
+<pre class="syntax-highlight">
+<span class="synIdentifier">Then</span> /^以下のテーブルが表示されていること<span class="synIdentifier">$/</span> <span class="synStatement">do</span> |<span class="synIdentifier">expected</span>|
+  expected.diff!(table_at(<span class="synSpecial">'</span><span class="synConstant">#hoge</span><span class="synSpecial">'</span>).to_a)
+<span class="synStatement">end</span>
+</pre>
+
+			<p>ちゃんと通ります。</p>
+			<p><a href="http://img.skitch.com/20090823-q6b67ywp7dfuamekfwry991yhn.png" class="http-image" target="_blank"><img src="http://img.skitch.com/20090823-q6b67ywp7dfuamekfwry991yhn.png" class="http-image" alt="http://img.skitch.com/20090823-q6b67ywp7dfuamekfwry991yhn.png"></a></p>
+			<p>期待値を変えてみましょう。</p>
+<pre class="syntax-highlight">
+    ならば 以下のテーブルが表示されていること
+      | hoge | fuga |
+      | 1    | 2    |
+      | 3    | 5    |
+</pre>
+
+			<p>わかりやすい diff が出力されて失敗します。</p>
+			<p><a href="http://img.skitch.com/20090823-kbaki37xrbbakhcanktnj9mk93.png" class="http-image" target="_blank"><img src="http://img.skitch.com/20090823-kbaki37xrbbakhcanktnj9mk93.png" class="http-image" alt="http://img.skitch.com/20090823-kbaki37xrbbakhcanktnj9mk93.png"></a></p>
+			<p>行や列が余分にある場合や足りない場合の挙動は <code>Cucumber::Ast::Table#diff!</code> の第2引数で指定できます。詳しくは <a href="http://rdoc.info/rdoc/aslakhellesoy/cucumber/blob/dae5ef4b3594b68a8a30c2aab688dda2cbe4b0ae/Cucumber/Ast/Table.html#diff%21-instance_method" target="_blank">Cucumber の RDoc</a> を参照してください。</p>
+			<br>
+
+			<h4> See Also</h4>
+			<ul>
+				<li> <a href="http://wiki.github.com/aslakhellesoy/cucumber/multiline-step-arguments" target="_blank">Multiline Step Arguments - cucumber - GitHub</a></li>
+			</ul>
+
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-08-24T00:36:55+09:00</dc:date>
+	<dc:subject>cucumber</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090824/1251044068">
+	<title>[cucumber] Cucumber で JavaScript の動作をエミュレートする</title>
+	<link>http://d.hatena.ne.jp/ursm/20090824/1251044068</link>
+	<description> クリックすると要素の内容を書き換えるリンクがあります。 class HelloController &#60; ApplicationController def index render :inline =&#62; &#60;&#60;-HAML, :type =&#62; :haml = link_to_function ’Hello’, &#34;$(’hoge’).update(’こんにちは’)&#34; #hoge HAML e</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p>クリックすると要素の内容を書き換えるリンクがあります。</p>
+<pre class="syntax-highlight">
+<span class="synPreProc">class </span><span class="synType">HelloController</span> &#60; <span class="synIdentifier">ApplicationController</span>
+  <span class="synPreProc">def </span><span class="synIdentifier">index</span>
+    render <span class="synIdentifier">:inline</span> =&#62; &#60;&#60;-<span class="synSpecial">HAML</span>, <span class="synIdentifier">:type</span> =&#62; <span class="synIdentifier">:haml</span>
+<span class="synConstant">= link_to_function 'Hello', &#34;$('hoge').update('こんにちは')&#34;</span>
+<span class="synConstant">#hoge</span>
+<span class="synConstant">    </span><span class="synSpecial">HAML</span>
+  <span class="synPreProc">end</span>
+<span class="synPreProc">end</span>
+</pre>
+
+			<p>フィーチャを普通に書くとこんな感じですが、JavaScript を使っているのでうまく動きません。</p>
+<pre class="syntax-highlight">
+フィーチャ: 挨拶してほしい
+  シナリオ: リンクをクリックすると挨拶を返す
+    前提 &#34;こんにちは&#34;ページを表示している
+    もし &#34;Hello&#34;リンクをクリックする
+    ならば &#34;こんにちは&#34;と表示されていること
+</pre>
+
+			<p>そんな時は自分で JavaScript の動作を真似てやります。Cucumber が表示/操作しているドキュメントには <code>Webrat::Session#current_dom</code> でアクセスできます。</p>
+<pre class="syntax-highlight">
+フィーチャ: 挨拶してほしい
+  シナリオ: リンクをクリックすると挨拶を返す
+    前提 &#34;こんにちは&#34;ページを表示している
+    # step 名が曖昧になるのでクォートを外した
+    もし Helloリンクをクリックする
+    ならば &#34;こんにちは&#34;と表示されていること
+</pre>
+
+<pre class="syntax-highlight">
+<span class="synIdentifier">When</span> /^<span class="synIdentifier">Hello</span>リンクをクリックする<span class="synIdentifier">$/</span> <span class="synStatement">do</span>
+  current_dom.css(<span class="synSpecial">'</span><span class="synConstant">#hoge</span><span class="synSpecial">'</span>).first.inner_html = <span class="synSpecial">'</span><span class="synConstant">こんにちは</span><span class="synSpecial">'</span>
+  <span class="synComment"># こっちでもいい</span>
+  <span class="synComment"># element_at('#hoge').element.inner_html = 'こんにちは'</span>
+<span class="synStatement">end</span>
+</pre>
+
+			<p>この例だと意味がないですが、フォームの必須項目を JavaScript で入力させているような場合には有用です。</p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-08-24T01:14:28+09:00</dc:date>
+	<dc:subject>cucumber</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090727/1248630253">
+	<title>[ruby] bingo.rb</title>
+	<link>http://d.hatena.ne.jp/ursm/20090727/1248630253</link>
+	<description> ビンゴの番号を出力するスクリプト。何かキーを押すたびに1つずつ番号が出てくる。q で終了。1.8.7 と 1.9.1 で動くみたい。 </description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p>ビンゴの番号を出力するスクリプト。何かキーを押すたびに1つずつ番号が出てくる。<kbd>q</kbd> で終了。1.8.7 と 1.9.1 で動くみたい。</p>
+			<p><script src="http://gist.github.com/155866.js"></script></p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-07-27T02:44:13+09:00</dc:date>
+	<dc:subject>ruby</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090726/1248613369">
+	<title>[event][ruby] Mitaka.rb &amp; pgcafe Nite</title>
+	<link>http://d.hatena.ne.jp/ursm/20090726/1248613369</link>
+	<description> http://atnd.org/events/983 Mitaka.rb にも pgcafe にも行ったことがない私ですが、おいしいものが食べられると聞いて飛んでいきました。懇親会のはずなのになぜか発表の時間があって、RubyKaigi でやった Haml/Sass の話を再演させていただきました。使い回しのジョークに</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p><a href="http://atnd.org/events/983" target="_blank">http://atnd.org/events/983</a></p>
+			<p>Mitaka.rb にも pgcafe にも行ったことがない私ですが、おいしいものが食べられると聞いて飛んでいきました。懇親会のはずなのになぜか発表の時間があって、<a href="http://d.hatena.ne.jp/ursm/20090720/1248112759" target="_blank">RubyKaigi でやった Haml/Sass の話</a>を再演させていただきました。使い回しのジョークにもちゃんと笑ってくださった皆様に心から感謝します。</p>
+			<p>今回のイベントは <a href="http://www.little-star.ws/home/" target="_blank">Little Star Restaurant</a> というお店を貸し切って行われたのですが、「私がおいしいと思う店でしか開催しない」という <a href="http://d.hatena.ne.jp/onering/" target="_blank">ysakaki さん</a>のお言葉通りとても良い感じのお店でした。あんなおいしい食事にありついたのは久しぶりです。またひもじくなったら参加させてくださいね!</p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-07-26T22:02:49+09:00</dc:date>
+	<dc:subject>event</dc:subject>
+	<dc:subject>ruby</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090726/1248613370">
+	<title>[event][ruby] 第1回 Hokuriku.rb</title>
+	<link>http://d.hatena.ne.jp/ursm/20090726/1248613370</link>
+	<description> http://atnd.org/events/806 北陸には縁もゆかりもない私ですが、Ruby と聞いて馳せ参じました。お邪魔ついでに LT (10min) をさせていただきましたので、発表資料を置いておきます。Ruby や Rails を普段使っていない方も結構おられたとのことでネタの選択を誤った感がしま</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p><a href="http://atnd.org/events/806" target="_blank">http://atnd.org/events/806</a></p>
+			<p>北陸には縁もゆかりもない私ですが、Ruby と聞いて馳せ参じました。お邪魔ついでに LT (10min) をさせていただきましたので、発表資料を置いておきます。Ruby や Rails を普段使っていない方も結構おられたとのことでネタの選択を誤った感がしますが、「(何を言ってるかはよくわからんが) Ruby の面白さは伝わってきた」とのお言葉をいただけて嬉しかったです。</p>
+			<p><div style="width:425px;text-align:left" id="__ss_1768214"><a href="http://www.slideshare.net/ursm/inactivesupport" style="font:14px Helvetica,Arial,Sans-serif;display:block;margin:12px 0 3px 0;text-decoration:underline;" title="InactiveSupport">InactiveSupport</a><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=inactivesupport-090725110635-phpapp01&stripped_title=inactivesupport" ></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=inactivesupport-090725110635-phpapp01&stripped_title=inactivesupport" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;">View more <a href="http://www.slideshare.net/" style="text-decoration:underline;">documents</a> from <a href="http://www.slideshare.net/ursm" style="text-decoration:underline;">Keita Urashima</a>.</div></div></p>
+			<p>Ruby や Rails そのものはもちろん、開発環境やデプロイ、運用なども話題に登る pragmatic なイベントでした。私の周囲は (自分を含めて) Ruby 厨だらけなので、普段 Java や PHP を使っている人から見た Ruby の話は特に興味深く聞かせていただきました。また機会がありましたら弊社の Ruby 部隊がどんな風に仕事をしているのかご紹介したいですね。</p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-07-26T22:02:50+09:00</dc:date>
+	<dc:subject>event</dc:subject>
+	<dc:subject>ruby</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090720/1248112759">
+	<title>[event][haml][sass] 日本Ruby会議2009でHamlとSassについて話しました</title>
+	<link>http://d.hatena.ne.jp/ursm/20090720/1248112759</link>
+	<description> 最終日 (7/19) の特別会議室にて Haml と Sass のお話をさせていただきました。英語に似た何かで書かれた発表資料を置いておきますね。 Haml and Sass: Solution for you who get tired of ugly markupView more documents from Keita Urashima. 日本で Haml/Sass が無名だ</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p>最終日 (7/19) の特別会議室にて Haml と Sass のお話をさせていただきました。英語に似た何かで書かれた発表資料を置いておきますね。</p>
+			<p><div style="width:425px;text-align:left" id="__ss_1743913"><a href="http://www.slideshare.net/ursm/haml-and-sass-solution-for-you-who-get-tired-of-ugly-markup" style="font:14px Helvetica,Arial,Sans-serif;display:block;margin:12px 0 3px 0;text-decoration:underline;" title="Haml and Sass: Solution for you who get tired of ugly markup">Haml and Sass: Solution for you who get tired of ugly markup</a><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=haml-and-sass-090720091706-phpapp02&stripped_title=haml-and-sass-solution-for-you-who-get-tired-of-ugly-markup" ></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=haml-and-sass-090720091706-phpapp02&stripped_title=haml-and-sass-solution-for-you-who-get-tired-of-ugly-markup" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;">View more <a href="http://www.slideshare.net/" style="text-decoration:underline;">documents</a> from <a href="http://www.slideshare.net/ursm" style="text-decoration:underline;">Keita Urashima</a>.</div></div></p>
+			<p>日本で Haml/Sass が無名だった1年前とは違い、それなりに使われつつある今になって何を話せばいいのか? RubyKaigi という場で単なるライブラリの話を (作者でもメンテナでもない私が) していいのか? 色々と悩みましたが、結局はごく普通の紹介に終始しました。私は Haml/Sass が一貫した信念の元で作られている素晴らしいプロダクトであり、ネタでも何でもなく本当に使えるものだということをお伝えしたかったのです。お楽しみいただけたでしょうか?</p>
+			<p>例によって当日の朝まで資料が出来ず、来場者の方とあまりお話しできなかったのが心残りです (<a href="http://twitter.com/kenchan/status/2683924882" target="_blank">kenchan にも怒られた</a>)。本業の方でも多大なご迷惑をおかけしてしまいました。もっともっと精進します。</p>
+			<p>ご来場いただいた皆様、スタッフの皆様、Ruby に関わるすべての人達にお礼を申し上げます。ありがとうございました!</p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-07-21T02:59:19+09:00</dc:date>
+	<dc:subject>event</dc:subject>
+	<dc:subject>haml</dc:subject>
+	<dc:subject>sass</dc:subject>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/ursm/20090627/1246125143">
+	<title>[event][sinatra] Sinatra勉強会@万葉</title>
+	<link>http://d.hatena.ne.jp/ursm/20090627/1246125143</link>
+	<description> Sinatra は Haml と Sass を使うためのライブラリだと認識している私ですが、お邪魔してきました。 本編 「皆さんテンプレート言語は何をお使いですか? ursm さんには聞くだけ無駄だと思いますが」…見透かされてる!! Sinatra 0.9.2 はファイル変更時に reload してくれない</description>
+
+	<content:encoded><![CDATA[
+		<div class="section">
+			<p>Sinatra は Haml と Sass を使うためのライブラリだと認識している私ですが、お邪魔してきました。</p>
+			<h4> 本編</h4>
+			<ul>
+				<li> 「皆さんテンプレート言語は何をお使いですか? ursm さんには聞くだけ無駄だと思いますが」…見透かされてる!!</li>
+				<li> Sinatra 0.9.2 はファイル変更時に reload してくれない。バグじゃなくて仕様。 (参考: <a href="http://d.hatena.ne.jp/foosin/20090611/1244735821" target="_blank">sinatra0.9.2でファイルの自動再読み込みが効かないのでshotgunを使おう - だるろぐ</a>)</li>
+				<li> jugyo さんが Haml の素晴らしさを伝えようと頑張っていた。使ってない人にわかってもらうのは難しいですよね</li>
+			</ul>
+			<h4> 懇親会</h4>
+			<ul>
+				<li> Kinesis と SlimBlade Trackball の営業をしてきた</li>
+				<li> PHP の怖い話をたくさん聞いた。なるべく近寄らないようにしよう</li>
+			</ul>
+			<p>Rails 勉強会ともまた違う磊落さが素敵でした。主催の <a href="http://d.hatena.ne.jp/tsuyoshikawa/">id:tsuyoshikawa</a> さん、お話いただいた <a href="http://jugyo.org/" target="_blank">jugyo</a> さん、ありがとうございました。</p>
+		</div>
+]]></content:encoded>
+	<dc:creator>ursm</dc:creator>
+	<dc:date>2009-06-28T02:52:23+09:00</dc:date>
+	<dc:subject>event</dc:subject>
+	<dc:subject>sinatra</dc:subject>
+</item>
+</rdf:RDF>
