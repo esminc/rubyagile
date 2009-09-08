@@ -30,5 +30,9 @@ describe KarekiEntry do
     subject { @entry }
     it { should be_valid }
 
+    describe ".content" do
+      subject{ @entry.content }
+      it{ should =~ /<p>こういうアクションに対して<\/p>/ }
+    end
   end
 end
