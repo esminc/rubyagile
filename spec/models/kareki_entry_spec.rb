@@ -21,10 +21,14 @@ end
 describe KarekiEntry do
   describe "#create_from_item" do
     before do
-      @entry = KarekiEntry.create_from_item(nil)
+      feed = RSS::Parser.parse(File.read(File.expand_path("spec/fixtures/feeds/hatena_ursm.rss", Rails.root)))
+      @item = feed.items.first
+
+      @entry = KarekiEntry.create_from_item(@item)
     end
 
     subject { @entry }
     it { should be_valid }
+
   end
 end
