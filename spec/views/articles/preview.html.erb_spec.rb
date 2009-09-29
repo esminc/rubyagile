@@ -6,9 +6,9 @@ describe "/articles/preview" do
     article = mock_model(Article,
       :title => "t", :body => "b", :login => "l",
       :author_name => 'an', :user_id => 1)
-    article.should_receive(:publishing).and_return(0)
+    stub(article).publishing { 0 }
     assigns[:article] = article
-    template.should_receive(:parse_article).with(article)
+    mock(template).parse_article(article)
     render 'articles/preview'
   end
 

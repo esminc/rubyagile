@@ -6,12 +6,14 @@ describe "/articles/edit.html.erb" do
   before do
     login_as(:alice)
     @article = mock_model(Article)
-    @article.stub!(:author_name).and_return("an author")
-    @article.stub!(:user_id).and_return(1)
-    @article.stub!(:title).and_return("an article title")
-    @article.stub!(:body).and_return("an article body")
-    @article.stub!(:publishing).and_return(0)
-    @article.stub!(:images).and_return([])
+    stub(@article) {
+      author_name { "an author" }
+      user_id { 1 }
+      title { "an article title" }
+      body { "an article body" }
+      publishing { 0 }
+      images { [] }
+    }
     assigns[:article] = @article
   end
 

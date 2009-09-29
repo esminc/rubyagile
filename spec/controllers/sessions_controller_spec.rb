@@ -10,7 +10,7 @@ describe SessionsController do
 
   describe "GET 'create'" do
     before do
-      controller.should_receive(:open_id_authentication)
+      mock(controller).open_id_authentication
     end
     it "should be successful" do
       get 'create'
@@ -20,7 +20,7 @@ describe SessionsController do
 
   describe "DELETE 'destroy'" do
     before do
-      controller.should_receive(:reset_session)
+      mock(controller).reset_session
       delete :destroy
     end
 

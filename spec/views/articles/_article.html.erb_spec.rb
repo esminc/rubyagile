@@ -7,11 +7,13 @@ describe "/articles/_article.html.erb" do
     before(:each) do
       @article = mock_model(Article, :null_object => true)
       user = mock_model(User, :login => 'a_user')
-      @article.stub!(:user).and_return(user)
+      stub(@article).user { user }
 
-      template.stub!(:link_to_comments)
-      template.stub!(:posted_on)
-      template.stub!(:parse_article)
+      stub(template) {
+        like_to_comments
+        posted_on
+        parse_article
+      }
     end
 
     it "should render list of articles" do

@@ -7,7 +7,7 @@ describe "/pages/preview" do
       :name => "t", :content => "b", :login => "l",
       :author_name => 'an', :user_id => 1)
     assigns[:page] = page
-    template.should_receive(:parse_page).with(page)
+    mock(template).parse_page(page)
     render 'pages/preview'
   end
 
