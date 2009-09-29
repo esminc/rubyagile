@@ -24,11 +24,12 @@ describe KarekiEntry do
       feed = RSS::Parser.parse(File.read(File.expand_path("spec/fixtures/feeds/hatena_ursm.rss", Rails.root)))
       @item = feed.items.first
 
-      @entry = KarekiEntry.create_from_item(@item)
+      @entry = KarekiEntry.build_from_item(@item)
     end
 
     subject { @entry }
     it { should be_valid }
+    it { should be_new_record }
 
     describe ".content" do
       subject{ @entry.content }

@@ -10,11 +10,12 @@ class KarekiEntry < ActiveRecord::Base
   belongs_to :feed
 
   class << self
-    def create_from_item(item)
-      param = RSS_ITEM_TO_KAREKI_ENTRY.inject({}){|h,(ks,v)|
-        h.update(v => Array(ks).map{|k| item.send(k) }.compact.first)
+    def build_from_item(item)
+      param = RSS_ITEM_TO_KAREKI_ENTRY.each_with_object({}) {|(ks,v), h|
+        h[v] = Array(ks).map{|k| item.send(k) }.compact.first
       }
-      new(param)
+      # remove singleton method Time#now from RSS::Parser
+      new(param.update(:published_at => param[:published_at].to_datetime))
     end
   end
 end
