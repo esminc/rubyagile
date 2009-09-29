@@ -8,7 +8,7 @@ describe PagesController do
   describe "handling GET /pages/FrontPage" do
     before(:each) do
       @page = mock_model(Page)
-      stub(Page).find_by_name("FrontPage") { @page }
+      stub(controller).fetch_named_page("FrontPage") { @page }
       get :show, :page_name => "FrontPage"
     end
 
@@ -40,8 +40,8 @@ describe PagesController do
   describe "handling GET /pages/FrontPage/edit" do
     before(:each) do
       @page = mock_model(Page)
-      stub(Page).find_by_name("FrontPage") { @page }
-      get :edit, :page_name => "FrontPage"
+      stub(controller).fetch_named_page("MyPage") { @page }
+      get :edit, :page_name => "MyPage"
     end
 
     it { response.should be_success }
