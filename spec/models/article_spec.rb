@@ -105,12 +105,14 @@ describe Article do
     end
 
     it "検索対象のフィールド, title が変更された場合はconnectionのput_docが呼ばれること" do
+      pending "全文検索はいま動かしてない"
       Article.estraier_connection.should_receive(:put_doc)
       @article.title = "new title"
       @article.save
     end
 
     it "検索対象でないフィールド, publishing が変更された場合はconnectionのput_docが呼ばれないこと" do
+      pending "全文検索はいま動かしてない"
       Article.estraier_connection.should_not_receive(:put_doc)
       @article.publishing = !@article.publishing
       @article.save
@@ -120,6 +122,7 @@ describe Article do
   describe "全文検索をし、検索対象に全てのArticleが含まれる場合" do
     fixtures :articles
     before do
+      pending "全文検索はいま動かしてない"
       Article.should_receive(:matched_ids).
         with("検索語", :order=>"@mdate NUMD").
         and_return([articles(:hikidoc_sample).id, articles(:draft).id])
@@ -158,7 +161,7 @@ describe Article do
 
   describe ".find_all_by_user_id" do
     it "作成日時の降順であること" do
-      Article.should_receive(:find_all_by_user_id).with(users(:alice).id, {:order => "created_at DESC" })
+      mock(Article).find_all_by_user_id(users(:alice).id, {:order => "created_at DESC"})
       Article.find_all_written_by(users(:alice))
     end
   end
