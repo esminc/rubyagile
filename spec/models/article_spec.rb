@@ -104,16 +104,14 @@ describe Article do
       Article.record_timestamps = @old_record_timestamps
     end
 
-    it "検索対象のフィールド, title が変更された場合はconnectionのput_docが呼ばれること" do
-      pending "全文検索はいま動かしてない"
-      Article.estraier_connection.should_receive(:put_doc)
+    xit "検索対象のフィールド, title が変更された場合はconnectionのput_docが呼ばれること" do
+      mock(Article.estraier_connection).put_doc
       @article.title = "new title"
       @article.save
     end
 
-    it "検索対象でないフィールド, publishing が変更された場合はconnectionのput_docが呼ばれないこと" do
-      pending "全文検索はいま動かしてない"
-      Article.estraier_connection.should_not_receive(:put_doc)
+    xit "検索対象でないフィールド, publishing が変更された場合はconnectionのput_docが呼ばれないこと" do
+      dont_allow(Article.estraier_connection).put_doc
       @article.publishing = !@article.publishing
       @article.save
     end
@@ -122,18 +120,16 @@ describe Article do
   describe "全文検索をし、検索対象に全てのArticleが含まれる場合" do
     fixtures :articles
     before do
-      pending "全文検索はいま動かしてない"
-      Article.should_receive(:matched_ids).
-        with("検索語", :order=>"@mdate NUMD").
-        and_return([articles(:hikidoc_sample).id, articles(:draft).id])
+      mock(Article).matched_ids("検索語", :order=>"@mdate NUMD") {
+        [articles(:hikidoc_sample).id, articles(:draft).id] }
     end
 
-    it "追加の検索条件を指定しない場合には全ての文書がヒットすること" do
+    xit "追加の検索条件を指定しない場合には全ての文書がヒットすること" do
       as = Article.find_fulltext("検索語")
       as.length.should == 2
     end
 
-    it ":publishing => trueという追加の検索条件を指定すると:hikidoc_sampleのみがヒットすること" do
+    xit ":publishing => trueという追加の検索条件を指定すると:hikidoc_sampleのみがヒットすること" do
       as = Article.find_fulltext("検索語", :conditions=>["publishing = ?", true])
       as.should == [articles(:hikidoc_sample)]
     end
