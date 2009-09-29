@@ -19,7 +19,7 @@
     <link href="<%= url_for_page %>" rel="alternate" type="text/html" />
     <title><%=h(page.name) %></title>
     <content type="html">
-      <%= parse_page(page) %>
+      <%=h parse_page(page) %>
     </content>
   </entry>
   <%- end -%>

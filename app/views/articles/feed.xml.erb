@@ -18,7 +18,7 @@
   <link href="<%= article_url(article) %>" rel="alternate" type="text/html" />
   <title><%=h(article.title) %></title>
   <content type="html">
-    <%= parse_article(article) %>
+    <%=h parse_article(article) %>
   </content>
   </entry>
 <% end -%>
