@@ -7,7 +7,7 @@ class KarekiEntry < ActiveRecord::Base
     :dc_creator => :creator
   }.freeze
 
-  belongs_to :feed
+  belongs_to :feed, {:foreign_key => :feed_id, :class_name => KarekiFeed.to_s}
 
   class << self
     def build_from_item(item)

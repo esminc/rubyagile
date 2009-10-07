@@ -4,7 +4,7 @@ require 'open-uri'
 class KarekiFeed < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
-  has_many :kareki_entries
+  has_many :entries, {:foreign_key => :feed_id, :class_name => KarekiEntry.to_s }
 
   class << self
     def crawl
