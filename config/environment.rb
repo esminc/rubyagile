@@ -48,7 +48,12 @@ Rails::Initializer.run do |config|
   # (create the session table with 'rake db:sessions:create')
   # config.action_controller.session_store = :active_record_store
   config.gem "ruby-openid", :lib => "openid"
-  config.gem "moro-open_id_authentication", :lib => "open_id_authentication"
+
+  config.with_options :source => 'http://gems.github.com' do |github|
+    github.gem "moro-open_id_authentication", :lib => "open_id_authentication"
+    github.gem 'wireframe-backgrounded', :lib => 'backgrounded'
+    github.gem 'tobi-delayed_job', :lib => 'delayed_job'
+  end
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
