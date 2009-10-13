@@ -44,5 +44,19 @@ describe KarekiFeed do
         @feed.fetch_and_save_entries
       end
     end
+
+    context "同じエントリを再度取得してしまった場合" do
+      it "KarekiEntryがダブッて保存されないこと。linkが同じだったら内容の差分はチェックせずに毎回上書きでもいいよ。"
+    end
+  end
+
+  describe "#crawl" do
+    specify "naive implementation" do
+      mock(KarekiFeed).all {
+        mock(feed = KarekiFeed.new).fetch_and_save_entries
+        [feed]
+      }
+      KarekiFeed.crawl
+    end
   end
 end

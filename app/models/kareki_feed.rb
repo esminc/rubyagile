@@ -4,12 +4,11 @@ require 'open-uri'
 class KarekiFeed < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
-  has_many :kareki_entries
+  has_many :entries, {:foreign_key => :feed_id, :class_name => KarekiEntry.to_s }
 
   class << self
     def crawl
-# TODO write spec
-#      KarekiFeed.all.each {|feed| fetch_entries(feed.url}
+      KarekiFeed.all.each {|feed| feed.fetch_and_save_entries }
     end
   end
 
@@ -45,7 +44,9 @@ class KarekiFeed < ActiveRecord::Base
 
   def create_entries_from(feed)
     feed.items.each do |item|
-      KarekiEntry.create_from_item(item)
+      entry = KarekiEntry.build_from_item(item)
+      entry.feed_id = self.id
+      entry.save
     end
   end
 end
