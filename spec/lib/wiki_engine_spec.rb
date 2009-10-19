@@ -23,18 +23,40 @@ paragraph.
   end
 
   describe "plugin for html literally" do
-    before do
-      @actual = parse(<<-EOS)
+    describe 'simple case' do
+      subject { parse(<<-ACTUAL) }
 {{"<span>html literally.</span>"}}
-      EOS
-    end
+      ACTUAL
 
-    it {
-      @actual.should == <<-EXPECTED
+      it { should == (<<-EXPECTED) }
 <span>html literally.</span>
       EXPECTED
-    }
+    end
+
+    describe 'amazon associate' do
+      subject { parse(<<-ACTUAL) }
+{{'<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4873113164&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>'}}
+      ACTUAL
+
+      it { should == (<<-EXPECTED) }
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4873113164&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+      EXPECTED
+    end
+
+    describe 'amazon associate を2回連続で貼ったとき' do
+      subject { parse(<<-ACTUAL) }
+{{"<iframe src='http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4798119881&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr' style='width:120px;height:240px;' scrolling='no' marginwidth='0' marginheight='0' frameborder='0'></iframe>"}}
+{{'<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4873113164&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>'}}
+      ACTUAL
+
+      it { should == (<<-EXPECTED) }
+<p><span class="plugin"><iframe src='http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4798119881&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr' style='width:120px;height:240px;' scrolling='no' marginwidth='0' marginheight='0' frameborder='0'></iframe></span>
+<span class="plugin"><iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=kakutani-22&o=9&p=8&l=as1&asins=4873113164&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></span></p>
+      EXPECTED
+    end
+
   end
+
 
   describe "WikiNameのリンクを含むHTML" do
     before(:each) do

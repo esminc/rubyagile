@@ -17,10 +17,15 @@ class WikiEngine
   end
 
   private
-  PLUGIN_REGEXP = %r!<div class="plugin">\{\{(.+)\}\}</div>!m
+  PLUGIN_REGEXP = %r!<div class="plugin">\{\{([^\}]+?)\}\}</div>!m
   def replace_plugin(hikified_html)
     hikified_html.gsub!(PLUGIN_REGEXP) do |body|
       CGI.unescapeHTML($1)[1...-1]
+    end
+    hikified_html.gsub!(/\{\{["']/, '')
+    hikified_html.gsub!(/["']\}\}/, '')
+    if $1
+      replace_plugin(hikified_html)
     end
     replace_text(hikified_html)
   end
