@@ -30,6 +30,10 @@ describe KarekiFeed do
         subject{ @feed }
         it{ should_not be_exist }
       end
+
+      context "同じフィードを複数登録しようとしたとき" do
+        it "uniqueness_ofなエラーがでること"
+      end
     end
   end
 
@@ -46,7 +50,13 @@ describe KarekiFeed do
     end
 
     context "同じエントリを再度取得してしまった場合" do
-      it "KarekiEntryがダブッて保存されないこと。linkが同じだったら内容の差分はチェックせずに毎回上書きでもいいよ。"
+      before do
+        @feed = create_ursm_hatena
+        @feed.fetch_and_save_entries
+      end
+      it "KarekiEntryがダブッて保存されないこと。" do
+        expect{ @feed.fetch_and_save_entries }.should_not change(KarekiEntry, :count)
+      end
     end
   end
 

@@ -11,7 +11,10 @@ class KarekiEntry < ActiveRecord::Base
 
   class << self
     def build_from_item(item)
-      new(adapt_param(item))
+      attributes = adapt_param(item)
+      returning(find_or_initialize_by_link(attributes[:link])) do |entry|
+        entry.attributes = attributes
+      end
     end
 
     private

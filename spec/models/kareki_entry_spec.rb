@@ -25,6 +25,7 @@ describe KarekiEntry do
       @item = feed.items.first
 
       @entry = KarekiEntry.build_from_item(@item)
+      @entry.feed_id = 1 # dummy
     end
 
     subject { @entry }
@@ -34,6 +35,18 @@ describe KarekiEntry do
     describe ".content" do
       subject{ @entry.content }
       it{ should =~ /<p>こういうアクションに対して<\/p>/ }
+    end
+
+    describe "もう一度おなじitemで上書きする場合" do
+      before do
+        @entry.save
+        stub(@item).content_encoded { "Hehehe" }
+        @updated = KarekiEntry.build_from_item(@item)
+      end
+
+      subject { @updated }
+      it { should == @entry }
+      its(:content) { should == "Hehehe" }
     end
   end
 end
