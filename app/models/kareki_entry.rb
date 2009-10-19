@@ -11,11 +11,16 @@ class KarekiEntry < ActiveRecord::Base
 
   class << self
     def build_from_item(item)
+      new(adapt_param(item))
+    end
+
+    private
+    def adapt_param(item)
       param = RSS_ITEM_TO_KAREKI_ENTRY.each_with_object({}) {|(ks,v), h|
         h[v] = Array(ks).map{|k| item.send(k) }.compact.first
       }
       # remove singleton method Time#now from RSS::Parser
-      new(param.update(:published_at => param[:published_at].to_datetime))
+      param.update(:published_at => param[:published_at].to_datetime)
     end
   end
 end
