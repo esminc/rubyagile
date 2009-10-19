@@ -32,7 +32,12 @@ describe KarekiFeed do
       end
 
       context "同じフィードを複数登録しようとしたとき" do
-        it "uniqueness_ofなエラーがでること"
+        before do
+          @feed.save!
+        end
+
+        subject { KarekiFeed.new(:url => @feed.url) }
+        it { should have(1).errors_on(:url) }
       end
     end
   end
