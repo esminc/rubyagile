@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <% site_name = "Ruby x Agile" -%>
   <% site_version = "version:β" -%>
   <% site_lead = "Rubyとアジャイルでふつうのシステム開発を実現する永和システムマネジメントのWebサイト" -%>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +15,8 @@
   <script type="text/javascript">
 	Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
   </script>
-  <title><%=h site_name%> <%=h site_version %> - <%=h site_lead %></title>
+  <% default_title = "#{site_name} #{site_version} - #{site_lead}" %>
+  <title><%=h (yield :title) || default_title -%></title>
 </head>
 
 <body>

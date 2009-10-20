@@ -1,3 +1,6 @@
+<% content_for :title do -%>
+  <%="#{@article.title} - #{site_name}" -%>
+<% end -%>
 <%= render :partial => 'navigation' %>
 <% div_for(@article, :class => 'article') do -%>
 <%= render :partial => 'shared/article' %>
