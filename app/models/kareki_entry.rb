@@ -10,7 +10,7 @@ class KarekiEntry < ActiveRecord::Base
   belongs_to :feed, {:foreign_key => :feed_id, :class_name => KarekiFeed.to_s}
 
   named_scope :confirmed, :conditions => {:confirmed => true}
-  named_scope :newer_first, :order => 'updated_at DESC'
+  named_scope :newer_first, :order => 'published_at DESC'
 
   class << self
     def build_from_item(item)
