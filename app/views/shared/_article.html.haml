@@ -1,0 +1,8 @@
+%h2.title!= link_to h(article.title), article_path(article)
+.meta
+  Posted by <span class="author">#{h article.user.login}</span> on <span class="posted_on">#{h posted_on(article.created_at)}</span>
+.meta!= link_to_comments(article)
+.body!= parse_article(article)
+.meta
+  != link_to "この記事へのリンク用URL: #{h article_url(article)}", article_path(article)
+  %p (トラックバック機能は、ありません)
