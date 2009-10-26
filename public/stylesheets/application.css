@@ -293,6 +293,80 @@ div.article div.body table,div.article div.body table tr, div.article div.body t
 
 }
 
+/* kareki_entry */
+div.kareki_entry {
+	margin-bottom: 60px;
+}
+
+div.kareki_entry div.meta {
+	margin: 0;
+	padding: 0;
+	color: #999;
+	font-size: 70%;
+}
+
+div.kareki_entry span.author {
+	color: #000;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+div.kareki_entry span.comment_count {
+	color: #000;
+	font-weight: bold;
+}
+
+div.kareki_entry h2.title {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+
+div.kareki_entry span.posted_on {
+	font-size: 14px;
+	color: #222;
+	font-style: bold;
+}
+
+div.kareki_entry div.meta a {
+	color: #333;
+	border-style: none;
+}
+
+div.kareki_entry div.body {
+	padding-top: 20px;
+}
+
+div.kareki_entry div.body hr {
+    margin: 5px;
+	border: 1px solid #999;
+}
+
+div.kareki_entry div.body pre {
+    margin: 0 40px 15px 0;
+	padding: 0.5em 0.5em 0.5em 1em;
+	background: #000;
+	color: #0f0;
+	font-size: 90%;
+	overflow: auto;
+}
+
+div.kareki_entry div.body blockquote {
+	background: transparent url(/images/blockquote.gif) no-repeat scroll 0 2px;
+	color: #333;
+	font-size: 90%;
+	margin: 0 40px 15px 0;
+	padding-left: 24px;
+}
+
+div.kareki_entry div.body table {
+	margin-bottom: 15px;
+}
+
+div.kareki_entry div.body table,div.kareki_entry div.body table tr, div.kareki_entry div.body table th, div.kareki_entry div.body table td {
+	border: 1px solid #ccc;
+}
+
 /* search */
 div.search-phrase {
 	font-size: 130%;
