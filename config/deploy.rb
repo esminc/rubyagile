@@ -1,5 +1,5 @@
 set :application, "rubyagile"
-set :repository,  "ssh://rubyagile@ruby.agile.esm.co.jp/var/cache/git/rubyagile.git"
+set :repository,  "git://github.com/esminc/rubyagile.git"
 set :branch, "master"
 
 # If you aren't deploying to /u/apps/#{application} on the target
