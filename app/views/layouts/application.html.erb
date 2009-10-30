@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="description" content="<%=h site_lead %>" />
   <meta name="keywords" content="Ruby,Rails,RoR,Agile,アジャイル,システム開発,永和システムマネジメント,ESM" />
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="alternate" type="application/atom+xml" title="新着記事のAtomフィード" href="<%= url_for(:controller => 'articles', :action => 'feed.xml', :only_path => false) %>" />
   <link rel="alternate" type="application/atom+xml" title="/pagesのAtomフィード" href="<%= url_for(:controller => 'pages', :action => 'feed.xml', :only_path => false) %>" />
   <%= stylesheet_link_tag "application" %>
