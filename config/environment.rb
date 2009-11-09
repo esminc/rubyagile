@@ -49,6 +49,7 @@ Rails::Initializer.run do |config|
   # config.action_controller.session_store = :active_record_store
   config.gem "ruby-openid", :lib => "openid"
   config.gem "moro-open_id_authentication", :lib => "open_id_authentication"
+  config.gem 'will_paginate', :source => 'http://gemcutter.org'
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
