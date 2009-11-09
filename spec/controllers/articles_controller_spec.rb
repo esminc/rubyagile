@@ -20,17 +20,30 @@ describe ArticlesController do
   end
 
   describe "handling GET /articles/1" do
-    before(:each) do
-      @article = mock_model(Article)
-      Article.stub!(:find).and_return(@article)
-      Article.should_receive(:find).with("1").and_return(@article)
-      get :show, :id => "1"
+    fixtures :articles
+
+    context "happy case" do
+      before(:each) do
+        get :show, :id => articles(:hikidoc_sample)
+      end
+      subject{ response }
+
+      it { should be_success }
+      it { should render_template('show') }
+      it "should assign the found article for the view" do
+        assigns[:article].should == articles(:hikidoc_sample)
+      end
     end
 
-    it { response.should be_success }
-    it { response.should render_template('show') }
-    it "should assign the found article for the view" do
-      assigns[:article].should equal(@article)
+    context "(sad) accessed to draft without logging in" do
+      before(:each) do
+        logout
+      end
+
+      it do
+        expect{ get :show, :id => articles(:draft) }.should \
+          raise_error ActiveRecord::RecordNotFound
+      end
     end
   end
 

@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = accessible_articles.find(params[:id])
     respond_to do |format|
       format.html
     end
@@ -106,5 +106,9 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     @article.save!
     redirect_to(:action => 'edit', :id => @article.id)
+  end
+
+  def accessible_articles
+    logged_in? ? Article : Article.publishing
   end
 end
