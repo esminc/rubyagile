@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   acts_as_searchable :searchable_fields => [:title, :body]
 
   named_scope :publishing, :conditions => {:publishing => true}
-  named_scope :newer_first, :order => 'created_at DESC'
+  named_scope :newer_first, :order => %Q(#{quoted_table_name}.created_at DESC)
 
   def self.find_all_written_by(user)
     Article.find_all_by_user_id(user.id, :order => "created_at DESC")
