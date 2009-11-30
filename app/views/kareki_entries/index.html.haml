@@ -1,0 +1,13 @@
+%table
+  - @entries.each do |entry|
+    - next if entry.confirmed
+    %tr
+      %td!= link_to(entry.title, entry.link)
+      %td= entry.creator
+
+      %td
+        - form_for(entry) do |f|
+          != f.hidden_field :confirmed, {:value => true}
+          != submit_tag "Confirm"
+      %td!= link_to "Delete", entry, :method => "delete"
+
