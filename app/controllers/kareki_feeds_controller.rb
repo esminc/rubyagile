@@ -1,4 +1,6 @@
 class KarekiFeedsController < ApplicationController
+  before_filter :login_required
+
   # GET /kareki_feeds
   # GET /kareki_feeds.xml
   def index
