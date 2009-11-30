@@ -3,13 +3,12 @@
   %ul
     - @articles.each do |article|
       %li[article]!= link_to h(article.title), article
-  %p!= link_to 'もっと見る', articles_path
+  .more!= link_to 'もっと見る', articles_path
 
 .entries
-  %h2 メンバーの活動
   - @entries.each do |entry|
     %div[entry]
-      %h3.title!= link_to h(entry.title), entry.link
+      %h2.title!= link_to h(entry.title), entry.link
       .meta
         Posted by
         %span.author= entry.creator
