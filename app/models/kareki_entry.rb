@@ -29,4 +29,8 @@ class KarekiEntry < ActiveRecord::Base
       param.update(:published_at => param[:published_at].to_datetime)
     end
   end
+
+  def confirmation
+    ActiveSupport::StringInquirer.new( confirmed ? "confirmed" : "not_yet" )
+  end
 end

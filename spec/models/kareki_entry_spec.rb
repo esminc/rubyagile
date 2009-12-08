@@ -16,6 +16,21 @@ describe KarekiEntry do
   it "should create a new instance given valid attributes" do
     KarekiEntry.create!(@valid_attributes)
   end
+
+  describe "confirmation" do
+    before do
+      @entry = KarekiEntry.create!(@valid_attributes)
+    end
+    subject{ @entry.confirmation }
+    it{ should be_not_yet }
+
+    describe "confirmed" do
+      before do
+        @entry.confirmation = "confirmed"
+      end
+      it{ should be_confirmed }
+    end
+  end
 end
 
 describe KarekiEntry do
