@@ -27,7 +27,7 @@ describe WelcomeController do
 
       it { should have(1).item }
       it { should be_instance_of(WillPaginate::Collection) }
-      it { subject.first.should be_confirmed }
+      it { subject.first.confirmation.should be_confirmed }
     end
   end
 end

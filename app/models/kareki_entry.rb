@@ -9,7 +9,7 @@ class KarekiEntry < ActiveRecord::Base
 
   belongs_to :feed, {:foreign_key => :feed_id, :class_name => KarekiFeed.to_s}
 
-  named_scope :confirmed, :conditions => {:confirmed => true}
+  named_scope :confirmed, :conditions => {:confirmation => "confirmed"}
   named_scope :newer_first, :order => %Q(#{quoted_table_name}.published_at DESC)
 
   class << self
@@ -31,6 +31,6 @@ class KarekiEntry < ActiveRecord::Base
   end
 
   def confirmation
-    ActiveSupport::StringInquirer.new( confirmed ? "confirmed" : "not_yet" )
+    ActiveSupport::StringInquirer.new( read_attribute("confirmation") )
   end
 end

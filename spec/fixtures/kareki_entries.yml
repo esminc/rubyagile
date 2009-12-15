@@ -4,16 +4,15 @@ one:
   title: MyString
   content: MyText
   link: MyString
-  confirmed: false
   published_at: 2009-08-25 13:06:51
   creator: MyString
-  feed: 
+  feed: :one
 
 two:
   title: MyString
   content: MyText
   link: MyString
-  confirmed: true
+  confirmation: confirmed
   published_at: 2009-08-25 13:06:51
   creator: MyString
-  feed: 
+  feed: :one

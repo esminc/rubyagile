@@ -6,7 +6,7 @@ describe KarekiEntry do
       :title => "value for title",
       :content => "value for content",
       :link => "value for link",
-      :confirmed => false,
+      :confirmation => "not_yet",
       :published_at => Time.now,
       :creator => "value for creator",
       :feed_id => 1
