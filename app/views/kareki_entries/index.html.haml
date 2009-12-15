@@ -1,13 +1,8 @@
 %table
-  - @entries.each do |entry|
-    - next if entry.confirmed
+  - @entries.select {|e| e.confirmation.not_yet? }.each do |entry|
     %tr
       %td!= link_to(entry.title, entry.link)
       %td= entry.creator
-
       %td
-        - form_for(entry) do |f|
-          != f.hidden_field :confirmed, {:value => true}
-          != submit_tag "Confirm"
-      %td!= link_to "Delete", entry, :method => "delete"
-
+        != link_to 'Confirm', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'confirmed'}), :method => :put
+        != link_to 'Reject', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'rejected'}), :method => :put
