@@ -5,6 +5,10 @@ describe KarekiFeedsController do
   def mock_kareki_feed(stubs={})
     @mock_kareki_feed ||= mock_model(KarekiFeed, stubs)
   end
+  fixtures :users
+  before do
+    login_as :alice
+  end
 
   describe "GET index" do
     it "assigns all kareki_feeds as @kareki_feeds" do

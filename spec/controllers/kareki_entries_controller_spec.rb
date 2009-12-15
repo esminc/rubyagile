@@ -12,7 +12,7 @@ describe KarekiEntriesController do
     end
 
     context "logged in" do
-      fixtures :alice
+      fixtures :users
 
       before do
         login_as :alice
