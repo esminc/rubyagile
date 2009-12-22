@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
+require 'spec/rr'
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -40,7 +41,7 @@ Spec::Runner.configure do |config|
   #
   # config.mock_with :mocha
   # config.mock_with :flexmock
-  # config.mock_with :rr
+  config.mock_with :rr
   #
   # == Notes
   #

@@ -210,64 +210,71 @@ div#header h2.lead {
 
 
 /* article */
-div.article {
+div.articles {
+  margin-bottom: 1.5em;
+}
+
+div.articles h2 {
+  margin-bottom: 0;
+}
+
+div.articles ul {
+}
+
+div.articles div.more {
+  text-align: right;
+}
+
+/* kareki_entry */
+div.kareki_entry {
 	margin-bottom: 60px;
 }
 
-div.article div.meta {
+div.kareki_entry div.meta {
 	margin: 0;
 	padding: 0;
 	color: #999;
 	font-size: 70%;
 }
 
-div.article span.author {
+div.kareki_entry span.author {
 	color: #000;
 	font-weight: bold;
 	font-size: 16px;
 }
 
-div.article span.comment_count {
+div.kareki_entry span.comment_count {
 	color: #000;
 	font-weight: bold;
 }
 
-span.author a, span.author a:active, span.author a:visited {
-	color: #000;
-	border: 0;
-}
-
-span.author a:hover {
-	border-bottom: 1px solid #000;
-}
-
-div.article h2.title {
+div.kareki_entry h2.title {
 	margin: 0;
 	padding: 0;
 	line-height: 1;
 }
 
-div.article span.posted_on {
+div.kareki_entry span.posted_on {
 	font-size: 14px;
 	color: #222;
 	font-style: bold;
 }
 
-div.article div.meta a {
+div.kareki_entry div.meta a {
 	color: #333;
 	border-style: none;
 }
 
-div.article div.body {
+div.kareki_entry div.body {
 	padding-top: 20px;
 }
 
-div.article div.body hr {
+div.kareki_entry div.body hr {
     margin: 5px;
 	border: 1px solid #999;
 }
 
-div.article div.body pre {
+div.kareki_entry div.body pre {
     margin: 0 40px 15px 0;
 	padding: 0.5em 0.5em 0.5em 1em;
 	background: #000;
@@ -276,7 +283,7 @@ div.article div.body pre {
 	overflow: auto;
 }
 
-div.article div.body blockquote {
+div.kareki_entry div.body blockquote {
 	background: transparent url(/images/blockquote.gif) no-repeat scroll 0 2px;
 	color: #333;
 	font-size: 90%;
@@ -284,13 +291,12 @@ div.article div.body blockquote {
 	padding-left: 24px;
 }
 
-div.article div.body table {
+div.kareki_entry div.body table {
 	margin-bottom: 15px;
 }
 
-div.article div.body table,div.article div.body table tr, div.article div.body table th, div.article div.body table td {
+div.kareki_entry div.body table,div.kareki_entry div.body table tr, div.kareki_entry div.body table th, div.kareki_entry div.body table td {
 	border: 1px solid #ccc;
-
 }
 
 /* search */

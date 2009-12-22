@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find_by_name(params[:page_name])
+    @page = fetch_named_page(params[:page_name])
     respond_to do |format|
       format.html
     end
@@ -41,11 +41,11 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find_by_name(params[:page_name])
+    @page = fetch_named_page(params[:page_name])
   end
 
   def update
-    @page = Page.find_by_name(params[:page_name])
+    @page = fetch_named_page(params[:page_name])
     @page.user = current_user
 
     unless params[:preview].blank?
@@ -80,5 +80,9 @@ class PagesController < ApplicationController
       page.user = current_user
     end
     page
+  end
+
+  def fetch_named_page(name)
+    Page.find_by_name(name)
   end
 end

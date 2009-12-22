@@ -8,89 +8,84 @@ describe PagesController do
   describe "handling GET /pages/FrontPage" do
     before(:each) do
       @page = mock_model(Page)
-      Page.stub!(:find).and_return(@page)
-      Page.should_receive(:find_by_name).with("FrontPage").and_return(@page)
+      stub(controller).fetch_named_page("FrontPage") { @page }
       get :show, :page_name => "FrontPage"
+    end
+
+    it "should assign the found page for the view" do
+      assigns[:page].should == @page
     end
 
     it { response.should be_success }
     it { response.should render_template('show') }
-    it "should assign the found page for the view" do
-      assigns[:page].should equal(@page)
-    end
   end
 
-=begin
   describe "handling GET /pages/new" do
     before(:each) do
       @page = mock_model(Page)
-      Page.should_receive(:new).and_return(@page)
-      @page.should_receive(:user=).with(users(:alice))
+      dont_allow(@page).save
+      stub(Page).new { @page }
       get :new
     end
 
     it { response.should be_success }
     it { response.should render_template('new') }
-    it { @page.should_not_receive(:save) }
+    it { @page.user.should == users(:alice) }
 
     it "should assign the new page for the view" do
       assigns[:page].should equal(@page)
     end
   end
-=end
 
   describe "handling GET /pages/FrontPage/edit" do
     before(:each) do
       @page = mock_model(Page)
-      Page.should_receive(:find_by_name).with("FrontPage").and_return(@page)
-      get :edit, :page_name => "FrontPage"
+      stub(controller).fetch_named_page("MyPage") { @page }
+      get :edit, :page_name => "MyPage"
     end
 
     it { response.should be_success }
     it { response.should render_template('edit') }
     it "should assign the found Page for the view" do
-      assigns[:page].should equal(@page)
+      assigns[:page].should == @page
     end
   end
 
   describe "handling POST /pages" do
     before(:each) do
       @page = mock_model(Page, :to_param => "1")
-      Page.stub!(:new).and_return(@page)
+      stub(Page).new { @page }
     end
 
     describe "with preview" do
       before do
-        @page.should_not_receive(:save)
+        dont_allow(@page).save
         post :create, :page => {}, :preview => 'Preview'
       end
       it { response.should render_template('preview') }
     end
   end
 
-# PEND このテストが上手く行かない原因を調べること
-=begin
   describe "handling PUT /pages/FrontPage" do
     before(:each) do
-      @page = mock_model(Page, :to_param => "FrontPage")
-      Page.stub!(:find_by_name).with("FrontPage").and_return(@page)
+      @page = mock_model(Page, :page_name => "FirstPage")
+      stub(controller).fetch_named_page("MyPage") { @page }
     end
 
     describe "with successful update" do
       before do
-        Page.should_receive(:find_by_name).with("FrontPage").and_return(@page)
-        @page.should_receive(:update_attributes).and_return(true)
-        put :update, :page_name => "FrontPage"
+        mock(@page).update_attributes({'name' => 'NewName'}) { true }
+        put :update, :page_name => "MyPage", :page => {:name => 'NewName'}
       end
 
       it { assigns(:page).should equal(@page) }
-      it { response.should redirect_to(page_url("FrontPage")) }
+      it { response.should redirect_to(page_url("NewName")) }
     end
 
     describe "with failed update" do
       before do
-        @page.should_receive(:update_attributes).and_return(false)
-        put :update, :page_name => "FrontPage"
+        stub(@page).update_attributes(anything) { false }
+        put :update, :page_name => "MyPage"
       end
 
       it { response.should render_template('edit') }
@@ -98,32 +93,24 @@ describe PagesController do
 
     describe "with preview" do
       before do
-        @page.stub!(:name=)
-        @page.stub!(:content=)
-        @page.should_not_receive(:update_attributes)
-        put :update, :page => {}, :preview => 'Preview'
+        dont_allow(@page).update_attributes
+        put(:update,
+          :page_name => 'MyPage',
+          :page => {:name => 'NewName', :content => 'new content'},
+          :preview => 'Preview')
       end
 
-      it { response.should render_template('preview') }
-    end
-
-    describe "with preview" do
-      before do
-        @page.stub!(:page=)
-        @page.stub!(:content=)
-        @page.should_not_receive(:update_attributes)
-        put :update, :page => {}, :preview => 'Preview'
-      end
-
+      it { assigns[:page].name.should == 'NewName' }
+      it { assigns[:page].content.should == 'new content' }
       it { response.should render_template('preview') }
     end
   end
-=end
+
 
   describe "handling Atomfeed" do
     before do
       @page = mock_model(Page, :to_param => "1")
-      Page.stub!(:find).and_return(@page)
+      stub(Page).find { @page }
       get "feed", :type => 'xml'
     end
 

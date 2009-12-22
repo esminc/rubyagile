@@ -1,0 +1,8 @@
+%table
+  - @entries.select {|e| e.confirmation.not_yet? }.each do |entry|
+    %tr
+      %td!= link_to(entry.title, entry.link)
+      %td= entry.creator
+      %td
+        != link_to 'Confirm', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'confirmed'}), :method => :put
+        != link_to 'Reject', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'rejected'}), :method => :put

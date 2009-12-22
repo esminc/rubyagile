@@ -50,14 +50,14 @@ describe ArticlesController do
   describe "handling GET /articles/new" do
     before(:each) do
       @article = mock_model(Article)
-      Article.should_receive(:new).and_return(@article)
-      @article.should_receive(:user=).with(users(:alice))
+      dont_allow(@article).save
+      stub(Article).new { @article }
       get :new
     end
 
+    it { @article.user.should == users(:alice) }
     it { response.should be_success }
     it { response.should render_template('new') }
-    it { @article.should_not_receive(:save) }
 
     it "should assign the new article for the view" do
       assigns[:article].should equal(@article)
@@ -67,7 +67,7 @@ describe ArticlesController do
   describe "handling GET /articles/1/edit" do
     before(:each) do
       @article = mock_model(Article)
-      Article.should_receive(:find).and_return(@article)
+      stub(Article).find { @article }
       get :edit, :id => "1"
     end
 
@@ -81,25 +81,25 @@ describe ArticlesController do
   describe "handling POST /articles" do
     before(:each) do
       @article = mock_model(Article, :to_param => "1")
-      Article.stub!(:new).and_return(@article)
+      stub(Article).new { @article }
     end
 
     describe "with successful save w/o publishing" do
       before do
-        Article.should_receive(:new).with(any_args).and_return(@article)
-        @article.should_receive(:save).and_return(true)
+        stub(Article).new(anything) { @article }
+        mock(@article).save { true }
         post :create, :article => {:publishing => 0}
       end
 
       it { response.should redirect_to(article_url("1")) }
 
-      it { @article.should_not_receive(:publishing=) }
+      it { @article.publishing.should be_false }
     end
 
     describe "with successful save w/o direct_post" do
       before do
-        Article.should_receive(:new).with(any_args).and_return(@article)
-        @article.should_receive(:save).and_return(true)
+        mock(Article).new(anything) { @article }
+        mock(@article).save { true }
         post :create, :article => {:publishing => 1}
       end
 
@@ -109,7 +109,7 @@ describe ArticlesController do
 
     describe "with failed save" do
       before do
-        @article.should_receive(:save).and_return(false)
+        mock(@article).save { false }
         post :create, :article => { :title => 'example', :body => 'hello' }
       end
 
@@ -118,7 +118,7 @@ describe ArticlesController do
 
     describe "with preview" do
       before do
-        @article.should_not_receive(:save)
+        dont_allow(@article).save
         post :create, :article => { :title => 'example', :body => 'hello' }, :preview => 'Preview'
       end
       it { response.should render_template('preview') }
@@ -129,13 +129,13 @@ describe ArticlesController do
   describe "handling PUT /articles/1" do
     before(:each) do
       @article = mock_model(Article, :to_param => "1")
-      Article.stub!(:find).and_return(@article)
+      stub(Article).find { @article }
     end
 
     describe "with successful update" do
       before do
-        Article.should_receive(:find).with("1").and_return(@article)
-        @article.should_receive(:update_attributes).and_return(true)
+        mock(Article).find("1") { @article }
+        stub(@article).update_attributes { true }
         put :update, :id => "1", :article => { :title => 'example', :body => 'hello' }
       end
 
@@ -145,7 +145,7 @@ describe ArticlesController do
 
     describe "with failed update" do
       before do
-        @article.should_receive(:update_attributes).and_return(false)
+        stub(@article).update_attributes { false }
         put :update, :id => "1", :article => { :title => 'example', :body => 'hello' }
       end
 
@@ -154,12 +154,12 @@ describe ArticlesController do
 
     describe "with preview" do
       before do
-        @article.stub!(:title=)
-        @article.stub!(:body=)
-        @article.should_not_receive(:update_attributes)
+        dont_allow(@article).update_attribute
         put :update, :article => { :title => 'example', :body => 'hello.' }, :preview => 'Preview'
       end
 
+      it { @article.title.should == 'example' }
+      it { @article.body.should == 'hello.' }
       it { response.should render_template('preview') }
     end
   end
@@ -167,8 +167,8 @@ describe ArticlesController do
   describe "handling DELETE /articles/1" do
     before(:each) do
       @article = mock_model(Article, :destroy => true)
-      Article.should_receive(:find).with("1").and_return(@article)
-      @article.should_receive(:destroy)
+      mock(Article).find("1") { @article }
+      mock(@article).destroy
       delete :destroy, :id => "1"
     end
 
@@ -184,9 +184,9 @@ describe ArticlesController do
       before do
         @article = mock_model(Article, :to_parm => "1")
         @comment = mock_model(Comment)
-        @comment.should_receive(:save).and_return(true)
-        Article.stub!(:find).and_return(@article)
-        Comment.should_receive(:parse_params).and_return(@comment)
+        stub(@comment).save { true }
+        stub(Article).find { @article }
+        stub(Comment).parse_params { @comment }
         do_comment({:author => 'alice', :body => 'some body'})
       end
 
@@ -197,8 +197,8 @@ describe ArticlesController do
   describe "handling Atomfeed" do
     before do
       @articles = [mock_model(Article, :to_param => "1")]
-      Article.should_receive(:publishing).and_return(@articles)
-      @articles.should_receive(:newer_first).and_return(@articles)
+      stub(Article).publishing { @articles }
+      stub(@articles).newer_first { @articles }
       get "feed", :type => 'xml'
     end
 

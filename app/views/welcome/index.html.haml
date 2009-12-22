@@ -1,0 +1,24 @@
+.articles
+  %h2 おしらせ
+  %ul
+    - @articles.each do |article|
+      %li[article]!= link_to h(article.title), article
+  .more!= link_to 'もっと見る', articles_path
+
+.entries
+  - @entries.each do |entry|
+    %div[entry]
+      %h2.title!= link_to h(entry.title), entry.link
+      .meta
+        Posted by
+        %span.author= entry.creator
+        on
+        %span.posted_on= posted_on(entry.published_at)
+        from
+        %span.source!= link_to h(entry.feed.title), entry.feed.link
+      .body!= entry.content
+
+  != will_paginate @entries
+
+- content_for :sidebar do
+  != render :partial => 'sidebar'

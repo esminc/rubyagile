@@ -4,7 +4,7 @@ describe DashboardController do
   describe "GET 'index'" do
     before do
       login_as(:alice)
-      Article.should_receive(:find_all_written_by).with(current_user)
+      mock(Article).find_all_written_by(current_user)
       get 'index'
     end
 
