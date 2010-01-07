@@ -2,7 +2,9 @@
   %h2 おしらせ
   %ul
     - @articles.each do |article|
-      %li[article]!= link_to h(article.title), article
+      %li[article]
+        = posted_on article.created_at
+        != link_to h(article.title), article
   .more!= link_to 'もっと見る', articles_path
 
 .entries
