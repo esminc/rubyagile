@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :kareki_feeds
-  map.resources :kareki_entries
+  map.resources :kareki_entries, :collection => {:crawl => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

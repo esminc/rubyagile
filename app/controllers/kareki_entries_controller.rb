@@ -11,4 +11,9 @@ class KarekiEntriesController < ApplicationController
 
     redirect_to :action => :index
   end
+
+  def crawl
+    KarekiFeed.crawl
+    redirect_to kareki_entries_path
+  end
 end

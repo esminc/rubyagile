@@ -1,3 +1,5 @@
+%p!= button_to 'Refresh', crawl_kareki_entries_path
+
 %table
   - @entries.select {|e| e.confirmation.not_yet? }.each do |entry|
     %tr
