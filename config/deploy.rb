@@ -26,10 +26,12 @@ role :db,  production_server, :primary => true
 set :rake, "/var/lib/gems/1.8/bin/rake"
 
 namespace :deploy do
-  task :after_update_code do
+  after 'deploy:symlink' do
     src_db_yml = "#{shared_path}/config/database.yml"
-    dest_db_yml = "#{latest_release}/config/database.yml"
+    dest_db_yml = "#{current_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
+
+    run "cd #{current_release} && gem bundle --only production"
   end
 
   %w(start stop).each do |t|
