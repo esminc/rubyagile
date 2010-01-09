@@ -48,14 +48,18 @@ describe KarekiFeedsController do
     describe "with valid params" do
       it "assigns a newly created kareki_feed as @kareki_feed" do
         mock_kareki_feed(:save => true)
+        mock(@mock_kareki_feed).fetch_and_save_entries
         stub(KarekiFeed).new({'these' => 'params'}){ @mock_kareki_feed }
+
         post :create, :kareki_feed => {:these => 'params'}
         assigns[:kareki_feed].should equal(@mock_kareki_feed)
       end
 
       it "redirects to the created kareki_feed" do
         mock_kareki_feed(:save => true)
+        mock(@mock_kareki_feed).fetch_and_save_entries
         stub(KarekiFeed).new { @mock_kareki_feed }
+
         post :create, :kareki_feed => {}
         response.should redirect_to(kareki_feed_url(@mock_kareki_feed))
       end
