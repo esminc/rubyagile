@@ -46,6 +46,7 @@ class KarekiFeedsController < ApplicationController
 
     respond_to do |format|
       if @kareki_feed.save
+        @kareki_feed.fetch_and_save_entries
         flash[:notice] = 'KarekiFeed was successfully created.'
         format.html { redirect_to(@kareki_feed) }
         format.xml  { render :xml => @kareki_feed, :status => :created, :location => @kareki_feed }
