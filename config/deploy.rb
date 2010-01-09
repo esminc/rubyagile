@@ -31,6 +31,8 @@ namespace :deploy do
     dest_db_yml = "#{current_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
 
+    bundler_root = "#{current_release}/vendor/bundler_gems/ruby/1.8"
+    run "mkdir -p #{bundler_root} && ln -s #{shared_path}/gems #{bundler_root}/cache"
     run "cd #{current_release} && gem bundle --only production"
   end
 
