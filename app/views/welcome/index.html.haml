@@ -18,7 +18,7 @@
         %span.posted_on= posted_on(entry.published_at)
         from
         %span.source!= link_to h(entry.feed.title), entry.feed.link
-      .body!= entry.content
+      .body!~ entry.content
 
   != will_paginate @entries
 
