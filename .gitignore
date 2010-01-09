@@ -16,6 +16,7 @@
 /db/*_structure.sql
 /db/*.sqlite3
 /tmp
+public/stylesheets/application.css
 
 bin/*
 vendor/bundler_gems/*

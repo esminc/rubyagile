@@ -1,0 +1,524 @@
+@charset "utf-8"
+/* You can use this website template anywhere you want, for anything you want. All I ask is that you link back to Blank CSS (www.blankcss.com) in some way. Thank you very much and enjoy!
+
+
+*
+  margin: 0
+  padding: 0
+
+
+body
+  background-color: #efefef
+  font-family: 'ヒラギノ丸ゴ Pro W4','Hiragino Maru Gothic Pro','メイリオ','Meiryo','ＭＳ Ｐゴシック',sans-serif
+  font-size: 16px
+  line-height: 1.8
+  color: #222222
+
+
+#wrapper
+  border-style: solid
+  border-color: #ccc
+  border-width: 0 2px
+  width: 90%
+  margin: 0 auto
+  padding: 10px 0
+  background-color: #fff
+
+
+#gnavi
+  background: #efefef url(/images/gnavi_bg.png) repeat-x
+  text-align: right
+  padding: 0px 0.5em
+
+
+#header
+  margin: 0 0 2px 0
+  padding: 20px 10px 0 10px
+  background-color: #ffffff
+  text-align: left
+
+
+#container
+  float: left
+  width: 100%
+  padding: 0
+  margin-right: -240px
+  background-color: #fff
+
+
+#container>*
+  margin-right: 240px
+
+
+#content
+  margin-right: 240px
+  margin-bottom: 10px
+  padding: 1em
+  background-color: #ffffff
+
+
+#sidebar
+  float: right
+  width: 230px
+  padding: 10px 5px
+  background-color: #fff
+  font-size: 80%
+  line-height: 1.5
+
+
+#footer
+  clear: both
+  margin: 50px 0 10px 0
+  border-top: 1px dotted #222
+  padding: 10px 5px 5px 5px
+  background-color: #ffffff
+  text-align: center
+
+
+h1
+  font-family: 'Thahoma', 'Verdana', 'Arial', sans-serif
+  line-height: 1
+  font-size: 300%
+  letter-spacing: -3px
+  font-weight: bold
+  color: #000
+
+
+h2
+  font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", 'Thahoma', 'Verdana', 'Arial', sans-serif
+  margin: 0 0 15px 0
+  font-size: 26px
+  font-weight: bold
+  color: #a00
+
+
+h3
+  font-size: 20px
+  font-weight: bold
+
+
+h4
+  font-size: 18px
+  font-weight: bold
+
+
+h5, h6
+  font-size: 16px
+  font-weight: bold
+
+
+a
+  color: #a00
+  text-decoration: none
+  border-bottom: 1px dotted #a00
+
+  &:active, &:visited
+    color: #a00
+    text-decoration: none
+    border-bottom: 1px dotted #a00
+
+  &:hover
+    color: #a00
+    border-bottom: 2px solid #a00
+
+  &.anchor
+    color: #222
+    border: none
+
+    &:active, &:visited, &:hover
+      color: #222
+      border: none
+
+
+#header a
+  color: #000
+  border: 0
+
+  &:active, &:visited
+    color: #000
+    border: 0
+
+  &:hover
+    border: 0
+
+
+p
+  margin: 0 0 15px 0
+
+
+#footer
+  text-align: right
+
+  p
+    margin: 0 0 15px 0
+    font-size: 11px
+    line-height: 13px
+
+
+ul
+  margin: 0 0 0 2em
+  list-style-position: outside
+  list-style: disc
+
+
+ol
+  margin: 0 0 0 2em
+  list-style-position: outside
+  list-style: decimal
+
+
+div
+  &#gnavi span.menu a
+    color: #000
+    text-decoration: none
+    border: none
+    font-weight: bold
+
+    &:active, &:visited
+      color: #000
+      text-decoration: none
+      border: none
+      font-weight: bold
+
+  &#header h2.lead
+    border: none
+    margin: 0
+    padding: 0
+    font-size: 16px
+    font-weight: normal
+    color: #000
+
+  &.articles
+    margin-bottom: 1.5em
+
+    h2
+      margin-bottom: 0
+
+    ul
+    div.more
+      text-align: right
+
+  &.article, &.kareki_entry
+    margin-bottom: 60px
+
+    div.meta
+      margin: 0
+      padding: 0
+      color: #999
+      font-size: 70%
+
+    span
+      &.author
+        color: #000
+        font-weight: bold
+        font-size: 16px
+
+      &.comment_count
+        color: #000
+        font-weight: bold
+
+    h2.title
+      margin: 0
+      padding: 0
+      line-height: 1
+
+    span.posted_on
+      font-size: 14px
+      color: #222
+      font-style: bold
+
+    div
+      &.meta a
+        color: #333
+        border-style: none
+
+      &.body
+        padding-top: 20px
+
+        hr
+          margin: 5px
+          border: 1px solid #999
+
+        pre
+          margin: 0 40px 15px 0
+          padding: 0.5em 0.5em 0.5em 1em
+          background: #000
+          color: #0f0
+          font-size: 90%
+          overflow: auto
+
+        blockquote
+          background: transparent url(/images/blockquote.gif) no-repeat scroll 0 2px
+          color: #333
+          font-size: 90%
+          margin: 0 40px 15px 0
+          padding-left: 24px
+
+        table
+          margin-bottom: 15px
+          border: 1px solid #ccc
+
+          tr, th, td
+            border: 1px solid #ccc
+
+  &.search-phrase
+    font-size: 130%
+    background-color: #FCFCFC
+    font-weight: bold
+
+  &.hit-num
+    font-size: 110%
+    text-align: right
+
+  &#sidebar
+    h3
+      margin-bottom: 10px
+      font-size: 120%
+
+    p
+      margin-bottom: 0.5em
+
+  &.member
+    background: #ebb
+    border: 2px solid #a88
+    padding: 3px 3px 10px 3px
+
+    h3
+      color: #a00
+
+  &.sblock
+    margin-bottom: 30px
+
+    ul li
+    p
+      margin-left: 1em
+
+
+a.image_link
+  border: none
+  text-decoration: none
+
+  img
+    border: none
+
+
+span.hatena-star-star-container a
+  border: none
+
+
+input#openid_url
+  background-color: #fff
+  background-image: url(/images/openid-logo-input.gif)
+  background-repeat: no-repeat
+  font-size: 16px
+  line-height: 1.5
+  padding: 0 0 0 26px
+
+
+div
+  &.flash
+    margin: 5px 0 1em 0
+    padding: 5px 1em
+
+  &.error
+    background: #f99
+    border: 2px solid #f00
+    color: #b00
+
+  &.notice
+    background: #9d9
+    border: 2px solid #090
+    color: #030
+
+  &.warn
+    background: #fdfdd3
+    border: 2px solid #fd0
+    color: #444
+
+  &.comments
+    font-size: 90%
+    margin-top: 30px
+
+  &.comment_form
+    background-color: #eee
+    padding: 10px
+    font-size: 90%
+
+    form p
+      margin: 0
+      line-height: 1.5
+
+
+input.title
+  font-size: 16px
+  line-height: 1.5
+
+
+div.hidden_dummy_field
+  display: none
+
+
+span.site_version
+  color: #bbb
+  font-size: 70%
+  letter-spacing: -1px
+
+
+a.image
+  border: none
+
+
+div
+  &.preview div.article
+    background-color: transparent
+    background-image: url(/images/preview_bg.png)
+    background-repeat: repeat
+
+  &#content div.navigation
+    margin-top: 1em
+    text-align: right
+    font-size: 70%
+
+
+table
+  &.dashboard
+    border: 1px solid #000
+
+    th
+      background: #ccc
+
+  &.dashbaord td
+    padding: 3px 10px
+
+
+div.signin
+  font-size: 70%
+  text-align: left
+
+
+.fieldWithErrors
+  padding: 2px
+  background-color: red
+  display: table
+
+
+#errorExplanation
+  width: 400px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 12px
+  margin-bottom: 20px
+  background-color: #f0f0f0
+
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    background-color: #c00
+    color: #fff
+
+  p
+    color: #333
+    margin-bottom: 0
+    padding: 5px
+
+  ul li
+    font-size: 12px
+    list-style: square
+
+
+.contact_form
+  label
+    color: #333
+    display: block
+    font-size: 90%
+    font-weight: bold
+    margin: 1em 0px 0px 0px
+
+  form
+    input, textarea
+  div.notice
+    background: transparent
+    border: none
+    color: #000
+    font-size: 80%
+    margin: 0px
+    padding: 0px
+
+
+input#contact_submit
+  font-size: 150%
+
+
+.contact_form
+  input.email, div.email
+    width: 18em
+    font-weight: bold
+    font-size: 120%
+    padding: 2px 0.5em
+
+
+div
+  &.confirm
+    border: 1px #ccc solid
+    padding: 2px 0.5em
+
+  &.about_personal_info
+    margin-top: 15px
+    margin-bottom: 0px
+    font-size: 78%
+
+    h3
+      font-size: 120%
+      margin-bottom: 5px
+
+    p
+      margin: 0
+      padding: 0
+
+  &.page
+    h2
+      text-align: right
+      font-size: 100%
+      margin-top: 10em
+      margin-bottom: 0
+
+    h3
+      font-size: 24px
+      font-weight: bold
+      border-bottom: 2px solid #999
+      margin-bottom: 10px
+
+    h4
+      margin-bottom: 5px
+      padding-left: 5px
+      border-left: 10px solid #999
+
+    div.meta
+      font-size: 80%
+      text-align: right
+      color: #999
+      margin-bottom: 20px
+
+      span.author
+        color: #000
+        font-weight: bold
+
+    ul
+      margin-left: 1em
+      margin-bottom: 0.5em
+
+
+ul li, div.page p
+  margin-left: 1em
+
+
+img.badge
+  border: none
+
+
+.badge
+  border-width: 0
+  text-decoration: none
