@@ -4,7 +4,7 @@ require 'open-uri'
 class KarekiFeed < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
-  has_many :entries, {:foreign_key => :feed_id, :class_name => KarekiEntry.to_s }
+  has_many :entries, :dependent => :destroy, :foreign_key => :feed_id, :class_name => KarekiEntry.to_s
   validates_uniqueness_of :url
 
   class << self
