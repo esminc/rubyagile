@@ -41,7 +41,7 @@
       #container
         #content
           != render :partial => 'shared/flash', :locals => {:flash => flash}
-          != yield
+          !~ yield
 
       #sidebar!= yield(:sidebar) || render(:partial => 'shared/sidebar')
 
