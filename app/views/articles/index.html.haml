@@ -1,5 +1,2 @@
 - @articles.each do |article|
   %div[article]!= render :partial => 'shared/article', :locals => {:article => article}
-
-- content_for :sidebar do
-  != render :partial => 'sidebar'
