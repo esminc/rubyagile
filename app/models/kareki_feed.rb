@@ -1,9 +1,4 @@
-require 'rss'
-require 'open-uri'
-
 class KarekiFeed < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
-
   has_many :entries, :dependent => :destroy, :foreign_key => :feed_id, :class_name => KarekiEntry.to_s
   validates_uniqueness_of :url
 
@@ -15,39 +10,28 @@ class KarekiFeed < ActiveRecord::Base
 
   # XXX call for better method name :<
   def fetch_and_save_entries
-    feed = parse_feed_content
-    create_entries_from(feed)
+    create_entries_from(parse_feed_content)
   ensure
     # XXX handle exception someway?
   end
 
-  def exist?
-    !!feed_content.present?
-  end
-
   def before_save
     feed = parse_feed_content
-    self.title = feed.channel.title
-    self.link = feed.channel.link
+    self.title = feed.title
+    self.link = feed.url
   end
 
   private
-  def feed_content
-    open(url).read
-  rescue OpenURI::HTTPError
-    nil
-  end
-  memoize :feed_content
 
   def parse_feed_content
-    RSS::Parser.parse(feed_content)
+    Feedzirra::Feed.fetch_and_parse(url)
   end
 
   def create_entries_from(feed)
-    feed.items.each do |item|
-      entry = KarekiEntry.build_from_item(item)
-      entry.feed_id = self.id
-      entry.save
+    feed.entries.each do |entry|
+      e = KarekiEntry.build_from_entry(entry)
+      e.feed_id = self.id
+      e.save
     end
   end
 end

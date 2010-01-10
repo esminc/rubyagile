@@ -3,11 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe KarekiFeed do
   def create_ursm_hatena
     feed = KarekiFeed.new(:url => 'http://d.hatena.ne.jp/ursm/rss')
+
     stub(feed).feed_content do
-      File.read(File.join(Rails.root, "spec/fixtures/feeds/hatena_ursm.rss"))
+      Feedzirra::Feed.parse(File.read(File.join(Rails.root, "spec/fixtures/feeds/hatena_ursm.rss")))
     end
-    feed.save
-    feed
+
+    feed.tap(&:save)
   end
 
   describe '#new' do
@@ -28,7 +29,7 @@ describe KarekiFeed do
           @feed = KarekiFeed.new(:url => "http://example.com/not_exist/rss")
         end
         subject{ @feed }
-        it{ should_not be_exist }
+        xit{ should_not be_exist }
       end
 
       context "同じフィードを複数登録しようとしたとき" do

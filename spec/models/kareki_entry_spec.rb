@@ -34,34 +34,67 @@ describe KarekiEntry do
 end
 
 describe KarekiEntry do
-  describe "#create_from_item" do
-    before do
-      feed = RSS::Parser.parse(File.read(File.expand_path("spec/fixtures/feeds/hatena_ursm.rss", Rails.root)))
-      @item = feed.items.first
-
-      @entry = KarekiEntry.build_from_item(@item)
-      @entry.feed_id = 1 # dummy
-    end
-
-    subject { @entry }
-    it { should be_valid }
-    it { should be_new_record }
-
-    describe ".content" do
-      subject{ @entry.content }
-      it{ should =~ /<p>こういうアクションに対して<\/p>/ }
-    end
-
-    describe "もう一度おなじitemで上書きする場合" do
+  describe "#create_from_entry" do
+    context 'rss' do
       before do
-        @entry.save
-        stub(@item).content_encoded { "Hehehe" }
-        @updated = KarekiEntry.build_from_item(@item)
+        feed = Feedzirra::Feed.parse(File.read(File.expand_path("spec/fixtures/feeds/hatena_ursm.rss", Rails.root)))
+        @item = feed.entries.first
+
+        @entry = KarekiEntry.build_from_entry(@item)
+        @entry.feed_id = 1 # dummy
       end
 
-      subject { @updated }
-      it { should == @entry }
-      its(:content) { should == "Hehehe" }
+      subject { @entry }
+      it { should be_valid }
+      it { should be_new_record }
+
+      describe ".content" do
+        subject{ @entry.content }
+        it{ should =~ /<p>こういうアクションに対して<\/p>/ }
+      end
+
+      describe "もう一度おなじitemで上書きする場合" do
+        before do
+          @entry.save
+          stub(@item).content { "Hehehe" }
+          @updated = KarekiEntry.build_from_entry(@item)
+        end
+
+        subject { @updated }
+        it { should == @entry }
+        its(:content) { should == "Hehehe" }
+      end
+    end
+
+    context 'atom' do
+      before do
+        feed = Feedzirra::Feed.parse(File.read(File.expand_path("spec/fixtures/feeds/blogger_kenchan.atom", Rails.root)))
+        @item = feed.entries.first
+
+        @entry = KarekiEntry.build_from_entry(@item)
+        @entry.feed_id = 1 # dummy
+      end
+
+      subject { @entry }
+      it { should be_valid }
+      it { should be_new_record }
+
+      describe ".content" do
+        subject{ @entry.content }
+        it { should =~ %r(<li>Ruby</li>) }
+      end
+
+      describe "もう一度おなじitemで上書きする場合" do
+        before do
+          stub(@item).content { 'Hehehe' }
+          @entry.save
+          @updated = KarekiEntry.build_from_entry(@item)
+        end
+
+        subject { @updated }
+        it { should == @entry }
+        its(:content) { should == "Hehehe" }
+      end
     end
   end
 end
