@@ -31,4 +31,8 @@ class KarekiEntry < ActiveRecord::Base
   def confirmation
     ActiveSupport::StringInquirer.new( read_attribute("confirmation") )
   end
+
+  def summary
+    Nokogiri::XML.fragment(content).content.strip.gsub(/\s+/, ' ').split(//)[0, 100].join
+  end
 end

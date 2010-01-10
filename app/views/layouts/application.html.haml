@@ -20,6 +20,7 @@
     :javascript
       Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
     %title= yield(:title) || default_title
+    != yield :head
 
   %body
     #wrapper

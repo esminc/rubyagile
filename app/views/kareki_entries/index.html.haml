@@ -1,6 +1,16 @@
+- content_for :head do
+  %style(type='text/css')
+    :sass
+      table.kareki_entries
+        :width 100%
+
+        td.summary
+          :font-size smaller
+          :color gray
+
 %p!= button_to 'Refresh', crawl_kareki_entries_path
 
-%table
+%table.kareki_entries
   - @entries.select {|e| e.confirmation.not_yet? }.each do |entry|
     %tr
       %td!= link_to(entry.title, entry.link)
@@ -8,3 +18,5 @@
       %td
         != link_to 'Confirm', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'confirmed'}), :method => :put
         != link_to 'Reject', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'rejected'}), :method => :put
+    %tr
+      %td.summary(colspan=3)= entry.summary

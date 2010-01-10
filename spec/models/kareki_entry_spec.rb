@@ -48,10 +48,8 @@ describe KarekiEntry do
       it { should be_valid }
       it { should be_new_record }
 
-      describe ".content" do
-        subject{ @entry.content }
-        it{ should =~ /<p>こういうアクションに対して<\/p>/ }
-      end
+      its(:content) { should =~ /<p>こういうアクションに対して<\/p>/ }
+      its(:summary) { should =~ /^こういうアクションに対して/ }
 
       describe "もう一度おなじitemで上書きする場合" do
         before do
@@ -79,10 +77,8 @@ describe KarekiEntry do
       it { should be_valid }
       it { should be_new_record }
 
-      describe ".content" do
-        subject{ @entry.content }
-        it { should =~ %r(<li>Ruby</li>) }
-      end
+      its(:content) { should =~ %r(<li>Ruby</li>) }
+      its(:summary) { should =~ /^Keep/ }
 
       describe "もう一度おなじitemで上書きする場合" do
         before do
