@@ -33,6 +33,6 @@ class KarekiEntry < ActiveRecord::Base
   end
 
   def summary
-    Nokogiri::XML.fragment(content).content.strip.gsub(/\s+/, ' ').split(//)[0, 100].join
+    Nokogiri::XML.fragment(content).content.strip.gsub(/\s+/, ' ')
   end
 end

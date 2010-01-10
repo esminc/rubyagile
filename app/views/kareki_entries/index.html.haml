@@ -19,4 +19,4 @@
         != link_to 'Confirm', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'confirmed'}), :method => :put
         != link_to 'Reject', kareki_entry_path(entry, :kareki_entry => {:confirmation => 'rejected'}), :method => :put
     %tr
-      %td.summary(colspan=3)= entry.summary
+      %td.summary(colspan=3)= truncate entry.summary, 100
