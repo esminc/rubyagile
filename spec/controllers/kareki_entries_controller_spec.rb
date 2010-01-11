@@ -16,7 +16,7 @@ describe KarekiEntriesController do
 
       before do
         login_as :alice
-        mock(KarekiEntry).all(:order => 'updated_at DESC') { ["a entry"] }
+        mock(KarekiEntry).all(:order => 'created_at DESC') { ["a entry"] }
         get :index
       end
 

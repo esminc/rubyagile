@@ -2,7 +2,7 @@ class KarekiEntriesController < ApplicationController
   before_filter :login_required
 
   def index
-    @entries = KarekiEntry.all(:order => 'updated_at DESC')
+    @entries = KarekiEntry.all(:order => 'created_at DESC')
   end
 
   def update
