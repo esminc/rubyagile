@@ -1,0 +1,8 @@
+- form_tag :action => 'create' do |f|
+  %p
+    %label(for='openid_url') OpenID:
+    != text_field_tag 'openid_url', '', :size => 40
+    != submit_tag 'Sign in', :disable_with => 'Signing in&hellip;'
+
+:javascript
+  Field.focus('openid_url');
