@@ -1,12 +1,6 @@
 class PagesController < ApplicationController
 #  before_filter :authentication
-  before_filter :login_required, :except => [:show, :index, :feed, :search]
-
-  def index
-    respond_to do |format|
-      format.html { show }
-    end
-  end
+  before_filter :login_required, :except => [:show, :feed, :search]
 
   def show
     @page = fetch_named_page(params[:page_name])
