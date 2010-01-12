@@ -17,7 +17,6 @@ ActionController::Routing::Routes.draw do |map|
   map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
 
   map.connect '/pages/:page_name/:action', :controller => 'pages'
-  map.page '/pages/:page_name', :controller => 'pages', :action => 'show'
   map.front_page '/pages', :controller => 'pages', :page_name => 'FrontPage', :action => 'show'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
