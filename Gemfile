@@ -13,9 +13,14 @@ gem 'ruby-openid', :require_as => 'openid'
 gem 'moro-open_id_authentication', :require_as => 'open_id_authentication'
 
 only :development do
+  gem 'rails-footnotes'
+end
+
+only :test do
   gem 'rspec-rails'
   gem 'rr'
-  gem 'rails-footnotes'
+  gem 'autotest-rails'
+  gem 'spork'
 end
 
 only :production do
