@@ -1,6 +1,5 @@
 class Article < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
   has_many :images, :dependent => :destroy
 
   acts_as_searchable :searchable_fields => [:title, :body]
@@ -20,10 +19,6 @@ class Article < ActiveRecord::Base
   def next_article
     load_neighbors unless @next_article
     (@next_article == self ? nil : @next_article)
-  end
-
-  def comment_count
-    comments.size
   end
 
   def author_name

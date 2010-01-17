@@ -29,20 +29,6 @@ describe Article do
     it { @article.author_name.should == users(:alice).login }
   end
 
-  describe "コメントがある場合" do
-    before do
-      @article = valid_article
-      2.times do |i|
-        @article.comments.build(
-          :author => "a#{i}", :body => "b#{i}", :ip_address => '127.0.0.1', :spam => false)
-      end
-    end
-
-    it "should have 2 comments" do
-      @article.comment_count.should == 2
-    end
-  end
-
   describe "1件しか記事が無い場合" do
     before do
       Article.delete_all

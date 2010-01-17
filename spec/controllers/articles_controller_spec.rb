@@ -175,25 +175,6 @@ describe ArticlesController do
     it { response.should redirect_to(articles_url) }
   end
 
-  describe "handling POST /articles/comment/1" do
-    def do_comment(params)
-      post :comment, :comment => params
-    end
-
-    describe "with valid comment" do
-      before do
-        @article = mock_model(Article, :to_parm => "1")
-        @comment = mock_model(Comment)
-        stub(@comment).save { true }
-        stub(Article).find { @article }
-        stub(Comment).parse_params { @comment }
-        do_comment({:author => 'alice', :body => 'some body'})
-      end
-
-      it { response.should redirect_to(:controller => 'articles', :action => 'show', :id => @article.id) }
-    end
-  end
-
   describe "handling Atomfeed" do
     before do
       @articles = [mock_model(Article, :to_param => "1")]
