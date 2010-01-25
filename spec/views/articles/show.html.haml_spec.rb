@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "/articles/show.html.erb" do
+describe "/articles/show.html.haml" do
   include ArticlesHelper
 
   before(:each) do
@@ -12,6 +12,6 @@ describe "/articles/show.html.erb" do
   end
 
   it "should render attributes" do
-    render "/articles/show.html.erb"
+    render "/articles/show.html.haml"
   end
 end

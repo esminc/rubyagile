@@ -1,6 +1,9 @@
 %h2.title!= link_to h(article.title), article_path(article)
 .meta
-  Posted by <span class="author">#{h article.user.login}</span> on <span class="posted_on">#{h posted_on(article.created_at)}</span>
+  Posted by
+  %span.author= article.user.login
+  on
+  %span.posted_on= posted_on article.created_at
 .meta!= link_to_comments(article)
 .body!~ parse_article(article)
 .meta

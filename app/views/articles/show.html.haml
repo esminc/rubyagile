@@ -1,0 +1,10 @@
+- content_for :title do
+  #{@article.title} - #{site_name}
+
+!= render :partial => 'navigation'
+
+%div[@article]!= render :partial => 'shared/article'
+
+!= disqus_thread
+
+!= render :partial => 'navigation'

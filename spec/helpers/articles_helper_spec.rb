@@ -14,19 +14,11 @@ describe ArticlesHelper do
   end
 
   describe "#link_to_comments" do
-    describe "with no comment" do
-      before do
-        @article = mock_model(Article, :comment_count => 0)
-      end
-      it { link_to_comments(@article).should have_tag('a', 'コメントは、ありません。') }
+    before do
+      @article = mock_model(Article, :to_param => '5')
     end
 
-    describe "with some comments" do
-      before do
-        @article = mock_model(Article, :comment_count => 2)
-      end
-      it { link_to_comments(@article).should have_tag('a', '2 Comments')}
-    end
-
+    subject { link_to_comments(@article) }
+    it { should have_tag('a[href=/articles/5#disqus_thread]', 'View Comments') }
   end
 end
