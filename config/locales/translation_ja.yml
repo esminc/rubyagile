@@ -1,0 +1,65 @@
+ja: 
+  activerecord: 
+    models: 
+      kareki_feed: "Karekiフィード"  #g
+      contact: "お問い合わせ"
+      image: "イメージ"  #g
+      user: "ユーザー"  #g
+      page: "ページ"  #g
+      article: "条"  #g
+      kareki_entry: "Karekiエントリ"  #g
+
+    attributes: 
+      kareki_feed: 
+        title: "タイトル"  #g
+        link: "リンク"  #g
+        url: "URLを"  #g
+        etag: "ETagの"  #g
+        entries: "エントリー"  #g
+
+      contact: 
+        email: "メールアドレス"
+        ip_address: "ipアドレス"  #g
+        message: "本文"
+        name: "お名前"
+        are_you_bot: "チェックをオフにしてください(スパム投稿対策です。ご協力をお願いします)。"
+
+      image: 
+        filename: "ファイル名"  #g
+        content_type: "コンテンツタイプ"  #g
+        size: "寸法"  #g
+        article: "条"  #g
+        thumbnails: "サムネール"  #g
+        db_file: "dbファイル"  #g
+        parent: "親"  #g
+
+      user: 
+        login: "ログイン"  #g
+        email: "Eメール"  #g
+        open_id_url: "URLを開くIDを"  #g
+        fullname: "フルネーム"  #g
+        amazon_associate: "アマゾンに関連付ける"  #g
+        member: "会員"  #g
+        articles: "関連記事"  #g
+        pages: "ページ"  #g
+
+      page: 
+        name: "名前"  #g
+        content: "内容"  #g
+        user: "ユーザー"  #g
+
+      article: 
+        title: "タイトル"  #g
+        body: "体"  #g
+        publishing: "出版"  #g
+        user: "ユーザー"  #g
+        images: "画像"  #g
+
+      kareki_entry: 
+        title: "タイトル"  #g
+        content: "内容"  #g
+        link: "リンク"  #g
+        published_at: "に公開された"  #g
+        creator: "クリエイター"  #g
+        confirmation: "確認"  #g
+        feed: "食料"  #g

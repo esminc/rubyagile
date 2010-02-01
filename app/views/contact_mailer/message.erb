@@ -1,4 +1,8 @@
-<%= @contact.email %> 様
+<%- if @contact.name -%>
+  <%= @contact.name %> 様 (<%= @contact.email %>)
+<%- else -%>
+  <%= @contact.email %> 様
+<%- end -%>
 
 この度は、永和システムマネジメントへのお問い合わせありがとうございます。
 
