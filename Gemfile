@@ -12,6 +12,7 @@ gem 'feedzirra'
 gem 'disqus'
 gem 'ruby-openid', :require_as => 'openid'
 gem 'moro-open_id_authentication', :require_as => 'open_id_authentication'
+gem 'hoptoad_notifier'
 
 only :development do
   gem 'rails-footnotes'
