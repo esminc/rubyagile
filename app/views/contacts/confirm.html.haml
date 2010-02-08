@@ -1,20 +1,24 @@
 %h2 お問い合わせ・ご相談(送信確認)
 %p 以下の内容で送信いたします。内容をご確認ください。
 
-.contact_form
+.contact_form.confirm
   - form_for @contact, :url => {:action => "submit"} do |f|
-    != f.label :email
-    != f.hidden_field :email
-    .confirm.email= @contact.email
+    %dl
+      %dt!= f.label :email
+      %dd.email
+        = @contact.email
+        != f.hidden_field :email
 
-    - if @contact.name.present?
-      != f.label :name
-      != f.hidden_field :name
-      .confirm= @contact.name
+      - if @contact.name.present?
+        %dt!= f.label :name
+        %dd
+          = @contact.name
+          != f.hidden_field :name
 
-    != f.label :message
-    != f.hidden_field :message
-    .confirm= @contact.message
+      %dt!= f.label :message
+      %dd
+        %pre>~ @contact.message
+        != f.hidden_field :message
 
     != f.hidden_field :bot
 

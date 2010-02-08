@@ -18,17 +18,17 @@
       %dd!= f.text_field :name
 
       %dt!= f.label :message, '本文 (Message)'
-      %dd!= f.text_area :message, :size => "50x20"
+      %dd!~ f.text_area :message, :size => "50x20"
 
     %p
       != f.check_box :bot
       != f.label :bot, I18n.t('activerecord.attributes.contact.are_you_bot')
 
-    %div!= f.submit "送信確認画面へ"
+    .buttons!= f.submit "送信確認画面へ"
 
-.about_personal_info
-  %h3 (個人情報の取り扱いについて)
-  %p
-    登録していただいた情報は、お問い合わせへのご回答の目的にのみ利用いたします。
-    登録していただいた情報は、株式会社永和システムマネジメント内部で処理いたします。外部委託することはありません。<br />
-    株式会社永和システムマネジメントの<a href="http://www.esm.co.jp/company/approach_privacy.html">個人情報保護方針</a>もあわせてご覧ください。
+  .about_personal_info
+    %h3 (個人情報の取り扱いについて)
+    %p
+      登録していただいた情報は、お問い合わせへのご回答の目的にのみ利用いたします。
+      登録していただいた情報は、株式会社永和システムマネジメント内部で処理いたします。外部委託することはありません。<br />
+      株式会社永和システムマネジメントの<a href="http://www.esm.co.jp/company/approach_privacy.html">個人情報保護方針</a>もあわせてご覧ください。
