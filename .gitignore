@@ -17,6 +17,6 @@
 /db/*.sqlite3
 /tmp
 public/stylesheets/application.css
-
+mkmf.log
 bin/*
 vendor/bundler_gems/*
