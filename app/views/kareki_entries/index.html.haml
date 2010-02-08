@@ -8,7 +8,7 @@
           :font-size smaller
           :color gray
 
-%p!= button_to 'Refresh', crawl_kareki_entries_path
+%p!= button_to 'いますぐクローラを走らせる', crawl_kareki_entries_path
 
 %table.kareki_entries
   - @entries.select {|e| e.confirmation.not_yet? }.each do |entry|
