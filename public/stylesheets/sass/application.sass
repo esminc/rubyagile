@@ -429,14 +429,19 @@ div.signin
 
 
 .contact_form
-  label, .buttons
+  dt
+    :margin-top 1em
     color: #333
-    display: block
     font-size: 90%
     font-weight: bold
     margin: 1em 0px 0px 0px
 
-  div.notice
+  .email
+    width: 18em
+    font-weight: bold
+    font-size: 120%
+
+  .notice
     background: transparent
     border: none
     color: #000
@@ -444,18 +449,8 @@ div.signin
     margin: 0px
     padding: 0px
 
-
-input#contact_submit
-  font-size: 150%
-
-
-.contact_form
-  input.email, div.email
-    width: 18em
-    font-weight: bold
-    font-size: 120%
-    padding: 2px 0.5em
-
+  input#contact_submit
+    font-size: 150%
 
 div
   &.confirm

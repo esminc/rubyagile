@@ -7,24 +7,24 @@
     の、Rubyを利用したアジャイルなシステム開発についてのお問い合わせ・ご相談は下記の入力フォームより承ります。ご連絡先メールアドレスとご相談内容を入力のうえ「送信確認画面へ」のボタンをクリックしてください。
 
   - form_for(@contact, :url => {:action => :confirm}) do |f|
-    != f.label :email, 'メールアドレス (Email)'
-    != f.text_field :email, :class => "email"
-    .notice
-      メールアドレスに誤りがある場合にはご連絡が取れないことがございます。<br />
-      いま一度メールアドレスをご確認いただきますようお願いいたします。
+    %dl
+      %dt.email!= f.label :email, 'メールアドレス (Email)'
+      %dd.email!= f.text_field :email, :class => "email"
+      %dd.notice
+        メールアドレスに誤りがある場合にはご連絡が取れないことがございます。<br />
+        いま一度メールアドレスをご確認いただきますようお願いいたします。
 
-    != f.label :name, 'お名前 (Name)'
-    != f.text_field :name
+      %dt!= f.label :name, 'お名前 (Name)'
+      %dd!= f.text_field :name
 
-    != f.label :message, '本文 (Message)'
-    != f.text_area :message, :size => "50x20"
-    %br
+      %dt!= f.label :message, '本文 (Message)'
+      %dd!= f.text_area :message, :size => "50x20"
 
-    != f.check_box :bot
-    %label(for="contact_bot")= I18n.t('activerecord.attributes.contact.are_you_bot')
+    %p
+      != f.check_box :bot
+      != f.label :bot, I18n.t('activerecord.attributes.contact.are_you_bot')
 
-    %label(for="contact_submit")
-      != f.submit "送信確認画面へ"
+    %div!= f.submit "送信確認画面へ"
 
 .about_personal_info
   %h3 (個人情報の取り扱いについて)
