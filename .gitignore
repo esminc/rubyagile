@@ -7,9 +7,6 @@
 .generators
 /config/database.yml
 /log/*.log
-/vendor/plugins/rspec_on_rails_matchers
-/vendor/plugins/yaml_waml
-/vendor/rails
 /coverage
 /.generators
 /db/schema.rb
@@ -18,6 +15,5 @@
 /tmp
 public/stylesheets/application.css
 mkmf.log
-bin/*
+.bundle/*
 vendor/bundler_gems/*
-.bundle/environment.rb
