@@ -16,6 +16,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'rr'
+  gem 'machinist', :require => 'machinist/active_record'
+  gem 'faker'
   gem 'autotest-rails'
   gem 'spork'
 end

@@ -10,4 +10,8 @@ class Page < ActiveRecord::Base
   def author_name
     user.login
   end
+
+  def to_param
+    name
+  end
 end

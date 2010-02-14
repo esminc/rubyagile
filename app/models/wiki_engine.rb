@@ -48,7 +48,7 @@ class WikiEngine
     unresolved_wikinames = unresolved_wikinames(wikinames)
     unresolved_wikinames.each { |wikiname|
       html.gsub!(%r|<a href="/pages/#{wikiname}">#{wikiname}</a>|,
-        %Q|#{wikiname}<a href="/pages/#{wikiname}/new">?</a>|)
+        %Q|#{wikiname}<a href="/pages/new?page_name=#{wikiname}">?</a>|)
     }
   end
 

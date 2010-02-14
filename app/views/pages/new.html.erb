@@ -2,7 +2,7 @@
 
 <%= error_messages_for :page %>
 
-<% form_for(:page, :url => { :action => 'create', :page_name => @page.name }, :html => { :method => :post }) do |f| %>
+<% form_for @page do |f| %>
   <%= render :partial => "form", :locals => {:form => f} %>
   <p>
   <%= f.submit "プレビュー", :name => "preview" %>

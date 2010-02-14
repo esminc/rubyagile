@@ -35,8 +35,8 @@
         %span.menu
           != link_to 'トップ', root_path
           != link_to 'おしらせ', articles_path
-          != link_to 'ふつうのシステム開発', front_page_path
-          != link_to '活動実績', :controller => 'pages', :page_name => 'OurWorks', :action => 'show'
+          != link_to 'ふつうのシステム開発', pages_path
+          != link_to '活動実績', page_path('OurWorks')
           != link_to 'お問い合わせ・ご相談', :controller => 'contacts'
 
       #container

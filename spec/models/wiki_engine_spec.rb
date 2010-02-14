@@ -80,7 +80,7 @@ paragraph.
 
     it "WikiNameに?を付けた未解決のWikiNameに変換する" do
       @actual.should == <<-EXPECTED
-WikiName<a href="/pages/WikiName/new">?</a>
+WikiName<a href="/pages/new?page_name=WikiName">?</a>
       EXPECTED
     end
   end
@@ -95,8 +95,8 @@ WikiName<a href="/pages/WikiName/new">?</a>
 
     it "存在しないWikiNameすべてに?を付けて未解決のWikiNameに変換する" do
       @actual.should == <<-EXPECTED
-WikiName1<a href="/pages/WikiName1/new">?</a>
-WikiName2<a href="/pages/WikiName2/new">?</a>
+WikiName1<a href="/pages/new?page_name=WikiName1">?</a>
+WikiName2<a href="/pages/new?page_name=WikiName2">?</a>
       EXPECTED
     end
   end

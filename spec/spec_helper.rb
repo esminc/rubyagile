@@ -82,4 +82,11 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  config.before :all do
+    Sham.reset :before_all
+  end
+
+  config.before :each do
+    Sham.reset :before_each
+  end
 end

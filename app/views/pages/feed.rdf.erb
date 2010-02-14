@@ -3,24 +3,24 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xml:lang="ja">
-  <channel rdf:about="<%= formatted_feed_pages_url(:rdf) %>">
+  <channel rdf:about="<%=h feed_pages_url(:format => :rdf) %>">
   <title>Ruby x Agile</title>
-  <link><%= pages_url %></link>
+  <link><%=h root_url %></link>
   <description>Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト</description>
 <% unless @pages.empty? -%>
   <items>
     <rdf:Seq>
     <% @pages.each do |page| -%>
-      <rdf:li rdf:resource="<%= page_url(page) %>"/>
+      <rdf:li rdf:resource="<%=h page_url(page) %>"/>
     <%- end -%>
     </rdf:Seq>
   </items>
   </channel>
   <% @pages.each do |page| -%>
-  <item rdf:about="<%= page_url(page) %>">
+  <item rdf:about="<%=h page_url(page) %>">
 　　<title><%=h page.name %></title>
-　　<link><%= page_url(page) %></link>
-　　<description><%= h parse_page(page) %></description>
+　　<link><%=h page_url(page) %></link>
+　　<description><%=h parse_page(page) %></description>
 　　<dc:date><%=h page.updated_at.to_s(:db) %></dc:date>
 　</item>
   <%- end -%>

@@ -7,9 +7,8 @@ describe PagesController do
 
   describe "handling GET /pages/FrontPage" do
     before(:each) do
-      @page = mock_model(Page)
-      stub(controller).fetch_named_page("FrontPage") { @page }
-      get :show, :page_name => "FrontPage"
+      @page = Page.make(:name => 'FrontPage')
+      get :show, :id => 'FrontPage'
     end
 
     it "should assign the found page for the view" do
@@ -37,11 +36,10 @@ describe PagesController do
     end
   end
 
-  describe "handling GET /pages/FrontPage/edit" do
+  describe "handling GET /pages/MyPage/edit" do
     before(:each) do
-      @page = mock_model(Page)
-      stub(controller).fetch_named_page("MyPage") { @page }
-      get :edit, :page_name => "MyPage"
+      @page = Page.make(:name => 'MyPage')
+      get :edit, :id => 'MyPage'
     end
 
     it { response.should be_success }
@@ -68,24 +66,22 @@ describe PagesController do
 
   describe "handling PUT /pages/FrontPage" do
     before(:each) do
-      @page = mock_model(Page, :page_name => "FirstPage")
-      stub(controller).fetch_named_page("MyPage") { @page }
+      @page = Page.make(:name => 'MyPage')
     end
 
     describe "with successful update" do
       before do
-        mock(@page).update_attributes({'name' => 'NewName'}) { true }
-        put :update, :page_name => "MyPage", :page => {:name => 'NewName'}
+        put :update, :id => "MyPage", :page => {:name => 'NewName'}
       end
 
-      it { assigns(:page).should equal(@page) }
+      it { assigns(:page).id.should == @page.id }
+      it { assigns(:page).name.should == 'NewName' }
       it { response.should redirect_to(page_url("NewName")) }
     end
 
     describe "with failed update" do
       before do
-        stub(@page).update_attributes(anything) { false }
-        put :update, :page_name => "MyPage"
+        put :update, :id => "MyPage", :page => {:name => ''}
       end
 
       it { response.should render_template('edit') }
@@ -95,7 +91,7 @@ describe PagesController do
       before do
         dont_allow(@page).update_attributes
         put(:update,
-          :page_name => 'MyPage',
+          :id => 'MyPage',
           :page => {:name => 'NewName', :content => 'new content'},
           :preview => 'Preview')
       end

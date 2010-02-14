@@ -4,6 +4,10 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
+  faker: 
+    group: 
+    - :test
+    version: ">= 0"
   rr: 
     group: 
     - :test
@@ -26,6 +30,12 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  machinist: 
+    group: 
+    - :test
+    version: ">= 0"
+    require: 
+    - machinist/active_record
   disqus: 
     group: 
     - :default
@@ -65,14 +75,12 @@ dependencies:
 specs: 
 - nokogiri: 
     version: 1.4.1
-- builder: 
-    version: 2.1.2
 - activesupport: 
     version: 2.3.5
+- builder: 
+    version: 2.1.2
 - sax-machine: 
     version: 0.0.15
-- actionmailer: 
-    version: 2.3.5
 - json: 
     version: 1.2.0
 - will_paginate: 
@@ -87,28 +95,30 @@ specs:
     version: 1.3.0
 - disqus: 
     version: 1.0.2
+- machinist: 
+    version: 1.0.6
 - ruby-openid: 
     version: 2.1.7
 - rack: 
     version: 1.0.1
 - actionpack: 
     version: 2.3.5
+- actionmailer: 
+    version: 2.3.5
 - rack-openid: 
     version: 0.2.3
 - rspec-rails: 
     version: 1.3.2
-- curb: 
-    version: 0.6.6.0
-- rake: 
-    version: 0.8.7
-- mysql: 
-    version: 2.8.1
-- haml: 
-    version: 2.2.19
 - highline: 
     version: 1.5.2
-- loofah: 
-    version: 0.4.6
+- mysql: 
+    version: 2.8.1
+- rake: 
+    version: 0.8.7
+- haml: 
+    version: 2.2.19
+- curb: 
+    version: 0.6.6.0
 - ZenTest: 
     version: 4.2.1
 - autotest-rails: 
@@ -117,21 +127,25 @@ specs:
     version: 2.3.5
 - hoptoad_notifier: 
     version: 2.1.3
-- activeresource: 
-    version: 2.3.5
-- rails: 
-    version: 2.3.5
+- loofah: 
+    version: 0.4.6
+- spork: 
+    version: 0.7.5
+- faker: 
+    version: 0.3.1
 - rr: 
     version: 0.10.5
+- feedzirra: 
+    version: 0.0.20
 - net-sftp: 
     version: 2.0.4
 - capistrano: 
     version: 2.5.14
-- spork: 
-    version: 0.7.5
-- feedzirra: 
-    version: 0.0.20
-hash: b748cbbf4361e2ca1fd815b10e600f9582bcf20a
+- activeresource: 
+    version: 2.3.5
+- rails: 
+    version: 2.3.5
+hash: d47a862f9e6292754294b8ed234b048e840b5a6d
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

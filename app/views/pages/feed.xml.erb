@@ -2,22 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
   <title>Ruby x Agile</title>
   <subtitle>Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト</subtitle>
-  <link href="<%= root_url %>"/>
-  <link rel="self" href="<%= formatted_feed_pages_url(:xml) %>" type="application/atom+xml" />
+  <link href="<%=h root_url %>"/>
+  <link rel="self" href="<%=h feed_pages_url(:format => :xml) %>" type="application/atom+xml" />
   <author>
     <name>永和システムマネジメント</name>
   </author>
-  <updated><%= @pages.first.updated_at.to_s(:db) %></updated>
-  <id><%= formatted_feed_pages_url(:xml) %></id>
+  <updated><%=h @pages.first.updated_at.to_s(:db) %></updated>
+  <id><%=h feed_pages_url(:format => :xml) %></id>
   <%- @pages.each do |page| -%>
-  <%- url_for_page = url_for(:controller => 'pages', :action => 'show', :page_name => page.name, :only_path => false) -%>
   <entry>
-    <id><%= url_for_page %></id>
+    <id><%=h page_url(page) %></id>
     <author><name><%=h page.user.login %></name></author>
     <published><%=h page.created_at.to_s(:db) %></published>
     <updated><%=h page.updated_at.to_s(:db) %></updated>
-    <link href="<%= url_for_page %>" rel="alternate" type="text/html" />
-    <title><%=h(page.name) %></title>
+    <link href="<%=h page_url(page) %>" rel="alternate" type="text/html" />
+    <title><%=h page.name %></title>
     <content type="html">
       <%=h parse_page(page) %>
     </content>
