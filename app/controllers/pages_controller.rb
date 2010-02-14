@@ -25,20 +25,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
-
-    unless params[:preview].blank?
-      render :preview
-    else
-      respond_to do |format|
-        if @page.save
-          flash[:notice] = 'Page was successfully created.'
-          format.html { redirect_to @page }
-        else
-          format.html { render :new }
-        end
-      end
-    end
+    @page = Page.new
+    create_or_update
   end
 
   def edit
@@ -47,22 +35,7 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find_by_name!(params[:id])
-    @page.user = current_user
-
-    unless params[:preview].blank?
-      @page.name = params[:page][:name]
-      @page.content = params[:page][:content]
-      render :preview
-    else
-      respond_to do |format|
-        if @page.update_attributes(params[:page])
-          flash[:notice] = 'Page was successfully updated.'
-          format.html { redirect_to("/pages/#{params[:page][:name]}") }
-        else
-          format.html { render :edit }
-        end
-      end
-    end
+    create_or_update
   end
 
   def feed
@@ -70,6 +43,24 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.xml { render :layout => nil }
       format.rdf { render :layout => nil }
+    end
+  end
+
+  private
+
+  def create_or_update
+    new = @page.new_record?
+    @page.attributes = params[:page].merge(:user => current_user)
+
+    if params[:preview].present?
+      render :preview
+    else
+      if @page.save
+        flash[:notice] = "Page was successfully #{new ? 'created' : 'updated'}."
+        redirect_to @page
+      else
+        render new ? :new : :edit
+      end
     end
   end
 end
