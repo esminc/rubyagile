@@ -1,30 +1,25 @@
-bundle_path 'vendor/bundler_gems'
+source :gemcutter
 
-clear_sources
-source 'http://gemcutter.org'
-source 'http://gems.github.com'
-
-gem 'rails', '2.3.5'
+gem 'rails', '2.3.5', :require => nil
 gem 'haml'
 gem 'will_paginate'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
-gem 'ruby-openid', :require_as => 'openid'
-gem 'moro-open_id_authentication', :require_as => 'open_id_authentication'
+gem 'rack-openid', :require => 'rack/openid'
 gem 'hoptoad_notifier'
 
-only :development do
-  gem 'rails-footnotes'
+group :development do
+  gem 'capistrano', :require => nil
 end
 
-only :test do
+group :test do
   gem 'rspec-rails'
   gem 'rr'
   gem 'autotest-rails'
   gem 'spork'
 end
 
-only :production do
+group :production do
   gem 'mysql'
 end

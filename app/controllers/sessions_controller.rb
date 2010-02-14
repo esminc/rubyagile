@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-
-  # render new.html.erb
-  def new; end
+  def new
+  end
 
   def create
     open_id_authentication
@@ -14,21 +13,18 @@ class SessionsController < ApplicationController
   end
 
   protected
+
   def open_id_authentication
-    begin
-      authenticate_with_open_id(params[:openid_url],:optional => ["nickname", "email", "fullname"]) do |status, open_id_url, registration|
-        if status.successful?
-          if @current_user = User.find_by_open_id_url(open_id_url)
-            successful_login
-          else
-            failed_login "You can't Sign in."
-          end
+    authenticate_with_open_id do |status, open_id_url|
+      if status.successful?
+        if @current_user = User.find_by_open_id_url(open_id_url)
+          successful_login
         else
-          failed_login status.message
+          failed_login "You can't Sign in."
         end
+      else
+        failed_login status.message
       end
-    rescue OpenIdAuthentication::InvalidOpenId => e
-      failed_login "'#{params[:openid_url]}' #{e.message}"
     end
   end
 

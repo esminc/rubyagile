@@ -8,7 +8,7 @@ describe KarekiEntriesController do
         get :index
       end
       subject { response }
-      it { should redirect_to(signin_url) }
+      it { should redirect_to(new_session_url) }
     end
 
     context "logged in" do

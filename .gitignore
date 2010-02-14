@@ -20,3 +20,4 @@ public/stylesheets/application.css
 mkmf.log
 bin/*
 vendor/bundler_gems/*
+.bundle/environment.rb
