@@ -54,8 +54,7 @@ class ArticlesController < ApplicationController
 
     unless params[:article].blank?
       unless params[:preview].blank?
-        @article.title = params[:article][:title]
-        @article.body = params[:article][:body]
+        @article.attributes = params[:article]
         render :action => 'preview'
       else
         respond_to do |format|

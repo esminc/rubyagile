@@ -1,10 +1,39 @@
+- content_for :head do
+  %style(type='text/css')
+    :sass
+      .articles
+        :padding 0.5em 1em
+        :background-color #eee
+        :border-radius 0.5em
+        :-moz-border-radius 0.5em
+
+        .article
+          :margin 0
+
+          h2
+            :font-size 1em
+            :float left
+            :margin-right 0.5em
+
+          h2, p.summary
+            :clear left
+
+          p.summary
+            :margin 0 0 0 1em
+            :font-size 0.9em
+
 .articles
-  %h2 おしらせ
-  %ul
-    - @articles.each do |article|
-      %li[article]
-        = posted_on article.created_at
-        != link_to h(article.title), article
+  - @articles.each do |article|
+    %div[article]
+      %h2!= link_to h(article.title), article
+      .meta
+        Posted by
+        %span.author= article.user.login
+        on
+        %span.posted_on= posted_on article.created_at
+      - if article.summary.present?
+        %p.summary= article.summary
+
   .more!= link_to 'もっと見る', articles_path
 
 .entries
