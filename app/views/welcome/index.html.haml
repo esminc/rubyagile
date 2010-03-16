@@ -47,6 +47,6 @@
         %span.posted_on= posted_on(entry.published_at)
         from
         %span.source!= link_to h(entry.feed.title), entry.feed.link
-      .body!~ entry.content
+      .body!~ replace_img_to_anchor entry.content
 
   != will_paginate @entries

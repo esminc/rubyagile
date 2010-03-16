@@ -1,11 +1,33 @@
 require 'spec_helper'
 
 describe KarekiEntriesHelper do
+	describe '#replace_img_to_anchor' do
+		context 'flickr の画像がある' do
+			before do
+				@fragment = <<-HTML
+<h3>東京Ruby会議03</h3><p><a href="http://www.flickr.com/photos/kakutani/4395240536/"><img title="DSC_0290.jpg" alt="DSC_0290.jpg" src="http://farm5.static.flickr.com/4008/4395240536_713bbaba3f_m.jpg" class="flickr" width="240" height="161"></a></p>
+				HTML
+			end
 
-  #Delete this example and add some real ones or delete this file
-  it "should be included in the object returned by #helper" do
-    included_modules = (class << helper; self; end).send :included_modules
-    included_modules.should include(KarekiEntriesHelper)
-  end
+			it 'リンクに置き換えられること' do
+				helper.replace_img_to_anchor(@fragment).should == <<-HTML.chomp
+<h3>東京Ruby会議03</h3><p><a href="http://farm5.static.flickr.com/4008/4395240536_713bbaba3f_m.jpg">DSC_0290.jpg</a></p>
+				HTML
+			end
+		end
 
+		context 'はてなフォトライフの画像がある' do
+			before do
+				@fragment = <<-HTML
+<p><a href="http://f.hatena.ne.jp/takkan_m/20100301002048" class="hatena-fotolife" target="_blank"><img src="http://f.hatena.ne.jp/images/fotolife/t/takkan_m/20100301/20100301002048.jpg" alt="f:id:takkan_m:20100301002048j:image" title="f:id:takkan_m:20100301002048j:image" class="hatena-fotolife"></a></p>
+				HTML
+			end
+
+			it 'リンクに置き換えられること' do
+				helper.replace_img_to_anchor(@fragment).should == <<-HTML.chomp
+<p><a href="http://f.hatena.ne.jp/images/fotolife/t/takkan_m/20100301/20100301002048.jpg">f:id:takkan_m:20100301002048j:image</a></p>
+				HTML
+			end
+		end
+	end
 end
