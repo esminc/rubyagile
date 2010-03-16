@@ -38,7 +38,7 @@
 
 .entries
   - @entries.each do |entry|
-    %div[entry]
+    %div.autopagerize_page_element[entry]
       %h2.title!= link_to h(entry.title), entry.link
       .meta
         Posted by
