@@ -6,33 +6,32 @@
         :background-color #eee
         :border-radius 0.5em
         :-moz-border-radius 0.5em
+        :width 95%
+        :margin 0 auto
 
         .article
-          :margin 0
-
+          :width 100%
+          :margin-bottom 2px
           h2
             :font-size 1em
-            :float left
             :margin-right 0.5em
-
-          h2, p.summary
-            :clear left
+            :margin-bottom 0
 
           p.summary
-            :margin 0 0 0 1em
+            :margin 0 1em
             :font-size 0.9em
 
 .articles
   - @articles.each do |article|
     %div[article]
       %h2!= link_to h(article.title), article
+      - if article.summary.present?
+        %p.summary= article.summary
       .meta
         Posted by
         %span.author= article.user.login
-        on
+        on&nbsp;
         %span.posted_on= posted_on article.created_at
-      - if article.summary.present?
-        %p.summary= article.summary
 
   .more!= link_to 'もっと見る', articles_path
 
