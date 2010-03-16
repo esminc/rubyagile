@@ -20,6 +20,7 @@ group :test do
   gem 'faker'
   gem 'autotest-rails'
   gem 'spork'
+  gem 'diff-lcs'
 end
 
 group :production do
