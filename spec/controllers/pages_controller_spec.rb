@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe PagesController do
-  before(:each) do
+  before do
     login_as(:alice)
   end
 
-  describe "handling GET /pages/FrontPage" do
-    before(:each) do
+  describe "GET /pages/FrontPage" do
+    before do
       @page = Page.make(:name => 'FrontPage')
       get :show, :id => 'FrontPage'
     end
@@ -19,8 +19,8 @@ describe PagesController do
     it { response.should render_template('show') }
   end
 
-  describe "handling GET /pages/new" do
-    before(:each) do
+  describe "GET /pages/new" do
+    before do
       @page = mock_model(Page)
       dont_allow(@page).save
       stub(Page).new { @page }
@@ -36,8 +36,8 @@ describe PagesController do
     end
   end
 
-  describe "handling GET /pages/MyPage/edit" do
-    before(:each) do
+  describe "GET /pages/MyPage/edit" do
+    before do
       @page = Page.make(:name => 'MyPage')
       get :edit, :id => 'MyPage'
     end
@@ -49,8 +49,8 @@ describe PagesController do
     end
   end
 
-  describe "handling POST /pages" do
-    before(:each) do
+  describe "POST /pages" do
+    before do
       @page = mock_model(Page, :to_param => "1")
       stub(Page).new { @page }
     end
@@ -64,8 +64,8 @@ describe PagesController do
     end
   end
 
-  describe "handling PUT /pages/FrontPage" do
-    before(:each) do
+  describe "PUT /pages/FrontPage" do
+    before do
       @page = Page.make(:name => 'MyPage')
     end
 
@@ -103,7 +103,7 @@ describe PagesController do
   end
 
 
-  describe "handling Atomfeed" do
+  describe "GET /pages/feed.xml" do
     before do
       @page = mock_model(Page, :to_param => "1")
       stub(Page).find { @page }
