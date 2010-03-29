@@ -13,7 +13,7 @@ group :development do
   gem 'capistrano', :require => nil
 end
 
-group :test do
+group :test, :cucumber do
   gem 'rspec-rails'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'

@@ -3,14 +3,17 @@ dependencies:
   spork: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
   faker: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
   rr: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
   feedzirra: 
     group: 
@@ -33,6 +36,7 @@ dependencies:
   diff-lcs: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
   disqus: 
     group: 
@@ -41,6 +45,7 @@ dependencies:
   machinist: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
     require: 
     - machinist/active_record
@@ -53,6 +58,7 @@ dependencies:
   rspec-rails: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
   will_paginate: 
     group: 
@@ -75,6 +81,7 @@ dependencies:
   autotest-rails: 
     group: 
     - :test
+    - :cucumber
     version: ">= 0"
 specs: 
 - rake: 
@@ -151,7 +158,7 @@ specs:
     version: 0.8.2
 - will_paginate: 
     version: 2.3.12
-hash: a717efd84a486095c439a67ad4446068ad47f841
+hash: e7b432ab643068effec72e5439988ea04a8cb60f
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

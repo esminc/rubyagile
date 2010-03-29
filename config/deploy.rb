@@ -31,7 +31,7 @@ namespace :deploy do
     dest_db_yml = "#{latest_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
 
-    run "cd #{latest_release} && bundle install #{shared_path}/vendor --without development,test && bundle lock"
+    run "cd #{latest_release} && bundle install #{shared_path}/vendor --without development test cucumber && bundle lock"
   end
 
   %w(start stop).each do |t|
