@@ -9,7 +9,7 @@
     %meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
     %meta(http-equiv='Content-Style-Type' content='text/css')
     %meta(http-equiv='Content-Style-Type' content='text/css')
-    %meta(name='description' content=site_lead)
+    %meta(name='description'){:content => @description || site_lead}
     %meta(name='keywords' content='Ruby,Rails,RoR,Agile,アジャイル,システム開発,永和システムマネジメント,ESM')
     %link(rel='icon' type='image/png' href='/favicon.png')
     %link(rel='alternate' type='application/atom+xml' title='新着記事のAtomフィード'){:href => feed_articles_url(:format => :xml)}

@@ -1,6 +1,8 @@
 - content_for :title do
   #{@article.title} - #{site_name}
 
+- @description = @article.summary if @article.summary.present?
+
 != render :partial => 'navigation'
 
 %div[@article]!= render :partial => 'shared/article'
