@@ -80,7 +80,7 @@ specs:
 - rake: 
     version: 0.8.7
 - ZenTest: 
-    version: 4.2.1
+    version: 4.3.0
 - activesupport: 
     version: 2.3.5
 - rack: 
@@ -142,13 +142,13 @@ specs:
 - rails: 
     version: 2.3.5
 - rr: 
-    version: 0.10.10
+    version: 0.10.11
 - rspec: 
     version: 1.3.0
 - rspec-rails: 
     version: 1.3.2
 - spork: 
-    version: 0.8.1
+    version: 0.8.2
 - will_paginate: 
     version: 2.3.12
 hash: a717efd84a486095c439a67ad4446068ad47f841
