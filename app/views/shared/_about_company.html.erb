@@ -26,6 +26,13 @@
 </ul>
 </div>
 
+<div class="sblock">
+<div class='signin'>
+  <% unless logged_in? %>
+    <%= link_to 'サインイン', signin_path %>
+  <% end %>
+</div>
+</div>
 <!-- pending
 <div class="sblock">
 <p>
