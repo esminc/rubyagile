@@ -13,7 +13,7 @@ describe PagesController do
     subject { response }
 
     it { should be_redirect }
-    it { should redirect_to page_path(:id => 'FrontPage') }
+    it { should redirect_to page_path('FrontPage') }
 
   end
 
