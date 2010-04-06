@@ -7,7 +7,8 @@ describe PagesController do
 
   describe "GET /pages/FrontPage" do
     before do
-      @page = Page.make(:name => 'FrontPage')
+      @page = Page.new
+      stub(Page).find_by_name!('FrontPage'){ @page }
       get :show, :id => 'FrontPage'
     end
 
