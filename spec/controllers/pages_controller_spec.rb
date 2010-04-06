@@ -5,6 +5,18 @@ describe PagesController do
     login_as(:alice)
   end
 
+  describe "GET /pages" do
+    before do
+      get :index
+    end
+
+    subject { response }
+
+    it { should be_redirect }
+    it { should redirect_to page_path(:id => 'FrontPage') }
+
+  end
+
   describe "GET /pages/FrontPage" do
     before do
       @page = Page.new
