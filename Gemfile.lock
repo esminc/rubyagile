@@ -121,7 +121,7 @@ specs:
 - diff-lcs: 
     version: 1.1.2
 - json: 
-    version: 1.2.3
+    version: 1.2.4
 - disqus: 
     version: 1.0.3
 - faker: 
@@ -135,7 +135,7 @@ specs:
 - feedzirra: 
     version: 0.0.23
 - haml: 
-    version: 2.2.22
+    version: 2.2.23
 - hoptoad_notifier: 
     version: 2.2.2
 - machinist: 
@@ -145,7 +145,7 @@ specs:
 - ruby-openid: 
     version: 2.1.7
 - rack-openid: 
-    version: 1.0.1
+    version: 1.0.2
 - rails: 
     version: 2.3.5
 - rr: 
