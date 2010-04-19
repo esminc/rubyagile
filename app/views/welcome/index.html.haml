@@ -29,8 +29,8 @@
         %p.summary= article.summary
       .meta
         Posted by
-        %span.author= article.user.login
-        on&nbsp;
+        %span.author!= link_to h(article.user.login), member_path(article.user)
+        on
         %span.posted_on= posted_on article.created_at
 
   .more!= link_to 'もっと見る', articles_path
