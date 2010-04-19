@@ -16,6 +16,10 @@
     %br
     != f.text_field :url
   %p
+    != f.label :user_id, "Owner"
+    %br
+    != f.collection_select :user_id, User.all, :id, :login, :include_blank => true
+  %p
     != f.label :etag
     %br
     != f.text_field :etag

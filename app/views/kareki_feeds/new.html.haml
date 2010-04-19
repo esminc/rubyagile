@@ -6,6 +6,10 @@
     != f.label :url
     %br
     != f.text_field :url
+    %br
+    != f.label :user
+    %br
+    != f.collection_select :user_id, User.all, :id, :login, :include_blank => true
   %p
     != f.submit 'Create'
 

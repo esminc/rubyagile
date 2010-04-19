@@ -8,6 +8,9 @@
   %b Url:
   = @kareki_feed.url
 %p
+  %b Owner:
+  = @kareki_feed.user.try(:login)
+%p
   %b Etag:
   = @kareki_feed.etag
 != link_to 'Edit', edit_kareki_feed_path(@kareki_feed)
