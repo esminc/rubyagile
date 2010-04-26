@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   before_filter :login_required, :except => [:index, :show, :feed]
 
   def index
-    @page = Page.find_by_name!('FrontPage')
-    render :show
+    redirect_to page_path('FrontPage')
   end
 
   def show

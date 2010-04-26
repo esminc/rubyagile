@@ -16,6 +16,18 @@ describe KarekiEntriesHelper do
 			end
 		end
 
+    context "flickerのリンクがある" do
+      before do
+				@fragment = <<-HTML
+<h3>東京Ruby会議03</h3><p><a href="http://www.flickr.com/photos/kakutani/4395240536/">写真リンク</a></p>
+				HTML
+      end
+
+      it do
+        expect { helper.replace_img_to_anchor(@fragment) }.should_not raise_exception(StandardError)
+      end
+    end
+
 		context 'はてなフォトライフの画像がある' do
 			before do
 				@fragment = <<-HTML
