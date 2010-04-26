@@ -1,6 +1,6 @@
 class KarekiFeed < ActiveRecord::Base
   has_many :entries, :dependent => :destroy, :foreign_key => :feed_id, :class_name => KarekiEntry.to_s
-  belongs_to :user
+  belongs_to :owner, :class_name => User.to_s
   validates_uniqueness_of :url
 
   class << self
