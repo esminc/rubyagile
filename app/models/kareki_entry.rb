@@ -11,6 +11,7 @@ class KarekiEntry < ActiveRecord::Base
 
   named_scope :confirmed, :conditions => {:confirmation => "confirmed"}
   named_scope :newer_first, :order => %Q(#{quoted_table_name}.published_at DESC)
+  named_scope :recent, :order =>  %Q(#{quoted_table_name}.published_at DESC), :limit => 10
 
   class << self
     def build_from_entry(entry)

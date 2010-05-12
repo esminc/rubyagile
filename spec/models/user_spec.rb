@@ -2,8 +2,11 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe User do
   def valid_user
-    { :login => "s-kakutani", :email => "s-kakutani@esm.co.jp",
-      :open_id_url => "http://kakutani.com/"}
+    {
+      :login => "s-kakutani",
+      :email => "s-kakutani@esm.co.jp",
+      :open_id_url => "http://kakutani.com/"
+    }
   end
 
   describe "when valid" do
@@ -13,7 +16,7 @@ describe User do
 
     it { @user.should be_valid }
     it { @user.should_not be_member}
-
+    it { @user.to_param.should == 's-kakutani' }
   end
 
   describe "when admin user" do
@@ -23,5 +26,4 @@ describe User do
 
     it { @user.should be_member}
   end
-
 end

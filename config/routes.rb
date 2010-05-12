@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :members
+
   map.with_options :collection => {:feed => :get} do |feed|
     feed.resources :articles
     feed.resources :pages
