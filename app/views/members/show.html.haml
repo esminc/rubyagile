@@ -3,7 +3,7 @@
 %h3 この人が最近書いたお知らせ
 
 %ul
-	- @member.articles.recent.each do |article|
+	- @member.articles.publishing.recent.each do |article|
 		%li
 			= article.created_at.to_date.to_s(:db)	
 			!= link_to(h(article.title), article_path(article))
@@ -11,7 +11,7 @@
 %h3 この人が最近書いたブログ記事
 
 %ul
-	- @member.feeds.first.entries.recent.each do |entry|
+	- @member.entries.confirmed.recent.each do |entry|
 		%li
 			= entry.published_at.to_date.to_s(:db)
 			!= link_to(h(entry.title), article_path(entry))
