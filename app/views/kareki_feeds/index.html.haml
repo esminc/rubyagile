@@ -4,12 +4,14 @@
     %th Title
     %th Link
     %th Url
+    %th Owner
     %th Etag
   - @kareki_feeds.each do |kareki_feed|
     %tr
       %td= kareki_feed.title
       %td= kareki_feed.link
       %td= kareki_feed.url
+      %td= kareki_feed.owner.try(:login)
       %td= kareki_feed.etag
       %td!= link_to 'Show', kareki_feed
       %td!= link_to 'Edit', edit_kareki_feed_path(kareki_feed)
