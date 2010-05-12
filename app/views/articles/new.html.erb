@@ -3,7 +3,7 @@
 <%= error_messages_for :article %>
 
 <% form_for(@article) do |f| %>
-  <%= render :partial => "form", :locals => {:form => f} %>
+  <%= render :partial => f %>
   <p>
   <%= f.submit "プレビュー", :name => "preview" %>
   <%= f.submit "草稿"  %>
