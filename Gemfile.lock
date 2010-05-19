@@ -141,7 +141,7 @@ specs:
 - machinist: 
     version: 1.0.6
 - mysql: 
-    version: 2.8.1.1
+    version: 2.8.1
 - ruby-openid: 
     version: 2.1.7
 - rack-openid: 
