@@ -11,6 +11,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :images
   map.resource :session
 
+  map.namespace :admin do |admin|
+    admin.resources :users
+  end
+
   map.root :controller => 'welcome'
   map.signin '/signin', :controller => 'sessions', :action => 'new'
   map.signout '/signout', :controller => 'sessions', :action => 'destroy'

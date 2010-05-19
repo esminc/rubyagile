@@ -13,11 +13,10 @@
         %td!= link_to h(article.title), edit_article_path(article)
         %th!= render_status_for(article)
 
-.kareki
-  %h3 外部フィードの取り込み
-  %ul
-    %li!= link_to 'エントリの公開/非公開を設定する', kareki_entries_path
-    %li!= link_to 'フィードを管理する', kareki_feeds_path
+%ul
+  %li!= link_to 'エントリの公開/非公開を設定する', kareki_entries_path
+  %li!= link_to 'フィードを管理する', kareki_feeds_path
+  %li!= link_to 'ユーザを管理する', admin_users_path
 
 %hr
 

@@ -63,7 +63,7 @@ module AuthenticatedSystem
         accepts.html do
           store_location
           flash[:warn] = 'Login Requied'
-          redirect_to :controller => :sessions, :action => :new
+          redirect_to new_session_path
         end
 #        accepts.xml do
 #          headers["Status"]           = "Unauthorized"
