@@ -107,7 +107,7 @@ specs:
 - highline: 
     version: 1.5.2
 - net-ssh: 
-    version: 2.0.21
+    version: 2.0.22
 - net-scp: 
     version: 1.0.2
 - net-sftp: 
@@ -117,13 +117,13 @@ specs:
 - capistrano: 
     version: 2.5.18
 - curb: 
-    version: 0.6.7
+    version: 0.7.3
 - diff-lcs: 
     version: 1.1.2
 - json: 
-    version: 1.2.4
+    version: 1.4.3
 - disqus: 
-    version: 1.0.3
+    version: 1.0.4
 - faker: 
     version: 0.3.1
 - nokogiri: 
@@ -135,17 +135,17 @@ specs:
 - feedzirra: 
     version: 0.0.23
 - haml: 
-    version: 2.2.23
+    version: 3.0.4
 - hoptoad_notifier: 
     version: 2.2.2
 - machinist: 
     version: 1.0.6
 - mysql: 
-    version: 2.8.1
+    version: 2.8.1.1
 - ruby-openid: 
     version: 2.1.7
 - rack-openid: 
-    version: 1.0.2
+    version: 1.0.3
 - rails: 
     version: 2.3.5
 - rr: 
@@ -155,7 +155,7 @@ specs:
 - rspec-rails: 
     version: 1.3.2
 - spork: 
-    version: 0.8.2
+    version: 0.8.3
 - will_paginate: 
     version: 2.3.12
 hash: e7b432ab643068effec72e5439988ea04a8cb60f
