@@ -35,6 +35,7 @@ class ArticlesController < ApplicationController
       unless params[:preview].blank?
         render :action => 'preview'
       else
+        @article.update_attributes(:publishing => true) if params[:publish].present?
         respond_to do |format|
           if @article.save
             flash[:notice] = 'Article was successfully updated.'
@@ -57,6 +58,7 @@ class ArticlesController < ApplicationController
         @article.attributes = params[:article]
         render :action => 'preview'
       else
+        @article.update_attributes(:publishing => true) if params[:publish].present?
         respond_to do |format|
           if @article.update_attributes(params[:article])
             flash[:notice] = 'Article was successfully updated.'
