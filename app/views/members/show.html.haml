@@ -1,17 +1,20 @@
-%h2 中の人: #{@member.fullname || @member.login}
+%h2
+  中の人:
+  != image_tag @member.gravatar_url(:size => 32), :class => 'icon'
+  = @member.fullname || @member.login
 
 %h3 この人が最近書いたお知らせ
 
 %ul
-	- @member.articles.publishing.recent.each do |article|
-		%li
-			= article.created_at.to_date.to_s(:db)	
-			!= link_to(h(article.title), article_path(article))
+  - @member.articles.publishing.recent.each do |article|
+    %li
+      = article.created_at.to_date.to_s(:db)
+      != link_to(h(article.title), article_path(article))
 
 %h3 この人が最近書いたブログ記事
 
 %ul
-	- @member.entries.confirmed.recent.each do |entry|
-		%li
-			= entry.published_at.to_date.to_s(:db)
-			!= link_to(h(entry.title), article_path(entry))
+  - @member.entries.confirmed.recent.each do |entry|
+    %li
+      = entry.published_at.to_date.to_s(:db)
+      != link_to(h(entry.title), article_path(entry))
