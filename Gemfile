@@ -1,6 +1,6 @@
-source :gemcutter
+source :rubygems
 
-gem 'rails', '2.3.5', :require => nil
+gem 'rails', '2.3.8', :require => nil
 gem 'haml'
 gem 'will_paginate'
 gem 'nokogiri'

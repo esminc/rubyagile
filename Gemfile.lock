@@ -22,7 +22,7 @@ dependencies:
   rails: 
     group: 
     - :default
-    version: = 2.3.5
+    version: = 2.3.8
     require: []
 
   mysql: 
@@ -89,17 +89,17 @@ specs:
 - ZenTest: 
     version: 4.3.1
 - activesupport: 
-    version: 2.3.5
+    version: 2.3.8
 - rack: 
-    version: 1.0.1
+    version: 1.1.0
 - actionpack: 
-    version: 2.3.5
+    version: 2.3.8
 - actionmailer: 
-    version: 2.3.5
+    version: 2.3.8
 - activerecord: 
-    version: 2.3.5
+    version: 2.3.8
 - activeresource: 
-    version: 2.3.5
+    version: 2.3.8
 - autotest-rails: 
     version: 4.1.0
 - builder: 
@@ -127,7 +127,7 @@ specs:
 - faker: 
     version: 0.3.1
 - nokogiri: 
-    version: 1.4.1
+    version: 1.4.2
 - loofah: 
     version: 0.4.7
 - sax-machine: 
@@ -135,7 +135,7 @@ specs:
 - feedzirra: 
     version: 0.0.23
 - haml: 
-    version: 3.0.4
+    version: 3.0.9
 - hoptoad_notifier: 
     version: 2.2.2
 - machinist: 
@@ -147,7 +147,7 @@ specs:
 - rack-openid: 
     version: 1.0.3
 - rails: 
-    version: 2.3.5
+    version: 2.3.8
 - rr: 
     version: 0.10.11
 - rspec: 
@@ -157,8 +157,8 @@ specs:
 - spork: 
     version: 0.8.3
 - will_paginate: 
-    version: 2.3.12
-hash: e7b432ab643068effec72e5439988ea04a8cb60f
+    version: 2.3.14
+hash: c481eff59392ab137338c46092498c4dce7d50a3
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
