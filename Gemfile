@@ -8,6 +8,7 @@ gem 'feedzirra'
 gem 'disqus'
 gem 'rack-openid', :require => 'rack/openid'
 gem 'hoptoad_notifier'
+gem 'gravtastic'
 
 group :development do
   gem 'capistrano', :require => nil

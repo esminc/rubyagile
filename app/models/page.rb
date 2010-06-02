@@ -6,11 +6,6 @@ class Page < ActiveRecord::Base
 
   acts_as_searchable :searchable_fields => [:name, :content]
 
-  # models/article.rb とdupっている
-  def author_name
-    user.login
-  end
-
   def to_param
     name
   end

@@ -25,6 +25,10 @@ dependencies:
     version: = 2.3.5
     require: []
 
+  gravtastic: 
+    group: 
+    - :default
+    version: ">= 0"
   mysql: 
     group: 
     - :production
@@ -127,15 +131,17 @@ specs:
 - faker: 
     version: 0.3.1
 - nokogiri: 
-    version: 1.4.1
+    version: 1.4.2
 - loofah: 
     version: 0.4.7
 - sax-machine: 
     version: 0.0.15
 - feedzirra: 
     version: 0.0.23
+- gravtastic: 
+    version: 2.2.0
 - haml: 
-    version: 3.0.4
+    version: 3.0.9
 - hoptoad_notifier: 
     version: 2.2.2
 - machinist: 
@@ -157,8 +163,8 @@ specs:
 - spork: 
     version: 0.8.3
 - will_paginate: 
-    version: 2.3.12
-hash: e7b432ab643068effec72e5439988ea04a8cb60f
+    version: 2.3.14
+hash: c47070995d6162c1c7c65e678ead56ec49aa9294
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
