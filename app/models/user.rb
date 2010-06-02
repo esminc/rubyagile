@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  is_gravtastic!
+
   has_many :articles
   has_many :pages
   has_many :feeds, :class_name => KarekiFeed.name, :foreign_key => :owner_id

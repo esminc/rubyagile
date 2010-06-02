@@ -22,10 +22,6 @@ class Article < ActiveRecord::Base
     (@next_article == self ? nil : @next_article)
   end
 
-  def author_name
-    user.login
-  end
-
   private
   def load_neighbors
     ids = (Article.find_by_sql [<<-SQL, {:id => id, :true => true}]).first
