@@ -1,5 +1,5 @@
 <p>
-  <b>投稿者</b>: <%= @article.author_name %>
+  <b>投稿者</b>: <%= @article.user.login %>
   <%= form.hidden_field :user_id %>
 </p>
 <p>

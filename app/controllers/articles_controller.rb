@@ -29,13 +29,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(params[:article].merge(:publishing => params[:publish].present?))
 
     unless params[:article].blank?
       unless params[:preview].blank?
         render :action => 'preview'
       else
-        @article.update_attributes(:publishing => true) if params[:publish].present?
         respond_to do |format|
           if @article.save
             flash[:notice] = 'Article was successfully updated.'
@@ -58,9 +57,8 @@ class ArticlesController < ApplicationController
         @article.attributes = params[:article]
         render :action => 'preview'
       else
-        @article.update_attributes(:publishing => true) if params[:publish].present?
         respond_to do |format|
-          if @article.update_attributes(params[:article])
+          if @article.update_attributes(params[:article].merge(:publishing => params[:publish].present?))
             flash[:notice] = 'Article was successfully updated.'
             format.html { redirect_to(@article) }
           else

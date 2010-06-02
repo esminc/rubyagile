@@ -29,7 +29,7 @@
         %p.summary= article.summary
       .meta
         Posted by
-        %span.author!= link_to_memeber article.user
+        %span.author!= link_to_member article.user
         on
         %span.posted_on= posted_on article.created_at
 
@@ -41,7 +41,7 @@
       %h2.title!= link_to h(entry.title), entry.link
       .meta
         Posted by
-        %span.author!= link_to_memeber(entry.feed.owner) || h(entry.creator)
+        %span.author!= link_to_member(entry.feed.owner) || h(entry.creator)
         on
         %span.posted_on= posted_on(entry.published_at)
         from
