@@ -9,7 +9,7 @@
     %br
     != f.label :user
     %br
-    != f.collection_select :user_id, User.all, :id, :login, :include_blank => true
+    != f.collection_select :owner_id, User.all, :id, :login, :include_blank => true
   %p
     != f.submit 'Create'
 
