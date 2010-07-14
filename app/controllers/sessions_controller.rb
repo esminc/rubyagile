@@ -3,11 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params['openid_url'].present?
-      open_id_authentication
-    else
-      redirect_to signin_path
-    end
+    open_id_authentication
   end
 
   def destroy
