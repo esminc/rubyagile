@@ -1,3 +1,5 @@
+require "pit"
+
 set :application, "rubyagile"
 set :repository,  "git://github.com/esminc/rubyagile.git"
 set :branch, "master"
@@ -46,6 +48,25 @@ namespace :deploy do
   end
 end
 
+namespace :db do
+  desc "Fetch production dump."
+  task :fetch_prod_dump, :roles => :app do
+    # ダンプ
+    ENV["EDITOR"] ||= "vim"
+    config = Pit.get("rubyagile_prod_db", :require => {
+      "database" => "FILL_IN_HERE",
+      "user"     => "FILL_IN_HERE",
+      "password" => "FILL_IN_HERE"
+    })
+    database = config["database"]
+    user     = config["user"]
+    password = config["password"]
+    run "mysqldump -u #{user} -p#{password} #{database} > #{shared_path}/db_dump" 
+
+    # フェッチ
+    system "scp #{ssh_options[:username]}@#{production_server}:#{shared_path}/db_dump ."
+  end
+end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')

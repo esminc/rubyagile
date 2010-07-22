@@ -12,6 +12,7 @@ gem 'gravtastic'
 
 group :development do
   gem 'capistrano', :require => nil
+  gem 'pit', :require => nil
 end
 
 group :test, :cucumber do
