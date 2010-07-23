@@ -50,7 +50,7 @@ end
 
 namespace :db do
   desc "Fetch production dump."
-  task :fetch_prod_dump, :roles => :app do
+  task :fetch_prod_dump, :roles => :db do
     # ダンプ
     ENV["EDITOR"] ||= "vim"
     config = Pit.get("rubyagile_prod_db", :require => {
