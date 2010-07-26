@@ -19,16 +19,16 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  gravtastic: 
+    group: 
+    - :default
+    version: ">= 0"
   rails: 
     group: 
     - :default
     version: = 2.3.8
     require: []
 
-  gravtastic: 
-    group: 
-    - :default
-    version: ">= 0"
   mysql: 
     group: 
     - :production
@@ -53,6 +53,12 @@ dependencies:
     version: ">= 0"
     require: 
     - machinist/active_record
+  pit: 
+    group: 
+    - :development
+    version: ">= 0"
+    require: []
+
   rack-openid: 
     group: 
     - :default
@@ -72,16 +78,16 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  nokogiri: 
+    group: 
+    - :default
+    version: ">= 0"
   capistrano: 
     group: 
     - :development
     version: ">= 0"
     require: []
 
-  nokogiri: 
-    group: 
-    - :default
-    version: ">= 0"
   autotest-rails: 
     group: 
     - :test
@@ -109,7 +115,7 @@ specs:
 - builder: 
     version: 2.1.2
 - highline: 
-    version: 1.5.2
+    version: 1.6.1
 - net-ssh: 
     version: 2.0.23
 - net-scp: 
@@ -148,6 +154,8 @@ specs:
     version: 1.0.6
 - mysql: 
     version: 2.8.1
+- pit: 
+    version: 0.0.6
 - ruby-openid: 
     version: 2.1.7
 - rack-openid: 
@@ -164,7 +172,7 @@ specs:
     version: 0.8.4
 - will_paginate: 
     version: 2.3.14
-hash: 583d1ed3d15ad982105b26537d1dad331b528ea1
+hash: d032739fbae59355f3137438130553db26094b27
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
