@@ -7,20 +7,12 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by_name!(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def new
     @page = Page.new
     @page.name = params[:page_name]
     @page.user = current_user
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def create

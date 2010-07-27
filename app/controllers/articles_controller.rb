@@ -3,25 +3,15 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.publishing.newer_first
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def show
     @article = accessible_articles.find(params[:id])
-    respond_to do |format|
-      format.html
-    end
   end
 
   def new
     @article = Article.new
     @article.user = current_user
-    respond_to do |format|
-      format.html
-    end
   end
 
   def edit
