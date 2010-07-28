@@ -2,13 +2,13 @@
 <%= error_messages_for :article %>
 
 <div class="preview">
-<div class="article">
-  <h2 class="title"><%= @article.title %></h2>
-  <div class="body">
-<%= parse_article(@article) %>
+  <div class="article">
+    <h2 class="title"><%=h @article.title %></h2>
+    <div class="body">
+      <%= parse_article(@article) %>
+    </div>
   </div>
-</div>
-<%# TODO: _article と部分的にdupっている %>
+  <%# TODO: _article と部分的にdupっている %>
 </div>
 
 <% form_for(@article, :url => {:action => (@article.new_record? ? "create" : "update")}) do |f| %>
