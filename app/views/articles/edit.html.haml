@@ -12,7 +12,7 @@
   %h3 画像の追加
   %ul
     - @article.images.each do |image|
-      %li= "http://ruby.agile.esm.co.jp#{image.filepath}"
+      %li http://ruby.agile.esm.co.jp#{image.filepath}
   - form_for(:article, :url => { :action => 'update', :id => @article.id }, :html => { :method => :put, :multipart => true }) do |f|
     != render :partial => 'upload_image', :locals => { :image_f => f }
 
