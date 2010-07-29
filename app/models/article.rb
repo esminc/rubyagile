@@ -2,8 +2,6 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :images, :dependent => :destroy
 
-  acts_as_searchable :searchable_fields => [:title, :body]
-
   named_scope :publishing, :conditions => {:publishing => true}
   named_scope :newer_first, :order => %Q(#{quoted_table_name}.created_at DESC)
   named_scope :recent, :order => %Q(#{quoted_table_name}.created_at DESC), :limit => 10
