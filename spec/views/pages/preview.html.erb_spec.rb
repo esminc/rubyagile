@@ -3,11 +3,10 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/pages/preview" do
   before(:each) do
     login_as(:alice)
-    page = mock_model(Page,
-      :name => "t", :content => "b", :login => "l",
-      :author_name => 'an', :user_id => 1)
-    assigns[:page] = page
+    page = Page.make(:name => 'HelloWorld')
     mock(template).parse_page(page)
+    assigns[:page] = page
+
     render 'pages/preview'
   end
 

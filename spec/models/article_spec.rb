@@ -26,7 +26,6 @@ describe Article do
     end
 
     it { @article.should be_valid }
-    it { @article.author_name.should == users(:alice).login }
   end
 
   describe "1件しか記事が無い場合" do

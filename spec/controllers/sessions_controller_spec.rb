@@ -13,7 +13,7 @@ describe SessionsController do
       mock(controller).open_id_authentication
     end
     it "should be successful" do
-      get 'create'
+      get 'create', :openid_identifier => 'http://example.com'
       response.should be_success
     end
   end

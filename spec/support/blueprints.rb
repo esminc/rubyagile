@@ -8,6 +8,7 @@ Sham.define do
 end
 
 Page.blueprint do
+  user
   content
 end
 
@@ -19,6 +20,7 @@ end
 
 Article.blueprint do
   title
+  user
 end
 
 KarekiEntry.blueprint do

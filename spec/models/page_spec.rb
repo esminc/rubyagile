@@ -12,7 +12,6 @@ describe Page do
     end
 
     it { @page.should be_valid }
-    it { @page.author_name.should == users(:alice).login }
   end
 
   describe "既存のページ名と同じ名前のページを作成するとき" do

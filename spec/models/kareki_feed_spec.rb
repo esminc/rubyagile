@@ -8,7 +8,7 @@ describe KarekiFeed do
       Feedzirra::Feed.parse(File.read(File.join(Rails.root, "spec/fixtures/feeds/hatena_ursm.rss")))
     end
 
-    feed.tap(&:save)
+    feed.tap(&:save!)
   end
 
   describe '#new' do
