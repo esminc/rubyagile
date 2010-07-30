@@ -1,0 +1,16 @@
+%p
+  %b 投稿者:
+  = @article.user.login 
+  != form.hidden_field :user_id 
+
+%p
+  <b>記事のタイトル</b><br />
+  != form.text_field :title, :size => 55, :class => "title"
+
+%p
+  <b>記事のサマリ</b>(トップページに表示されます。タグや改行や特殊な記法は使えません)<br />
+  !~ form.text_area :summary, :size => "80x10" 
+
+%p
+  ! <b>記事の本文</b>(Hiki記法のような記法が使えます/#{link_to '書き方', page_path('TextFormattingRules')})<br />
+  != form.text_area :body, :size => "80x20" 
