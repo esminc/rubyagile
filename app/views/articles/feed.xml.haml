@@ -1,0 +1,20 @@
+!!! XML
+%feed{:xmlns => "http://www.w3.org/2005/Atom", "xml:lang" => "ja"}
+  %title Ruby x Agile
+  %subtitle Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト
+  %link{:href => root_url}
+  %link{:rel => "self", :href => formatted_feed_articles_url(:xml), :type => "application/atom+xml"}
+  %author
+    %name 永和システムマネジメント
+  %updated= @articles.first.updated_at.to_s(:db)
+  %id= formatted_feed_articles_url(:xml)
+  - @articles.each do |article| 
+    %entry
+      %id= article_url(article) 
+      %author
+        %name= article.user.login
+      %published= article.created_at.to_s(:db) 
+      %updated= article.updated_at.to_s(:db)
+      %link{:href => article_url(article), :rel => "alternate", :type => "text/html"} 
+      %title= article.title
+      %content{:type => "html"}= parse_article(article)
