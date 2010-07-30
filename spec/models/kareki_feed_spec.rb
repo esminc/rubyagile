@@ -4,9 +4,9 @@ describe KarekiFeed do
   def create_ursm_hatena
     feed = KarekiFeed.new(:url => 'http://d.hatena.ne.jp/ursm/rss')
 
-    stub(feed).feed_content do
+    mock(feed).parse_feed_content.times(any_times) {
       Feedzirra::Feed.parse(File.read(File.join(Rails.root, "spec/fixtures/feeds/hatena_ursm.rss")))
-    end
+    }
 
     feed.tap(&:save!)
   end
