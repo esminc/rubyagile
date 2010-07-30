@@ -1,0 +1,18 @@
+%h2 投稿記事のプレビュー
+
+!= error_messages_for :article 
+
+-# TODO: _article と部分的にdupっている
+.preview
+  .article
+    %h2.title
+      = @article.title 
+    .body
+      != parse_article(@article)
+
+- form_for(@article, :url => {:action => (@article.new_record? ? "create" : "update")}) do |f|
+  != render :partial => "form", :locals => {:form => f} 
+  %p
+    != f.submit "プレビュー", :name => "preview" 
+    != f.submit "草稿"  
+    != f.submit "公開", :name => "publish" 

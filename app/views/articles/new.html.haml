@@ -1,6 +1,6 @@
 %h2 新規ブログ記事の投稿
 
-- error_messages_for :article
+!= error_messages_for :article
 
 - form_for(@article) do |f| 
   != render :partial => f 

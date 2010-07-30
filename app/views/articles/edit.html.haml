@@ -1,5 +1,6 @@
 %h2 記事の修正
-- error_messages_for :article
+
+!= error_messages_for :article
 
 - form_for(@article, :html => { :multipart => true }) do |f|
   !~ render :partial => "form", :locals => {:form => f}
