@@ -27,13 +27,15 @@ role :db,  production_server, :primary => true
 
 set :rake, "/var/lib/gems/1.8/bin/rake"
 
+shared_children.push 'vendor'
+
 namespace :deploy do
   after 'deploy:finalize_update' do
     src_db_yml = "#{shared_path}/config/database.yml"
     dest_db_yml = "#{latest_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
 
-    run "cd #{latest_release} && bundle install #{shared_path}/vendor --without development test cucumber && bundle lock"
+    run "cd #{latest_release} && bundle install #{shared_path}/vendor/bundle --production --without development test cucumber"
   end
 
   %w(start stop).each do |t|

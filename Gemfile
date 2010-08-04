@@ -11,6 +11,7 @@ gem 'hoptoad_notifier'
 gem 'gravtastic'
 
 group :development do
+  gem 'thin', :require => nil
   gem 'capistrano', :require => nil
   gem 'pit', :require => nil
 end

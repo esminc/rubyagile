@@ -16,4 +16,5 @@
 public/stylesheets/application.css
 mkmf.log
 .bundle/*
-vendor/bundler_gems/*
+vendor/bundle/*
+db_dump
