@@ -1,0 +1,5 @@
+%ul
+  - @members.each do |m|
+    %li
+      != image_tag m.gravatar_url(:size => 24), :class => 'icon'
+      != link_to h(member_name(m)), member_path(m)
