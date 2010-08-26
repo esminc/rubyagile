@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MembersController do
+describe NakanohitosController do
   describe 'GET /show' do
     before do
       @user = User.make(:login => 'ursm')
@@ -8,6 +8,6 @@ describe MembersController do
     end
 
     it { response.should be_success }
-    it { assigns[:member].should == @user }
+    it { assigns[:nakanohito].should == @user }
   end
 end

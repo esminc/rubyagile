@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :members
+  map.resources :nakanohitos
 
   map.with_options :collection => {:feed => :get} do |feed|
     feed.resources :articles

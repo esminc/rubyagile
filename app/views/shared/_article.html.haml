@@ -1,7 +1,7 @@
 %h2.title!= link_to h(article.title), article_path(article)
 .meta
   Posted by
-  %span.author!= link_to_member article.user
+  %span.author!= link_to_nakanohito article.user
   on
   %span.posted_on= posted_on article.created_at
 .meta!= link_to_comments(article)

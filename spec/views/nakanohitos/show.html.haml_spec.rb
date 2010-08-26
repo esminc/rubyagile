@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "/members/show" do
+describe "/nakanohitos/show" do
   before :each do
     feed = KarekiFeed.make_unsaved
     stub(feed).before_save
@@ -8,7 +8,7 @@ describe "/members/show" do
     @article = Article.make(:publishing => true)
     user = User.make(:articles => [@article], :feeds => [feed])
     user.save!
-    assigns[:member] = user
+    assigns[:nakanohito] = user
     render
   end
   

@@ -15,15 +15,15 @@ describe User do
     end
 
     it { @user.should be_valid }
-    it { @user.should_not be_member}
+    it { @user.should_not be_nakanohito}
     it { @user.to_param.should == 's-kakutani' }
   end
 
   describe "when admin user" do
     before do
-      @user = User.new(valid_user.merge(:member => "true"))
+      @user = User.new(valid_user.merge(:nakanohito => "true"))
     end
 
-    it { @user.should be_member}
+    it { @user.should be_nakanohito}
   end
 end

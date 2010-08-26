@@ -4,7 +4,7 @@ module ApplicationHelper
     "Ruby x Agile"
   end
 
-  def member_name(member)
-    member.fullname.present? ? "#{member.login} (#{member.fullname})" : member.login
+  def nakanohito_name(nakanohito)
+    nakanohito.fullname.present? ? "#{nakanohito.login} (#{nakanohito.fullname})" : nakanohito.login
   end
 end

@@ -1,13 +1,13 @@
 - content_for :head do
   %style(type='text/css')
     :sass
-      ul#members li
+      ul#nakanohitos li
         :list-style-type none
 
 %h2 中の人たち
 
-%ul#members
-  - @members.each do |m|
+%ul#nakanohitos
+  - @nakanohitos.each do |m|
     %li
       != image_tag m.gravatar_url(:size => 24), :class => 'icon'
-      != link_to h(member_name(m)), member_path(m)
+      != link_to h(nakanohito_name(m)), nakanohito_path(m)
