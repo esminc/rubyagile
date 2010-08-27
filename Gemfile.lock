@@ -75,6 +75,7 @@ GEM
     sax-machine (0.0.15)
       nokogiri (> 0.0.0)
     spork (0.8.4)
+    tapp (1.0.0)
     thin (1.2.7)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -103,5 +104,6 @@ DEPENDENCIES
   rr
   rspec-rails
   spork
+  tapp
   thin
   will_paginate

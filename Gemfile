@@ -14,6 +14,7 @@ group :development do
   gem 'thin', :require => nil
   gem 'capistrano', :require => nil
   gem 'pit', :require => nil
+  gem 'tapp', :group => :test
 end
 
 group :test, :cucumber do
