@@ -3,6 +3,10 @@
   != image_tag @nakanohito.gravatar_url(:size => 32), :class => 'icon'
   = nakanohito_name @nakanohito
 
+%dl
+  %dt Web日記力
+  %dd= number_to_percentage(@nakanohito.accepted_rate, :precision => 1)
+
 %h3 この人が最近書いたお知らせ
 
 %ul#articles

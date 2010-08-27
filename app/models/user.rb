@@ -11,4 +11,14 @@ class User < ActiveRecord::Base
   def to_param
     login
   end
+
+  def accepted_rate
+    all = KarekiEntry.confirmed.count
+
+    return 0.0 if all.zero?
+
+    mine = entries.confirmed.count
+
+    mine.to_f / all * 100
+  end
 end
