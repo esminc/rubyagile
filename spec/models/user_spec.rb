@@ -29,6 +29,7 @@ describe User do
 
   describe '#accepted_rate' do
     before do
+      # XXX なぜか最初から2つできてる
       KarekiEntry.delete_all
     end
 
