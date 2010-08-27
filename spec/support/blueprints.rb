@@ -5,6 +5,7 @@ Sham.define do
   link { "http://#{Faker::Internet.domain_name}" }
   content { Faker::Lorem.sentence }
   title { Faker::Lorem.sentence }
+  datetime {|i| DateTime.new(2010, 1, i.succ) }
 end
 
 Page.blueprint do
@@ -27,7 +28,9 @@ KarekiEntry.blueprint do
   title
   creator { Sham.login }
   link
+  published_at { Sham.datetime }
 end
 
 KarekiFeed.blueprint do
+  url { Sham.link }
 end
