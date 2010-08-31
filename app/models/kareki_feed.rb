@@ -12,8 +12,10 @@ class KarekiFeed < ActiveRecord::Base
   # XXX call for better method name :<
   def fetch_and_save_entries
     create_entries_from(parse_feed_content)
-  ensure
-    # XXX handle exception someway?
+  rescue => e
+    raise unless Rails.env.production?
+
+    Rails.logger.error e
   end
 
   def before_save
