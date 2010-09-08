@@ -29,6 +29,7 @@ KarekiEntry.blueprint do
   creator { Sham.login }
   link
   published_at { Sham.datetime }
+  confirmation { 'confirmed' }
 end
 
 KarekiFeed.blueprint do

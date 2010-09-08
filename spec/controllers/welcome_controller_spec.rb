@@ -2,13 +2,20 @@ require 'spec_helper'
 
 describe WelcomeController do
   before do
-    login_as :alice
+    @alice = User.find(login_as(:alice))
   end
 
   describe "handling GET /" do
-    fixtures :articles, :kareki_entries
+    fixtures :articles
 
     before do
+      stub.instance_of(KarekiFeed).before_save
+
+      KarekiFeed.make(
+        :owner   => @alice,
+        :entries => [KarekiEntry.make_unsaved]
+      )
+
       get :index
     end
 
