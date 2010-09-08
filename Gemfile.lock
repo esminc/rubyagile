@@ -1,17 +1,17 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.3.3)
-    actionmailer (2.3.8)
-      actionpack (= 2.3.8)
-    actionpack (2.3.8)
-      activesupport (= 2.3.8)
+    ZenTest (4.4.0)
+    actionmailer (2.3.9)
+      actionpack (= 2.3.9)
+    actionpack (2.3.9)
+      activesupport (= 2.3.9)
       rack (~> 1.1.0)
-    activerecord (2.3.8)
-      activesupport (= 2.3.8)
-    activeresource (2.3.8)
-      activesupport (= 2.3.8)
-    activesupport (2.3.8)
+    activerecord (2.3.9)
+      activesupport (= 2.3.9)
+    activeresource (2.3.9)
+      activesupport (= 2.3.9)
+    activesupport (2.3.9)
     autotest-rails (4.1.0)
       ZenTest
     builder (2.1.2)
@@ -36,9 +36,9 @@ GEM
       nokogiri (> 0.0.0)
       sax-machine (>= 0.0.12)
     gravtastic (2.2.0)
-    haml (3.0.17)
+    haml (3.0.18)
     highline (1.6.1)
-    hoptoad_notifier (2.3.5)
+    hoptoad_notifier (2.3.6)
       activesupport
     json (1.4.6)
     loofah (0.4.7)
@@ -55,15 +55,15 @@ GEM
     nokogiri (1.4.3.1)
     pit (0.0.6)
     rack (1.1.0)
-    rack-openid (1.1.1)
+    rack-openid (1.1.2)
       rack (>= 0.4)
       ruby-openid (>= 2.0.3)
-    rails (2.3.8)
-      actionmailer (= 2.3.8)
-      actionpack (= 2.3.8)
-      activerecord (= 2.3.8)
-      activeresource (= 2.3.8)
-      activesupport (= 2.3.8)
+    rails (2.3.9)
+      actionmailer (= 2.3.9)
+      actionpack (= 2.3.9)
+      activerecord (= 2.3.9)
+      activeresource (= 2.3.9)
+      activesupport (= 2.3.9)
       rake (>= 0.8.3)
     rake (0.8.7)
     rr (1.0.0)
@@ -100,7 +100,7 @@ DEPENDENCIES
   nokogiri
   pit
   rack-openid
-  rails (= 2.3.8)
+  rails (= 2.3.9)
   rr
   rspec-rails
   spork
