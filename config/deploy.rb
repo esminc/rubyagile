@@ -77,5 +77,4 @@ require 'hoptoad_notifier/capistrano'
 
 require 'bundler/capistrano'
 
-set :bundle_dir,     fetch(:shared_path) + "/vendor/bundle"
 set :bundle_without, [:development, :test, :cucumber]
