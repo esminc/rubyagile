@@ -76,5 +76,3 @@ end
 require 'hoptoad_notifier/capistrano'
 
 require 'bundler/capistrano'
-
-set :bundle_without, [:development, :test, :cucumber]
