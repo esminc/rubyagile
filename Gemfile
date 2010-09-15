@@ -17,7 +17,7 @@ group :development do
   gem 'tapp', :group => :test
 end
 
-group :test, :cucumber do
+group :test do
   gem 'rspec-rails'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
