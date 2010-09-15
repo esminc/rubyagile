@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "pit"
 
 set :application, "rubyagile"
@@ -34,8 +35,6 @@ namespace :deploy do
     src_db_yml = "#{shared_path}/config/database.yml"
     dest_db_yml = "#{latest_release}/config/database.yml"
     run "! test -e #{dest_db_yml} && ln -s #{src_db_yml} #{dest_db_yml}"
-
-    run "cd #{latest_release} && bundle install #{shared_path}/vendor/bundle --deployment --without development test cucumber"
   end
 
   %w(start stop).each do |t|
@@ -75,3 +74,8 @@ Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-
 end
 
 require 'hoptoad_notifier/capistrano'
+
+require 'bundler/capistrano'
+
+set :bundle_dir,     fetch(:shared_path) + "/vendor/bundle"
+set :bundle_without, [:development, :test, :cucumber]
