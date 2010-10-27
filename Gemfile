@@ -6,10 +6,11 @@ gem 'will_paginate'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
-gem 'rack-openid', :require => 'rack/openid'
 gem 'hoptoad_notifier'
 gem 'gravtastic'
 gem 'mysql'
+gem 'rails_warden'
+gem 'warden-openid'
 
 group :development do
   gem 'thin', :require => nil

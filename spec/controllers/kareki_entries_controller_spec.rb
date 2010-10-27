@@ -5,8 +5,10 @@ describe KarekiEntriesController do
   describe "GET /index" do
     context "not logged in" do
       before do
+        not_logged_in
         get :index
       end
+
       subject { response }
       it { should redirect_to(new_session_url) }
     end

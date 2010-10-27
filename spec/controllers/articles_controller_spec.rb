@@ -36,13 +36,14 @@ describe ArticlesController do
     end
 
     context "(sad) accessed to draft without logging in" do
-      before(:each) do
-        logout
+      before do
+        not_logged_in
       end
 
       it do
-        expect{ get :show, :id => articles(:draft) }.should \
-          raise_error ActiveRecord::RecordNotFound
+        expect {
+          get :show, :id => articles(:draft)
+        }.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end

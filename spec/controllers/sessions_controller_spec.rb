@@ -8,19 +8,19 @@ describe SessionsController do
     it { response.should render_template("sessions/new")}
   end
 
-  describe "GET 'create'" do
+  describe "POST 'create'" do
     before do
-      mock(controller).open_id_authentication
+      mock(controller).authenticate!
     end
     it "should be successful" do
-      get 'create', :openid_identifier => 'http://example.com'
-      response.should be_success
+      post 'create', :openid_identifier => 'http://example.com'
+      response.should redirect_to(root_path)
     end
   end
 
   describe "DELETE 'destroy'" do
     before do
-      mock(controller).reset_session
+      mock(controller).logout
       delete :destroy
     end
 

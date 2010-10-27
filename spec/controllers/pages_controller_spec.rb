@@ -10,10 +10,8 @@ describe PagesController do
       get :index
     end
 
-    subject { response }
-
-    it { should be_redirect }
-    it { should redirect_to page_path('FrontPage') }
+    it { response.should be_redirect }
+    it { response.should redirect_to page_path('FrontPage') }
 
   end
 
