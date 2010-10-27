@@ -9,6 +9,7 @@ gem 'disqus'
 gem 'rack-openid', :require => 'rack/openid'
 gem 'hoptoad_notifier'
 gem 'gravtastic'
+gem 'mysql'
 
 group :development do
   gem 'thin', :require => nil
@@ -18,15 +19,12 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 1'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
   gem 'faker'
   gem 'autotest-rails'
   gem 'spork'
   gem 'diff-lcs'
-end
-
-group :production do
-  gem 'mysql'
+  gem 'specjour'
 end
