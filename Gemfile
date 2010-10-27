@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '2.3.9', :require => nil
+gem 'rails', '2.3.10', :require => nil
 gem 'haml'
 gem 'will_paginate'
 gem 'nokogiri'
@@ -20,7 +20,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 1'
+  gem 'rspec-rails', '~> 1.3'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
   gem 'faker'

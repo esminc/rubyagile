@@ -4,8 +4,6 @@
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
-# Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.9' unless defined? RAILS_GEM_VERSION
 $0 = "rubyagile-#{ENV['RAILS_ENV']}"
 
 # Bootstrap the Rails environment, frameworks, and default configuration
@@ -39,8 +37,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_rubyagile_session',
-    :secret      => '02d7981874bea76e8f9b761bc0c97c2b83cea32f87bc04a43decc67100eadfa07e5dd0a8096602af3eab39c7485495f4592645b9372d412585c7aa31f4f4b2e7'
+    :key => '_rubyagile_session',
+    :secret => '02d7981874bea76e8f9b761bc0c97c2b83cea32f87bc04a43decc67100eadfa07e5dd0a8096602af3eab39c7485495f4592645b9372d412585c7aa31f4f4b2e7'
   }
 
   # Use the database for sessions instead of the cookie-based default,

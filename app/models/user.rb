@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  is_gravtastic!
+  include Gravtastic
+  gravtastic
 
   has_many :articles
   has_many :pages
