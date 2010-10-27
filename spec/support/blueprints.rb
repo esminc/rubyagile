@@ -28,6 +28,7 @@ KarekiEntry.blueprint do
   title
   creator { Sham.login }
   link
+  content
   published_at { Sham.datetime }
   confirmation { 'confirmed' }
 end
