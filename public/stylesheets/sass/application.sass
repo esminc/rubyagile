@@ -252,13 +252,6 @@ div
           margin: 0 40px 15px 0
           padding-left: 24px
 
-        table
-          margin-bottom: 15px
-          border: 1px solid #ccc
-
-          tr, th, td
-            border: 1px solid #ccc
-
   &.search-phrase
     font-size: 130%
     background-color: #FCFCFC
@@ -528,13 +521,27 @@ img.badge
   text-decoration: none
 
 table
-  :border-collapse collapse
-  :border-spacing 0
-  tbody th
-    :border 2px solid #999999
-    :white-space pre
+  margin-bottom: 15px
+  border: none
+  border-collapse: separate
+  border-spacing: 2px
+
+  th, td
+    border:
+      bottom: solid 1px #999
+      right: solid 1px #999
+      top: none
+      left: none
+    padding:
+      left: 10px
+      right: 10px
+    white-space: nowrap
+
+  th
+    background-color: #FCC
+    text-align: center
   td
-    :border 2px solid #999999
+    background: #EEE
 
 .admin_assistant
   :font-size small
