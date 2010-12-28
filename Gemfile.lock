@@ -38,6 +38,9 @@ GEM
       sax-machine (>= 0.0.12)
     gravtastic (3.1.0)
     haml (3.0.22)
+    hassle (0.0.1)
+      haml
+      rack
     highline (1.6.1)
     json (1.4.6)
     loofah (1.0.0)
@@ -104,6 +107,7 @@ DEPENDENCIES
   feedzirra
   gravtastic
   haml
+  hassle
   machinist
   mysql
   nokogiri

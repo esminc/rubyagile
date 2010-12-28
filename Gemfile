@@ -10,6 +10,7 @@ gem 'gravtastic'
 gem 'mysql'
 gem 'rails_warden'
 gem 'warden-openid'
+gem 'hassle'
 
 group :development do
   gem 'thin', :require => nil
