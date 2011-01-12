@@ -13,10 +13,9 @@ gem 'warden-openid'
 gem 'hassle'
 
 group :development do
-  gem 'thin', :require => nil
-  gem 'capistrano', :require => nil
-  gem 'pit', :require => nil
   gem 'tapp', :group => :test
+  gem 'heroku', :require => nil
+  gem 'taps', :require => nil
 end
 
 group :test do
