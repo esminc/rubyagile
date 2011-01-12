@@ -1,25 +1,33 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :nakanohitos
-
-  map.with_options :collection => {:feed => :get} do |feed|
-    feed.resources :articles
-    feed.resources :pages
+RubyAgile::Application.routes.draw do
+  resources :nakanohitos
+  resources :articles do
+    collection do
+      get :feed
+    end
   end
 
-  map.resources :kareki_feeds
-  map.resources :kareki_entries, :collection => {:crawl => :post}
-  map.resources :images
-  map.resource :session
-
-  map.namespace :admin do |admin|
-    admin.resources :users
+  resources :pages do
+    collection do
+      get :feed
+    end
   end
 
-  map.root :controller => 'welcome'
-  map.signin '/signin', :controller => 'sessions', :action => 'new'
-  map.signout '/signout', :controller => 'sessions', :action => 'destroy'
-  map.dashboard '/dashboard', :controller => 'dashboard', :action => 'index'
+  resources :kareki_feeds
+  resources :kareki_entries do
+    collection do
+      post :crawl
+    end
+  end
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  resources :images
+  resource :session
+  namespace :admin do
+    resources :users
+  end
+
+  match '/signin' => 'sessions#new', :as => :signin
+  match '/signout' => 'sessions#destroy', :as => :signout
+  match '/dashboard' => 'dashboard#index', :as => :dashboard
+  match '/:controller(/:action(/:id))'
+  root :to => 'welcome#index'
 end

@@ -1,7 +1,7 @@
 source :rubygems
 
-gem 'rails', '2.3.10', :require => nil
-gem 'haml'
+gem 'rails', '~> 3.0.0'
+gem 'haml-rails'
 gem 'will_paginate'
 gem 'nokogiri'
 gem 'feedzirra'
@@ -10,7 +10,7 @@ gem 'gravtastic'
 gem 'mysql'
 gem 'rails_warden'
 gem 'warden-openid'
-gem 'hassle'
+#gem 'hassle'
 
 group :development do
   gem 'tapp', :group => :test
@@ -19,7 +19,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 1.3'
+  gem 'rspec-rails'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
   gem 'faker'

@@ -1,1 +1,1 @@
-Rails.configuration.middleware.use Hassle
+#Rails.configuration.middleware.use Hassle
