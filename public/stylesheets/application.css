@@ -305,7 +305,7 @@ div.signin {
   font-size: 70%;
   text-align: left; }
 
-.fieldWithErrors {
+.field_with_errors {
   padding: 2px;
   background-color: red;
   display: table; }

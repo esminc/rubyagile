@@ -1,5 +1,5 @@
-<% div_for(@page, :class => 'page') do -%>
-<%= render(:partial => 'shared/page') %>
+<% div_for @page, :class => 'page' do -%>
+  <%= render :partial => 'shared/page', :locals => {:page => @page} %>
 <% end -%>
 <% content_for :sidebar do -%>
   <%= render :partial => "sidebar" %>

@@ -5,7 +5,7 @@
 
 != render :partial => 'navigation'
 
-%div[@article]!= render :partial => 'shared/article'
+%div[@article]!= render :partial => 'shared/article', :locals => {:article => @article}
 
 != disqus_thread
 
