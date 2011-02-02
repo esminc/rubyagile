@@ -2,9 +2,9 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :images, :dependent => :destroy
 
-  named_scope :publishing, :conditions => {:publishing => true}
-  named_scope :newer_first, :order => %Q(#{quoted_table_name}.created_at DESC)
-  named_scope :recent, :order => %Q(#{quoted_table_name}.created_at DESC), :limit => 10
+  scope :publishing, :conditions => {:publishing => true}
+  scope :newer_first, :order => %Q(#{quoted_table_name}.created_at DESC)
+  scope :recent, :order => %Q(#{quoted_table_name}.created_at DESC), :limit => 10
 
   def self.find_all_written_by(user)
     Article.find_all_by_user_id(user.id, :order => "created_at DESC")

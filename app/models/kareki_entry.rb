@@ -9,9 +9,9 @@ class KarekiEntry < ActiveRecord::Base
 
   belongs_to :feed, :foreign_key => :feed_id, :class_name => KarekiFeed.to_s
 
-  named_scope :confirmed, :conditions => {:confirmation => "confirmed"}
-  named_scope :newer_first, :order => %Q(#{quoted_table_name}.published_at DESC)
-  named_scope :recent, :order =>  %Q(#{quoted_table_name}.published_at DESC), :limit => 10
+  scope :confirmed, :conditions => {:confirmation => "confirmed"}
+  scope :newer_first, :order => %Q(#{quoted_table_name}.published_at DESC)
+  scope :recent, :order =>  %Q(#{quoted_table_name}.published_at DESC), :limit => 10
 
   class << self
     def build_from_entry(entry)
