@@ -3,31 +3,31 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe KarekiFeedsController do
   describe "route generation" do
     it "maps #index" do
-      route_for(:controller => "kareki_feeds", :action => "index").should == "/kareki_feeds"
+      { :get => "/kareki_feeds" }.should route_to(:controller => "kareki_feeds", :action => "index")
     end
 
     it "maps #new" do
-      route_for(:controller => "kareki_feeds", :action => "new").should == "/kareki_feeds/new"
+      { :get => "/kareki_feeds/new" }.should route_to(:controller => "kareki_feeds", :action => "new")
     end
 
     it "maps #show" do
-      route_for(:controller => "kareki_feeds", :action => "show", :id => "1").should == "/kareki_feeds/1"
+      { :get => "/kareki_feeds/1" }.should route_to(:controller => "kareki_feeds", :action => "show", :id => "1")
     end
 
     it "maps #edit" do
-      route_for(:controller => "kareki_feeds", :action => "edit", :id => "1").should == "/kareki_feeds/1/edit"
+      { :get => "/kareki_feeds/1/edit" }.should route_to(:controller => "kareki_feeds", :action => "edit", :id => "1")
     end
 
     it "maps #create" do
-      route_for(:controller => "kareki_feeds", :action => "create").should == {:path => "/kareki_feeds", :method => :post}
+      { :post => "/kareki_feeds" }.should route_to(:controller => "kareki_feeds", :action => "create")
     end
 
     it "maps #update" do
-      route_for(:controller => "kareki_feeds", :action => "update", :id => "1").should == {:path =>"/kareki_feeds/1", :method => :put}
+      { :put => "/kareki_feeds/1" }.should route_to(:controller => "kareki_feeds", :action => "update", :id => "1")
     end
 
     it "maps #destroy" do
-      route_for(:controller => "kareki_feeds", :action => "destroy", :id => "1").should == {:path =>"/kareki_feeds/1", :method => :delete}
+      { :delete => "/kareki_feeds/1" }.should route_to(:controller => "kareki_feeds", :action => "destroy", :id => "1")
     end
   end
 
