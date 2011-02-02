@@ -1,10 +1,10 @@
 Sham.define do
-  login { Faker::Internet.user_name }
-  email { Faker::Internet.email }
-  open_id_url { "http://#{Faker::Internet.domain_name}" }
-  link { "http://#{Faker::Internet.domain_name}" }
-  content { Faker::Lorem.sentence }
-  title { Faker::Lorem.sentence }
+  login { Forgery::Name.full_name }
+  email { Forgery::Internet.email_address }
+  open_id_url { "http://#{Forgery::Internet.domain_name}" }
+  link { "http://#{Forgery::Internet.domain_name}" }
+  content { Forgery::LoremIpsum.sentence }
+  title { Forgery::LoremIpsum.sentence }
   datetime {|i| DateTime.new(2010, 1, i.succ) }
 end
 

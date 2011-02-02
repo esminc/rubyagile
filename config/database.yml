@@ -19,7 +19,7 @@ development:
   encoding: utf8
   database: rubyagile_development
   username: root
-  password: root
+  password:
   estraier:
     port: 1978
     user: admin
@@ -34,7 +34,7 @@ test:
   encoding: utf8
   database: rubyagile_test
   username: root
-  password: root
+  password:
 
 # debian
 production:

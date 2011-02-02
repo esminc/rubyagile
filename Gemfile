@@ -20,12 +20,17 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
-  gem 'faker'
-  gem 'autotest-rails'
-  gem 'spork'
-  gem 'diff-lcs'
-  gem 'specjour'
+  gem 'forgery'
+  gem 'spork', '~> 0.9.0.rc2'
+#  gem 'diff-lcs'
+#  gem 'specjour'
+  gem 'fuubar'
+#  gem 'faker'
+#  gem 'autotest-rails'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
