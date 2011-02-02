@@ -24,11 +24,7 @@ group :test do
   gem 'machinist', :require => 'machinist/active_record'
   gem 'forgery'
   gem 'spork', '~> 0.9.0.rc2'
-#  gem 'diff-lcs'
-#  gem 'specjour'
   gem 'fuubar'
-#  gem 'faker'
-#  gem 'autotest-rails'
 end
 
 group :development, :test do
