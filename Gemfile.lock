@@ -143,6 +143,9 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    verification (1.0.1)
+      actionpack (~> 3.0.0)
+      activesupport (~> 3.0.0)
     warden (1.0.3)
       rack (>= 1.0.0)
     warden-openid (0.1.0)
@@ -172,5 +175,6 @@ DEPENDENCIES
   spork (~> 0.9.0.rc2)
   tapp
   taps
+  verification
   warden-openid
   will_paginate

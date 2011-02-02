@@ -13,7 +13,7 @@ describe Contact do
 
   it "should_not be valid" do
     @contact.should_not be_valid
-    @contact.errors.on(:bot).should_not be_empty
+    @contact.errors[:bot].should_not be_empty
   end
 
 end

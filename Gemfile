@@ -11,6 +11,7 @@ gem 'mysql'
 gem 'rails_warden'
 gem 'warden-openid'
 gem 'dynamic_form'
+gem 'verification'
 #gem 'hassle'
 
 group :development do
