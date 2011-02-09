@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rails', '~> 3.0.0'
 gem 'haml-rails'
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.0.pre'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
@@ -12,10 +12,8 @@ gem 'rails_warden'
 gem 'warden-openid'
 gem 'dynamic_form'
 gem 'verification'
-#gem 'hassle'
 
 group :development do
-  gem 'tapp', :group => :test
   gem 'heroku', :require => nil
   gem 'taps', :require => nil
 end
@@ -30,4 +28,5 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'tapp'
 end
