@@ -1,0 +1,61 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ja:
+  home:
+    name: "アプリケーショントップ"
+  admin:
+    dashboard:
+      pagename: "マスタデータ管理"
+      name: "マスタデータ管理トップ"
+      model_name: "マスタデータ"
+      last_used: "最終更新"
+      records: "Records"
+      modify: "管理メニュー"
+      add_new: "新規登録"
+      show: "詳細"
+      ago: "前"
+    history:
+      name: "更新履歴"
+      page_name: "%{name}の更新履歴"
+      no_activity: "No Activity"
+    credentials:
+      log_out: "ログアウト"
+    list:
+      edit_action: "編集"
+      delete_action: "削除"
+      select_action: "選択"
+      delete_selected: "選択済みを削除"
+      add_new: "新規登録"
+      search: "検索"
+      search_btn: "検索"
+      select: "編集したい「%{name}」を選択してください。"
+      show_all: "すべて表示"
+    new:
+      basic_info: "基本情報"
+      required: "必須: "
+      optional: "Optional"
+      one_char: "character."
+      many_chars: "文字以内で入力"
+      chosen: "選択済みの %{name}"
+      select_choice: "クリックして選択"
+      chose_all: "すべて選択"
+      clear_all: "すべて選択解除"
+      save: "保存"
+      save_and_add_another: "保存して次へ(連続登録)"
+      save_and_edit: "保存して再修正"
+      cancel: "キャンセル"
+    delete:
+      flash_confirmation: "%{name} was successfully destroyed"
+      confirmation: "Yes, I'm sure"
+    flash:
+      successful: "%{name}が正常に%{action}されました"
+      error: "%{name} failed to be %{action}"
+      noaction: "操作をキャンセルしました。"
+    actions:
+      create: "新規登録"
+      created: "created"
+      update: "update"
+      updated: "更新"
+      delete: "delete"
+      deleted: "deleted"

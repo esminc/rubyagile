@@ -21,9 +21,6 @@ RubyAgile::Application.routes.draw do
 
   resources :images
   resource :session
-  namespace :admin do
-    resources :users
-  end
 
   match '/signin' => 'sessions#new', :as => :signin
   match '/signout' => 'sessions#destroy', :as => :signout

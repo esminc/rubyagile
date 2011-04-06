@@ -2,16 +2,20 @@ source :rubygems
 
 gem 'rails', '~> 3.0.0'
 gem 'haml-rails'
+gem 'rspec-rails'
+
 gem 'will_paginate', '~> 3.0.pre'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
 gem 'gravtastic'
-gem 'mysql'
 gem 'rails_warden'
 gem 'warden-openid'
 gem 'dynamic_form'
 gem 'verification'
+gem 'hikidoc'
+gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
   gem 'heroku', :require => nil
@@ -27,6 +31,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'sqlite3'
   gem 'tapp'
+end
+
+group :production do
+  gem 'pg'
 end
