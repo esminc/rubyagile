@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  has_attachment(:thumbnails => { :thumb => '120x' })
+  # has_attachment(:thumbnails => { :thumb => '120x' })
   belongs_to :article
 
   def filepath
