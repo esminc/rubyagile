@@ -1,0 +1,12 @@
+<% if current_user = _current_user %>
+<div class="user_info">
+  <ul>
+    <li>
+      <strong><a href="#"><%= current_user.name %></a></strong>
+    </li>
+    <li class="desc">
+      <a href="<%= signout_path %>"><%= t("admin.credentials.log_out")%></a>
+    </li>
+  </ul>
+</div>
+<% end %>
