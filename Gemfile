@@ -2,6 +2,8 @@ source :rubygems
 
 gem 'rails', '~> 3.0.0'
 gem 'haml-rails'
+gem 'sass'
+gem 'jquery-rails'
 
 gem 'will_paginate', '~> 3.0.pre'
 gem 'nokogiri'
@@ -17,6 +19,7 @@ gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
+  gem 'traceroute'
   gem 'heroku', :require => nil
   gem 'taps', :require => nil
 end
