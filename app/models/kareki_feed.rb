@@ -3,6 +3,8 @@ class KarekiFeed < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   validates_uniqueness_of :url
 
+  before_save :build_feed
+
   class << self
     def crawl
       KarekiFeed.all.each {|feed| feed.fetch_and_save_entries }
@@ -18,7 +20,7 @@ class KarekiFeed < ActiveRecord::Base
     Rails.logger.error e
   end
 
-  def before_save
+  def build_feed
     feed = parse_feed_content
     self.title = feed.title
     self.link = feed.url

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Contact < ActiveRecord::Base
   validates_presence_of :email, :message
   validates_format_of :email,
@@ -8,7 +9,9 @@ class Contact < ActiveRecord::Base
   alias :bot? :bot
   validates_acceptance_of :bot, :accept => '0', :message => '対策のチェックボックスをオフにしてください。お手数をおかけします。'
 
-  def after_initialize
+  after_initialize :init_bot
+
+  def init_bot
     @bot = 1
   end
 end
