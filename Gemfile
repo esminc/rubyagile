@@ -2,7 +2,6 @@ source :rubygems
 
 gem 'rails', '~> 3.0.0'
 gem 'haml-rails'
-gem 'rspec-rails'
 
 gem 'will_paginate', '~> 3.0.pre'
 gem 'nokogiri'
@@ -23,7 +22,6 @@ group :development do
 end
 
 group :test do
-  gem 'rr'
   gem 'machinist', :require => 'machinist/active_record'
   gem 'forgery'
   gem 'spork', '~> 0.9.0.rc2'
@@ -31,6 +29,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'sqlite3'
   gem 'tapp'
 end

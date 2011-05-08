@@ -14,9 +14,7 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
     config.global_fixtures = :users
-    config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
-
-    config.mock_with :rr
+    config.fixture_path = File.join(Rails.root, '/spec/fixtures/')
 
     config.before :all do
       Sham.reset :before_all
