@@ -1,21 +1,24 @@
+# -*- coding: utf-8 -*-
 module WardenHelperMethods
   def login_as(user)
     raise unless u = users(user)
 
-    stub(request.env['warden']) {
-      user { u }
-      authenticated? { true }
-      raw_session # logout で必要になるよ
-    }
+    request.env['warden'].tap do |r|
+      allow_message_expectations_on_nil
+      r.stub(:user) { u }
+      r.stub(:authenticated?) { true }
+      r.stub(:raw_session)
+    end
 
     u.id
   end
 
   def not_logged_in
-    stub(request.env['warden']) {
-      user { nil }
-      authenticated? { false }
-      raw_session # logout で必要になるよ
-    }
+    request.env['warden'].tap do |r|
+      allow_message_expectations_on_nil
+      r.stub(:user) { nil }
+      r.stub(:authenticated?) { true }
+      r.stub(:raw_session)
+    end
   end
 end
