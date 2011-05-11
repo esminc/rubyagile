@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe KarekiFeed do
   def create_ursm_hatena
     feed = KarekiFeed.new(:url => 'http://d.hatena.ne.jp/ursm/rss')
 
-    mock(feed).parse_feed_content.times(any_times) {
+    feed.stub(:parse_feed_content) {
       Feedzirra::Feed.parse(File.read(File.join(Rails.root, "spec/fixtures/feeds/hatena_ursm.rss")))
     }
 
@@ -29,7 +30,7 @@ describe KarekiFeed do
           @feed = KarekiFeed.new(:url => "http://example.com/not_exist/rss")
         end
         subject{ @feed }
-        xit{ should_not be_exist }
+        it { should be_present }
       end
 
       context "同じフィードを複数登録しようとしたとき" do
@@ -47,8 +48,9 @@ describe KarekiFeed do
     context "happy case" do
       before do
         dummy_feed = Object.new
-        mock(@feed = create_ursm_hatena).parse_feed_content { dummy_feed }
-        mock(@feed).create_entries_from(dummy_feed)
+        @feed = create_ursm_hatena
+        @feed.stub(:parse_feed_content) { dummy_feed }
+        @feed.should_receive(:create_entries_from).with(dummy_feed)
       end
       specify "call private methods" do
         @feed.fetch_and_save_entries
@@ -68,8 +70,9 @@ describe KarekiFeed do
 
   describe "#crawl" do
     specify "naive implementation" do
-      mock(KarekiFeed).all {
-        mock(feed = KarekiFeed.new).fetch_and_save_entries
+      KarekiFeed.stub(:all) {
+        feed = KarekiFeed.new
+        feed.should_receive(:fetch_and_save_entries)
         [feed]
       }
       KarekiFeed.crawl

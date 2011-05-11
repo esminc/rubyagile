@@ -16,7 +16,7 @@ class KarekiEntry < ActiveRecord::Base
   class << self
     def build_from_entry(entry)
       attributes = adapt_param(entry)
-      tap(find_or_initialize_by_link(attributes[:link])) do |entry|
+      find_or_initialize_by_link(attributes[:link]).tap do |entry|
         entry.attributes = attributes
       end
     end

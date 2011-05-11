@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe KarekiEntry do
@@ -54,7 +55,7 @@ describe KarekiEntry do
       describe "もう一度おなじitemで上書きする場合" do
         before do
           @entry.save
-          stub(@item).content { "Hehehe" }
+          @item.stub(:content) { "Hehehe" }
           @updated = KarekiEntry.build_from_entry(@item)
         end
 
@@ -82,7 +83,7 @@ describe KarekiEntry do
 
       describe "もう一度おなじitemで上書きする場合" do
         before do
-          stub(@item).content { 'Hehehe' }
+          @item.stub(:content) { 'Hehehe' }
           @entry.save
           @updated = KarekiEntry.build_from_entry(@item)
         end
