@@ -4,11 +4,11 @@ describe "/articles/show.html.haml" do
   include ArticlesHelper
 
   before :each do
-    @article = mock_model(Article, :null_object => true)
+    @article = mock_model(Article).as_null_object
     assigns[:article] = @article
 
-    template.stub!(:render).with(:partial => 'navigation')
-    template.should_receive(:render).with(:partial => 'shared/article')
+    view.stub!(:render).with(:partial => 'navigation')
+    view.should_receive(:render).with(:partial => 'shared/article')
   end
 
   it "should render attributes" do

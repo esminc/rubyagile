@@ -7,7 +7,7 @@ describe "/articles/index.html.haml" do
     before(:each) do
       assigns[:articles] = []
       assigns[:entries] = []
-      template.should_receive(:render).with(:partial => 'sidebar')
+      view.should_receive(:render).with(:partial => 'sidebar')
     end
 
     it "should render list of articles" do

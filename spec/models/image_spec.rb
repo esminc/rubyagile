@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Image do
   before(:each) do
     @image = Image.new
-    mock(@image).id { 5 }
+    @image.stub(:id) { 5 }
+    @image.should_receive(:id)
     @image.filename = "designpatterns.img.jpg"
   end
 

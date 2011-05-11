@@ -5,7 +5,7 @@ describe "/articles/_article.html.erb" do
 
   describe "when empty" do
     before(:each) do
-      @article = mock_model(Article, :null_object => true)
+      @article = mock_model(Article).as_null_object
       user = mock_model(User, :login => 'a_user', :email => 'hoge@fuga.com')
       stub(@article).user { user }
 
