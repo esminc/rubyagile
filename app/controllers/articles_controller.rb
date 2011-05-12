@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
-    @articles = Article.publishing.newer_first
+    @articles = Article.publishing.newer_first.page(params[:page])
   end
 
   def show

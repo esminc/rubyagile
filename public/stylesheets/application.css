@@ -436,12 +436,15 @@ table {
   table td {
     background: #eeeeee; }
 
-.admin_assistant {
-  font-size: small; }
-
 dl dt {
   border-color: #eeeeff;
   border-style: solid;
   border-width: 0px 0px 1px; }
 dl dd {
   margin: 0 0 0 2em; }
+
+.admin_assistant {
+  font-size: small; }
+
+.pager {
+  text-align: center; }

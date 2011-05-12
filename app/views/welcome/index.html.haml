@@ -48,4 +48,5 @@
         %span.source!= link_to h(entry.feed.title), entry.feed.link
       .body!~ replace_img_to_anchor entry.content
 
-  != will_paginate @entries
+    .pager
+      = paginate(@entries)

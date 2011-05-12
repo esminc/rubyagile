@@ -7,6 +7,8 @@ class KarekiEntry < ActiveRecord::Base
     :author => :creator
   }.freeze
 
+  paginates_per 10
+
   belongs_to :feed, :foreign_key => :feed_id, :class_name => KarekiFeed.to_s
 
   scope :confirmed, :conditions => {:confirmation => "confirmed"}
