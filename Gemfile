@@ -1,11 +1,10 @@
 source :rubygems
 
-gem 'rails', '~> 3.0.0'
+gem 'rails'
 gem 'haml-rails'
 gem 'sass'
 gem 'jquery-rails'
 
-gem 'will_paginate', '~> 3.0.pre'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
@@ -19,15 +18,15 @@ gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
+  gem 'passenger'
+  gem 'heroku_san'
+  gem 'taps'
   gem 'traceroute'
-  gem 'heroku', :require => nil
-  gem 'taps', :require => nil
 end
 
 group :test do
   gem 'machinist', :require => 'machinist/active_record'
   gem 'forgery'
-  gem 'spork', '~> 0.9.0.rc2'
   gem 'fuubar'
 end
 

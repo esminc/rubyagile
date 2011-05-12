@@ -1,27 +1,21 @@
-require 'rubygems'
-require 'spork'
+ENV["RAILS_ENV"] ||= 'test'
 
-Spork.prefork do
-  ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-  require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
-  require 'rspec/rails'
+RSpec.configure do |config|
+  config.include WardenHelperMethods
 
-  Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
-  RSpec.configure do |config|
-    config.include WardenHelperMethods
+  config.use_transactional_fixtures = true
+  config.use_instantiated_fixtures  = false
+  config.global_fixtures = :users
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-    config.use_transactional_fixtures = true
-    config.use_instantiated_fixtures  = false
-    config.global_fixtures = :users
-    config.fixture_path = File.join(Rails.root, '/spec/fixtures/')
+  config.before :all do
+    Sham.reset :before_all
+  end
 
-    config.before :all do
-      Sham.reset :before_all
-    end
-
-    config.before :each do
-      Sham.reset :before_each
-    end
+  config.before :each do
+    Sham.reset :before_each
   end
 end
