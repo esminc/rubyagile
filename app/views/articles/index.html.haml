@@ -1,2 +1,8 @@
+.pager
+  = paginate(@articles)
+
 - @articles.each do |article|
   %div[article]!= render :partial => 'shared/article', :locals => {:article => article}
+
+.pager
+  = paginate(@articles)

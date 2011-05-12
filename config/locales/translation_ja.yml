@@ -6,7 +6,7 @@ ja:
       image: "イメージ"  #g
       user: "ユーザー"  #g
       page: "ページ"  #g
-      article: "条"  #g
+      article: "記事"  #g
       kareki_entry: "Karekiエントリ"  #g
 
     attributes: 

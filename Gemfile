@@ -5,6 +5,7 @@ gem 'haml-rails'
 gem 'sass'
 gem 'jquery-rails'
 
+gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
