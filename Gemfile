@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails'
+gem 'pg'
 gem 'haml-rails'
 gem 'sass'
 gem 'jquery-rails'
@@ -20,7 +21,7 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
   gem 'passenger'
-  gem 'heroku_san'
+  gem 'heroku_san', :git => 'git://github.com/esminc/heroku_san.git'
   gem 'taps'
   gem 'traceroute'
 end
@@ -33,10 +34,5 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'sqlite3'
   gem 'tapp'
-end
-
-group :production do
-  gem 'pg'
 end

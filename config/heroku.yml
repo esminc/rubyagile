@@ -1,0 +1,17 @@
+#
+# Format:
+# 
+# <heroku_san shorthand name>:
+#   app: <Heroku app name>
+#   config:
+#     - <Heroku config:var name>: <Heroku config:var value>
+#
+production: 
+  app: rubyagile
+  config:
+    BUNDLE_WITHOUT: "development:test"
+
+staging:
+  app: rubyagile-dev
+  config: &default
+    BUNDLE_WITHOUT: "development:test"

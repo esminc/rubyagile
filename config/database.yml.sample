@@ -1,9 +1,14 @@
-development:
-  adapter: sqlite3
-  encoding: utf8
-  database: db/development.sqlite3
+development: &defaults
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  database: rubyagile_development
+  pool: 5
+  username: 
+  password: 
+  min_messages: WARNING
 
 test:
-  adapter: sqlite3
-  encoding: utf8
-  database: db/test.sqlite3
+  <<: *defaults
+  database: rubyagile_test

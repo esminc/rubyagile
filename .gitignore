@@ -5,7 +5,7 @@
 *.swp
 .rake_tasks
 .generators
-config/*.yml
+config/database.yml
 /log/*.log
 /coverage
 /.generators
@@ -18,3 +18,4 @@ mkmf.log
 .bundle/*
 vendor/bundle/*
 db_dump
+db/dumps
