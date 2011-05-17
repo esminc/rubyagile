@@ -1,6 +1,6 @@
 !!! XML
 %rdf:RDF{:xmlns => "http://purl.org/rss/1.0/", "xmlns:rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "xmlns:lang" => "ja" }
-  %channel{"rdf:about" => formatted_feed_articles_url(:rdf) }
+  %channel{"rdf:about" => feed_articles_url(:format => :rdf) }
     %title Ruby x Agile
     %link= articles_url
     %description Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト

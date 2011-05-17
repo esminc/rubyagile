@@ -3,11 +3,11 @@
   %title Ruby x Agile
   %subtitle Rubyでアジャイルなソフトウェア開発を実現する永和システムマネジメントのWebサイト
   %link{:href => root_url}
-  %link{:rel => "self", :href => formatted_feed_articles_url(:xml), :type => "application/atom+xml"}
+  %link{:rel => "self", :href => feed_articles_url(:format => :xml), :type => "application/atom+xml"}
   %author
     %name 永和システムマネジメント
   %updated= @articles.first.updated_at.to_s(:db)
-  %id= formatted_feed_articles_url(:xml)
+  %id= feed_articles_url(:format => :xml)
   - @articles.each do |article| 
     %entry
       %id= article_url(article) 
