@@ -19,6 +19,7 @@ describe ArticlesHelper do
     end
 
     subject { link_to_comments(@article) }
-    it { should have_tag('a[href=/articles/5#disqus_thread]', 'View Comments') }
+    it { should be_include '/articles/5#disqus_thread' }
+    it { should be_include 'View Comments' }
   end
 end
