@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe SessionsController do
   describe "GET 'new'" do
@@ -27,5 +27,4 @@ describe SessionsController do
     it { flash[:notice].should == 'You have been sign out.'}
     it { response.should redirect_to("")}
   end
-
 end

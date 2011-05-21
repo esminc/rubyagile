@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../spec_helper'
+require 'spec_helper'
 
 describe "/nakanohitos/show" do
   before :each do
@@ -11,7 +11,7 @@ describe "/nakanohitos/show" do
     assigns[:nakanohito] = user
     render
   end
-  
+
   it "should have links of recent articles" do
     response.should have_tag("ul#articles") do |ul|
       ul.should have_tag("li") do |li|

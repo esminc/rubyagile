@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+# -*- coding: utf-8 -*-
+require 'spec_helper'
 
 describe User do
   def valid_user

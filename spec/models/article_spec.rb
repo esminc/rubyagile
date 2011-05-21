@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 module ArticleFactory
   def valid_article(opts = {})
