@@ -2,7 +2,6 @@
 
 .articles
   %h3 投稿した記事の一覧
-  %p!= link_to '新規記事を投稿する', new_article_path
 
   %table.dashboard
     %tr
@@ -12,12 +11,3 @@
       %tr
         %td!= link_to h(article.title), edit_article_path(article)
         %th!= render_status_for(article)
-
-%ul
-  %li!= link_to 'エントリの公開/非公開を設定する', kareki_entries_path
-  %li!= link_to 'フィードを管理する', kareki_feeds_path
-  %li!= link_to 'ユーザを管理する', admin_users_path
-
-%hr
-
-%p!= link_to 'サインアウト', signout_path
