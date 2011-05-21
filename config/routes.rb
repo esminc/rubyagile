@@ -12,7 +12,6 @@ RubyAgile::Application.routes.draw do
     end
   end
 
-  resources :kareki_feeds
   resources :kareki_entries do
     collection do
       post :crawl
