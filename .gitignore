@@ -9,13 +9,10 @@ config/database.yml
 /log/*.log
 /coverage
 /.generators
-/db/schema.rb
-/db/*_structure.sql
 /db/*.sqlite3
 /tmp
 public/stylesheets/application.css
 mkmf.log
 .bundle/*
 vendor/bundle/*
-db_dump
 db/dumps
