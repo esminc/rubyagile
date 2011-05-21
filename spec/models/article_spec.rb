@@ -77,49 +77,6 @@ describe Article do
     end
   end
 
-  describe "全文検索インデックスを追加する場合" do
-    fixtures :articles
-    before do
-      @article = articles(:hikidoc_sample)
-      @old_record_timestamps = Article.record_timestamps
-      Article.record_timestamps = false
-    end
-
-    after do
-      Article.record_timestamps = @old_record_timestamps
-    end
-
-    xit "検索対象のフィールド, title が変更された場合はconnectionのput_docが呼ばれること" do
-      mock(Article.estraier_connection).put_doc
-      @article.title = "new title"
-      @article.save
-    end
-
-    xit "検索対象でないフィールド, publishing が変更された場合はconnectionのput_docが呼ばれないこと" do
-      dont_allow(Article.estraier_connection).put_doc
-      @article.publishing = !@article.publishing
-      @article.save
-    end
-  end
-
-  describe "全文検索をし、検索対象に全てのArticleが含まれる場合" do
-    fixtures :articles
-    before do
-      mock(Article).matched_ids("検索語", :order=>"@mdate NUMD") {
-        [articles(:hikidoc_sample).id, articles(:draft).id] }
-    end
-
-    xit "追加の検索条件を指定しない場合には全ての文書がヒットすること" do
-      as = Article.find_fulltext("検索語")
-      as.length.should == 2
-    end
-
-    xit ":publishing => trueという追加の検索条件を指定すると:hikidoc_sampleのみがヒットすること" do
-      as = Article.find_fulltext("検索語", :conditions=>["publishing = ?", true])
-      as.should == [articles(:hikidoc_sample)]
-    end
-  end
-
   describe "#publishing?" do
     before do
       @article = Article.new
@@ -137,13 +94,6 @@ describe Article do
         @article.publishing = false
       end
       it { @article.should_not be_publishing }
-    end
-  end
-
-  describe ".find_all_by_user_id" do
-    it "作成日時の降順であること" do
-      mock(Article).find_all_by_user_id(users(:alice).id, {:order => "created_at DESC"})
-      Article.find_all_written_by(users(:alice))
     end
   end
 

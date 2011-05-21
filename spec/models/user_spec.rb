@@ -42,18 +42,21 @@ describe User do
       before do
         @user = User.make
 
-        stub.instance_of(KarekiFeed).before_save
-
-        feed = KarekiFeed.make(:owner => @user)
+        feed = KarekiFeed.new(:owner => @user)
+        feed.stub(:build_feed)
+        feed.save
         KarekiEntry.make(:feed => feed, :confirmation => 'confirmed')
 
-        others = KarekiFeed.make
-        Array.new(2) { KarekiEntry.make(:feed => others, :confirmation => 'confirmed') }
+        others = KarekiFeed.new(:url => 'http://example.com')
+        others.stub(:build_feed)
+        others.save
+
+        Array.new(2) { KarekiEntry.make(:title => 'example', :content => 'example', :feed_id => others.id, :confirmation => 'confirmed') }
       end
 
       subject { @user }
       it { KarekiEntry.should have(3).records }
-      its(:accepted_rate) { should be_close(33.33, 0.01) }
+      its(:accepted_rate) { should be_within(0.01).of(33.33) }
     end
   end
 end

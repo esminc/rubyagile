@@ -32,9 +32,7 @@ describe KarekiEntry do
       it{ should be_confirmed }
     end
   end
-end
 
-describe KarekiEntry do
   describe "#create_from_entry" do
     context 'rss' do
       before do
