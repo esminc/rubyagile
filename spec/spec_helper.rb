@@ -7,7 +7,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 RSpec.configure do |config|
-  config.include WardenHelperMethods
+  config.include Warden::Test::Helpers
 
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
