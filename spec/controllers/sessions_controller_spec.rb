@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe SessionsController do
-  describe "GET 'new'" do
-    before do
-      get 'new'
-    end
-    it { response.should render_template("sessions/new")}
-  end
-
   describe "POST 'create'" do
     before do
       mock(controller).authenticate!
