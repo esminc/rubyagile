@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: 221fd9d81a07b085909305dd279ae7ab42266a28
+  revision: ceb7384b01ed7a40bf0dca46e8a1dca19c9eda07
   specs:
     rails_admin (0.0.1)
       builder (~> 2.1.0)
@@ -52,7 +52,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
-    arel (2.0.9)
+    arel (2.0.10)
     builder (2.1.2)
     chalofa_ruby-progressbar (0.0.9.1)
     configuration (1.2.0)
@@ -91,7 +91,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     hikidoc (0.0.4)
     i18n (0.5.0)
-    jquery-rails (1.0.2)
+    jquery-rails (1.0.5)
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.5.1)
@@ -140,14 +140,14 @@ GEM
       activesupport (= 3.0.7)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    rake (0.8.7)
+    rake (0.9.0)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
       rspec-mocks (~> 2.6.0)
-    rspec-core (2.6.0)
+    rspec-core (2.6.1)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
     rspec-instafail (0.1.7)
