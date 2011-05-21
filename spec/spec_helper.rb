@@ -3,6 +3,9 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+require 'rspec/rails'
+require 'capybara/rails'
+
 RSpec.configure do |config|
   config.include WardenHelperMethods
 

@@ -28,11 +28,12 @@ end
 
 group :test do
   gem 'machinist', :require => 'machinist/active_record'
+  gem 'capybara'
   gem 'forgery'
   gem 'fuubar'
 end
 
 group :development, :test do
-  gem 'rspec-rails', :require => 'rspec/rails'
+  gem 'rspec-rails'
   gem 'tapp'
 end
