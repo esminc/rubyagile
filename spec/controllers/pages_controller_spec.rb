@@ -33,7 +33,7 @@ describe PagesController do
   describe "GET /pages/new" do
     before do
       @page = mock_model(Page)
-      dont_allow(@page).save
+      @page.should_not_receive(:save)
       stub(Page).new { @page }
       get :new
     end
@@ -68,7 +68,7 @@ describe PagesController do
 
     describe "with preview" do
       before do
-        dont_allow(@page).save
+        @page.should_not_receive(:save)
         post :create, :page => {}, :preview => 'Preview'
       end
       it { response.should render_template('preview') }
@@ -100,7 +100,7 @@ describe PagesController do
 
     describe "with preview" do
       before do
-        dont_allow(@page).update_attributes
+        @page.should_not_receive(:update_attributes)
         put(:update,
           :id => 'MyPage',
           :page => {:name => 'NewName', :content => 'new content'},

@@ -50,8 +50,8 @@ describe ArticlesController do
 
   describe "handling GET /articles/new" do
     before(:each) do
-      @article = mock_model(Article)
-      dont_allow(@article).save
+      @article = Article.new
+      @article.should_not_receive(:save)
       Article.stub(:new) { @article }
       get :new
     end
@@ -67,7 +67,7 @@ describe ArticlesController do
 
   describe "handling GET /articles/1/edit" do
     before(:each) do
-      @article = mock_model(Article)
+      @article = Article.new
       Article.stub(:find) { @article }
       get :edit, :id => "1"
     end
@@ -122,7 +122,7 @@ describe ArticlesController do
 
     describe "with preview" do
       before do
-        dont_allow(@article).save
+        @article.should_not_receive(:save)
         post :create, :article => { :title => 'example', :body => 'hello' }, :preview => 'Preview'
       end
       it { response.should render_template('preview') }
@@ -159,7 +159,7 @@ describe ArticlesController do
 
     describe "with preview" do
       before do
-        dont_allow(@article).update_attribute
+        @article.should_receive(:update_attribute)
         put :update, :article => { :title => 'example', :body => 'hello.' }, :preview => 'Preview'
       end
 
