@@ -22,18 +22,17 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 group :development do
   gem 'passenger'
   gem 'heroku_san', :git => 'git://github.com/esminc/heroku_san.git'
-  gem 'taps'
   gem 'traceroute'
 end
 
 group :test do
   gem 'machinist', :require => 'machinist/active_record'
   gem 'capybara'
-  gem 'forgery'
   gem 'fuubar'
 end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'forgery'
   gem 'tapp'
 end

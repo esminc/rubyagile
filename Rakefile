@@ -4,12 +4,14 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-class RubyAgile::Application
-  include Rake::DSL
-end
+if defined? Rake::DSL
+  class RubyAgile::Application
+    include Rake::DSL
+  end
 
-module ::RakeFileUtils
-  extend Rake::FileUtilsExt
+  class Rails::Railtie
+    extend Rake::DSL
+  end
 end
 
 RubyAgile::Application.load_tasks
