@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails'
+gem 'rake', '~> 0.8.7'
 gem 'pg'
 gem 'haml-rails'
 gem 'sass'
