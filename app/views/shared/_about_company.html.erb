@@ -42,25 +42,13 @@
 <h3>フィード</h3>
 <ul style="margin-left:0em;" >
   <li style="list-style-type:none;"><%= image_tag "feed-icon-28x28.png", :size => "14x14", :alt => "Feed" %>&nbsp;<%= link_to '新着記事', feed_articles_url(:format => :xml) %></li>
-  <!--
-  <li style="list-style-type:none;"><%= image_tag "feed-icon-28x28.png", :size => "14x14", :alt => "Feed" %>&nbsp;<%= link_to 'ふつうのシステム開発', feed_pages_url(:format => :xml) %></li>
-  -->
 </ul>
 </div>
 
 <div class="sblock">
 <div class='signin'>
-  <% unless logged_in? %>
+  <% unless signed_in? %>
     <%= link_to 'サインイン', signin_path %>
   <% end %>
 </div>
 </div>
-<!-- pending
-<div class="sblock">
-<p>
-<%# form_tag({ :controller => 'search' }, { :method => 'GET' }) %>
-検索 <%# text_field_tag :q, @q, :accesskey => 's' %>
-</end>
-</p>
-</div>
--->
