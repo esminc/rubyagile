@@ -29,7 +29,6 @@ RubyAgile::Application.routes.draw do
   end
 
   resources :images
-  resource :session
 
   match '/:controller(/:action(/:id))'
 end

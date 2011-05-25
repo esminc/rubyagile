@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
     flash[:notice] = "Authentication successful."
     session[:user_id] = user.id
-    redirect_to authentications_url
+    redirect_to root_path
   end
 
   def destroy
@@ -16,6 +16,6 @@ class AuthenticationsController < ApplicationController
     @authentication.destroy
     session[:user_id] = nil
     flash[:notice] = "Successfully destroyed authentication."
-    redirect_to authentications_url
+    redirect_to root_path
   end
 end
