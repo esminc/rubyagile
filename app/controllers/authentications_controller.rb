@@ -9,6 +9,8 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = "Authentication successful."
     session[:user_id] = user.id
     redirect_to root_path
+  rescue Exception => e
+    render :text => "<html><body><pre>" + e.to_s + "</pre><hr /><pre>" + e.backtrace.join("\n") + "</pre></body></html>"
   end
 
   def destroy
