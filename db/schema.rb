@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525121754) do
+ActiveRecord::Schema.define(:version => 20110528152858) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",                         :null => false
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20110525121754) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
-    t.string   "open_id_url"
     t.string   "fullname"
     t.string   "amazon_associate"
     t.boolean  "nakanohito"

@@ -5,7 +5,7 @@
       <% for authentication in @authentications %>
         <div class="authentication">
           <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>
-          <div class="provider"><%= authentication.provider.titleize %></div>
+          <div class="provider"><%= authentication.provider_name %></div>
           <div class="uid"><%= authentication.uid %></div>
           <%= link_to "X", authentication, :confirm => 'このサービスとログインアカウントの紐付けを解除しますか?', :method => :delete, :class => "remove" %>
         </div>
@@ -27,7 +27,7 @@
   Github
 </a>
 <a href="/auth/open_id" class="auth_provider">
-  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+  <%= image_tag "open_id_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
 <div class="clear"></div>

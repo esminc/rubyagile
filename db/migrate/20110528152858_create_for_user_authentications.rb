@@ -1,6 +1,6 @@
 class CreateForUserAuthentications < ActiveRecord::Migration
   def self.up
-    User.all.each{|u|
+    User.all.each do |u|
       Authentication.create!(:uid => u.open_id_url, :provider => 'open_id', :user_id => u.id)
     end
 
@@ -12,11 +12,3 @@ class CreateForUserAuthentications < ActiveRecord::Migration
     add_column :users, :open_id_url, :string
   end
 end
-
-
-
-
-
-
-
-

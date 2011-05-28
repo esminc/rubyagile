@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class AuthenticationsController < ApplicationController
-  protect_from_forgery, except => :create
+  protect_from_forgery :except => :create
 
   def new
     @authentications = current_user.authentications if current_user
@@ -33,7 +33,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "ログインアカウントの紐付けが一つの場合は削除できません"
     end
 
-    redirect_to root_path
+    redirect_to new_authentication_path
   end
 
   def signout
