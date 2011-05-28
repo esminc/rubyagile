@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :feeds, :class_name => KarekiFeed.name, :foreign_key => :owner_id
   has_many :entries, :class_name => KarekiEntry.name, :through => :feeds
 
-  validates_presence_of :login, :email, :open_id_url
+  validates_presence_of :login, :email
 
   def to_param
     login
@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
     return 0.0 if all.zero?
 
     mine = entries.confirmed.count
-
     mine.to_f / all * 100
   end
 end

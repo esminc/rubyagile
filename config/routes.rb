@@ -5,7 +5,7 @@ RubyAgile::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
   match '/signin' => 'authentications#new', :as => :signin
-  match '/signout' => 'authentications#destroy', :as => :signout
+  match '/signout' => 'authentications#signout', :as => :signout
 
   resources :authentications
 

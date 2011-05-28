@@ -1,23 +1,44 @@
+# -*- coding: utf-8 -*-
 class AuthenticationsController < ApplicationController
+  protect_from_forgery, except => :create
+
   def new
     @authentications = current_user.authentications if current_user
   end
 
   def create
-    auth = request.env["omniauth.auth"]
-    current_user.authentications.find_or_create_by_provider_and_uid(auth['provider'], auth['uid'])
-    flash[:notice] = "Authentication successful."
-    session[:user_id] = user.id
+    omniauth = request.env["omniauth.auth"]
+    if omniauth["provider"] && omniauth["uid"]
+      auth = Authentication.find_or_create_by_provider_and_uid(omniauth["provider"], omniauth["uid"])
+      if auth.user
+        session[:user_id] = auth.user.id
+      else
+        auth.update_attributes!({:user_id => current_user.id})
+      end
+      flash[:notice] = "ログインに成功しました"
+    else
+      flash[:error] = "ログインに失敗しました"
+    end
     redirect_to root_path
-  rescue Exception => e
-    render :text => "<html><body><pre>" + e.to_s + "</pre><hr /><pre>" + e.backtrace.join("\n") + "</pre></body></html>"
   end
 
   def destroy
-    @authentication = current_user.authentications.find(params[:id])
-    @authentication.destroy
+    if current_user.authentications.count > 1
+      authentication = current_user.authentications.find(params[:id])
+      authentication.destroy
+      session[:user_id] = nil
+
+      flash[:notice] = "ログインアカウントの紐付けを削除しました"
+    else
+      flash[:notice] = "ログインアカウントの紐付けが一つの場合は削除できません"
+    end
+
+    redirect_to root_path
+  end
+
+  def signout
     session[:user_id] = nil
-    flash[:notice] = "Successfully destroyed authentication."
+    flash[:notice] = "ログアウトしました"
     redirect_to root_path
   end
 end
