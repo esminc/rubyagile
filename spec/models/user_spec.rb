@@ -5,8 +5,7 @@ describe User do
   def valid_user
     {
       :login => "s-kakutani",
-      :email => "s-kakutani@esm.co.jp",
-      :open_id_url => "http://kakutani.com/"
+      :email => "s-kakutani@esm.co.jp"
     }
   end
 
@@ -45,13 +44,13 @@ describe User do
         feed = KarekiFeed.new(:owner => @user)
         feed.stub(:build_feed)
         feed.save
-        KarekiEntry.make(:feed => feed, :confirmation => 'confirmed')
+        KarekiEntry.make(:feed => feed, :link => 'http://examle.com')
 
         others = KarekiFeed.new(:url => 'http://example.com')
         others.stub(:build_feed)
         others.save
 
-        Array.new(2) { KarekiEntry.make(:title => 'example', :content => 'example', :feed_id => others.id, :confirmation => 'confirmed') }
+        Array.new(2) { KarekiEntry.make(:title => 'example', :content => 'example', :feed_id => others.id, :link => 'http://examle.com') }
       end
 
       subject { @user }

@@ -100,8 +100,10 @@ describe Article do
   describe '.publishing' do
     subject{ Article.publishing }
     before do
-      [ @draft = Article.create!,
-        @pub = Article.create! ]
+      [
+        @draft = Article.create!(:title => 'a', :body => 'b'),
+        @pub = Article.create!(:title => 'a', :body => 'b')
+      ]
       @pub.update_attribute(:publishing, true)
       @draft.update_attribute(:publishing, false)
     end

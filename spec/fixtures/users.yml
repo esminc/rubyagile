@@ -3,12 +3,10 @@
 alice:
   login: alice
   email: alice@example.com
-  open_id_url: http://localhost:3333/user/alice
   amazon_associate: xyzzy-22
   nakanohito: true
 bob:
   login: bob
   email: bob@example.com
-  open_id_url: http://localhost:3333/user/bob
   amazon_associate: bobbob-22
   nakanohito: true

@@ -8,9 +8,8 @@ describe 'トップページの表示' do
     @feed = KarekiFeed.new(:title => 'alpha', :url => 'http://example.com')
     @feed.stub(:build_feed)
     @feed.save
-    KarekiEntry.make(:title => 'bravo', :content => 'example', :feed => @feed, :confirmation => 'confirmed')
+    KarekiEntry.make(:title => 'bravo', :content => 'example', :feed => @feed, :link => 'http://examle.com')
 
-    login_as User.make
     visit '/'
   end
 
