@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
   def create
     omniauth = request.env["omniauth.auth"]
     if omniauth["provider"] && omniauth["uid"] && current_user
-      auth = Authentication.find_or_create_by_provider_and_uid(omniauth["provider"], omniauth["uid"])
+      auth = Authentication.find_or_create_by_provider_and_uid(omniauth["provider"], omniauth["uid"].to_s)
       if auth.user
         session[:user_id] = auth.user.id
       else
