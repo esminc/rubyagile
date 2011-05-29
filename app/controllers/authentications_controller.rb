@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env["omniauth.auth"]
-    if omniauth["provider"] && omniauth["uid"]
+    if omniauth["provider"] && omniauth["uid"] && current_user
       auth = Authentication.find_or_create_by_provider_and_uid(omniauth["provider"], omniauth["uid"])
       if auth.user
         session[:user_id] = auth.user.id
@@ -17,7 +17,7 @@ class AuthenticationsController < ApplicationController
       end
       flash[:notice] = "ログインに成功しました"
     else
-      flash[:error] = "ログインに失敗しました"
+      flash[:error] = "ログインに失敗しました。アカウントにサービスを紐づける場合は一度ログインしてからアカウントの紐付けを実行して下さい。"
     end
     redirect_to root_path
   end

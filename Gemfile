@@ -17,6 +17,7 @@ gem 'dynamic_form'
 gem 'verification'
 gem 'hikidoc'
 gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
+gem 'rack-ssl-enforcer'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
