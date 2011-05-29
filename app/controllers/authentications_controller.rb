@@ -8,16 +8,19 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env["omniauth.auth"]
-    if omniauth["provider"] && omniauth["uid"] && current_user
-      auth = Authentication.find_or_create_by_provider_and_uid(omniauth["provider"], omniauth["uid"].to_s)
-      if auth.user
+    if omniauth["provider"] && omniauth["uid"]
+      auth = Authentication.find_by_provider_and_uid(omniauth["provider"], omniauth["uid"].to_s)
+      if auth
         session[:user_id] = auth.user.id
+        flash[:notice] = "ログインに成功しました"
+      elsif current_user
+        Authentication.create!(:provider => omniauth["provider"], :uid => omniauth["uid"].to_s, :user_id => current_user.id)
+        flash[:notice] = "アカウントにサービスを紐づけました"
       else
-        auth.update_attributes!({:user_id => current_user.id})
+        flash[:error] = "アカウントにサービスを紐づける場合は一度ログインしてからアカウントの紐付けを実行して下さい。"
       end
-      flash[:notice] = "ログインに成功しました"
     else
-      flash[:error] = "ログインに失敗しました。アカウントにサービスを紐づける場合は一度ログインしてからアカウントの紐付けを実行して下さい。"
+      flash[:error] = "ログインに失敗しました"
     end
     redirect_to root_path
   end
@@ -30,7 +33,7 @@ class AuthenticationsController < ApplicationController
 
       flash[:notice] = "ログインアカウントの紐付けを削除しました"
     else
-      flash[:notice] = "ログインアカウントの紐付けが一つの場合は削除できません"
+      flash[:error] = "ログインアカウントの紐付けが一つの場合は削除できません"
     end
 
     redirect_to new_authentication_path
