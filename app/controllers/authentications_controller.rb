@@ -29,14 +29,12 @@ class AuthenticationsController < ApplicationController
     if current_user.authentications.count > 1
       authentication = current_user.authentications.find(params[:id])
       authentication.destroy
-      session[:user_id] = nil
-
       flash[:notice] = "ログインアカウントの紐付けを削除しました"
     else
       flash[:error] = "ログインアカウントの紐付けが一つの場合は削除できません"
     end
 
-    redirect_to new_authentication_path
+    redirect_to signin_path
   end
 
   def signout
