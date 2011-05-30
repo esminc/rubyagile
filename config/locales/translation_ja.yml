@@ -70,3 +70,4 @@ ja:
       previous: '前'
       next: '次'
       last: '最後'
+      truncate: '...'
