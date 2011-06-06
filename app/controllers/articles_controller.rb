@@ -88,6 +88,6 @@ class ArticlesController < ApplicationController
   end
 
   def accessible_articles
-    logged_in? ? Article : Article.publishing
+    signed_in? ? Article : Article.publishing
   end
 end
