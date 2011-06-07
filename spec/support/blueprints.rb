@@ -8,8 +8,14 @@ Sham.define do
 end
 
 Page.blueprint do
+  name { 'FrontPage' }
   user
   content
+end
+
+Authentication.blueprint do
+  provider { 'twitter' }
+  uid { '12345' }
 end
 
 User.blueprint do

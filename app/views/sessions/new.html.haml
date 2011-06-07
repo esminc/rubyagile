@@ -1,8 +1,0 @@
-- form_tag session_url do
-  %p
-    != label_tag :openid_identifier, 'OpenID:'
-    != text_field_tag :openid_identifier, '', :size => 40
-    != submit_tag 'Sign in', :disable_with => 'Signing in&hellip;'
-
-:javascript
-  Field.focus('openid_identifier');
