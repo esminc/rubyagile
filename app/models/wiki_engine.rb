@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class WikiEngine
   def initialize(options={})
     @amazon_associate = options[:amazon_associate]
@@ -31,7 +32,7 @@ class WikiEngine
   end
 
   def find_wikiname_in(page)
-    page.grep(%r|<a href="([^http://].+)">(.+)</a>|o) { |item|
+    page.lines.grep(%r|<a href="([^http://].+)">(.+)</a>|o) { |item|
       $1 if $1 == $2
     }.uniq
   end
