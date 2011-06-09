@@ -1,7 +1,6 @@
 source :rubygems
 
-gem 'rails'
-gem 'rake', '~> 0.8.7'
+gem 'rails', '~> 3.0.9.rc1'
 gem 'pg'
 gem 'haml-rails'
 gem 'sass'
@@ -20,7 +19,7 @@ gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
-  gem 'passenger'
+  gem 'thin'
   gem 'heroku_san', :git => 'git://github.com/esminc/heroku_san.git'
   gem 'traceroute'
 end
