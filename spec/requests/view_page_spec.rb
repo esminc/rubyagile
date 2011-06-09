@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe 'ページの表示' do
   before do
+    visit '/signout'
+
     @front_page = Page.make
     @page = Page.make(:name => 'TestPage', :content => 'Test Content')
   end

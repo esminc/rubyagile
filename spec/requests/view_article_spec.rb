@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe '記事の表示' do
   before do
+    visit '/signout'
+
     @article = Article.make(:publishing => true)
     visit '/'
   end

@@ -3,7 +3,9 @@ require 'spec_helper'
 
 describe 'ページの編集' do
   before do
-    login_as User.make(:authentications => [Authentication.make])
+    visit '/signout'
+
+    User.make(:authentications => [Authentication.make])
     visit '/signin'
     click_link 'twitter'
 

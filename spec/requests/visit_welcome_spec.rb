@@ -4,6 +4,9 @@ require 'spec_helper'
 
 describe 'トップページの表示' do
   before do
+    # XXX ログインセッションが何故か残っている
+    visit '/signout'
+
     @article = Article.make(:publishing => true)
 
     @feed = KarekiFeed.new(:title => 'alpha', :url => 'http://example.com')

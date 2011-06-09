@@ -3,8 +3,10 @@ require 'spec_helper'
 
 describe 'ダッシュボードの表示' do
   before do
+    visit '/signout'
+
     @article = Article.make
-    login_as User.make(:authentications => [Authentication.make], :articles => [@article])
+    User.make(:authentications => [Authentication.make], :articles => [@article])
     visit '/signin'
     click_link 'twitter'
 

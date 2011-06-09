@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe '中の人ページの表示' do
   before do
+    visit '/signout'
+
     @article = Article.make(:title => 'alpha', :body => 'bravo', :publishing => true)
 
     feed = KarekiFeed.new(:owner => @user)
