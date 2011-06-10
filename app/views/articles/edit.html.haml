@@ -2,7 +2,7 @@
 
 != error_messages_for :article
 
-- form_for(@article, :html => { :multipart => true }) do |f|
+= form_for(@article) do |f|
   !~ render :partial => "form", :locals => {:form => f}
   %p
     != f.submit "プレビュー", :name => "preview"
