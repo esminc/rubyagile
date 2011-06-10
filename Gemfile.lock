@@ -8,14 +8,6 @@ GIT
       taps
 
 GIT
-  remote: git://github.com/koppen/hassle.git
-  revision: bb49cd8b37f5369d08398897caf1b687eaa80458
-  specs:
-    hassle (0.0.1)
-      haml
-      rack
-
-GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: 75b398766bb490202f01d2151828ff625a1fa8a5
   branch: rails-3.1
@@ -296,7 +288,6 @@ DEPENDENCIES
   fuubar
   gravtastic
   haml-rails
-  hassle!
   heroku_san!
   hikidoc
   jquery-rails

@@ -16,7 +16,6 @@ gem 'disqus'
 gem 'gravtastic'
 gem 'dynamic_form'
 gem 'hikidoc'
-gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
 
 group :development do
