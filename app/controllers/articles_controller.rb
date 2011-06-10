@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
         end
       end
     else
-      redirect_to_edit_after_create_image
+      redirect_to(:action => 'edit', :id => @article.id)
     end
   end
 
@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
         end
       end
     else
-      redirect_to_edit_after_create_image
+      redirect_to(:action => 'edit', :id => @article.id)
     end
   end
 
@@ -79,13 +79,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-  def redirect_to_edit_after_create_image
-    image = Image.new(params[:image])
-    @article.images << image
-    @article.user = current_user
-    @article.save!
-    redirect_to(:action => 'edit', :id => @article.id)
-  end
 
   def accessible_articles
     signed_in? ? Article : Article.publishing
