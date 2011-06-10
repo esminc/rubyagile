@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails', '~> 3.1.0.rc2'
+gem 'rake', '~> 0.8.7'
 gem 'pg'
 gem 'haml-rails'
 gem 'jquery-rails'
