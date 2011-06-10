@@ -28,7 +28,5 @@ RubyAgile::Application.routes.draw do
     end
   end
 
-  resources :images
-
   match '/:controller(/:action(/:id))'
 end
