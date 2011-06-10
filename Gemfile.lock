@@ -258,6 +258,7 @@ GEM
       sinatra (~> 1.0.0)
       sqlite3-ruby (~> 1.2)
     term-ansicolor (1.0.5)
+    therubyracer-heroku (0.8.1.pre3)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -301,6 +302,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.1.0.rc)
   tapp
+  therubyracer-heroku
   thin
   traceroute
   uglifier

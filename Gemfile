@@ -35,3 +35,7 @@ group :development, :test do
   gem 'forgery'
   gem 'tapp'
 end
+
+group :production do
+  gem 'therubyracer-heroku'
+end
