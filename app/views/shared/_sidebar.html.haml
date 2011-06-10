@@ -5,7 +5,7 @@
     %ul
       %li!= link_to 'ダッシュボード', dashboard_path
       %li!= link_to 'ログイン情報の管理', signin_path
-      %li!= link_to 'マスタ情報の管理', rails_admin_dashboard_path
+      %li!= link_to 'マスタ情報の管理', rails_admin_path
       %li!= link_to '新規記事を投稿する', new_article_path
       - if @article && !@article.new_record?
         %li!= link_to '現在の記事を修正する', edit_article_path(@article)
