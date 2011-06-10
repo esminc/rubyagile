@@ -1,10 +1,12 @@
 source :rubygems
 
-gem 'rails', '~> 3.0.9.rc1'
+gem 'rails', '~> 3.1.0.rc2'
 gem 'pg'
 gem 'haml-rails'
-gem 'sass'
 gem 'jquery-rails'
+gem 'sass-rails', "~> 3.1.0.rc"
+gem 'coffee-script'
+gem 'uglifier'
 
 gem 'omniauth'
 gem 'kaminari'
@@ -13,10 +15,9 @@ gem 'feedzirra'
 gem 'disqus'
 gem 'gravtastic'
 gem 'dynamic_form'
-gem 'verification'
 gem 'hikidoc'
 gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
 
 group :development do
   gem 'thin'
