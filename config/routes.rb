@@ -28,5 +28,7 @@ RubyAgile::Application.routes.draw do
     end
   end
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   match '/:controller(/:action(/:id))'
 end
