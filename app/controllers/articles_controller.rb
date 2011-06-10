@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
-    @articles = Article.publishing.newer_first.page(params[:page])
+    @articles = Article.publishing.page(params[:page])
   end
 
   def show
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = Article.publishing.newer_first
+    @articles = Article.publishing
     respond_to do |format|
       format.xml { render :layout => nil }
       format.rdf { render :layout => nil }
