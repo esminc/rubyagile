@@ -10,7 +10,7 @@
     .body
       != parse_article(@article)
 
-- form_for(@article, :url => {:action => (@article.new_record? ? "create" : "update")}) do |f|
+= form_for(@article, :url => {:action => (@article.new_record? ? "create" : "update")}) do |f|
   != render :partial => "form", :locals => {:form => f} 
   %p
     != f.submit "プレビュー", :name => "preview" 

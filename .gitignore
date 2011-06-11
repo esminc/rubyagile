@@ -11,7 +11,7 @@ config/database.yml
 /.generators
 /db/*.sqlite3
 /tmp
-public/stylesheets/application.css
+public/assets
 mkmf.log
 .bundle/*
 vendor/bundle/*

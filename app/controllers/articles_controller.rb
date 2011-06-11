@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
   def index
-    @articles = Article.publishing.newer_first.page(params[:page])
+    @articles = Article.publishing.page(params[:page])
   end
 
   def show
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
         end
       end
     else
-      redirect_to_edit_after_create_image
+      redirect_to(:action => 'edit', :id => @article.id)
     end
   end
 
@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
         end
       end
     else
-      redirect_to_edit_after_create_image
+      redirect_to(:action => 'edit', :id => @article.id)
     end
   end
 
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = Article.publishing.newer_first
+    @articles = Article.publishing
     respond_to do |format|
       format.xml { render :layout => nil }
       format.rdf { render :layout => nil }
@@ -79,13 +79,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-  def redirect_to_edit_after_create_image
-    image = Image.new(params[:image])
-    @article.images << image
-    @article.user = current_user
-    @article.save!
-    redirect_to(:action => 'edit', :id => @article.id)
-  end
 
   def accessible_articles
     signed_in? ? Article : Article.publishing

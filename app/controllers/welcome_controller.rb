@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @articles = Article.publishing.newer_first.all(:limit => 5)
-    @entries = KarekiEntry.confirmed.newer_first.page(params[:page])
+    @articles = Article.publishing.limit(5)
+    @entries = KarekiEntry.confirmed.page(params[:page])
   end
 end

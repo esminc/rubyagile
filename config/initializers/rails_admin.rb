@@ -4,7 +4,10 @@ RailsAdmin.current_user_method{ current_user }
 RailsAdmin.authenticate_with{ signed_in? }
 
 RailsAdmin.authorize_with {
-  redirect_to(:root, :alert => '権限がありません') unless current_user
+  unless current_user
+    flash[:error] = '権限がありません'
+    redirect_to '/'
+  end
 }
 
 RailsAdmin.config do |config|

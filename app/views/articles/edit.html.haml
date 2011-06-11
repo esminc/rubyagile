@@ -2,18 +2,9 @@
 
 != error_messages_for :article
 
-- form_for(@article, :html => { :multipart => true }) do |f|
+= form_for(@article) do |f|
   !~ render :partial => "form", :locals => {:form => f}
   %p
     != f.submit "プレビュー", :name => "preview"
     != f.submit "草稿"
     != f.submit "公開", :name => "publish"
-
-.upload-image
-  %h3 画像の追加
-  %ul
-    - @article.images.each do |image|
-      %li http://ruby.agile.esm.co.jp#{image.filepath}
-  - form_for(:article, :url => { :action => 'update', :id => @article.id }, :html => { :method => :put, :multipart => true }) do |f|
-    != render :partial => 'upload_image', :locals => { :image_f => f }
-
