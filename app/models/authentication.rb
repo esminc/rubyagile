@@ -1,7 +1,7 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
 
-  validates :uid, :uniqueness => true, :presence => true
+  validates :uid, :uniqueness => {:scope => :provider}, :presence => true
   validates :provider, :presence => true
 
   def provider_name
