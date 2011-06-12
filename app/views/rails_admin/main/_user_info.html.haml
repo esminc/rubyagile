@@ -1,0 +1,8 @@
+- if current_user = _current_user
+  .user_info
+    %ul
+      %li
+        %strong
+          %a{:href => "#"}= current_user.login
+      %li.desc
+        %a{:href => "/signout"}= t("admin.credentials.log_out")

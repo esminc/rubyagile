@@ -1,0 +1,12 @@
+%h2 ページのプレビュー
+= error_messages_for :page
+.preview
+  .article
+    %h2.title= @page.name
+    .body
+      = parse_page(@page)
+= form_for(@page, :url => {:action => (@page.new_record? ? "create" : "update")}) do |f|
+  = render :partial => "form", :locals => {:form => f}
+  %p
+    = f.submit "プレビュー", :name => "preview"
+    = f.submit "更新"

@@ -1,0 +1,7 @@
+%h2 ページの編集
+= error_messages_for :page
+= form_for @page do |f|
+  = render :partial => "form", :locals => {:form => f}
+  %p
+    = f.submit "プレビュー", :name => "preview"
+    = f.submit "更新"

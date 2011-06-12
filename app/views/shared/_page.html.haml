@@ -1,0 +1,8 @@
+.body
+  = parse_page(page)
+%h2.title= link_to h(page.name), page_path(page.name)
+.meta
+  Updated by
+  %span.author= h page.user.login
+  on
+  %span.posted_on= h posted_on(page.updated_at)

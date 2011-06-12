@@ -1,5 +1,0 @@
-  <div class="body">
-<%= parse_page(page) %>
-  </div>
-  <h2 class="title"><%= link_to h(page.name), page_path(page.name) %></h2>
-  <div class="meta">Updated by <span class="author"><%=h page.user.login %></span> on <span class="posted_on"><%=h posted_on(page.updated_at) %></span></div>

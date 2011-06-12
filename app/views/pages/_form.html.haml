@@ -1,0 +1,13 @@
+%p
+  %b> 投稿者
+  \: #{@page.user.login}
+  \#{form.hidden_field :user_id}
+%p
+  %b ページの名前
+  %br/
+  = form.text_field :name, :size => 55, :class => "name"
+%p
+  %b> ページの内容
+  (Hiki記法のような記法が使えます)
+  %br/
+  = form.text_area :content, :size => "80x20"
