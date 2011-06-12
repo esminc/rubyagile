@@ -10,9 +10,12 @@
           <%= link_to "X", authentication, :confirm => 'このサービスとログインアカウントの紐付けを解除しますか?', :method => :delete, :class => "remove" %>
         </div>
       <% end %>
-      <div class="clear"></div>
     </div>
   <% end %>
+<% end %>
+
+<div class="associate_login">
+<% if @authentications %>
   <p><strong>ログインアカウントに紐づけるサービスを選択:</strong></p>
 <% else %>
   <p><strong>外部サービスを利用してログイン:</strong></p>
@@ -30,4 +33,4 @@
   <%= image_tag "open_id_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
-<div class="clear"></div>
+</div>
