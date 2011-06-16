@@ -10,18 +10,12 @@ RubyAgile::Application.routes.draw do
   resources :authentications
 
   resources :nakanohitos
+  resources :pages
   resources :articles do
     collection do
       get :feed
     end
   end
-
-  resources :pages do
-    collection do
-      get :feed
-    end
-  end
-
   resources :kareki_entries do
     collection do
       post :crawl
