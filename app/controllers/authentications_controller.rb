@@ -8,8 +8,10 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env["omniauth.auth"]
+    Rails.logger omniauth
+
     if omniauth["provider"] && omniauth["uid"]
-      auth = Authentication.find_by_provider_and_uid(omniauth["provider"], omniauth["uid"].to_s)
+      auth = Authentication.find_by_provider_and_uid(omniauth["provider"].to_s, omniauth["uid"].to_s)
       if auth
         session[:user_id] = auth.user.id
         flash[:notice] = "ログインに成功しました"

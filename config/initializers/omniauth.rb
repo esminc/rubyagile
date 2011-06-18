@@ -6,3 +6,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :linked_in, ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET']
   provider :open_id, OpenID::Store::Filesystem.new('/tmp')
 end
+
+OmniAuth.config.on_failure do |env|
+  [200, {}, [env['omniauth.error'].inspect]]
+end

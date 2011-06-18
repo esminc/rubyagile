@@ -34,7 +34,7 @@
   %ul{:style => "margin-left:0em;"}
     %li{:style => "list-style-type:none;"}
       = image_tag "feed-icon-28x28.png", :size => "14x14", :alt => "Feed"
-      \&nbsp;#{link_to '新着記事', feed_articles_url(:format => :xml)}
+      \&nbsp;#{link_to '新着記事', feed_articles_url(:format => :rss)}
 .sblock
   .signin
     - unless signed_in?
