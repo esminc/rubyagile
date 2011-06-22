@@ -2,20 +2,22 @@
 require 'spec_helper'
 
 describe 'ページの表示' do
-  before do
-    visit '/signout'
+  let!(:front_page) { Fabricate(:front_page) }
+  let!(:test_page)  { Fabricate(:page, name: 'TestPage') }
 
-    @front_page = Page.make
-    @page = Page.make(:name => 'TestPage', :content => 'Test Content')
+  context 'indexページにアクセスする' do
+    before do
+      visit '/pages/'
+    end
+
+    it { page.should have_content(front_page.content) }
   end
 
-  it 'indexページにアクセスするとFrontPageにリダイレクトする' do
-    visit '/pages/'
-    page.should have_content @front_page.content
-  end
+  context 'ページ名を指定してアクセスする' do
+    before do
+      visit '/pages/TestPage'
+    end
 
-  it 'ページ名にアクセスすると内容が表示される' do
-    visit '/pages/TestPage'
-    page.should have_content @page.content
+    it { page.should have_content(test_page.content) }
   end
 end

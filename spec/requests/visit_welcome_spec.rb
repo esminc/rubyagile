@@ -3,26 +3,20 @@
 require 'spec_helper'
 
 describe 'トップページの表示' do
+  let!(:article) { Fabricate(:article) }
+  let!(:feed)    { Fabricate(:feed) }
+  let!(:entry)   { Fabricate(:entry, feed: feed) }
+
   before do
-    # XXX ログインセッションが何故か残っている
-    visit '/signout'
-
-    @article = Article.make(:publishing => true)
-
-    @feed = KarekiFeed.new(:title => 'alpha', :url => 'http://example.com')
-    @feed.stub(:build_feed)
-    @feed.save
-    KarekiEntry.make(:title => 'bravo', :content => 'example', :feed => @feed, :link => 'http://examle.com')
-
     visit '/'
   end
 
   it '記事が表示されている' do
-    page.should have_content @article.title
+    page.should have_content(article.title)
   end
 
   it 'Karekiが表示されている' do
-    page.should have_content @feed.title
-    page.should have_content @feed.entries.first.title
+    page.should have_content(feed.title)
+    page.should have_content(entry.title)
   end
 end

@@ -1,14 +1,8 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe 'ページの編集' do
+describe 'ページの編集', login: true do
   before do
-    visit '/signout'
-
-    User.make(:authentications => [Authentication.make])
-    visit '/signin'
-    click_link 'twitter'
-
     visit '/'
   end
 

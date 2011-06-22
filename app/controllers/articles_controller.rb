@@ -72,6 +72,7 @@ class ArticlesController < ApplicationController
 
   def feed
     @articles = Article.publishing.limit(10)
+
     respond_to do |format|
       format.rss { render :layout => nil }
     end

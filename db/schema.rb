@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20110610162739) do
 
   create_table "articles", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.text     "body",                          :null => false
+    t.string   "title",      :default => "",    :null => false
+    t.text     "body",       :default => "",    :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20110610162739) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
+    t.integer  "year",       :limit => 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
