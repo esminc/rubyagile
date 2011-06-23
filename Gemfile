@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails', '~> 3.1.0.rc'
+gem 'rake', '~> 0.8.7'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails', "~> 3.1.0.rc"
@@ -18,7 +19,6 @@ gem 'hikidoc'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
 
 group :development do
-  gem 'sqlite3'
   gem 'thin'
   gem 'heroku_san', :git => 'git://github.com/esminc/heroku_san.git'
   gem 'traceroute'
@@ -32,6 +32,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'tapp'
 end
