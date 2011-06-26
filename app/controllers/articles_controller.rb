@@ -6,7 +6,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = accessible_articles.find(params[:id])
+    @article = Article.find(params[:id])
+
+    redirect_to signin_path unless @article.publishing? || signed_in?
   end
 
   def new
@@ -76,11 +78,5 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.rss { render :layout => nil }
     end
-  end
-
-  private
-
-  def accessible_articles
-    signed_in? ? Article : Article.publishing
   end
 end
