@@ -41,3 +41,7 @@ group :production do
   gem 'pg'
   gem 'therubyracer-heroku'
 end
+
+group :ci do
+  gem 'therubyracer'
+end
