@@ -33,6 +33,8 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'therubyracer'
+
   gem 'rspec-rails'
   gem 'tapp'
 end
@@ -40,8 +42,4 @@ end
 group :production do
   gem 'pg'
   gem 'therubyracer-heroku'
-end
-
-group :ci do
-  gem 'therubyracer'
 end
