@@ -1,7 +1,7 @@
 require 'active_record/fixtures'
 class LoadUsers < ActiveRecord::Migration
   def self.up
-    Fixtures.create_fixtures(File.dirname(__FILE__), File.basename("users.yml", ".*"))
+    ActiveRecord::Fixtures.create_fixtures(File.dirname(__FILE__), File.basename("users.yml", ".*"))
   end
 
   def self.down
