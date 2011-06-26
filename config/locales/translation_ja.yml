@@ -1,68 +1,43 @@
 ja: 
-  activerecord: 
-    models: 
-      kareki_feed: "Karekiフィード"  #g
-      contact: "お問い合わせ"
-      image: "イメージ"  #g
-      user: "ユーザー"  #g
-      page: "ページ"  #g
-      article: "記事"  #g
-      kareki_entry: "Karekiエントリ"  #g
+  activerecord:
+    models:
+      kareki_feed: "Karekiフィード"
+      kareki_entry: "Karekiエントリ"
+      user: "ユーザー"
+      page: "ページ"
+      article: "記事"
 
-    attributes: 
-      kareki_feed: 
-        title: "タイトル"  #g
-        link: "リンク"  #g
-        url: "URLを"  #g
-        etag: "ETagの"  #g
-        entries: "エントリー"  #g
+      kareki_entry:
+        title: "タイトル"
+        content: "本文"
+        link: "リンク"
+        published_at: "公開日"
+        confirmation: "公開フラグ"
 
-      contact: 
-        email: "メールアドレス"
-        ip_address: "ipアドレス"  #g
-        message: "本文"
-        name: "お名前"
-        are_you_bot: "チェックをオフにしてください(スパム投稿対策です。ご協力をお願いします)。"
+    attributes:
+      kareki_feed:
+        title: "タイトル"
+        link: "リンク"
+        url: "URL"
+        etag: "ETag"
 
-      image: 
-        filename: "ファイル名"  #g
-        content_type: "コンテンツタイプ"  #g
-        size: "寸法"  #g
-        article: "条"  #g
-        thumbnails: "サムネール"  #g
-        db_file: "dbファイル"  #g
-        parent: "親"  #g
+      user:
+        login: "ログインID"
+        email: "Eメールアドレス"
+        fullname: "フルネーム"
+        amazon_associate: "アマゾンアソシエイトID"
+        nakanohito: "中の人フラグ"
 
-      user: 
-        login: "ログイン"  #g
-        email: "Eメール"  #g
-        open_id_url: "URLを開くIDを"  #g
-        fullname: "フルネーム"  #g
-        amazon_associate: "アマゾンに関連付ける"  #g
-        member: "会員"  #g
-        articles: "関連記事"  #g
-        pages: "ページ"  #g
+      page:
+        name: "ページ名"
+        content: "本文"
+        user: "ユーザー"
 
-      page: 
-        name: "名前"  #g
-        content: "内容"  #g
-        user: "ユーザー"  #g
-
-      article: 
-        title: "タイトル"  #g
-        body: "体"  #g
-        publishing: "出版"  #g
-        user: "ユーザー"  #g
-        images: "画像"  #g
-
-      kareki_entry: 
-        title: "タイトル"  #g
-        content: "内容"  #g
-        link: "リンク"  #g
-        published_at: "に公開された"  #g
-        creator: "クリエイター"  #g
-        confirmation: "確認"  #g
-        feed: "食料"  #g
+      article:
+        title: "タイトル"
+        body: "本文"
+        publishing: "公開済みフラグ"
+        user: "ユーザー"
 
   views:
     pagination:
