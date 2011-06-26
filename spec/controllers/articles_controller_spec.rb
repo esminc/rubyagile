@@ -21,7 +21,7 @@ describe ArticlesController do
         get :show, id: article.id
       end
 
-      it { response.should redirect_to(signin_path) }
+      it { response.should redirect_to(signin_path(origin: article_path(article))) }
     end
   end
 end

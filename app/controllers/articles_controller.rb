@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
 
-    redirect_to signin_path unless @article.publishing? || signed_in?
+    redirect_to signin_path(origin: request.path) unless @article.publishing? || signed_in?
   end
 
   def new

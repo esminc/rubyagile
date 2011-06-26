@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     return true if signed_in?
-    redirect_to new_authentication_path
+    redirect_to new_authentication_path(origin: request.path)
     false
   end
 

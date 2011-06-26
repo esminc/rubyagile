@@ -46,3 +46,10 @@ ja:
       next: '次'
       last: '最後'
       truncate: '...'
+
+  provider:
+    twitter: Twitter
+    github: GitHub
+    facebook: Facebook
+    linked_in: LinkedIn
+    open_id: OpenID

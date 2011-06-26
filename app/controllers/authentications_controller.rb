@@ -23,7 +23,8 @@ class AuthenticationsController < ApplicationController
     else
       flash[:error] = "ログインに失敗しました"
     end
-    redirect_to root_path
+
+    redirect_to request.env['omniauth.origin'] || root_path
   end
 
   def destroy
