@@ -6,7 +6,7 @@ end
 
 Fabricator :authentication do
   provider 'twitter'
-  uid { sequence(:uid).to_s }
+  uid { sequence(:uid, 1000).to_s }
 end
 
 Fabricator :article do

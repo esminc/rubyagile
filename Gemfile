@@ -1,7 +1,7 @@
 source :rubygems
 
 gem 'rails', '~> 3.1.0.rc'
-gem 'rake', '~> 0.8.7'
+gem 'rake', '~> 0.8.7', require: false
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails', "~> 3.1.0.rc"

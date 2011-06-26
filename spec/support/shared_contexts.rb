@@ -1,8 +1,8 @@
 # coding: utf-8
 
 shared_context 'ログインしている', login: true do
-  let(:user)           { Fabricate(:user) }
-  let(:authentication) { Fabricate(:authentication, user: user) }
+  let!(:user)           { Fabricate(:user) }
+  let!(:authentication) { Fabricate(:authentication, user: user) }
 
   before do
     OmniAuth.config.test_mode = true
