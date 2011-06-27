@@ -16,11 +16,11 @@ gem 'disqus'
 gem 'gravtastic'
 gem 'dynamic_form'
 gem 'hikidoc'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
+gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'rails-3.1'
 
 group :development do
   gem 'thin'
-  gem 'heroku_san', :git => 'git://github.com/esminc/heroku_san.git'
+  gem 'heroku_san'
   gem 'traceroute'
 end
 
