@@ -6,7 +6,6 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
-gem 'sprockets', '= 2.0.0.beta.10'
 gem 'uglifier'
 
 gem 'omniauth', '~> 0.2.6'
