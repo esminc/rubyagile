@@ -6,9 +6,10 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
+gem 'sprockets', '= 2.0.0.beta.10'
 gem 'uglifier'
 
-gem 'omniauth'
+gem 'omniauth', '~> 0.2.6'
 gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
@@ -34,12 +35,12 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'therubyracer'
-
   gem 'rspec-rails'
   gem 'tapp'
 end
 
 group :production do
   gem 'pg'
+  gem 'exception_notification'
   gem 'therubyracer-heroku'
 end
