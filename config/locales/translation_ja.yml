@@ -6,7 +6,9 @@ ja:
       user: "ユーザー"
       page: "ページ"
       article: "記事"
+      authentication: '認証情報'
 
+    attributes:
       kareki_entry:
         title: "タイトル"
         content: "本文"
@@ -14,7 +16,6 @@ ja:
         published_at: "公開日"
         confirmation: "公開フラグ"
 
-    attributes:
       kareki_feed:
         title: "タイトル"
         link: "リンク"
