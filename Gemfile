@@ -33,7 +33,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'therubyracer'
+  gem 'mustang' # travis-ci
   gem 'rspec-rails'
   gem 'tapp'
 end
