@@ -17,6 +17,8 @@
     %script(type='text/javascript' src='http://s.hatena.ne.jp/js/HatenaStar.js')
     :javascript
       Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
+    != javascript_include_tag 'http://www.go2web20.net/twitterfollowbadge/1.0/badge.js'
+
     %title= yield(:title) || default_title
     != yield :head
 
@@ -60,5 +62,13 @@
       var pageTracker = _gat._getTracker("UA-3364058-1");
       pageTracker._initData();
       pageTracker._trackPageview();
+
+    :javascript
+      tfb.account = 'rubyagile';
+      tfb.label = 'follow-us';
+      tfb.color = '#f16c4d';
+      tfb.side = 'r';
+      tfb.top = 136;
+      tfb.showbadge();
 
     != disqus_comment_counts
