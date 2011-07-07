@@ -13,12 +13,11 @@
     != auto_discovery_link_tag :rss, {:controller => "articles", :action => "feed", :format => 'rss'}, :title => "新着記事の一覧"
     != stylesheet_link_tag 'application'
     != javascript_include_tag 'application'
-    != csrf_meta_tag
-    %script(type='text/javascript' src='http://s.hatena.ne.jp/js/HatenaStar.js')
+    != javascript_include_tag 'http://www.go2web20.net/twitterfollowbadge/1.0/badge.js'
+    != javascript_include_tag 'http://s.hatena.ne.jp/js/HatenaStar.js'
     :javascript
       Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
-    != javascript_include_tag 'http://www.go2web20.net/twitterfollowbadge/1.0/badge.js'
-
+    != csrf_meta_tag
     %title= yield(:title) || default_title
     != yield :head
 
@@ -58,7 +57,6 @@
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    :javascript
       var pageTracker = _gat._getTracker("UA-3364058-1");
       pageTracker._initData();
       pageTracker._trackPageview();
