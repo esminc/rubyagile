@@ -21,3 +21,15 @@ describe 'ページの表示' do
     it { page.should have_content(test_page.content) }
   end
 end
+
+describe '存在しないページにアクセスした時は' do
+  let!(:article) { Fabricate(:article) }
+
+  before do
+    visit '/pages/TestPage'
+  end
+
+  it 'エラーにならずにトップページが表示されていること' do
+    page.should have_content(article.title)
+  end
+end

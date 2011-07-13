@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ArticlesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :feed]
 
@@ -9,6 +10,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     redirect_to signin_path(origin: request.path) unless @article.publishing? || signed_in?
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = '指定した記事は存在しません。'
+    redirect_to root_path
   end
 
   def new

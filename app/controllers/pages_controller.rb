@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class PagesController < ApplicationController
   before_filter :login_required, :except => [:index, :show, :feed]
 
@@ -7,6 +8,9 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by_name!(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = '指定したページは存在しません'
+    redirect_to root_path
   end
 
   def new
