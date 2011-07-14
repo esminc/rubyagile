@@ -22,7 +22,7 @@ describe '存在しないページにアクセスした時は' do
   let!(:article) { Fabricate(:article) }
 
   before do
-    visit '/pages/RubyKaigi2010'
+    visit "/articles/#{article.id}"
   end
 
   it 'エラーにならずにトップページが表示されていること' do
