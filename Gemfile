@@ -2,13 +2,13 @@ source :rubygems
 
 gem 'rails', '~> 3.1.0.rc'
 gem 'rake', '~> 0.8.7', require: false
+
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'sass-rails', "~> 3.1.0.rc"
-gem 'coffee-script'
-gem 'uglifier'
 
 gem 'omniauth', '~> 0.2.6'
+gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'rails-3.1'
+
 gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
@@ -16,7 +16,12 @@ gem 'disqus'
 gem 'gravtastic'
 gem 'dynamic_form'
 gem 'hikidoc'
-gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'rails-3.1'
+
+group :assets do
+  gem 'sass-rails', '~> 3.1.0.rc'
+  gem 'coffee-rails', '~> 3.1.0.rc'
+  gem 'uglifier'
+end
 
 group :development do
   gem 'thin'
@@ -26,7 +31,7 @@ end
 
 group :test do
   gem 'fabrication'
-  gem 'forgery'
+  gem 'forgery', '0.3.10'
   gem 'capybara'
   gem 'fuubar'
 end
