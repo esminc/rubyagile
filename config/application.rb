@@ -5,10 +5,10 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
-Bundler.require *Rails.groups(:assets) if defined?(Bundler)
+# If you have a Gemfile, require the default gems, the ones in the
+# current environment and also include :assets gems if in development
+# or test environments.
+Bndler.require *Rails.groups(:assets) if defined?(Bundler)
 
 module RubyAgile
   class Application < Rails::Application
