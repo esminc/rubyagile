@@ -8,7 +8,7 @@ require "active_resource/railtie"
 # If you have a Gemfile, require the default gems, the ones in the
 # current environment and also include :assets gems if in development
 # or test environments.
-Bndler.require *Rails.groups(:assets) if defined?(Bundler)
+Bundler.require *Rails.groups(:assets) if defined?(Bundler)
 
 module RubyAgile
   class Application < Rails::Application
