@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: e1334ed8685229f5ab09f6018fc76f394007a1e1
+  revision: 83dacd631f7aa0268a7ee1f0204d0bc3eaa9ed43
   branch: rails-3.1
   specs:
     rails_admin (0.0.1)
@@ -79,7 +79,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     fastercsv (1.5.4)
     feedzirra (0.0.24)
       activesupport (>= 2.3.8)
@@ -95,7 +95,7 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.1.4)
       ruby-progressbar (~> 0.0.10)
-    gravtastic (3.2.0)
+    gravtastic (3.1.0)
     haml (3.1.2)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -276,7 +276,7 @@ DEPENDENCIES
   feedzirra
   forgery (= 0.3.10)
   fuubar
-  gravtastic
+  gravtastic (= 3.1.0)
   haml-rails
   heroku_san
   hikidoc

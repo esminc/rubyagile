@@ -13,7 +13,7 @@ gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
-gem 'gravtastic'
+gem 'gravtastic', '3.1.0'
 gem 'dynamic_form'
 gem 'hikidoc'
 
