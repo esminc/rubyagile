@@ -17,15 +17,3 @@ describe 'トップページには' do
     page.should have_content(article.body)
   end
 end
-
-describe '存在しないページにアクセスした時は' do
-  let!(:article) { Fabricate(:article) }
-
-  before do
-    visit "/articles/#{article.id}"
-  end
-
-  it 'エラーにならずにトップページが表示されていること' do
-    page.should have_content(article.title)
-  end
-end

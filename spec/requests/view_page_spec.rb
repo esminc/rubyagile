@@ -22,14 +22,12 @@ describe 'ページの表示' do
   end
 end
 
-describe '存在しないページにアクセスした時は' do
-  let!(:article) { Fabricate(:article) }
-
+describe '存在しないページにアクセスした時は', login: true do
   before do
     visit '/pages/TestPage'
   end
 
-  it 'エラーにならずにトップページが表示されていること' do
-    page.should have_content(article.title)
+  it 'エラーにならずに新規作成ページが表示されていること' do
+    page.should have_content 'ページの作成'
   end
 end
