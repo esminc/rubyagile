@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @page = Page.find_by_name!(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:error] = '指定したページは存在しません'
-    redirect_to root_path
+    redirect_to new_page_path(page_name: params[:id])
   end
 
   def new
