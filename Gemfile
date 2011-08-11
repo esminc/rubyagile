@@ -7,7 +7,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 
 gem 'omniauth', '~> 0.2.6'
-gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git', branch: 'rails-3.1'
+gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
 
 gem 'kaminari'
 gem 'nokogiri'
