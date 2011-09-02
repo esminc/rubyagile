@@ -45,6 +45,9 @@ module RubyAgile
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
     config.generators do |g|
       g.test_framework :rspec, :fixture => true, :view_specs => false, :routing_specs => false
     end

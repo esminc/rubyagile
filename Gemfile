@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '~> 3.1.0.rc'
+gem 'rails'
 gem 'rake', '~> 0.8.7', require: false
 
 gem 'haml-rails'
@@ -13,13 +13,13 @@ gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
 gem 'disqus'
-gem 'gravtastic', '3.1.0'
+gem 'gravtastic'
 gem 'dynamic_form'
 gem 'hikidoc'
 
 group :assets do
-  gem 'sass-rails', '~> 3.1.0.rc'
-  gem 'coffee-rails', '~> 3.1.0.rc'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
