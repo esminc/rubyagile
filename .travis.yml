@@ -8,4 +8,4 @@ before_script:
   - "cp config/database.yml.sample config/database.yml"
 
 env: RAILS_ENV=test
-script: bundle exec rake spec
+script: bundle exec rake db:migrate spec
