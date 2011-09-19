@@ -36,7 +36,7 @@ describe KarekiEntry do
   describe "#create_from_entry" do
     context 'rss' do
       before do
-        feed = Feedzirra::Feed.parse(File.read(File.expand_path("spec/fixtures/feeds/hatena_ursm.rss", Rails.root)))
+        feed = Feedzirra::Feed.parse(Rails.root.join('spec/fixtures/feeds/hatena_ursm.rss').read)
         @item = feed.entries.first
 
         @entry = KarekiEntry.build_from_entry(@item)
@@ -65,7 +65,8 @@ describe KarekiEntry do
 
     context 'atom' do
       before do
-        feed = Feedzirra::Feed.parse(File.read(File.expand_path("spec/fixtures/feeds/blogger_kenchan.atom", Rails.root)))
+        pending
+        feed = Feedzirra::Feed.parse(Rails.root.join('spec/fixtures/feeds/blogger_kenchan.atom').read)
         @item = feed.entries.first
 
         @entry = KarekiEntry.build_from_entry(@item)
