@@ -24,12 +24,14 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'thin'
   gem 'heroku_san'
   gem 'traceroute'
 end
 
 group :test do
+  gem 'pg'
   gem 'fabrication'
   gem 'forgery', '0.3.10'
   gem 'capybara'
@@ -37,7 +39,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'mustang' # travis-ci
   gem 'rspec-rails'
   gem 'tapp'
