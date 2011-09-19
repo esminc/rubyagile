@@ -3,5 +3,8 @@ bundler_args: --without development:production
 rvm:
   - 1.9.2
 
+before_script:
+  - "psql -c 'create database rubyagile_test;' -U postgres >/dev/null"
+
 env: RAILS_ENV=test
 script: bundle exec rake ci:setup db:migrate spec
