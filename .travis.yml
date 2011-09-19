@@ -5,6 +5,7 @@ rvm:
 
 before_script:
   - "psql -c 'create database rubyagile_test;' -U postgres >/dev/null"
+  - "cp config/database.yml.sample config/database.yml"
 
 env: RAILS_ENV=test
-script: bundle exec rake ci:setup db:migrate spec
+script: bundle exec rake spec

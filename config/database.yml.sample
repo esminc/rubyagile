@@ -1,9 +1,11 @@
-development: &defaults
+development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
 
 test:
-  <<: *defaults
-  database: db/test.sqlite3
+  adapter: postgresql
+  username: postgres
+  database: rubyagile_test
+  encoding: unicode
