@@ -16,3 +16,4 @@ mkmf.log
 .bundle/*
 vendor/bundle/*
 db/dumps
+.rbenv-version
