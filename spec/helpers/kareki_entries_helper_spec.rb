@@ -12,7 +12,9 @@ describe KarekiEntriesHelper do
 
 			it 'リンクに置き換えられること' do
 				helper.replace_img_to_anchor(@fragment).should == <<-HTML.chomp
-<h3>東京Ruby会議03</h3><p><a href="http://www.flickr.com/photos/kakutani/4395240536/">DSC_0290.jpg</a></p>
+<h3>東京Ruby会議03</h3><p>
+  <a href="http://www.flickr.com/photos/kakutani/4395240536/">DSC_0290.jpg</a>
+</p>
 				HTML
 			end
 		end
@@ -38,7 +40,9 @@ describe KarekiEntriesHelper do
 
 			it 'リンクに置き換えられること' do
 				helper.replace_img_to_anchor(@fragment).should == <<-HTML.chomp
-<p><a href="http://f.hatena.ne.jp/takkan_m/20100301002048" class="hatena-fotolife" target="_blank">f:id:takkan_m:20100301002048j:image</a></p>
+<p>
+  <a href="http://f.hatena.ne.jp/takkan_m/20100301002048" class="hatena-fotolife" target="_blank">f:id:takkan_m:20100301002048j:image</a>
+</p>
 				HTML
 			end
 		end
