@@ -6,7 +6,7 @@ gem 'rake', '~> 0.8.7', require: false
 gem 'haml-rails'
 gem 'jquery-rails'
 
-gem 'omniauth', '~> 0.2.6'
+gem 'omniauth'
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
 
 gem 'kaminari'
