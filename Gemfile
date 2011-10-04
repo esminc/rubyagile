@@ -8,7 +8,7 @@ gem 'jquery-rails'
 
 gem 'omniauth'
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
-
+gem 'unicorn'
 gem 'kaminari'
 gem 'nokogiri'
 gem 'feedzirra'
@@ -24,8 +24,8 @@ group :assets do
 end
 
 group :development do
+  gem 'foreman'
   gem 'sqlite3'
-  gem 'thin'
   gem 'heroku_san'
   gem 'traceroute'
 end
