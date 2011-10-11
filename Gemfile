@@ -3,6 +3,8 @@ source :rubygems
 gem 'rails'
 gem 'rake', '~> 0.8.7', require: false
 
+gem 'pg'
+
 gem 'haml-rails'
 gem 'jquery-rails'
 
@@ -25,13 +27,11 @@ end
 
 group :development do
   gem 'foreman'
-  gem 'sqlite3'
   gem 'heroku_san'
   gem 'traceroute'
 end
 
 group :test do
-  gem 'pg'
   gem 'fabrication'
   gem 'forgery', '0.3.10'
   gem 'capybara'
@@ -45,7 +45,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'exception_notification'
-  gem 'therubyracer-heroku'
 end
