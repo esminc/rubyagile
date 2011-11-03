@@ -8,7 +8,7 @@ gem 'pg'
 gem 'haml-rails'
 gem 'jquery-rails'
 
-gem 'omniauth'
+gem 'omniauth', '~> 0.3'
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
 gem 'unicorn'
 gem 'kaminari'
