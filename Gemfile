@@ -8,7 +8,13 @@ gem 'pg'
 gem 'haml-rails'
 gem 'jquery-rails'
 
-gem 'omniauth', '~> 0.3'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-openid'
+gem 'omniauth-contrib', git: 'git://github.com/intridea/omniauth-contrib.git'
+gem 'omniauth-linkedin', git: 'git://github.com/skorks/omniauth-linkedin.git'
+gem 'omniauth-facebook', git: 'git://github.com/mkdynamic/omniauth-facebook.git'
+
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
 gem 'unicorn'
 gem 'kaminari'
@@ -39,7 +45,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'mustang' # travis-ci
+#  gem 'mustang' # travis-ci
   gem 'rspec-rails'
   gem 'tapp'
 end
