@@ -36,4 +36,6 @@ RubyAgile::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.cache_classes = ENV.has_key?('PRSPEC') ? false : true
 end

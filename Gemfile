@@ -42,12 +42,13 @@ group :test do
   gem 'forgery', '0.3.10'
   gem 'capybara'
   gem 'fuubar'
+  gem 'prefetch-rspec'
 end
 
 group :development, :test do
-#  gem 'mustang' # travis-ci
   gem 'rspec-rails'
   gem 'tapp'
+  gem 'ruby-debug19'
 end
 
 group :production do
