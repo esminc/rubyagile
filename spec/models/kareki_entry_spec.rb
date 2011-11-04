@@ -65,7 +65,6 @@ describe KarekiEntry do
 
     context 'atom' do
       before do
-        pending
         feed = Feedzirra::Feed.parse(Rails.root.join('spec/fixtures/feeds/blogger_kenchan.atom').read)
         @item = feed.entries.first
 
