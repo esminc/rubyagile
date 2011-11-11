@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-openid'
-gem 'omniauth-contrib', git: 'git://github.com/intridea/omniauth-contrib.git'
+gem 'omniauth-twitter', git: 'git://github.com/arunagw/omniauth-twitter.git'
 gem 'omniauth-linkedin', git: 'git://github.com/skorks/omniauth-linkedin.git'
 gem 'omniauth-facebook', git: 'git://github.com/mkdynamic/omniauth-facebook.git'
 

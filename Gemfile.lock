@@ -1,10 +1,8 @@
 GIT
-  remote: git://github.com/intridea/omniauth-contrib.git
-  revision: 027be2e65077eaa123992d64cff0190f634394e8
+  remote: git://github.com/arunagw/omniauth-twitter.git
+  revision: ffd1e43c778234a1aa6b88ea945046e7ee82c615
   specs:
-    omniauth-contrib (1.0.0)
-      multi_json
-      omniauth (~> 1.0)
+    omniauth-twitter (0.0.6)
       omniauth-oauth (~> 1.0)
 
 GIT
@@ -308,11 +306,11 @@ DEPENDENCIES
   kaminari
   nokogiri
   omniauth
-  omniauth-contrib!
   omniauth-facebook!
   omniauth-github
   omniauth-linkedin!
   omniauth-openid
+  omniauth-twitter!
   pg
   prefetch-rspec
   rails
