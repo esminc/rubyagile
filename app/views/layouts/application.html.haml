@@ -1,7 +1,6 @@
 :ruby
   site_version = 'version:β'
   site_lead = 'Rubyとアジャイルでふつうのシステム開発を実現する永和システムマネジメントのWebサイト'
-  default_title = "#{site_name} #{site_version} - #{site_lead}"
 
 !!! Strict
 %html
@@ -17,8 +16,9 @@
     != javascript_include_tag 'http://s.hatena.ne.jp/js/HatenaStar.js'
     :javascript
       Hatena.Star.EntryLoader.headerTagAndClassName = ['h2','title'];
+    - title = yield :title
+    %title= title.empty? ?  "#{site_name} #{site_version} - #{site_lead}" : title
     != csrf_meta_tag
-    %title= yield(:title) || default_title
     != yield :head
 
   %body
