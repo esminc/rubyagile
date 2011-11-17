@@ -9,6 +9,14 @@ Fabricator :authentication do
   uid { sequence(:uid, 1000).to_s }
 end
 
+Fabricator :authorized_user, from: :user do
+  after_create do |u|
+    u.authentications = [
+      Fabricate(:authentication, uid: '123545')
+    ]
+  end
+end
+
 Fabricator :article do
   title { Forgery::LoremIpsum.title }
   body  { Forgery::LoremIpsum.sentence }

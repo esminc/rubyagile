@@ -40,6 +40,8 @@ end
 group :test do
   gem 'fabrication'
   gem 'forgery', '0.3.10'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'fuubar'
   gem 'prefetch-rspec'
