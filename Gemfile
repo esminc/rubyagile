@@ -35,6 +35,12 @@ group :development do
   gem 'foreman'
   gem 'heroku_san'
   gem 'traceroute'
+
+  group :test do
+    gem 'rspec-rails'
+    gem 'tapp'
+    gem 'ruby-debug19'
+  end
 end
 
 group :test do
@@ -45,12 +51,6 @@ group :test do
   gem 'capybara'
   gem 'fuubar'
   gem 'prefetch-rspec'
-end
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'tapp'
-  gem 'ruby-debug19'
 end
 
 group :production do
