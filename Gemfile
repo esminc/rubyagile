@@ -1,8 +1,6 @@
 source :rubygems
 
-gem 'rails'
-gem 'rake', '~> 0.8.7', require: false
-
+gem 'rails', '~> 3.2.0.rc'
 gem 'pg'
 
 gem 'haml-rails'
