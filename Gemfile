@@ -32,7 +32,6 @@ end
 group :development do
   gem 'foreman'
   gem 'heroku_san'
-  gem 'traceroute'
 
   group :test do
     gem 'rspec-rails'
@@ -47,8 +46,6 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'fuubar'
-  gem 'prefetch-rspec'
 end
 
 group :production do
