@@ -13,9 +13,9 @@ describe KarekiFeed do
   end
 
   describe '.nakanohitos' do
-    let(:nakanohito) { Fabricate(:user) }
+    let(:nakanohito) { Fabricate(:nakanohito) }
     let!(:nakanohito_feed) { Fabricate(:feed, owner: nakanohito) }
-    let(:sotonohito) { Fabricate(:user, nakanohito: false) }
+    let(:sotonohito) { Fabricate(:sotonohito) }
     let!(:sotonohito_feed) { Fabricate(:feed, owner: sotonohito) }
 
     subject { KarekiFeed.nakanohitos }
