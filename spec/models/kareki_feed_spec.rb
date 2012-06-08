@@ -20,8 +20,7 @@ describe KarekiFeed do
 
     subject { KarekiFeed.nakanohitos }
 
-    it { should have(1).item }
-    specify { subject[0].owner.should be_nakanohito }
+    it { should == [nakanohito_feed] }
   end
 
   describe '#new' do
