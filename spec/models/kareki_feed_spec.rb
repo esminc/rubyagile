@@ -12,6 +12,18 @@ describe KarekiFeed do
     feed.tap(&:save!)
   end
 
+  describe '.nakanohitos' do
+    let(:nakanohito) { Fabricate(:user) }
+    let!(:nakanohito_feed) { Fabricate(:feed, owner: nakanohito) }
+    let(:sotonohito) { Fabricate(:user, nakanohito: false) }
+    let!(:sotonohito_feed) { Fabricate(:feed, owner: sotonohito) }
+
+    subject { KarekiFeed.nakanohitos }
+
+    it { should have(1).item }
+    specify { subject[0].owner.should be_nakanohito }
+  end
+
   describe '#new' do
     context "適切なurlのとき" do
       before do

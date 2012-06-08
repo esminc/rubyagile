@@ -5,6 +5,8 @@ class KarekiFeed < ActiveRecord::Base
 
   before_save :build_feed
 
+  scope :nakanohitos, lambda { joins(:owner).where('users.nakanohito = true') }
+
   class << self
     def crawl
       KarekiFeed.all.each {|feed| feed.fetch_and_save_entries }
