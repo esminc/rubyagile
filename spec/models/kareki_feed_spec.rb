@@ -13,13 +13,10 @@ describe KarekiFeed do
   end
 
   describe '.nakanohitos' do
-    let(:nakanohito) { Fabricate(:nakanohito) }
-    let!(:nakanohito_feed) { Fabricate(:feed, owner: nakanohito) }
-    let(:sotonohito) { Fabricate(:sotonohito) }
-    let!(:sotonohito_feed) { Fabricate(:feed, owner: sotonohito) }
+    let!(:nakanohito_feed) { Fabricate(:feed, owner: Fabricate(:nakanohito)) }
+    let!(:sotonohito_feed) { Fabricate(:feed, owner: Fabricate(:sotonohito)) }
 
     subject { KarekiFeed.nakanohitos }
-
     it { should == [nakanohito_feed] }
   end
 
