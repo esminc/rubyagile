@@ -82,11 +82,12 @@ describe KarekiFeed do
 
   describe "#crawl" do
     specify "naive implementation" do
-      KarekiFeed.stub(:all) {
+      KarekiFeed.should_receive(:nakanohitos) {
         feed = KarekiFeed.new
         feed.should_receive(:fetch_and_save_entries)
         [feed]
       }
+
       KarekiFeed.crawl
     end
   end

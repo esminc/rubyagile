@@ -9,7 +9,7 @@ class KarekiFeed < ActiveRecord::Base
 
   class << self
     def crawl
-      KarekiFeed.all.each {|feed| feed.fetch_and_save_entries }
+      KarekiFeed.nakanohitos.each {|feed| feed.fetch_and_save_entries }
     end
   end
 
