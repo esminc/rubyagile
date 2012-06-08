@@ -4,6 +4,12 @@ Fabricator :user do
   nakanohito true
 end
 
+Fabricator :nakanohito, from: :user
+
+Fabricator :sotonohito, from: :user do
+  nakanohito false
+end
+
 Fabricator :authentication do
   provider 'twitter'
   uid { sequence(:uid, 1000).to_s }
