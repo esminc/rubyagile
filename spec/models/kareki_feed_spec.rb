@@ -12,6 +12,14 @@ describe KarekiFeed do
     feed.tap(&:save!)
   end
 
+  describe '.nakanohitos' do
+    let!(:nakanohito_feed) { Fabricate(:feed, owner: Fabricate(:nakanohito)) }
+    let!(:sotonohito_feed) { Fabricate(:feed, owner: Fabricate(:sotonohito)) }
+
+    subject { KarekiFeed.nakanohitos }
+    it { should == [nakanohito_feed] }
+  end
+
   describe '#new' do
     context "適切なurlのとき" do
       before do
@@ -70,11 +78,12 @@ describe KarekiFeed do
 
   describe "#crawl" do
     specify "naive implementation" do
-      KarekiFeed.stub(:all) {
+      KarekiFeed.should_receive(:nakanohitos) {
         feed = KarekiFeed.new
         feed.should_receive(:fetch_and_save_entries)
         [feed]
       }
+
       KarekiFeed.crawl
     end
   end
