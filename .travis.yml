@@ -3,8 +3,10 @@ bundler_args: --without development:production
 rvm:
   - 1.9.3
 
-before_script:
+before_install:
   - "gem install bundler --pre"
+
+before_script:
   - "psql -c 'create database rubyagile_test;' -U postgres >/dev/null"
   - "cp config/database.yml.sample config/database.yml"
 
