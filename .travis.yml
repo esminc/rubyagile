@@ -4,6 +4,7 @@ rvm:
   - 1.9.3
 
 before_script:
+  - "gem install bundler --pre"
   - "psql -c 'create database rubyagile_test;' -U postgres >/dev/null"
   - "cp config/database.yml.sample config/database.yml"
 
