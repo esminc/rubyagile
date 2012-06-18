@@ -5,6 +5,8 @@ ja:
   home:
     name: "home"
   admin:
+    home:
+      name: "home"
     dashboard:
       pagename: "Site administration"
       name: "Dashboard"
