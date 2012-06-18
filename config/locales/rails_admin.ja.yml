@@ -93,6 +93,7 @@ ja:
       exported: "exported"
       dashboard:
         title: 'title'
+        breadcrumb: 'breadcrumb'
         breadcrumbs: 'breadcrumbs'
         menu: 'menu'
     breadcrumbs:
