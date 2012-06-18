@@ -91,6 +91,10 @@ ja:
       deleted: "deleted"
       export: "export"
       exported: "exported"
+      dashboard:
+        title: 'title'
+        breadcrumbs: 'breadcrumbs'
+        menu: 'menu'
     breadcrumbs:
       delete: "delete"
       history: "history"
