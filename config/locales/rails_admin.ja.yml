@@ -1,111 +1,129 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 ja:
-  home:
-    name: "home"
   admin:
     home:
-      name: "home"
-    dashboard:
-      pagename: "Site administration"
-      name: "Dashboard"
-      model_name: "Model name"
-      last_used: "Last used"
-      records: "Records"
-      modify: "Modify"
-      add_new: "Add new"
-      show: "Show"
-      ago: "ago"
-    history:
-      name: "History"
-      page_name: "History for %{name}"
-      no_activity: "No Activity"
-    show:
-      show_in_app: "Show in app"
-      page_name: "Details for %{name}"
-      no_file_found: "No file found"
-    credentials:
-      log_out: "Log out"
-    list:
-      edit_action: "Edit"
-      delete_action: "Delete"
-      select_action: "Select"
-      export_action: "Export current view"
-      show_action: "Show"
-      export_selected: "Export selected"
-      delete_selected: "Delete selected"
-      add_new: "Add new"
-      search: "Search"
-      select: "Select %{name} to edit"
-      show_all: "Show all"
-      add_filter: "Add filter"
-    new:
-      basic_info: "Basic info"
-      required: "Required"
-      optional: "Optional"
-      one_char: "character"
-      many_chars: "characters or fewer"
-      chosen: "Chosen %{name}"
-      select_choice: "Select your choice(s) and click"
-      chose_all: "Choose all"
-      clear_all: "Clear all"
-      up: "Up"
-      down: "Down"
-      save: "Save"
-      save_and_add_another: "Save and add another"
-      save_and_edit: "Save and edit"
-      cancel: "Cancel"
-    delete:
-      all_of_the_following_related_items_will_be_deleted: "? The following related items may be deleted or orphaned:"
-      are_you_sure_you_want_to_delete_the_object: "Are you sure you want to delete this %{model_name}"
-      confirmation: "Yes, I'm sure"
-      delete_confirmation: "Delete confirmation"
-      bulk_delete: "The following objects will be deleted, which may delete or orphan some of their related dependencies:"
+      name: "ホーム"
+    pagination:
+      previous: "&laquo; 前"
+      next: "次 &raquo;"
+      truncate: "…"
+    misc:
+      filter_date_format: "yy/mm/dd" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
+      search: "検索"
+      filter: "検索"
+      refresh: "更新"
+      show_all: "すべて表示"
+      add_filter: "絞り込む..."
+      bulk_menu_title: "選択項目を..."
+      remove: "削除"
+      add_new: "新規作成"
+      chosen: "選択された%{name}"
+      chose_all: "すべて選択"
+      clear_all: "選択解除"
+      up: "上"
+      down: "下"
+      navigation: "ナビゲーション"
+      log_out: "ログアウト"
+      ago: "前"
+    flash:
+      successful: "%{name}の%{action}に成功しました"
+      error: "%{name}の%{action}に失敗しました"
+      noaction: "操作を取り消しました"
+      model_not_found: "モデル'%{model}'はありません"
+      object_not_found: "'ID:%{id}'の%{model}はありません"
+    table_headers:
+      model_name: "モデル名"
+      last_used: "最終アクセス日"
+      records: "レコード数"
+      username: "ユーザ"
+      changes: "変更"
+      created_at: "日時"
+      item: "アイテム"
+      message: "メッセージ"
+    actions:
+      dashboard:
+        title: "サイト管理"
+        menu: "ダッシュボード"
+        breadcrumb: "ダッシュボード"
+      index:
+        title: "%{model_label_plural}の一覧"
+        menu: "一覧"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "%{model_label} '%{object_label}'の詳細"
+        menu: "詳細"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "表示"
+      new:
+        title: "新規%{model_label}"
+        menu: "新規作成"
+        breadcrumb: "新規"
+        link: "新規%{model_label}追加"
+        done: "作成"
+      edit:
+        title: "%{model_label} '%{object_label}'を編集"
+        menu: "編集"
+        breadcrumb: "編集"
+        link: "この%{model_label}を編集"
+        done: "更新"
+      delete:
+        title: "%{model_label} '%{object_label}'を削除"
+        menu: "削除"
+        breadcrumb: "削除"
+        link: "'%{object_label}'削除"
+        done: "削除"
+      bulk_delete:
+        title: "%{model_label_plural}を一括削除"
+        menu: "一括削除"
+        breadcrumb: "一括削除"
+        bulk_link: "選択した%{model_label_plural}を削除"
+      export:
+        title: "%{model_label}をエクスポート"
+        menu: "エクスポート"
+        breadcrumb: "エクスポート"
+        link: "%{model_label_plural}をエクスポート"
+        bulk_link: "選択した%{model_label_plural}をエクスポート"
+        done: "エクスポート"
+      history_index:
+        title: "%{model_label_plural}の更新履歴"
+        menu: "履歴"
+        breadcrumb: "履歴"
+      history_show:
+        title: "%{model_label} '%{object_label}'の履歴"
+        menu: "履歴"
+        breadcrumb: "履歴"
+    form:
+      cancel: "キャンセル"
+      basic_info: "基本情報"
+      required: "必須"
+      optional: "オプション"
+      one_char: "文字"
+      char_length_up_to: "最大文字数:"
+      char_length_of: "文字数:"
+      save: "保存"
+      save_and_add_another: "保存して次へ"
+      save_and_edit: "保存して編集"
+      all_of_the_following_related_items_will_be_deleted: "を削除してよろしいですか? 以下の項目が削除され、もしくは関係を失います:"
+      are_you_sure_you_want_to_delete_the_object: "%{model_name}の項目"
+      confirmation: "実行する"
+      bulk_delete: "以下の項目が削除され、それによって関連する項目が削除され、もしくは関係を失います:"
+      new_model: "%{name} (新規)"
     export:
-      confirmation: "Export to %{name}"
-      select: "Select fields to export"
-      fields_from: "Fields from %{name}"
-      fields_from_associated: "Fields from associated %{name}"
-      display: "Display %{name}: %{type}"
-      options_for: "Options for %{name}"
+      confirmation: "%{name}としてエクスポート"
+      select: "エクスポートするフィールドを選択してください"
+      fields_from: "%{name}のフィールド"
+      fields_from_associated: "関連する%{name}のフィールド"
+      display: "カラム:%{name} 型:%{type}"
+      options_for: "%{name}の出力オプション"
       empty_value_for_associated_objects: "<empty>"
+      click_to_reverse_selection: 'クリックで選択を反転します'
       csv:
         header_for_root_methods: "%{name}" # 'model' is available
         header_for_association_methods: "%{name} [%{association}]"
-        encoding_to: "Encode to"
-        encoding_to_help: "Choose output encoding. Leave empty to let current input encoding untouched: (%{name})"
-        skip_header: "No header"
-        skip_header_help: "Do not output a header (no fields description)"
+        encoding_to: "文字コード"
+        encoding_to_help: "空白の場合は%{name}になります"
+        skip_header: "ヘッダなし"
+        skip_header_help: "チェックすると出力にヘッダ行を含めません"
         default_col_sep: ","
-        col_sep: "Column separator"
-        col_sep_help: "Leave blank for default ('%{value}')" # value is default_col_sep
-    flash:
-      successful: "%{name} successfully %{action}"
-      error: "%{name} failed to be %{action}"
-      noaction: "No actions were taken"
-    actions:
-      create: "create"
-      created: "created"
-      update: "update"
-      updated: "updated"
-      delete: "delete"
-      deleted: "deleted"
-      export: "export"
-      exported: "exported"
-      dashboard:
-        title: 'title'
-        breadcrumb: 'breadcrumb'
-        breadcrumbs: 'breadcrumbs'
-        menu: 'menu'
-    breadcrumbs:
-      delete: "delete"
-      history: "history"
-      show: "show"
-      edit: "edit"
-      export: "export"
-      bulk_destroy: "delete"
-      new: "new"
-      model_history: "history"
-      list: "list"
-      dashboard: "dashboard"
+        col_sep: "区切り文字"
+        col_sep_help: "空白の場合は'%{value}'区切りです" # value is default_col_sep
