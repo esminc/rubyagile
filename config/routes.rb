@@ -11,11 +11,12 @@ RubyAgile::Application.routes.draw do
 
   resources :nakanohitos
   resources :pages
-  resources :articles do
+  resources :articles, constraints: {id: /\d{1,11}/} do
     collection do
       get :feed
     end
   end
+
   resources :kareki_entries do
     collection do
       post :crawl
