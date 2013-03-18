@@ -1,0 +1,10 @@
+development: &development
+  adapter:      postgresql
+  database:     rubyagile_development
+  encoding:     unicode
+  username:     postgres
+  min_messages: warning
+
+test:
+  <<: *development
+  database: rubyagile_test

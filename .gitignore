@@ -5,7 +5,6 @@
 *.swp
 .rake_tasks
 .generators
-config/database.yml
 /log/*.log
 /coverage
 /.generators
