@@ -74,7 +74,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = Article.publishing.limit(10)
+    @articles = Article.publishing.includes(:user).limit(10)
 
     respond_to do |format|
       format.rss { render :layout => nil }
