@@ -45,7 +45,7 @@ end
 group :test do
   gem 'fabrication'
   gem 'forgery', '0.3.10'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'capybara'
   gem 'fuubar'
