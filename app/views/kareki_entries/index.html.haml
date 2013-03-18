@@ -1,12 +1,11 @@
 - content_for :head do
-  %style(type='text/css')
-    :sass
-      table.kareki_entries
-        :width 100%
+  :sass
+    table.kareki_entries
+      :width 100%
 
-        td.summary
-          :font-size smaller
-          :color gray
+      td.summary
+        :font-size smaller
+        :color gray
 
 %p!= button_to 'いますぐクローラを走らせる', crawl_kareki_entries_path
 
