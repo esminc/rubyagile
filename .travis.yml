@@ -1,14 +1,6 @@
+language: ruby
+rvm: 2.0.0
 bundler_args: --without development:production
-
-rvm:
-  - 1.9.3
-
-before_install:
-  - "gem install bundler --pre"
-
-before_script:
-  - "psql -c 'create database rubyagile_test;' -U postgres >/dev/null"
-  - "cp config/database.yml.sample config/database.yml"
-
-env: RAILS_ENV=test
-script: bundle exec rake db:migrate spec
+before_install: gem update bundler
+before_script: bundle exec rake db:create db:migrate RAILS_ENV=test
+script: bundle exec rake
