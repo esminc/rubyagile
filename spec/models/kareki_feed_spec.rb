@@ -71,7 +71,9 @@ describe KarekiFeed do
         @feed.fetch_and_save_entries
       end
       it "KarekiEntryがダブッて保存されないこと。" do
-        expect{ @feed.fetch_and_save_entries }.should_not change(KarekiEntry, :count)
+        expect {
+          @feed.fetch_and_save_entries
+        }.to_not change(KarekiEntry, :count)
       end
     end
   end

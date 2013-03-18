@@ -3,8 +3,7 @@ require 'spec_helper'
 
 describe Article do
   describe '1件しか記事が無い場合' do
-    let(:article) { Fabricate(:article) }
-    subject &:article
+    subject { Fabricate(:article) }
 
     its(:next_article) { should_not be }
     its(:prev_article) { should_not be }
@@ -16,21 +15,21 @@ describe Article do
     let!(:newest) { Fabricate(:article) }
 
     describe '一番古い記事について' do
-      subject &:oldest
+      subject { oldest }
 
       its(:prev_article) { should_not be }
       its(:next_article) { should == middle }
     end
 
     describe '真ん中の記事について' do
-      subject &:middle
+      subject { middle }
 
       its(:prev_article) { should == oldest }
       its(:next_article) { should == newest }
     end
 
     describe '一番新しい記事について' do
-      subject &:newest
+      subject { newest }
 
       its(:prev_article) { should == middle }
       its(:next_article) { should_not be }

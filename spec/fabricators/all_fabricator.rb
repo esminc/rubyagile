@@ -27,13 +27,13 @@ Fabricator :article do
   title { Forgery::LoremIpsum.title }
   body  { Forgery::LoremIpsum.sentence }
   publishing true
-  user!
+  user
 end
 
 Fabricator :page do
   name { Forgery::Basic.text }
   content { Forgery::LoremIpsum.sentence }
-  user!
+  user
 end
 
 Fabricator :front_page, from: :page do

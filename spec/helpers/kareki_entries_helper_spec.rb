@@ -27,7 +27,9 @@ describe KarekiEntriesHelper do
       end
 
       it do
-        expect { helper.replace_img_to_anchor(@fragment) }.should_not raise_exception(StandardError)
+        expect {
+          helper.replace_img_to_anchor(@fragment)
+        }.to_not raise_exception(StandardError)
       end
     end
 
