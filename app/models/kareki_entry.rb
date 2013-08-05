@@ -13,7 +13,7 @@ class KarekiEntry < ActiveRecord::Base
 
   default_scope :order => 'published_at DESC'
 
-  scope :confirmed, :conditions => {:confirmation => "confirmed"}
+  scope :confirmed, ->{ where(:confirmation => "confirmed") }
   scope :recent, :limit => 10
 
   class << self

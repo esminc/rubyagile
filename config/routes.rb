@@ -1,11 +1,11 @@
 RubyAgile::Application.routes.draw do
 
   root :to => 'welcome#index'
-  match '/dashboard' => 'dashboard#index', :as => :dashboard
+  match '/dashboard' => 'dashboard#index', :as => :dashboard, via: [:get, :post]
 
-  match '/auth/:provider/callback' => 'authentications#create'
-  match '/signin' => 'authentications#new', :as => :signin
-  match '/signout' => 'authentications#signout', :as => :signout
+  match '/auth/:provider/callback' => 'authentications#create', via: [:get, :post]
+  match '/signin' => 'authentications#new', :as => :signin, via: [:get, :post]
+  match '/signout' => 'authentications#signout', :as => :signout, via: [:get, :post]
 
   resources :authentications
 
@@ -25,5 +25,5 @@ RubyAgile::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  match '/:controller(/:action(/:id))'
+  match '/:controller(/:action(/:id))', via: [:get, :post]
 end

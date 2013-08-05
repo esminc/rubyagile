@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
 
   default_scope :order => 'created_at DESC'
-  scope :publishing, :conditions => {:publishing => true}
+  scope :publishing, -> { where(publishing: true) }
   scope :recent, :limit => 10
 
   def self.find_all_written_by(user)
