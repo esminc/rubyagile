@@ -19,8 +19,10 @@ gem 'omniauth-openid'
 gem 'omniauth-twitter'
 gem 'pg'
 gem 'rails', '~> 3.2.6'
-gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin'#, git: 'git://github.com/sferik/rails_admin.git'
 gem 'thin'
+
+gem 'loofah', '1.2.1'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
