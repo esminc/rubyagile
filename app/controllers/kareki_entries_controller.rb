@@ -7,7 +7,19 @@ class KarekiEntriesController < ApplicationController
 
   def update
     @entry = KarekiEntry.find(params[:id])
-    @entry.update_attributes(params[:kareki_entry])
+    @entry.update_attributes(
+      params.require(
+        :kareki_entry
+      ).permit(
+        :titile,
+        :content,
+        :link,
+        :published_at,
+        :creator,
+        :feed_id,
+        :confirmation,
+      )
+    )
 
     redirect_to :action => :index
   end

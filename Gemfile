@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'protected_attributes'
-
 gem 'disqus'
 gem 'dynamic_form'
 gem 'feedzirra'
