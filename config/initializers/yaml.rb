@@ -1,2 +1,2 @@
 require 'yaml' unless defined?(YAML)
-YAML::ENGINE.yamler = 'syck' if defined?(YAML::ENGINE)
+YAML::ENGINE.yamler = 'psych' if defined?(YAML::ENGINE)

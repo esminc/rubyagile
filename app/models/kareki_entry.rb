@@ -11,15 +11,15 @@ class KarekiEntry < ActiveRecord::Base
 
   belongs_to :feed, :foreign_key => :feed_id, :class_name => KarekiFeed.to_s
 
-  default_scope :order => 'published_at DESC'
+  default_scope ->{ order('published_at DESC') }
 
   scope :confirmed, ->{ where(:confirmation => "confirmed") }
-  scope :recent, :limit => 10
+  scope :recent, ->{ limit(10) }
 
   class << self
     def build_from_entry(entry)
       attributes = adapt_param(entry)
-      find_or_initialize_by_link(attributes[:link]).tap do |entry|
+      find_or_initialize_by(link: attributes[:link]).tap do |entry|
         entry.attributes = attributes
       end
     end

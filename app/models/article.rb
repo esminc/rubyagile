@@ -3,12 +3,13 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
-  default_scope :order => 'created_at DESC'
+  default_scope ->{ order('created_at DESC') }
+
   scope :publishing, -> { where(publishing: true) }
-  scope :recent, :limit => 10
+  scope :recent, -> { limit(10) }
 
   def self.find_all_written_by(user)
-    Article.find_all_by_user_id(user.id, :order => "created_at DESC")
+    Article.where(user_id: user.id).order('created_at DESC')
   end
 
   def prev_article
