@@ -1,11 +1,11 @@
 RubyAgile::Application.routes.draw do
 
   root :to => 'welcome#index'
-  match '/dashboard' => 'dashboard#index', :as => :dashboard, via: [:get, :post]
+  get '/dashboard' => 'dashboard#index', :as => :dashboard
 
-  match '/auth/:provider/callback' => 'authentications#create', via: [:get, :post]
-  match '/signin' => 'authentications#new', :as => :signin, via: [:get, :post]
-  match '/signout' => 'authentications#signout', :as => :signout, via: [:get, :post]
+  get '/auth/:provider/callback' => 'authentications#create'
+  get '/signin' => 'authentications#new', :as => :signin
+  delete '/signout' => 'authentications#signout', :as => :signout
 
   resources :authentications
 
