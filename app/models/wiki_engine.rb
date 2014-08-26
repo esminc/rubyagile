@@ -54,7 +54,7 @@ class WikiEngine
   end
 
   def unresolved_wikinames(wikinames)
-    existing_page_names = Page.find(:all).map { |page| page.name }
+    existing_page_names = Page.all.map { |page| page.name }
     wikinames -= existing_page_names
   end
 end

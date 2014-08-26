@@ -45,7 +45,9 @@ class PagesController < ApplicationController
 
   def create_or_update
     new = @page.new_record?
-    @page.attributes = params[:page].merge(:user => current_user)
+
+    page_attributes = params.require(:page).permit(:name, :content)
+    @page.attributes = page_attributes.merge(:user => current_user)
 
     if params[:preview].present?
       render :preview

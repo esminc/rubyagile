@@ -3,5 +3,10 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
+require 'coveralls/rake/task'
+
 
 RubyAgile::Application.load_tasks
+
+Coveralls::RakeTask.new
+task test_with_coveralls: %i(spec cucumber coveralls:push)

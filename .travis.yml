@@ -3,4 +3,8 @@ rvm: 2.0.0
 bundler_args: --without development:production
 before_install: gem update bundler
 before_script: bundle exec rake db:create db:migrate RAILS_ENV=test
-script: bundle exec rake
+script: bundle exec ./bin/rake test_with_coveralls
+
+notifications:
+  webhooks:
+    - https://idobata.io/hook/222a9217-7fe3-427b-a961-3643e1d17614

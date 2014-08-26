@@ -2,12 +2,24 @@ class KarekiEntriesController < ApplicationController
   before_filter :login_required
 
   def index
-    @entries = KarekiEntry.all(:order => 'created_at DESC')
+    @entries = KarekiEntry.order('created_at DESC')
   end
 
   def update
     @entry = KarekiEntry.find(params[:id])
-    @entry.update_attributes(params[:kareki_entry])
+    @entry.update_attributes(
+      params.require(
+        :kareki_entry
+      ).permit(
+        :titile,
+        :content,
+        :link,
+        :published_at,
+        :creator,
+        :feed_id,
+        :confirmation,
+      )
+    )
 
     redirect_to :action => :index
   end

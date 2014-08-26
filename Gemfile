@@ -18,15 +18,13 @@ gem 'omniauth-linkedin'
 gem 'omniauth-openid'
 gem 'omniauth-twitter'
 gem 'pg'
-gem 'rails', '~> 3.2.6'
+gem 'rails', '~> 4.0.0'
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
 gem 'thin'
 
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier'
-end
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
 
 group :development do
   gem 'foreman'
@@ -51,3 +49,5 @@ group :production do
   gem 'newrelic_rpm'
   gem 'exception_notification'
 end
+
+gem 'coveralls', require: false
